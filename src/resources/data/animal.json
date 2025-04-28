@@ -1,0 +1,12 @@
+[
+  {
+    "nombre": "Delfin",
+    "idAnimal": 1044658902,
+    "peso": "3400kg",
+    "especie": "Mamifero",
+    "sexo": "Hembra",
+    "estadoSalud": "Sano",
+    "ubicacion": "Nutricion Animal",
+    "habitat": "Laguna"
+  }
+]
