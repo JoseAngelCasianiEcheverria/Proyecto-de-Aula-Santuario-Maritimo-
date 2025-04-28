@@ -12,7 +12,7 @@ public class Animales {
     private String habitat;
     private String cuidadorAsignado;
 
-    public Animales(String nombre, int idAnimal, String peso, String especie, String sexo, String estadoSalud, String ubicacion, String habitat, String habitat1) {
+    public Animales(String nombre, int idAnimal, String peso, String especie, String sexo, String estadoSalud, String ubicacion, String habitat, String cuidadorAsignado) {
         this.nombre = nombre;
         this.idAnimal = idAnimal;
         this.especie = especie;
@@ -40,6 +40,14 @@ public class Animales {
         this.idAnimal = idAnimal;
     }
 
+    public String getPeso() {
+        return peso;
+    }
+
+    public void setPeso(String peso) {
+        this.peso = peso;
+    }
+
     public String getEspecie() {
         return especie;
     }
@@ -56,28 +64,20 @@ public class Animales {
         this.sexo = sexo;
     }
 
-    public String getUbicacion() {
-        return ubicacion;
-    }
-
-    public void setUbicacion(String ubicacion) {
-        this.ubicacion = ubicacion;
-    }
-
-    public String getPeso() {
-        return peso;
-    }
-
-    public void setPeso(String peso) {
-        this.peso = peso;
-    }
-
     public String getEstadoSalud() {
         return estadoSalud;
     }
 
     public void setEstadoSalud(String estadoSalud) {
         this.estadoSalud = estadoSalud;
+    }
+
+    public String getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
     }
 
     public String getCuidadorAsignado() {
@@ -87,11 +87,11 @@ public class Animales {
     public void setCuidadorAsignado(String cuidadorAsignado) {
         this.cuidadorAsignado = cuidadorAsignado;
     }
-
-    public String getHabitat() {
+    
+    
+    public String getHabitat(){
         return habitat;
     }
-
     public void setHabitat(String habitat) {
         this.habitat = habitat;
     }

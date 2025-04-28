@@ -1,32 +1,57 @@
 [
   {
-    "nombre": "Delfin",
-    "idAnimal": 1044658902,
-    "peso": "3400kg",
-    "especie": "Mamifero",
-    "sexo": "Hembra",
+    "nombre": "Mantarraya",
+    "idAnimal": 1098657203,
+    "peso": "1800kg",
+    "especie": "Pez",
+    "sexo": "Macho",
     "estadoSalud": "Sano",
-    "ubicacion": "Nutricion Animal",
-    "habitat": "Laguna"
+    "ubicacion": "Habitat natural",
+    "habitat": "Tanque",
+    "cuidadorAsignado": "Juan Manuel Paredes"
   },
   {
-    "nombre": "Tiburon",
-    "idAnimal": 1044651692,
-    "peso": "2500kg",
+    "nombre": "Medusa",
+    "idAnimal": 1055678902,
+    "peso": "320kg",
+    "especie": "Cnidario",
+    "sexo": "Hembra",
+    "estadoSalud": "Sano",
+    "ubicacion": "Zona de reproduccion",
+    "habitat": "Laguna",
+    "cuidadorAsignado": "Karen Marrugo"
+  },
+  {
+    "nombre": "Orca",
+    "idAnimal": 1098651703,
+    "peso": "3000kg",
     "especie": "Mamifero",
     "sexo": "Macho",
     "estadoSalud": "Sano",
     "ubicacion": "Habitat natural",
-    "habitat": "Tanque"
+    "habitat": "Tanque",
+    "cuidadorAsignado": "Pablo Chacon"
   },
   {
-    "nombre": "Pulpo",
-    "idAnimal": 1044651703,
-    "peso": "500kg",
-    "especie": "Cefalopodo",
+    "nombre": "Pez Mojarra",
+    "idAnimal": 1043658903,
+    "peso": "190kg",
+    "especie": "Pez",
     "sexo": "Macho",
-    "estadoSalud": "En recuperacion",
-    "ubicacion": "Area de rehabilitacion",
-    "habitat": "Laguna"
+    "estadoSalud": "Sano",
+    "ubicacion": "Habitat natural",
+    "habitat": "Tanque",
+    "cuidadorAsignado": "Jhon Arrieta Arrieta"
+  },
+  {
+    "nombre": "Tiburon Blanco",
+    "idAnimal": 1044657803,
+    "peso": "3500kg",
+    "especie": "Mamifero",
+    "sexo": "Macho",
+    "estadoSalud": "Sano",
+    "ubicacion": "Habitat natural",
+    "habitat": "Tanque",
+    "cuidadorAsignado": "Juan Pablo Lopez"
   }
 ]

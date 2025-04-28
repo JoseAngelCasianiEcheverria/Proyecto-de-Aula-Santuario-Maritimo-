@@ -51,21 +51,25 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="jPanel3" max="32767" attributes="0"/>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="477" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="jPanel4" min="-2" pref="299" max="-2" attributes="0"/>
+                          <EmptySpace pref="219" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
                                   <Component id="jLabel16" min="-2" pref="114" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                                   <Component id="jLabel14" min="-2" pref="86" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
                                   <Component id="jLabel15" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jLabel18" min="-2" pref="129" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                                  <Component id="jLabel17" min="-2" pref="110" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                               </Group>
+                              <Component id="jPanel5" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="280" max="-2" attributes="0"/>
+                          <EmptySpace pref="74" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -82,13 +86,15 @@
                           <Component id="jPanel4" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="180" max="32767" attributes="0"/>
                       </Group>
@@ -186,6 +192,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnActualizarMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnBuscar">
               <Properties>
@@ -259,7 +268,7 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel12" min="-2" pref="70" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="515" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="306" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -397,7 +406,7 @@
                                       <Component id="txtCuidador" min="-2" pref="182" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="106" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="btnActualizacion" min="-2" max="-2" attributes="0"/>
@@ -660,6 +669,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="ACTUALIZAR"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnActualizacionMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnLimpiar">
               <Properties>
@@ -722,11 +734,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="860" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jScrollPane1" min="-2" pref="875" max="-2" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -750,15 +758,15 @@
                     </Property>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="9" rowCount="4">
-                        <Column editable="true" title="Nombre" type="java.lang.String"/>
-                        <Column editable="true" title="ID" type="java.lang.Integer"/>
-                        <Column editable="true" title="Peso" type="java.lang.String"/>
-                        <Column editable="true" title="Especie" type="java.lang.String"/>
-                        <Column editable="true" title="Sexo" type="java.lang.String"/>
-                        <Column editable="true" title="Estado" type="java.lang.String"/>
-                        <Column editable="true" title="Ubicacion" type="java.lang.String"/>
-                        <Column editable="true" title="Habitat" type="java.lang.String"/>
-                        <Column editable="true" title="Cuidador" type="java.lang.String"/>
+                        <Column editable="false" title="Nombre" type="java.lang.String"/>
+                        <Column editable="false" title="ID" type="java.lang.Integer"/>
+                        <Column editable="false" title="Peso" type="java.lang.String"/>
+                        <Column editable="false" title="Especie" type="java.lang.String"/>
+                        <Column editable="false" title="Sexo" type="java.lang.String"/>
+                        <Column editable="false" title="Estado" type="java.lang.String"/>
+                        <Column editable="false" title="Ubicacion" type="java.lang.String"/>
+                        <Column editable="false" title="Habitat" type="java.lang.String"/>
+                        <Column editable="false" title="Cuidador" type="java.lang.String"/>
                       </Table>
                     </Property>
                   </Properties>
@@ -789,6 +797,20 @@
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/img/LEONES_MARINOS (1) (1).png"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel18">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/img/DELFIN_MARINO__1_ (1).png"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel17">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/img/FOCA_BLUE (1).png"/>
             </Property>
           </Properties>
         </Component>

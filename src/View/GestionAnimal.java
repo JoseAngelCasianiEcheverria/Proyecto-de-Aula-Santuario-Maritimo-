@@ -58,7 +58,7 @@ public class GestionAnimal extends javax.swing.JFrame {
             
             Animales registroExistente = dao.buscarConId(iD);
             if (registroExistente != null) {
-                JOptionPane.showMessageDialog(null, "Registro existente");
+                JOptionPane.showMessageDialog(this, "Registro existente", "Warning", JOptionPane.WARNING_MESSAGE);
                 return;
             }
             
@@ -165,6 +165,55 @@ public class GestionAnimal extends javax.swing.JFrame {
         tableAnimal.setModel(modelo);
     }
     
+    //ACTUALIZAMOS TODOS LOS CAMPOS EXEPTUANDO EL NOMBRE Y EL ID SIENDO DATOS PERSONALES
+    private void actualizarCampos(){
+        txtNombre.setEnabled(false);
+        txtID.setEnabled(false);
+        txtPeso.setEnabled(true);
+        comboEspecie.setEnabled(true);
+        comboSexo.setEnabled(true);
+        comboEstado.setEnabled(true);
+        comboUbicacion.setEnabled(true);
+        comboHabitat.setEnabled(true);
+        txtCuidador.setEnabled(true);
+        
+        
+    }
+    
+    private void actualizarAnimal(){
+        try {
+            int iD = Integer.parseInt(txtID.getText().trim());
+            List<Animales> listaAnimal = dao.cargarRegistros();
+            
+            for(Animales animal : listaAnimal){
+                if (animal.getIdAnimal() == iD) {
+                    
+                
+                animal.setPeso(txtPeso.getText().trim());
+                animal.setEspecie(comboEspecie.getSelectedItem().toString());
+                animal.setSexo(comboSexo.getSelectedItem().toString());
+                animal.setEstadoSalud(comboEstado.getSelectedItem().toString());
+                animal.setUbicacion(comboUbicacion.getSelectedItem().toString());
+                animal.setHabitat(comboHabitat.getSelectedItem().toString());
+                animal.setCuidadorAsignado(txtCuidador.getText().trim());
+                
+                dao.guardarTodos(listaAnimal);
+                JOptionPane.showMessageDialog(this, "Datos actualizados exitosamente", "Exitos", JOptionPane.INFORMATION_MESSAGE);
+                cargarTablaAnimal();
+                limpiarCampos();
+                
+                txtNombre.setEnabled(true);
+                txtID.setEnabled(true);
+                return;
+                }
+            }
+            JOptionPane.showMessageDialog(this, "Animal no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "ID inválido", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
     
     
     
@@ -237,6 +286,8 @@ public class GestionAnimal extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -267,6 +318,11 @@ public class GestionAnimal extends javax.swing.JFrame {
         btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ACTUALIZAR.png"))); // NOI18N
         btnActualizar.setText("ACTUALIZAR");
         btnActualizar.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        btnActualizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnActualizarMouseClicked(evt);
+            }
+        });
 
         btnBuscar.setBackground(new java.awt.Color(0, 255, 255));
         btnBuscar.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
@@ -358,7 +414,7 @@ public class GestionAnimal extends javax.swing.JFrame {
                         .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(515, 515, 515))
+                .addGap(306, 306, 306))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -424,6 +480,11 @@ public class GestionAnimal extends javax.swing.JFrame {
 
         btnActualizacion.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         btnActualizacion.setText("ACTUALIZAR");
+        btnActualizacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnActualizacionMouseClicked(evt);
+            }
+        });
 
         btnLimpiar.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         btnLimpiar.setText("LIMPIAR");
@@ -479,7 +540,7 @@ public class GestionAnimal extends javax.swing.JFrame {
                                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtCuidador, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(106, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(btnActualizacion)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -550,9 +611,16 @@ public class GestionAnimal extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         tableAnimal.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -566,10 +634,7 @@ public class GestionAnimal extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 860, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 875, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -583,6 +648,10 @@ public class GestionAnimal extends javax.swing.JFrame {
 
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/LEONES_MARINOS (1) (1).png"))); // NOI18N
 
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/DELFIN_MARINO__1_ (1).png"))); // NOI18N
+
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/FOCA_BLUE (1).png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -593,18 +662,22 @@ public class GestionAnimal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 477, Short.MAX_VALUE)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 219, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(115, 115, 115)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(130, 130, 130)
+                                .addGap(45, 45, 45)
                                 .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(110, 110, 110)
-                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(280, 280, 280))))
+                                .addGap(79, 79, 79)
+                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(35, 35, 35)
+                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(50, 50, 50))
+                            .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(74, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -616,12 +689,14 @@ public class GestionAnimal extends javax.swing.JFrame {
                         .addGap(89, 89, 89)
                         .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
+                        .addGap(59, 59, 59)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel14)
                             .addComponent(jLabel15)
-                            .addComponent(jLabel16))
-                        .addGap(32, 32, 32)
+                            .addComponent(jLabel16)
+                            .addComponent(jLabel18)
+                            .addComponent(jLabel17))
+                        .addGap(18, 18, 18)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 180, Short.MAX_VALUE))))
         );
@@ -679,9 +754,28 @@ public class GestionAnimal extends javax.swing.JFrame {
         
         if (filaSeleccionada != -1) {
             txtNombre.setText(modelo.getValueAt(filaSeleccionada, 0).toString());
+            txtID.setText(modelo.getValueAt(filaSeleccionada, 1).toString());
+            txtPeso.setText(modelo.getValueAt(filaSeleccionada, 2).toString());
+            comboEspecie.setSelectedItem(modelo.getValueAt(filaSeleccionada, 3));
+            comboSexo.setSelectedItem(modelo.getValueAt(filaSeleccionada, 4));
+            comboEstado.setSelectedItem(modelo.getValueAt(filaSeleccionada, 5));
+            comboUbicacion.setSelectedItem(modelo.getValueAt(filaSeleccionada, 6));
+            comboHabitat.setSelectedItem(modelo.getValueAt(filaSeleccionada, 7));
+            txtCuidador.setText(modelo.getValueAt(filaSeleccionada, 8).toString());
+            
             
         }
     }//GEN-LAST:event_tableAnimalMouseClicked
+
+    private void btnActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked
+        // TODO add your handling code here:
+        actualizarCampos();
+    }//GEN-LAST:event_btnActualizarMouseClicked
+
+    private void btnActualizacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizacionMouseClicked
+        // TODO add your handling code here:
+        actualizarAnimal();
+    }//GEN-LAST:event_btnActualizacionMouseClicked
 
     /**
      * @param args the command line arguments
@@ -738,6 +832,8 @@ public class GestionAnimal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
