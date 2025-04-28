@@ -8,5 +8,25 @@
     "estadoSalud": "Sano",
     "ubicacion": "Nutricion Animal",
     "habitat": "Laguna"
+  },
+  {
+    "nombre": "Tiburon",
+    "idAnimal": 1044651692,
+    "peso": "2500kg",
+    "especie": "Mamifero",
+    "sexo": "Macho",
+    "estadoSalud": "Sano",
+    "ubicacion": "Habitat natural",
+    "habitat": "Tanque"
+  },
+  {
+    "nombre": "Pulpo",
+    "idAnimal": 1044651703,
+    "peso": "500kg",
+    "especie": "Cefalopodo",
+    "sexo": "Macho",
+    "estadoSalud": "En recuperacion",
+    "ubicacion": "Area de rehabilitacion",
+    "habitat": "Laguna"
   }
 ]
