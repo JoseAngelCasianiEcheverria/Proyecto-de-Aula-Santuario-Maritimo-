@@ -6,9 +6,9 @@ public class Persona {
     private String apellido;
     private String genero;
     private String edad;
-    private String id;
+    private int id;
 
-    public Persona(String nombre, String apellido, String genero, String edad, String id) {
+    public Persona(String nombre, String apellido, String genero, String edad, int id) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.genero = genero;
@@ -48,13 +48,17 @@ public class Persona {
         this.edad = edad;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
+    
+    
+
+   
     
     
 }

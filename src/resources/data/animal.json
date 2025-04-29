@@ -53,5 +53,27 @@
     "ubicacion": "Habitat natural",
     "habitat": "Tanque",
     "cuidadorAsignado": "Juan Pablo Lopez"
+  },
+  {
+    "nombre": "Delfin",
+    "idAnimal": 1098651204,
+    "peso": "3100kg",
+    "especie": "Mamifero",
+    "sexo": "Macho",
+    "estadoSalud": "En recuperacion",
+    "ubicacion": "Area de rehabilitacion",
+    "habitat": "Laguna",
+    "cuidadorAsignado": "Adrian Moreno"
+  },
+  {
+    "nombre": "Pez Espada",
+    "idAnimal": 1044651895,
+    "peso": "3200kg",
+    "especie": "Pez",
+    "sexo": "Macho",
+    "estadoSalud": "Sano",
+    "ubicacion": "Habitat natural",
+    "habitat": "Tanque",
+    "cuidadorAsignado": "Mathews Reyes"
   }
 ]

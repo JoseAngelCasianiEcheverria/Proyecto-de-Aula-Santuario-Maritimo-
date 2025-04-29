@@ -7,7 +7,7 @@ public class Visitantes extends Persona{
     private int evaluacionesRealizadas;
     private String guiaSeleccionado;
 
-    public Visitantes(String correo, String telefono, int evaluacionesRealizadas, String guiaSeleccionado, String nombre, String apellido, String genero, String edad, String id) {
+    public Visitantes(String correo, String telefono, int evaluacionesRealizadas, String guiaSeleccionado, String nombre, String apellido, String genero, String edad, int id) {
         super(nombre, apellido, genero, edad, id);
         this.correo = correo;
         this.telefono = telefono;
