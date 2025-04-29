@@ -303,7 +303,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/img/A&#xd1;ADIR.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="AGREGAR/ACTUALIZAR/BUSCAR/ELIMINAR Animales "/>
+                <Property name="text" type="java.lang.String" value="GUARDAR/MODIFICAR/BUSCAR/ELIMINAR Animales "/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel11">

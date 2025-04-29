@@ -66,6 +66,13 @@ public class GestionCuidadores extends javax.swing.JFrame {
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             Date fechaContratacion = sdf.parse(contratacionText);
             
+            Cuidadores registroExistente = dao.buscarConID(iD);
+            if (registroExistente != null ) {
+                JOptionPane.showMessageDialog(this, "Registro existente", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+                
+            }
+            
             Cuidadores nuevoCuidador = new Cuidadores(cargo, fechaContratacion, salario, horario, correo, numTelefono, nombre, apellido, genero, edad, iD);
             nuevoCuidador.setArea(area);
             
@@ -134,7 +141,100 @@ public class GestionCuidadores extends javax.swing.JFrame {
         }
     }
     
+    private void buscarCuidadores(){
+        String iDBuscada = txtBusqueda.getText().trim();
+        
+        if (iDBuscada.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Infgrese un ID para buscar en el sistema", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        int iDIngresada;
+        
+        try {
+            iDIngresada = Integer.parseInt(iDBuscada);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Solo se permite ingresar numeros", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;   
+        }
+        
+        Cuidadores cuidador = dao.buscarConID(iDIngresada);
+        if (cuidador == null) {
+            JOptionPane.showMessageDialog(null, "No hay resultados");
+            
+        } else {
+            mostrarBusquedaEnTabla(cuidador);
+        }
+    }
     
+    private void mostrarBusquedaEnTabla(Cuidadores cuidador){
+        modelo.setRowCount(0);
+        modelo.addRow(new Object[]{
+            cuidador.getNombre(),
+            cuidador.getApellido(),
+            cuidador.getEdad(),
+            cuidador.getId(),
+            cuidador.getGenero(),
+            cuidador.getCorreo(),
+            cuidador.getSalario(),
+            cuidador.getCargo(),
+            cuidador.getHorario(),
+            cuidador.getNumTelefono(),
+            cuidador.getFechaContratacion(),
+            cuidador.getArea()
+        });
+        tableCuidador.setModel(modelo);
+    }
+    
+    private void actualizarCampos(){
+        txtNombre.setEnabled(false);
+        txtApellido.setEnabled(false);
+        txtEdad.setEnabled(true);
+        txtID.setEnabled(false);
+        txtCorreo.setEnabled(false);
+        txtSalario.setEnabled(true);
+        comboCargo.setEnabled(true);
+        comboHorario.setEnabled(true);
+        txtTelefono.setEnabled(false);
+        txtFechaContratacion.setEnabled(false);
+        comboArea.setEnabled(true);
+        
+    }
+    
+    private void actualizarCuidadores(){
+        try {
+            
+        int iD = Integer.parseInt(txtID.getText().trim());
+        List<Cuidadores> listaCuidadores = dao.cargarRegistros();
+
+        for (Cuidadores cuidador : listaCuidadores) {
+            if (cuidador.getId() == iD) {
+
+                cuidador.setEdad(txtEdad.getText().trim());
+                cuidador.setSalario(txtSalario.getText().trim());
+                cuidador.setCargo(comboCargo.getSelectedItem().toString());
+                cuidador.setHorario(comboHorario.getSelectedItem().toString());
+                cuidador.setArea(comboArea.getSelectedItem().toString());
+
+                dao.guardarTodos(listaCuidadores);
+                JOptionPane.showMessageDialog(this, "Actualizaciones completas", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                cargarTablaCuidadores();
+                limpiarCampos();
+                
+                txtNombre.setEnabled(true);
+                txtApellido.setEnabled(true);
+                txtID.setEnabled(true);
+                txtCorreo.setEnabled(true);
+                txtTelefono.setEnabled(true);
+                txtFechaContratacion.setEnabled(true);
+                return;
+            }
+        }
+        JOptionPane.showMessageDialog(this, "Cuidador no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "ID inválido", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    }
     
     
     
@@ -172,6 +272,9 @@ public class GestionCuidadores extends javax.swing.JFrame {
         btnEliminar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        txtBusqueda = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
@@ -205,6 +308,7 @@ public class GestionCuidadores extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -230,12 +334,22 @@ public class GestionCuidadores extends javax.swing.JFrame {
         btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ACTUALIZAR.png"))); // NOI18N
         btnActualizar.setText("ACTUALIZAR");
         btnActualizar.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        btnActualizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnActualizarMouseClicked(evt);
+            }
+        });
 
         btnBuscar.setBackground(new java.awt.Color(0, 255, 255));
         btnBuscar.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/BUSCAR.png"))); // NOI18N
         btnBuscar.setText("BUSCAR");
         btnBuscar.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        btnBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBuscarMouseClicked(evt);
+            }
+        });
 
         btnEliminar.setBackground(new java.awt.Color(0, 255, 255));
         btnEliminar.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
@@ -282,7 +396,22 @@ public class GestionCuidadores extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/CUIDADORES (1).png"))); // NOI18N
-        jLabel2.setText("AGREGAR/ACTUALIZAR/BUSCAR/ELIMINAR Cuidadores ");
+        jLabel2.setText("GUARDAR/MODIFICAR/BUSCAR/ELIMINAR Cuidadores ");
+
+        jLabel18.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setText("Busqueda por ID ");
+
+        txtBusqueda.setBackground(new java.awt.Color(0, 0, 153));
+        txtBusqueda.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        txtBusqueda.setForeground(new java.awt.Color(0, 255, 255));
+        txtBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBusquedaKeyReleased(evt);
+            }
+        });
+
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/BUSQUEDA (1).png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -290,15 +419,32 @@ public class GestionCuidadores extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 616, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 616, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel20)
+                .addGap(66, 66, 66))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel20))
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -307,14 +453,22 @@ public class GestionCuidadores extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("Nombre ");
 
+        txtNombre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setText("Apellido ");
+
+        txtApellido.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel5.setText("Edad");
 
+        txtEdad.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel6.setText("ID");
+
+        txtID.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel7.setText("Genero   ");
@@ -325,8 +479,12 @@ public class GestionCuidadores extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel8.setText("Correo  ");
 
+        txtCorreo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel9.setText("Salario  ");
+
+        txtSalario.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel10.setText("Cargo");
@@ -343,8 +501,12 @@ public class GestionCuidadores extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel12.setText("Telefono ");
 
+        txtTelefono.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel13.setText("Fecha De Contratacion  ");
+
+        txtFechaContratacion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel14.setText("Area");
@@ -354,6 +516,11 @@ public class GestionCuidadores extends javax.swing.JFrame {
 
         btnActualizacion.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         btnActualizacion.setText("ACTUALIZAR");
+        btnActualizacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnActualizacionMouseClicked(evt);
+            }
+        });
 
         btnLimpiar.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         btnLimpiar.setText("LIMPIAR");
@@ -511,21 +678,22 @@ public class GestionCuidadores extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tableCuidador.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableCuidadorMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tableCuidador);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 959, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 971, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
         );
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/CUIDADORES_MARINOS (1).png"))); // NOI18N
@@ -533,6 +701,9 @@ public class GestionCuidadores extends javax.swing.JFrame {
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/CUIDADOR_OCEANICO (1).png"))); // NOI18N
 
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/CUIDADORES_MARINOS (2).png"))); // NOI18N
+
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/RESCATISTA (1) (1).png"))); // NOI18N
+        jLabel19.setText("jLabel19");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -546,12 +717,14 @@ public class GestionCuidadores extends javax.swing.JFrame {
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(100, 100, 100)
+                                .addGap(98, 98, 98)
                                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(39, 39, 39)
+                                .addGap(36, 36, 36)
                                 .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(59, 59, 59)
-                                .addComponent(jLabel17))
+                                .addComponent(jLabel17)
+                                .addGap(54, 54, 54)
+                                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(31, 31, 31)
                                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -568,11 +741,16 @@ public class GestionCuidadores extends javax.swing.JFrame {
                         .addGap(13, 13, 13)
                         .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(38, 38, 38)
+                                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel16)
+                                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel15))))
                         .addGap(18, 18, 18)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
@@ -605,6 +783,47 @@ public class GestionCuidadores extends javax.swing.JFrame {
         // TODO add your handling code here:
         eliminarCuidadores();
     }//GEN-LAST:event_btnEliminarMouseClicked
+
+    private void txtBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyReleased
+        // TODO add your handling code here:
+        if (txtBusqueda.getText().trim().isEmpty()) {
+            cargarTablaCuidadores();
+        }
+    }//GEN-LAST:event_txtBusquedaKeyReleased
+
+    private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
+        // TODO add your handling code here:
+        buscarCuidadores();
+    }//GEN-LAST:event_btnBuscarMouseClicked
+
+    private void tableCuidadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCuidadorMouseClicked
+        // TODO add your handling code here:
+        int filaSeleccionada = tableCuidador.getSelectedRow();
+        if (filaSeleccionada != -1) {
+            txtNombre.setText(modelo.getValueAt(filaSeleccionada,0).toString());
+            txtApellido.setText(modelo.getValueAt(filaSeleccionada, 1).toString());
+            txtEdad.setText(modelo.getValueAt(filaSeleccionada, 2).toString());
+            txtID.setText(modelo.getValueAt(filaSeleccionada, 3).toString());
+            comboGenero.setSelectedItem(modelo.getValueAt(filaSeleccionada, 4));
+            txtCorreo.setText(modelo.getValueAt(filaSeleccionada, 5).toString());
+            txtSalario.setText(modelo.getValueAt(filaSeleccionada, 6).toString());
+            comboCargo.setSelectedItem(modelo.getValueAt(filaSeleccionada,7));
+            comboHorario.setSelectedItem(modelo.getValueAt(filaSeleccionada, 8));
+            txtTelefono.setText(modelo.getValueAt(filaSeleccionada, 9).toString());
+            txtFechaContratacion.setText(modelo.getValueAt(filaSeleccionada,10).toString());
+            comboArea.setSelectedItem(modelo.getValueAt(filaSeleccionada, 11)); 
+        }
+    }//GEN-LAST:event_tableCuidadorMouseClicked
+
+    private void btnActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked
+        // TODO add your handling code here:
+        actualizarCampos();
+    }//GEN-LAST:event_btnActualizarMouseClicked
+
+    private void btnActualizacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizacionMouseClicked
+        // TODO add your handling code here:
+        actualizarCuidadores();
+    }//GEN-LAST:event_btnActualizacionMouseClicked
 
     /**
      * @param args the command line arguments
@@ -661,7 +880,10 @@ public class GestionCuidadores extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -677,6 +899,7 @@ public class GestionCuidadores extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tableCuidador;
     private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtBusqueda;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtEdad;
     private javax.swing.JTextField txtFechaContratacion;

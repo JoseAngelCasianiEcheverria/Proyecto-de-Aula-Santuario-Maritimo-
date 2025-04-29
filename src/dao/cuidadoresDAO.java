@@ -72,6 +72,17 @@ public class cuidadoresDAO {
         return eliminacion;
     }
     
+    public Cuidadores buscarConID(int id){
+        List<Cuidadores> cuidadores = cargarRegistros();
+        
+        for(Cuidadores cuidador : cuidadores){
+            if (cuidador.getId() == id) {
+                return cuidador;
+            }
+        }
+        return null;
+    }
+    
     
     
     

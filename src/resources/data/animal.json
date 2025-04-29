@@ -18,7 +18,7 @@
     "sexo": "Hembra",
     "estadoSalud": "Sano",
     "ubicacion": "Zona de reproduccion",
-    "habitat": "Laguna",
+    "habitat": "Arrecife",
     "cuidadorAsignado": "Karen Marrugo"
   },
   {
@@ -75,5 +75,27 @@
     "ubicacion": "Habitat natural",
     "habitat": "Tanque",
     "cuidadorAsignado": "Mathews Reyes"
+  },
+  {
+    "nombre": "Pulpo",
+    "idAnimal": 1044651702,
+    "peso": "500kg",
+    "especie": "Cefalopodo",
+    "sexo": "Macho",
+    "estadoSalud": "Sano",
+    "ubicacion": "Nutricion animal",
+    "habitat": "Laguna",
+    "cuidadorAsignado": "Jhonny Bravo"
+  },
+  {
+    "nombre": "Ballena Jorobada",
+    "idAnimal": 1093674602,
+    "peso": "60000kg",
+    "especie": "Mamifero",
+    "sexo": "Hembra",
+    "estadoSalud": "Sano",
+    "ubicacion": "Habitat natural",
+    "habitat": "Tanque",
+    "cuidadorAsignado": "Norman Reyes"
   }
 ]

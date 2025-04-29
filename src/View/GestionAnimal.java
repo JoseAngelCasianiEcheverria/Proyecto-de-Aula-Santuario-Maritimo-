@@ -381,7 +381,7 @@ public class GestionAnimal extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/AÑADIR.png"))); // NOI18N
-        jLabel2.setText("AGREGAR/ACTUALIZAR/BUSCAR/ELIMINAR Animales ");
+        jLabel2.setText("GUARDAR/MODIFICAR/BUSCAR/ELIMINAR Animales ");
 
         jLabel11.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
