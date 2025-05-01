@@ -1,0 +1,16 @@
+[
+  {
+    "Area": "Torre de control",
+    "cargo": "Patrullero",
+    "fechaContratacion": "Mar 22, 2022, 12:00:00 AM",
+    "salario": "130000",
+    "horario": "Nocturno",
+    "correo": "juanpa@gmail.com",
+    "numTelefono": "310657803",
+    "nombre": "Juan Pablo",
+    "apellido": "Lopez Reyes",
+    "genero": "Masculino",
+    "edad": "33",
+    "id": 1044657803
+  }
+]

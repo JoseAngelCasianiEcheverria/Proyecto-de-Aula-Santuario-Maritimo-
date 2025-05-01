@@ -10,22 +10,21 @@ import java.util.Date;
  *
  * @author juanp
  */
-public class Cuidadores extends Trabajadores{
-    private String area;
-
-    public Cuidadores(String cargo, Date fechaContratacion, String salario, String horario, String correo, String numTelefono, String nombre, String apellido, String genero, String edad, int id) {
+public class Vigilantes extends Trabajadores{
+    
+    private String Area;
+    
+    public Vigilantes(String cargo, Date fechaContratacion, String salario, String horario, String correo, String numTelefono, String nombre, String apellido, String genero, String edad, int id) {
     super(cargo, fechaContratacion, salario, horario, correo, numTelefono, nombre, apellido, genero, edad, id);
-   }
+}
 
     public String getArea() {
-        return area;
+        return Area;
     }
 
-    public void setArea(String area) {
-        this.area = area;
+    public void setArea(String Area) {
+        this.Area = Area;
     }
-    
-    
     
     
     

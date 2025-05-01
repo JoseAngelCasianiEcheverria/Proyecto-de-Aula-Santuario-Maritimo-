@@ -13,7 +13,7 @@
   {
     "nombre": "Medusa",
     "idAnimal": 1055678902,
-    "peso": "320kg",
+    "peso": "319kg",
     "especie": "Cnidario",
     "sexo": "Hembra",
     "estadoSalud": "Sano",
@@ -35,7 +35,7 @@
   {
     "nombre": "Pez Mojarra",
     "idAnimal": 1043658903,
-    "peso": "190kg",
+    "peso": "210kg",
     "especie": "Pez",
     "sexo": "Macho",
     "estadoSalud": "Sano",

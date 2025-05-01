@@ -9,9 +9,9 @@ public class Trabajadores extends Persona{
     private String salario;
     private String horario;
     private String correo;
-    private int numTelefono;
+    private String numTelefono;
 
-    public Trabajadores(String cargo, Date fechaContratacion, String salario, String horario, String correo, int numTelefono, String nombre, String apellido, String genero, String edad, int id) {
+    public Trabajadores(String cargo, Date fechaContratacion, String salario, String horario, String correo, String numTelefono, String nombre, String apellido, String genero, String edad, int id) {
         super(nombre, apellido, genero, edad, id);
         this.cargo = cargo;
         this.fechaContratacion = fechaContratacion;
@@ -61,11 +61,11 @@ public class Trabajadores extends Persona{
         this.correo = correo;
     }
 
-    public int getNumTelefono() {
+    public String getNumTelefono() {
         return numTelefono;
     }
 
-    public void setNumTelefono(int numTelefono) {
+    public void setNumTelefono(String numTelefono) {
         this.numTelefono = numTelefono;
     }
     

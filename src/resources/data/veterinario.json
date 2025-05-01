@@ -1,0 +1,72 @@
+[
+  {
+    "area": "Bienestar animal",
+    "cargo": "Veterinario",
+    "fechaContratacion": "Mar 22, 2008, 12:00:00 AM",
+    "salario": "400000",
+    "horario": "Diurno",
+    "correo": "manu@gmail.com",
+    "numTelefono": "32044650",
+    "nombre": "Manuel",
+    "apellido": "Lopez",
+    "genero": "Masculino",
+    "edad": "33",
+    "id": 1093651709
+  },
+  {
+    "area": "Rescate y respuesta a emergencia",
+    "cargo": "Auxiliar",
+    "fechaContratacion": "Mar 22, 2016, 12:00:00 AM",
+    "salario": "200000",
+    "horario": "Nocturno",
+    "correo": "yair@gmail.com",
+    "numTelefono": "32044140",
+    "nombre": "Yair Andrei",
+    "apellido": "Marquez Cueto",
+    "genero": "Masculino",
+    "edad": "43",
+    "id": 1044657802
+  },
+  {
+    "area": "Área clínica y rehabilitación",
+    "cargo": "Auxiliar",
+    "fechaContratacion": "Dec 27, 2020, 12:00:00 AM",
+    "salario": "300000",
+    "horario": "Diurno",
+    "correo": "juanpa@gmail.com",
+    "numTelefono": "3247644140",
+    "nombre": "Juan Pablo",
+    "apellido": "Lopez",
+    "genero": "Masculino",
+    "edad": "33",
+    "id": 1056751602
+  },
+  {
+    "area": "Área clínica y rehabilitación",
+    "cargo": "Jefe del area",
+    "fechaContratacion": "Dec 27, 2020, 12:00:00 AM",
+    "salario": "500000",
+    "horario": "Diurno",
+    "correo": "carlos@gmail.com",
+    "numTelefono": "3222644280",
+    "nombre": "Carlos",
+    "apellido": "Castro Aguirre",
+    "genero": "Masculino",
+    "edad": "45",
+    "id": 1044657202
+  },
+  {
+    "area": "Area de conservacion",
+    "cargo": "Veterinario",
+    "fechaContratacion": "Dec 26, 2027, 12:00:00 AM",
+    "salario": "400000",
+    "horario": "Diurno",
+    "correo": "any@gmail.com",
+    "numTelefono": "325671890",
+    "nombre": "Anderson",
+    "apellido": "Mejia",
+    "genero": "Masculino",
+    "edad": "32",
+    "id": 1093651202
+  }
+]

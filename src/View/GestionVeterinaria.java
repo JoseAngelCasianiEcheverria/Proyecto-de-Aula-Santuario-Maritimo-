@@ -4,10 +4,10 @@
  */
 package View;
 
-import model.Vigilantes;
+import model.Veterinarios;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import dao.vigilantesDAO;
+import dao.VeterinarioDAO;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -25,89 +25,92 @@ import javax.swing.table.TableModel;
  *
  * @author juanp
  */
-public class GestionVigilantes extends javax.swing.JFrame {
+public class GestionVeterinaria extends javax.swing.JFrame {
     DefaultTableModel modelo = new DefaultTableModel();
 
     /**
-     * Creates new form GestionVigilantes
+     * Creates new form GestionVeterinaria
      */
-    public GestionVigilantes() {
+    public GestionVeterinaria() {
         initComponents();
-        cargarTablaVigilantes();
+        cargarTablaVeterinaria();
         setLocationRelativeTo(null);
     }
     
-    private final vigilantesDAO dao = new vigilantesDAO();
+    private static final VeterinarioDAO dao = new VeterinarioDAO();
     
-    private void guardarRegistroVigilante(){
-        try {
-            String nombre = txtNombre.getText().trim();
-            String apellido = txtApellido.getText().trim();
-            String edad = txtEdad.getText().trim();
-            String iDText = txtID.getText().trim();
-            String genero = comboGenero.getSelectedItem().toString();
-            String correo = txtCorreo.getText().trim();
-            String salario = txtSalario.getText().trim();
-            String cargo = comboCargo.getSelectedItem().toString();
-            String horario = comboHorario.getSelectedItem().toString();
-            String numTelefonoText = txtTelefono.getText().trim();
-            String contratacionText = txtFechaContratacion.getText().trim();
-            String area = comboArea.getSelectedItem().toString();
-            
-            if (nombre.isEmpty() || apellido.isEmpty() || edad.isEmpty() || genero.equals("Seleccionar") || correo.isEmpty() || salario.isEmpty() || cargo.equals("Seleccionar") || horario.equals("Seleccionar") || numTelefonoText.isEmpty() || contratacionText.isEmpty() || area.equals("Seleccionar")) {
-              JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios", "Warning", JOptionPane.WARNING_MESSAGE);
-              return;
-            }
-            
-            String numTelefono = numTelefonoText;
-            int iD = Integer.parseInt(iDText);
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-            Date fechaContratacion = sdf.parse(contratacionText);
-            
-            Vigilantes registroExistente = dao.buscarConID(iD);
-            if (registroExistente != null ) {
-                JOptionPane.showMessageDialog(this, "Registro existente", "Warning", JOptionPane.WARNING_MESSAGE);
-                return;   
-            }
-            
-            
-            Vigilantes nuevoVigilante = new Vigilantes(cargo, fechaContratacion, salario, horario, correo, numTelefono, nombre, apellido, genero, edad, iD);
-            nuevoVigilante.setArea(area);
-            dao.guardarVigilantes(nuevoVigilante);
-            
-            JOptionPane.showMessageDialog(this,"Registro exitoso", "Exitos", JOptionPane.INFORMATION_MESSAGE);
-            cargarTablaVigilantes();
-            
-        } catch(Exception e){
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error al registrar al cuidador", "Error", JOptionPane.ERROR_MESSAGE);
+    private void guardarRegistroVeterinario(){
+        try{
+        String nombre = txtNombre.getText().trim();
+        String apellido = txtApellido.getText().trim();
+        String edad = txtEdad.getText().trim();
+        String iDText = txtID.getText().trim();
+        String genero = comboGenero.getSelectedItem().toString();
+        String correo = txtCorreo.getText().trim();
+        String salario = txtSalario.getText().trim();
+        String cargo = comboCargo.getSelectedItem().toString();
+        String horario = comboHorario.getSelectedItem().toString();
+        String numtelefonoText = txtTelefono.getText().trim();
+        String contratacionText = txtContratacion.getText().trim();
+        String area = comboArea.getSelectedItem().toString();
+        
+        if (nombre.isEmpty()||apellido.isEmpty()||edad.isEmpty()||iDText.isEmpty()||genero.equals("Seleccionar")||correo.isEmpty()||salario.isEmpty()||cargo.equals("Seleccionar")||horario.equals("Seleccionar")||numtelefonoText.isEmpty()||contratacionText.isEmpty()||area.equals("Seleccionar")) {
+            JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios","Warning", JOptionPane.WARNING_MESSAGE);
+            return;
         }
+        
+        int iD = Integer.parseInt(iDText);
+        String numTelefono = numtelefonoText;
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY");
+        Date fechaContratacion = sdf.parse(contratacionText);
+        
+        
+        Veterinarios registroExistente = dao.buscarConID(iD);
+        if (registroExistente != null) {
+            JOptionPane.showMessageDialog(this, "Registro existente", "Warning",JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        Veterinarios nuevoVeterinario = new Veterinarios(cargo, fechaContratacion, salario, horario, correo, numTelefono, nombre, apellido, genero, edad, iD);
+        nuevoVeterinario.setArea(area);
+        dao.guardarVeterinario(nuevoVeterinario);
+        
+        JOptionPane.showMessageDialog(this, "Registro exitoso", "Exitos",JOptionPane.INFORMATION_MESSAGE);
+        cargarTablaVeterinaria();
+        
+        
+        }catch(Exception e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al registrar al veterinario", "Error",JOptionPane.ERROR_MESSAGE);
+        }
+           
     }
     
-    private void cargarTablaVigilantes(){
-        modelo.setColumnIdentifiers(new Object[]{"Nombre","Apellido","Edad","ID","Genero","Correo","Cargo","Salario","Horario","Area","Telefono","Contratacion"});
+    private void cargarTablaVeterinaria(){
+        modelo.setColumnIdentifiers(new Object[]{"Nombre","Apellido","Edad","ID","Genero","Correo","Salario","Cargo","Horario","Telefono","Contratacion","Area"});
         modelo.setRowCount(0);
         
-        List<Vigilantes> listaVigilantes = dao.cargarRegistros();
+        List<Veterinarios> listaVeterinaria = dao.cargarRegistros();
         
-        for(Vigilantes vigilante : listaVigilantes){
+        for(Veterinarios veterinario : listaVeterinaria){
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-            modelo.addRow(new Object[]{
-                vigilante.getNombre(),
-                vigilante.getApellido(),
-                vigilante.getEdad(),
-                vigilante.getId(),
-                vigilante.getGenero(),
-                vigilante.getCorreo(),
-                vigilante.getCargo(),
-                vigilante.getSalario(),
-                vigilante.getHorario(),
-                vigilante.getArea(),
-                vigilante.getNumTelefono(),
-                sdf.format(vigilante.getFechaContratacion()),
+            modelo.addRow(new Object[]{ 
+                veterinario.getNombre(),
+                veterinario.getApellido(),
+                veterinario.getEdad(),
+                veterinario.getId(),
+                veterinario.getGenero(),
+                veterinario.getCorreo(),
+                veterinario.getSalario(),
+                veterinario.getCargo(),
+                veterinario.getHorario(),
+                veterinario.getNumTelefono(),
+                sdf.format(veterinario.getFechaContratacion()),
+                veterinario.getArea()
+                
             });
         }
-        tableVigilantes.setModel(modelo);
+        tableVeterinaria.setModel(modelo);
     }
     
     private void limpiarCampos(){
@@ -121,28 +124,29 @@ public class GestionVigilantes extends javax.swing.JFrame {
         comboCargo.setSelectedIndex(0);
         comboHorario.setSelectedIndex(0);
         txtTelefono.setText("");
-        txtFechaContratacion.setText("");
+        txtContratacion.setText("");
         comboArea.setSelectedIndex(0);
     }
     
-    private void eliminarVigilantes(){
+    private void eliminarVeterinarios(){
         String iDEliminada = JOptionPane.showInputDialog(this, "Ingrese un ID para eliminar: ");
         
         if (iDEliminada != null && !iDEliminada.trim().isEmpty()) {
-            dao.eliminarConID(iDEliminada.trim());
-            cargarTablaVigilantes();
+            dao.eliminarConId(iDEliminada.trim());
+            cargarTablaVeterinaria();
             
-            JOptionPane.showMessageDialog(this, "Eliminacion exitosa", "Exitos", JOptionPane.INFORMATION_MESSAGE);   
+            JOptionPane.showMessageDialog(this, "Eliminacion exitosa", "Exitos", JOptionPane.INFORMATION_MESSAGE);
+            
         } else {
             JOptionPane.showMessageDialog(this, "Cancelando eliminacion","Error", JOptionPane.WARNING_MESSAGE);
         }
     }
     
-    private void buscarVigilantes(){
+    private void buscarVeterinario(){
         String iDBuscada = txtBusqueda.getText().trim();
         
         if (iDBuscada.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Infgrese un ID para buscar en el sistema", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Ingrese un ID para buscar en el sistema", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
         int iDIngresada;
@@ -154,34 +158,35 @@ public class GestionVigilantes extends javax.swing.JFrame {
             return;   
         }
         
-        Vigilantes vigilante = dao.buscarConID(iDIngresada);
-        if (vigilante == null) {
+        Veterinarios veterinario = dao.buscarConID(iDIngresada);
+        if (veterinario == null) {
             JOptionPane.showMessageDialog(null, "No hay resultados");
             
         } else {
-            mostrarBusquedaEnTabla(vigilante);
+            mostrarBusquedaEnTabla(veterinario);
         }
     }
     
-    private void mostrarBusquedaEnTabla(Vigilantes vigilante){
+    private void mostrarBusquedaEnTabla(Veterinarios veterinario){
         modelo.setRowCount(0);
         modelo.addRow(new Object[]{
-            vigilante.getNombre(),
-            vigilante.getApellido(),
-            vigilante.getEdad(),
-            vigilante.getId(),
-            vigilante.getGenero(),
-            vigilante.getCorreo(),
-            vigilante.getCargo(),
-            vigilante.getSalario(),
-            vigilante.getHorario(),
-            vigilante.getArea(),
-            vigilante.getNumTelefono(),
-            vigilante.getFechaContratacion()
+            veterinario.getNombre(),
+            veterinario.getApellido(),
+            veterinario.getEdad(),
+            veterinario.getId(),
+            veterinario.getGenero(),
+            veterinario.getCorreo(),
+            veterinario.getSalario(),
+            veterinario.getCargo(),
+            veterinario.getHorario(),
+            veterinario.getNumTelefono(),
+            veterinario.getFechaContratacion(),
+            veterinario.getArea()
         });
-        tableVigilantes.setModel(modelo);
+        tableVeterinaria.setModel(modelo);
         
     }
+    
     private void actualizarCampos(){
         txtNombre.setEnabled(true);
         txtApellido.setEnabled(true);
@@ -189,54 +194,70 @@ public class GestionVigilantes extends javax.swing.JFrame {
         txtID.setEnabled(false);
         comboGenero.setEnabled(false);
         txtCorreo.setEnabled(true);
-        comboCargo.setEnabled(true);
         txtSalario.setEnabled(true);
+        comboCargo.setEnabled(true);
         comboHorario.setEnabled(true);
-        comboArea.setEnabled(true);
         txtTelefono.setEnabled(true);
-        txtFechaContratacion.setEnabled(false);
-        
+        txtContratacion.setEnabled(false);
+        comboArea.setEnabled(true);
     }
     
-    private void actualizarVigilantes(){
-        try {
-            int iD = Integer.parseInt(txtID.getText().trim());
-            List<Vigilantes> listaVigilantes = dao.cargarRegistros();
-            
-            for(Vigilantes vigilante : listaVigilantes){
-                if (vigilante.getId() == iD) {
-                    
-                    vigilante.setNombre(txtNombre.getText().trim());
-                    vigilante.setApellido(txtApellido.getText().trim());
-                    vigilante.setEdad(txtEdad.getText().trim());
-                    vigilante.setCorreo(txtCorreo.getText().trim());
-                    vigilante.setCargo(comboCargo.getSelectedItem().toString());
-                    vigilante.setSalario(txtSalario.getText().trim());
-                    vigilante.setHorario(comboHorario.getSelectedItem().toString());
-                    vigilante.setArea(comboArea.getSelectedItem().toString());
-                    vigilante.setNumTelefono(txtTelefono.getText().trim());
-                    
-                    dao.guardarTodos(listaVigilantes);
-                    JOptionPane.showMessageDialog(this, "Actualizaciones completas", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                    cargarTablaVigilantes();
-                    
-                    txtID.setEnabled(true);
-                    comboGenero.setEnabled(true);
-                    txtFechaContratacion.setEnabled(true);
-                    return;
-                }
-            }
-            JOptionPane.showMessageDialog(this, "Cuidador no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
-            
-            
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "ID inválido", "Error", JOptionPane.ERROR_MESSAGE);
+   private void actualizarVeterinario() {
+    try {
+        String idText = txtID.getText().trim();
+        String telefonoText = txtTelefono.getText().trim();
+
+        if (!idText.matches("\\d+")) {
+            JOptionPane.showMessageDialog(this, "El ID solo permite numeros", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
         }
+
+        if (!telefonoText.matches("\\d+")) {
+            JOptionPane.showMessageDialog(this, "El número de teléfono solo puede ser en numeros", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        int iD = Integer.parseInt(idText);
+        String numTelefono = telefonoText;
+
+        List<Veterinarios> listaVeterinarios = dao.cargarRegistros();
+
+        for (Veterinarios veterinario : listaVeterinarios) {
+            if (veterinario.getId() == iD) {
+                veterinario.setNombre(txtNombre.getText().trim());
+                veterinario.setApellido(txtApellido.getText().trim());
+                veterinario.setEdad(txtEdad.getText().trim());
+                veterinario.setCorreo(txtCorreo.getText().trim());
+                veterinario.setSalario(txtSalario.getText().trim());
+                veterinario.setCargo(comboCargo.getSelectedItem().toString());
+                veterinario.setHorario(comboHorario.getSelectedItem().toString());
+                veterinario.setNumTelefono(numTelefono);
+                veterinario.setArea(comboArea.getSelectedItem().toString());
+
+                dao.guardarTodos(listaVeterinarios);
+
+                JOptionPane.showMessageDialog(this, "Actualizaciones completas", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                cargarTablaVeterinaria();
+                limpiarCampos();
+
+                txtID.setEnabled(true);
+                comboGenero.setEnabled(true);
+                txtContratacion.setEnabled(true);
+                return;
+            }
+        }
+
+        JOptionPane.showMessageDialog(this, "Veterinario no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Error inesperado al actualizar", "Error", JOptionPane.ERROR_MESSAGE);
     }
+}
     
     
-      
-      
+    
+    
     
     
     
@@ -260,16 +281,16 @@ public class GestionVigilantes extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         btnGuardar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
         txtBusqueda = new javax.swing.JTextField();
-        jLabel17 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
@@ -284,34 +305,33 @@ public class GestionVigilantes extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         txtCorreo = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        comboCargo = new javax.swing.JComboBox<>();
-        jLabel10 = new javax.swing.JLabel();
         txtSalario = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        comboCargo = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
         comboHorario = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
-        comboArea = new javax.swing.JComboBox<>();
-        jLabel13 = new javax.swing.JLabel();
         txtTelefono = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        txtContratacion = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        txtFechaContratacion = new javax.swing.JTextField();
+        comboArea = new javax.swing.JComboBox<>();
         btnActualizacion = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableVigilantes = new javax.swing.JTable();
-        jLabel15 = new javax.swing.JLabel();
+        tableVeterinaria = new javax.swing.JTable();
+        jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel2.setBackground(new java.awt.Color(0, 51, 204));
+        jPanel2.setBackground(new java.awt.Color(0, 0, 204));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/MARINUS 2.0 (1).png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/MARINUS 2.0 (1).png"))); // NOI18N
 
         btnGuardar.setBackground(new java.awt.Color(0, 255, 255));
         btnGuardar.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
@@ -362,9 +382,9 @@ public class GestionVigilantes extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addGap(24, 24, 24)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(44, Short.MAX_VALUE))
             .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -374,73 +394,76 @@ public class GestionVigilantes extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(99, 99, 99)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(81, 81, 81)
                 .addComponent(btnGuardar)
-                .addGap(41, 41, 41)
+                .addGap(39, 39, 39)
                 .addComponent(btnActualizar)
-                .addGap(38, 38, 38)
+                .addGap(42, 42, 42)
                 .addComponent(btnBuscar)
-                .addGap(36, 36, 36)
+                .addGap(31, 31, 31)
                 .addComponent(btnEliminar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.setBackground(new java.awt.Color(0, 51, 153));
+        jPanel3.setBackground(new java.awt.Color(0, 0, 153));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/VIGILANTE (1).png"))); // NOI18N
-        jLabel1.setText("GUARDAR/MODIFICAR/BUSCAR/ELIMINAR Vigilantes");
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/VEERINARIA (1).png"))); // NOI18N
+        jLabel2.setText("GUARDAR/MODIFICAR/BUSCAR/ELIMINAR Veterinarios ");
 
-        jLabel16.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setText("BUSCAR POR ID");
+        jLabel15.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setText("Busqueda por ID ");
 
         txtBusqueda.setBackground(new java.awt.Color(0, 0, 153));
         txtBusqueda.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         txtBusqueda.setForeground(new java.awt.Color(0, 255, 255));
+        txtBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBusquedaKeyReleased(evt);
+            }
+        });
 
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/BUSQUEDA (1).png"))); // NOI18N
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/BUSQUEDA (1).png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(185, 185, 185))
-                            .addComponent(txtBusqueda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 678, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 675, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel15)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75))
+                .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel16))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel15)
+                            .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
-                        .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel2)
+                        .addGap(0, 67, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel17))
+                .addComponent(jLabel16))
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "INGRESAR", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Black", 1, 14), new java.awt.Color(0, 51, 255))); // NOI18N
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "INGRESAR", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Black", 1, 14), new java.awt.Color(0, 204, 204))); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("Nombre ");
@@ -448,7 +471,7 @@ public class GestionVigilantes extends javax.swing.JFrame {
         txtNombre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel4.setText("Apellido ");
+        jLabel4.setText("Apellido");
 
         txtApellido.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
@@ -458,7 +481,7 @@ public class GestionVigilantes extends javax.swing.JFrame {
         txtEdad.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel6.setText("ID ");
+        jLabel6.setText("ID");
 
         txtID.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
@@ -466,7 +489,7 @@ public class GestionVigilantes extends javax.swing.JFrame {
         jLabel7.setText("Genero");
 
         comboGenero.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        comboGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", " ", "Masculino", "Femenino" }));
+        comboGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", " ", "Masculino", "Femenino", " " }));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel8.setText("Correo");
@@ -474,15 +497,15 @@ public class GestionVigilantes extends javax.swing.JFrame {
         txtCorreo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel9.setText("Cargo");
-
-        comboCargo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        comboCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", " ", "Guardia de entrada", "Patrullero", "Guardia por exterior" }));
-
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel10.setText("Salario ");
+        jLabel9.setText("Salario");
 
         txtSalario.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel10.setText("Cargo");
+
+        comboCargo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        comboCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", " ", "Jefe del area", "Veterinario", "Auxiliar", " " }));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel11.setText("Horario");
@@ -491,31 +514,26 @@ public class GestionVigilantes extends javax.swing.JFrame {
         comboHorario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", " ", "Diurno", "Nocturno", " " }));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel12.setText("Area");
-
-        comboArea.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        comboArea.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", " ", "Zona de corales", "Entrada principal", "Torre de control", "Manejo ambiental", " ", " " }));
-
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel13.setText("Telefono ");
+        jLabel12.setText("Telefono");
 
         txtTelefono.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel14.setText("Fecha de contratacion  ");
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel13.setText("Fecha de contratacion");
 
-        txtFechaContratacion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtContratacion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel14.setText("Area");
+
+        comboArea.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        comboArea.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", " ", "Bienestar animal", "Área clínica y rehabilitación", "Rescate y respuesta a emergencia", "Investigacion cientifica", "Area de conservacion" }));
 
         btnActualizacion.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         btnActualizacion.setText("ACTUALIZAR");
         btnActualizacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnActualizacionMouseClicked(evt);
-            }
-        });
-        btnActualizacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnActualizacionActionPerformed(evt);
             }
         });
 
@@ -532,111 +550,123 @@ public class GestionVigilantes extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnActualizacion, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtApellido))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtApellido)
-                            .addComponent(txtEdad)
-                            .addComponent(txtID)
-                            .addComponent(comboGenero, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtCorreo)
-                            .addComponent(comboCargo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtSalario)
-                            .addComponent(comboHorario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(comboArea, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtID))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(comboGenero, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(comboCargo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(comboHorario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtTelefono))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnActualizacion))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtContratacion))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(comboArea, 0, 267, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnLimpiar)
-                            .addComponent(txtFechaContratacion))))
+                            .addComponent(txtSalario)
+                            .addComponent(txtCorreo))))
                 .addGap(0, 42, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5)
                     .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                .addGap(26, 26, 26)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(comboGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addGap(27, 27, 27)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(comboCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
                     .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(comboHorario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel10)
+                    .addComponent(comboCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(comboHorario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(comboArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel13)
                     .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(txtContratacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(txtFechaContratacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(comboArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnActualizacion)
                     .addComponent(btnLimpiar))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "VIGILANTES REGISTRADOS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Black", 1, 14), new java.awt.Color(0, 0, 255))); // NOI18N
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "VETERINARIOS REGISTRADOS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Black", 1, 14), new java.awt.Color(0, 204, 204))); // NOI18N
 
-        tableVigilantes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        tableVigilantes.setModel(new javax.swing.table.DefaultTableModel(
+        tableVeterinaria.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        tableVeterinaria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null, null, null},
@@ -644,42 +674,47 @@ public class GestionVigilantes extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Nombre", "Apellido", "Edad", "ID", "Genero", "Correo", "Cargo", "Salario", "Horario", "Area", "Telefono", "Contratacion"
+                "Nombre", "Apellido", "Edad", "ID", "Genero", "Correo", "Salario", "Cargo", "Horario", "Telefono", "Contratacion", "Area"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, true, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
-        });
-        tableVigilantes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tableVigilantesMouseClicked(evt);
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tableVigilantes);
+        tableVeterinaria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableVeterinariaMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tableVeterinaria);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 922, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 943, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE)
         );
 
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/VIGILANTE_MARINOOO (1).png"))); // NOI18N
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/VETERINARIO_MARINO (1) (1).png"))); // NOI18N
 
-        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/CUIDADORA_OCEANICA (1) (1).png"))); // NOI18N
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/VETERINARIO_MARITIMOO (1).png"))); // NOI18N
 
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/GUARDIAN_MARINO (1).png"))); // NOI18N
-
-        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/GUARDIAN_DEL_OCEANOOO (1) (1)_1.png"))); // NOI18N
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/VETERINARIO_DEL_OCEANO (1).png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -689,47 +724,42 @@ public class GestionVigilantes extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(117, 117, 117)
-                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(64, 64, 64)
-                                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(59, 59, 59)
-                                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(33, 33, 33)
-                                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(12, 28, Short.MAX_VALUE))))
+                                .addComponent(jLabel17)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(117, 117, 117))))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(53, 53, 53)
-                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 91, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel19)
-                                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel21))))
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(311, 311, 311))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel19)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -748,17 +778,22 @@ public class GestionVigilantes extends javax.swing.JFrame {
 
     private void btnGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseClicked
         // TODO add your handling code here:
-        guardarRegistroVigilante();
+        guardarRegistroVeterinario();
     }//GEN-LAST:event_btnGuardarMouseClicked
+
+    private void btnLimpiarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarMouseClicked
+        // TODO add your handling code here:
+        limpiarCampos();
+    }//GEN-LAST:event_btnLimpiarMouseClicked
 
     private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
         // TODO add your handling code here:
-        eliminarVigilantes();
+        eliminarVeterinarios();
     }//GEN-LAST:event_btnEliminarMouseClicked
 
     private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
         // TODO add your handling code here:
-        buscarVigilantes();
+        buscarVeterinario();
     }//GEN-LAST:event_btnBuscarMouseClicked
 
     private void btnActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked
@@ -768,37 +803,38 @@ public class GestionVigilantes extends javax.swing.JFrame {
 
     private void btnActualizacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizacionMouseClicked
         // TODO add your handling code here:
-        actualizarVigilantes();
+        actualizarVeterinario();
     }//GEN-LAST:event_btnActualizacionMouseClicked
 
-    private void tableVigilantesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableVigilantesMouseClicked
+    private void tableVeterinariaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableVeterinariaMouseClicked
         // TODO add your handling code here:
-        int filaSeleccionada = tableVigilantes.getSelectedRow();
+        int filaSeleccionada = tableVeterinaria.getSelectedRow();
         if (filaSeleccionada != -1) {
-            txtNombre.setText(modelo.getValueAt(filaSeleccionada, 0).toString());
+            txtNombre.setText(modelo.getValueAt(filaSeleccionada,0).toString());
             txtApellido.setText(modelo.getValueAt(filaSeleccionada, 1).toString());
             txtEdad.setText(modelo.getValueAt(filaSeleccionada, 2).toString());
             txtID.setText(modelo.getValueAt(filaSeleccionada, 3).toString());
             comboGenero.setSelectedItem(modelo.getValueAt(filaSeleccionada, 4));
             txtCorreo.setText(modelo.getValueAt(filaSeleccionada, 5).toString());
-            comboCargo.setSelectedItem(modelo.getValueAt(filaSeleccionada, 6));
-            txtSalario.setText(modelo.getValueAt(filaSeleccionada, 7).toString());
+            txtSalario.setText(modelo.getValueAt(filaSeleccionada, 6).toString());
+            comboCargo.setSelectedItem(modelo.getValueAt(filaSeleccionada, 7));
             comboHorario.setSelectedItem(modelo.getValueAt(filaSeleccionada, 8));
-            comboArea.setSelectedItem(modelo.getValueAt(filaSeleccionada, 9));
-            txtTelefono.setText(modelo.getValueAt(filaSeleccionada, 10).toString());
-            txtFechaContratacion.setText(modelo.getValueAt(filaSeleccionada, 11).toString());
+            txtTelefono.setText(modelo.getValueAt(filaSeleccionada, 9).toString());
+            txtContratacion.setText(modelo.getValueAt(filaSeleccionada, 10).toString());
+            comboArea.setSelectedItem(modelo.getValueAt(filaSeleccionada, 11));
+            
+            
             
         }
-    }//GEN-LAST:event_tableVigilantesMouseClicked
+    }//GEN-LAST:event_tableVeterinariaMouseClicked
 
-    private void btnActualizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizacionActionPerformed
+    private void txtBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnActualizacionActionPerformed
-
-    private void btnLimpiarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarMouseClicked
-        // TODO add your handling code here:
-        limpiarCampos();
-    }//GEN-LAST:event_btnLimpiarMouseClicked
+        if (txtBusqueda.getText().trim().isEmpty()) {
+            cargarTablaVeterinaria();
+            
+        }
+    }//GEN-LAST:event_txtBusquedaKeyReleased
 
     /**
      * @param args the command line arguments
@@ -817,20 +853,20 @@ public class GestionVigilantes extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GestionVigilantes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestionVeterinaria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GestionVigilantes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestionVeterinaria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GestionVigilantes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestionVeterinaria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GestionVigilantes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestionVeterinaria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GestionVigilantes().setVisible(true);
+                new GestionVeterinaria().setVisible(true);
             }
         });
     }
@@ -858,7 +894,6 @@ public class GestionVigilantes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -872,12 +907,12 @@ public class GestionVigilantes extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tableVigilantes;
+    private javax.swing.JTable tableVeterinaria;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtBusqueda;
+    private javax.swing.JTextField txtContratacion;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtEdad;
-    private javax.swing.JTextField txtFechaContratacion;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtSalario;
