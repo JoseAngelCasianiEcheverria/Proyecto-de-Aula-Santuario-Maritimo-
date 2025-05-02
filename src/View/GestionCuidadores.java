@@ -55,6 +55,20 @@ public class GestionCuidadores extends javax.swing.JFrame {
             String contratacionText = txtFechaContratacion.getText().trim();
             String area = comboArea.getSelectedItem().toString();
             
+            if (!validacionLetras(nombre)) {
+                JOptionPane.showMessageDialog(this, "El nombre solo permite letras","Error",JOptionPane.ERROR_MESSAGE);
+                return;
+                
+            }
+            if (!validacionLetras(apellido)) {
+                JOptionPane.showMessageDialog(this, "El apellido solo permite letras","Error",JOptionPane.ERROR_MESSAGE);
+                return;
+                
+            }
+            
+            
+            
+            
             if (nombre.isEmpty() || apellido.isEmpty() || edad.isEmpty() || genero.equals("Seleccionar") || correo.isEmpty() || salario.isEmpty() || cargo.equals("Seleccionar") || horario.equals("Seleccionar") || numTelefonoText.isEmpty() || contratacionText.isEmpty() || area.equals("Seleccionar")) {
               JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios", "Warning", JOptionPane.WARNING_MESSAGE);
               return;
@@ -84,6 +98,17 @@ public class GestionCuidadores extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error al registrar al cuidador", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+    private boolean validacionLetras(String text){
+        for(char c : text.toCharArray()){
+            if (!Character.isLetter(c) && c != ' ' ) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    
+    
     
     private void cargarTablaCuidadores(){
         modelo.setColumnIdentifiers(new Object[]{"Nombre","Apellido","Edad","ID","Genero","Correo","Salario","Cargo","Horario","Telefono","Contratacion","Area"});
@@ -221,7 +246,21 @@ public class GestionCuidadores extends javax.swing.JFrame {
 
         for (Cuidadores cuidador : listaCuidadores) {
             if (cuidador.getId() == iD) {
-                cuidador.setNombre(txtNombre.getText().trim());
+                
+                String nombre = txtNombre.getText().trim();
+                String apellido = txtApellido.getText().trim();
+                
+                if (!validacionLetras(nombre)) {
+                    JOptionPane.showMessageDialog(this, "El nombre solo permite letras","Error",JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                if (!validacionLetras(apellido)) {
+                    JOptionPane.showMessageDialog(this, "El apellido solo permite letras","Error",JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                
+                
+                cuidador.setNombre(nombre);
                 cuidador.setApellido(txtApellido.getText().trim());
                 cuidador.setEdad(txtEdad.getText().trim());
                 cuidador.setSalario(txtSalario.getText().trim());

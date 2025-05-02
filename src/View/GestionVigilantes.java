@@ -54,6 +54,18 @@ public class GestionVigilantes extends javax.swing.JFrame {
             String contratacionText = txtFechaContratacion.getText().trim();
             String area = comboArea.getSelectedItem().toString();
             
+            if (!validacionLetras(nombre)) {
+             JOptionPane.showMessageDialog(this, "El nombre solo se permiten letras", "Error", JOptionPane.ERROR_MESSAGE);
+             return;
+      
+            }
+        
+            if (!validacionLetras(apellido)) {
+             JOptionPane.showMessageDialog(this, "El apellido solo se permiten letras", "Error",JOptionPane.ERROR_MESSAGE);
+             return;
+                
+            }
+            
             if (nombre.isEmpty() || apellido.isEmpty() || edad.isEmpty() || genero.equals("Seleccionar") || correo.isEmpty() || salario.isEmpty() || cargo.equals("Seleccionar") || horario.equals("Seleccionar") || numTelefonoText.isEmpty() || contratacionText.isEmpty() || area.equals("Seleccionar")) {
               JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios", "Warning", JOptionPane.WARNING_MESSAGE);
               return;
@@ -82,6 +94,14 @@ public class GestionVigilantes extends javax.swing.JFrame {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Error al registrar al cuidador", "Error", JOptionPane.ERROR_MESSAGE);
         }
+    }
+    private boolean validacionLetras(String text){
+        for(char c : text.toCharArray()){
+            if (!Character.isLetter(c) && c != ' ' ) {
+                return false;
+            }
+        }
+        return true;
     }
     
     private void cargarTablaVigilantes(){
@@ -142,7 +162,7 @@ public class GestionVigilantes extends javax.swing.JFrame {
         String iDBuscada = txtBusqueda.getText().trim();
         
         if (iDBuscada.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Infgrese un ID para buscar en el sistema", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Ingrese un ID para buscar en el sistema", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
         int iDIngresada;
@@ -206,8 +226,20 @@ public class GestionVigilantes extends javax.swing.JFrame {
             for(Vigilantes vigilante : listaVigilantes){
                 if (vigilante.getId() == iD) {
                     
-                    vigilante.setNombre(txtNombre.getText().trim());
-                    vigilante.setApellido(txtApellido.getText().trim());
+                    String nombre = txtNombre.getText().trim();
+                    String apellido = txtApellido.getText().trim();
+                    
+                    if (!validacionLetras(nombre)) {
+                        JOptionPane.showMessageDialog(this, "El nombre no puede tener numeros","Error",JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                    if (!validacionLetras(apellido)) {
+                        JOptionPane.showMessageDialog(this, "El apellido no puede tener numeros","Error",JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                    
+                    vigilante.setNombre(nombre);
+                    vigilante.setApellido(apellido);
                     vigilante.setEdad(txtEdad.getText().trim());
                     vigilante.setCorreo(txtCorreo.getText().trim());
                     vigilante.setCargo(comboCargo.getSelectedItem().toString());

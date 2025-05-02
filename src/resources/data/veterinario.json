@@ -63,10 +63,38 @@
     "horario": "Diurno",
     "correo": "any@gmail.com",
     "numTelefono": "325671890",
-    "nombre": "Anderson",
-    "apellido": "Mejia",
+    "nombre": "Andres",
+    "apellido": "Reyes",
     "genero": "Masculino",
     "edad": "32",
     "id": 1093651202
+  },
+  {
+    "area": "Bienestar animal",
+    "cargo": "Jefe del area",
+    "fechaContratacion": "Dec 28, 2008, 12:00:00 AM",
+    "salario": "4000000",
+    "horario": "Diurno",
+    "correo": "dani@gmail.com",
+    "numTelefono": "3102749150",
+    "nombre": "Juan Daniel",
+    "apellido": "Espinosa",
+    "genero": "Masculino",
+    "edad": "33",
+    "id": 1044657902
+  },
+  {
+    "area": "Área clínica y rehabilitación",
+    "cargo": "Veterinario",
+    "fechaContratacion": "Dec 28, 2008, 12:00:00 AM",
+    "salario": "600000",
+    "horario": "Diurno",
+    "correo": "fernanda@gmail.com",
+    "numTelefono": "325678902",
+    "nombre": "Fernanda Andrea",
+    "apellido": "Perez",
+    "genero": "Femenino",
+    "edad": "33",
+    "id": 1098657803
   }
 ]

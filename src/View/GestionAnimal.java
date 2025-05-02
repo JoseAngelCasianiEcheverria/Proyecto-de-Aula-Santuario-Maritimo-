@@ -50,6 +50,12 @@ public class GestionAnimal extends javax.swing.JFrame {
             String habitat = comboHabitat.getSelectedItem().toString();
             String cuidador = txtCuidador.getText().trim();
             
+            if (!validacionLetras(nombre)) {
+                JOptionPane.showMessageDialog(this,"El nombre solo permite letras","Error",JOptionPane.ERROR_MESSAGE);
+                return;
+                
+            }
+            
             if (nombre.isEmpty() || iDText.isEmpty()|| peso.isEmpty() || especie.equals("Seleccionar") || sexo.equals("Seleccionar") || estado.equals("Seleccionar") || ubicacion.equals("Seleccionar") || habitat.equals("Seleccionar") || cuidador.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios", "Warning",JOptionPane.WARNING_MESSAGE);
                 return;
@@ -73,6 +79,14 @@ public class GestionAnimal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error al registrar al animal: "+ e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
           
+    }
+    private boolean validacionLetras(String text){
+        for(char c : text.toCharArray()){
+            if (!Character.isLetter(c) && c != ' ' ) {
+                return false;
+            }
+        }
+        return true;
     }
     
     private void cargarTablaAnimal(){
@@ -171,8 +185,8 @@ public class GestionAnimal extends javax.swing.JFrame {
         txtNombre.setEnabled(false);
         txtID.setEnabled(false);
         txtPeso.setEnabled(true);
-        comboEspecie.setEnabled(true);
-        comboSexo.setEnabled(true);
+        comboEspecie.setEnabled(false);
+        comboSexo.setEnabled(false);
         comboEstado.setEnabled(true);
         comboUbicacion.setEnabled(true);
         comboHabitat.setEnabled(true);
@@ -188,11 +202,8 @@ public class GestionAnimal extends javax.swing.JFrame {
             
             for(Animales animal : listaAnimal){
                 if (animal.getIdAnimal() == iD) {
-                    
-                
+               
                 animal.setPeso(txtPeso.getText().trim());
-                animal.setEspecie(comboEspecie.getSelectedItem().toString());
-                animal.setSexo(comboSexo.getSelectedItem().toString());
                 animal.setEstadoSalud(comboEstado.getSelectedItem().toString());
                 animal.setUbicacion(comboUbicacion.getSelectedItem().toString());
                 animal.setHabitat(comboHabitat.getSelectedItem().toString());
@@ -205,6 +216,8 @@ public class GestionAnimal extends javax.swing.JFrame {
                 
                 txtNombre.setEnabled(true);
                 txtID.setEnabled(true);
+                comboEspecie.setEnabled(true);
+                comboSexo.setEnabled(true);
                 return;
                 }
             }

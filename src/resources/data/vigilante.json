@@ -12,5 +12,19 @@
     "genero": "Masculino",
     "edad": "33",
     "id": 1044657803
+  },
+  {
+    "Area": "Torre de control",
+    "cargo": "Guardia de entrada",
+    "fechaContratacion": "May 22, 2012, 12:00:00 AM",
+    "salario": "39900",
+    "horario": "Nocturno",
+    "correo": "robbie@gmail.com",
+    "numTelefono": "324678902",
+    "nombre": "Robert Daniel",
+    "apellido": "Lopez",
+    "genero": "Masculino",
+    "edad": "22",
+    "id": 1098573202
   }
 ]

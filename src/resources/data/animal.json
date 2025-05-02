@@ -2,7 +2,7 @@
   {
     "nombre": "Mantarraya",
     "idAnimal": 1098657203,
-    "peso": "1800kg",
+    "peso": "1900kg",
     "especie": "Pez",
     "sexo": "Macho",
     "estadoSalud": "Sano",
@@ -19,7 +19,7 @@
     "estadoSalud": "Sano",
     "ubicacion": "Zona de reproduccion",
     "habitat": "Arrecife",
-    "cuidadorAsignado": "Karen Marrugo"
+    "cuidadorAsignado": "Norman Marrugo"
   },
   {
     "nombre": "Orca",

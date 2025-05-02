@@ -31,7 +31,7 @@
     "area": "Habitat terrestre",
     "cargo": "Veterinario",
     "fechaContratacion": "Apr 28, 2020, 12:00:00 AM",
-    "salario": "300000",
+    "salario": "100000",
     "horario": "Diurno",
     "correo": "haider@gmail.com",
     "numTelefono": "31025789",
@@ -138,5 +138,19 @@
     "genero": "Masculino",
     "edad": "46",
     "id": 1044651602
+  },
+  {
+    "area": "Habitat acuatico",
+    "cargo": "Auxiliar",
+    "fechaContratacion": "Mar 22, 2019, 12:00:00 AM",
+    "salario": "3423431",
+    "horario": "Diurno",
+    "correo": "frank@gmail.com",
+    "numTelefono": "67182931",
+    "nombre": "Francis Andrei",
+    "apellido": "Valladares2",
+    "genero": "Masculino",
+    "edad": "22",
+    "id": 1044678903
   }
 ]
