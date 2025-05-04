@@ -26,5 +26,47 @@
     "genero": "Masculino",
     "edad": "22",
     "id": 1098573202
+  },
+  {
+    "Area": "Entrada principal",
+    "cargo": "Patrullero",
+    "fechaContratacion": "Apr 11, 2009, 12:00:00 AM",
+    "salario": "1.000.00",
+    "horario": "Diurno",
+    "correo": "andy@gmail.com",
+    "numTelefono": "324657802",
+    "nombre": "David",
+    "apellido": "Morelos",
+    "genero": "Masculino",
+    "edad": "33",
+    "id": 1044657903
+  },
+  {
+    "Area": "Zona de corales",
+    "cargo": "Guardia de entrada",
+    "fechaContratacion": "May 22, 2020, 12:00:00 AM",
+    "salario": "540.000",
+    "horario": "Diurno",
+    "correo": "randy@gmail.com",
+    "numTelefono": "327672801",
+    "nombre": "Randy",
+    "apellido": "Perez Castro",
+    "genero": "Masculino",
+    "edad": "34",
+    "id": 1044651703
+  },
+  {
+    "Area": "Entrada principal",
+    "cargo": "Patrullero",
+    "fechaContratacion": "May 23, 2009, 12:00:00 AM",
+    "salario": "200000",
+    "horario": "Diurno",
+    "correo": "jose@gmail.com",
+    "numTelefono": "31046830",
+    "nombre": "Jose Manuel",
+    "apellido": "Barrios",
+    "genero": "Masculino",
+    "edad": "43",
+    "id": 1093658906
   }
 ]

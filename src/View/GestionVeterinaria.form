@@ -578,12 +578,10 @@
                   <Font name="Segoe UI" size="12" style="1"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="5">
+                  <StringArray count="3">
                     <StringItem index="0" value="Seleccionar"/>
-                    <StringItem index="1" value=" "/>
-                    <StringItem index="2" value="Masculino"/>
-                    <StringItem index="3" value="Femenino"/>
-                    <StringItem index="4" value=" "/>
+                    <StringItem index="1" value="Masculino"/>
+                    <StringItem index="2" value="Femenino"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -635,13 +633,12 @@
                   <Font name="Segoe UI" size="12" style="1"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="6">
+                  <StringArray count="5">
                     <StringItem index="0" value="Seleccionar"/>
-                    <StringItem index="1" value=" "/>
-                    <StringItem index="2" value="Jefe del area"/>
-                    <StringItem index="3" value="Veterinario"/>
-                    <StringItem index="4" value="Auxiliar"/>
-                    <StringItem index="5" value=" "/>
+                    <StringItem index="1" value="Jefe del area"/>
+                    <StringItem index="2" value="Veterinario"/>
+                    <StringItem index="3" value="Auxiliar"/>
+                    <StringItem index="4" value=" "/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -663,12 +660,11 @@
                   <Font name="Segoe UI" size="12" style="1"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="5">
+                  <StringArray count="4">
                     <StringItem index="0" value="Seleccionar"/>
-                    <StringItem index="1" value=" "/>
-                    <StringItem index="2" value="Diurno"/>
-                    <StringItem index="3" value="Nocturno"/>
-                    <StringItem index="4" value=" "/>
+                    <StringItem index="1" value="Diurno"/>
+                    <StringItem index="2" value="Nocturno"/>
+                    <StringItem index="3" value=" "/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -720,14 +716,13 @@
                   <Font name="Segoe UI" size="12" style="1"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="7">
+                  <StringArray count="6">
                     <StringItem index="0" value="Seleccionar"/>
-                    <StringItem index="1" value=" "/>
-                    <StringItem index="2" value="Bienestar animal"/>
-                    <StringItem index="3" value="&#xc1;rea cl&#xed;nica y rehabilitaci&#xf3;n"/>
-                    <StringItem index="4" value="Rescate y respuesta a emergencia"/>
-                    <StringItem index="5" value="Investigacion cientifica"/>
-                    <StringItem index="6" value="Area de conservacion"/>
+                    <StringItem index="1" value="Bienestar animal"/>
+                    <StringItem index="2" value="&#xc1;rea cl&#xed;nica y rehabilitaci&#xf3;n"/>
+                    <StringItem index="3" value="Rescate y respuesta a emergencia"/>
+                    <StringItem index="4" value="Investigacion cientifica"/>
+                    <StringItem index="5" value="Area de conservacion"/>
                   </StringArray>
                 </Property>
               </Properties>

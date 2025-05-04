@@ -1,27 +1,13 @@
 [
   {
     "area": "Habitat acuatico",
-    "cargo": "Jefe de area",
-    "fechaContratacion": "Mar 1, 2015, 12:00:00 AM",
-    "salario": "50000",
-    "horario": "Diurno",
-    "correo": "andy@gmail.com",
-    "numTelefono": "0589653",
-    "nombre": "Andrew",
-    "apellido": "Garfield",
-    "genero": "Masculino",
-    "edad": "31",
-    "id": 1043651504
-  },
-  {
-    "area": "Habitat acuatico",
     "cargo": "Auxiliar",
     "fechaContratacion": "May 19, 2024, 12:00:00 AM",
     "salario": "300000",
-    "horario": "Diurno",
+    "horario": "Nocturno",
     "correo": "carlos@gmail.com",
     "numTelefono": "31059058",
-    "nombre": "Carlos Andres",
+    "nombre": "Juanito",
     "apellido": "Marrugo Perez",
     "genero": "Masculino",
     "edad": "20",
@@ -140,7 +126,7 @@
     "id": 1044651602
   },
   {
-    "area": "Habitat acuatico",
+    "area": "Habitat terrestre",
     "cargo": "Auxiliar",
     "fechaContratacion": "Mar 22, 2019, 12:00:00 AM",
     "salario": "3423431",
@@ -148,9 +134,37 @@
     "correo": "frank@gmail.com",
     "numTelefono": "67182931",
     "nombre": "Francis Andrei",
-    "apellido": "Valladares2",
+    "apellido": "Valladares",
     "genero": "Masculino",
     "edad": "22",
     "id": 1044678903
+  },
+  {
+    "area": "Habitat terrestre",
+    "cargo": "Auxiliar",
+    "fechaContratacion": "May 22, 2009, 12:00:00 AM",
+    "salario": "300000",
+    "horario": "Diurno",
+    "correo": "fernanda@gmail.com",
+    "numTelefono": "32670954",
+    "nombre": "Maria Alejandra",
+    "apellido": "Pascuales",
+    "genero": "Femenino",
+    "edad": "33",
+    "id": 1045634892
+  },
+  {
+    "area": "Habitat acuatico",
+    "cargo": "Jefe de area",
+    "fechaContratacion": "Mar 22, 2009, 12:00:00 AM",
+    "salario": "250000",
+    "horario": "Diurno",
+    "correo": "thomas@gmail.com",
+    "numTelefono": "3102644140",
+    "nombre": "Thomas David",
+    "apellido": "Lopez Paredes",
+    "genero": "Masculino",
+    "edad": "22",
+    "id": 1044657702
   }
 ]

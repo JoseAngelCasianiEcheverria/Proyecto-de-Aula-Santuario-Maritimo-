@@ -3,7 +3,7 @@
     "area": "Bienestar animal",
     "cargo": "Veterinario",
     "fechaContratacion": "Mar 22, 2008, 12:00:00 AM",
-    "salario": "400000",
+    "salario": "300000",
     "horario": "Diurno",
     "correo": "manu@gmail.com",
     "numTelefono": "32044650",
@@ -31,14 +31,14 @@
     "area": "Área clínica y rehabilitación",
     "cargo": "Auxiliar",
     "fechaContratacion": "Dec 27, 2020, 12:00:00 AM",
-    "salario": "300000",
+    "salario": "650000",
     "horario": "Diurno",
     "correo": "juanpa@gmail.com",
-    "numTelefono": "3247644140",
+    "numTelefono": "3108677140",
     "nombre": "Juan Pablo",
     "apellido": "Lopez",
     "genero": "Masculino",
-    "edad": "33",
+    "edad": "pe",
     "id": 1056751602
   },
   {
@@ -96,5 +96,33 @@
     "genero": "Femenino",
     "edad": "33",
     "id": 1098657803
+  },
+  {
+    "area": "Rescate y respuesta a emergencia",
+    "cargo": "Veterinario",
+    "fechaContratacion": "Dec 29, 2024, 12:00:00 AM",
+    "salario": "15000000",
+    "horario": "Nocturno",
+    "correo": "jose.casianiecheverria@gmail.com",
+    "numTelefono": "350766194",
+    "nombre": "Jose",
+    "apellido": "Valladares",
+    "genero": "Femenino",
+    "edad": "33",
+    "id": 1043300458
+  },
+  {
+    "area": "Bienestar animal",
+    "cargo": "Veterinario",
+    "fechaContratacion": "Dec 27, 2020, 12:00:00 AM",
+    "salario": "300000",
+    "horario": "Diurno",
+    "correo": "mau@gmail.com",
+    "numTelefono": "3246517140",
+    "nombre": "Mauricio",
+    "apellido": "Novoa",
+    "genero": "Masculino",
+    "edad": "35",
+    "id": 1044651603
   }
 ]

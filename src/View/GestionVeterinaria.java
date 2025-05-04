@@ -62,10 +62,23 @@ public class GestionVeterinaria extends javax.swing.JFrame {
         
         if (!validacionLetras(apellido)) {
            JOptionPane.showMessageDialog(this, "El apellido solo se permiten letras", "Error",JOptionPane.ERROR_MESSAGE);
-            return;
-                
+            return;      
         }
-       
+        if (!salario.matches("\\d+")) {
+            JOptionPane.showMessageDialog(this, "El salario debe ser en numeros","Error",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (!edad.matches("\\d+")) {
+            JOptionPane.showMessageDialog(this, "La edad debe ser en numeros","Error",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (!numtelefonoText.matches("\\d+")) {
+            JOptionPane.showMessageDialog(this, "El numero de telefono debe ser en numeros","Error",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        
+        
         if (nombre.isEmpty()||apellido.isEmpty()||edad.isEmpty()||iDText.isEmpty()||genero.equals("Seleccionar")||correo.isEmpty()||salario.isEmpty()||cargo.equals("Seleccionar")||horario.equals("Seleccionar")||numtelefonoText.isEmpty()||contratacionText.isEmpty()||area.equals("Seleccionar")) {
             JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios","Warning", JOptionPane.WARNING_MESSAGE);
             return;
@@ -226,6 +239,8 @@ public class GestionVeterinaria extends javax.swing.JFrame {
     try {
         String idText = txtID.getText().trim();
         String telefonoText = txtTelefono.getText().trim();
+        String salarioText = txtSalario.getText().trim();
+        String edadText = txtEdad.getText().trim();
 
         if (!idText.matches("\\d+")) {
             JOptionPane.showMessageDialog(this, "El ID solo permite numeros", "Error", JOptionPane.ERROR_MESSAGE);
@@ -235,6 +250,15 @@ public class GestionVeterinaria extends javax.swing.JFrame {
         if (!telefonoText.matches("\\d+")) {
             JOptionPane.showMessageDialog(this, "El número de teléfono solo puede ser en numeros", "Error", JOptionPane.ERROR_MESSAGE);
             return;
+        }
+        if (!salarioText.matches("\\d+")) {
+            JOptionPane.showMessageDialog(this, "El salario debe ser en numeros","Error",JOptionPane.ERROR_MESSAGE);
+            return;
+            
+        }
+        if (!edadText.matches("\\d+")) {
+            JOptionPane.showMessageDialog(this, "La edad debe ser en numeros","Error",JOptionPane.ERROR_MESSAGE);
+            return;   
         }
 
         int iD = Integer.parseInt(idText);
@@ -524,7 +548,7 @@ public class GestionVeterinaria extends javax.swing.JFrame {
         jLabel7.setText("Genero");
 
         comboGenero.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        comboGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", " ", "Masculino", "Femenino", " " }));
+        comboGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Masculino", "Femenino" }));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel8.setText("Correo");
@@ -540,13 +564,13 @@ public class GestionVeterinaria extends javax.swing.JFrame {
         jLabel10.setText("Cargo");
 
         comboCargo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        comboCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", " ", "Jefe del area", "Veterinario", "Auxiliar", " " }));
+        comboCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Jefe del area", "Veterinario", "Auxiliar", " " }));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel11.setText("Horario");
 
         comboHorario.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        comboHorario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", " ", "Diurno", "Nocturno", " " }));
+        comboHorario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Diurno", "Nocturno", " " }));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel12.setText("Telefono");
@@ -562,7 +586,7 @@ public class GestionVeterinaria extends javax.swing.JFrame {
         jLabel14.setText("Area");
 
         comboArea.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        comboArea.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", " ", "Bienestar animal", "Área clínica y rehabilitación", "Rescate y respuesta a emergencia", "Investigacion cientifica", "Area de conservacion" }));
+        comboArea.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Bienestar animal", "Área clínica y rehabilitación", "Rescate y respuesta a emergencia", "Investigacion cientifica", "Area de conservacion" }));
 
         btnActualizacion.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         btnActualizacion.setText("ACTUALIZAR");
