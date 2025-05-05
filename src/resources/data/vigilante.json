@@ -31,7 +31,7 @@
     "Area": "Entrada principal",
     "cargo": "Patrullero",
     "fechaContratacion": "Apr 11, 2009, 12:00:00 AM",
-    "salario": "1.000.00",
+    "salario": "100000",
     "horario": "Diurno",
     "correo": "andy@gmail.com",
     "numTelefono": "324657802",
@@ -68,5 +68,19 @@
     "genero": "Masculino",
     "edad": "43",
     "id": 1093658906
+  },
+  {
+    "Area": "Zona de corales",
+    "cargo": "Patrullero",
+    "fechaContratacion": "Mar 22, 2009, 12:00:00 AM",
+    "salario": "300000",
+    "horario": "Diurno",
+    "correo": "matias@gmail.com",
+    "numTelefono": "32465170333",
+    "nombre": "Matias",
+    "apellido": "Gomez",
+    "genero": "Masculino",
+    "edad": "45",
+    "id": 1045651607
   }
 ]

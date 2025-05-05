@@ -47,6 +47,8 @@ public class Administrador extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         btnVeterinarios = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
+        btnGuias = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -168,7 +170,7 @@ public class Administrador extends javax.swing.JFrame {
         btnAnimalesLayout.setVerticalGroup(
             btnAnimalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnAnimalesLayout.createSequentialGroup()
-                .addGap(0, 13, Short.MAX_VALUE)
+                .addGap(0, 20, Short.MAX_VALUE)
                 .addComponent(jLabel6))
         );
 
@@ -205,6 +207,46 @@ public class Administrador extends javax.swing.JFrame {
                 .addComponent(jLabel8))
         );
 
+        btnGuias.setBackground(new java.awt.Color(0, 51, 153));
+        btnGuias.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnGuiasMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnGuiasMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnGuiasMouseExited(evt);
+            }
+        });
+
+        jLabel7.setBackground(new java.awt.Color(0, 0, 153));
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/GUIA_TURISTICO (1) (1) (1)_1.png"))); // NOI18N
+        jLabel7.setText("GESTION DE GUIAS TURISTICOS");
+
+        javax.swing.GroupLayout btnGuiasLayout = new javax.swing.GroupLayout(btnGuias);
+        btnGuias.setLayout(btnGuiasLayout);
+        btnGuiasLayout.setHorizontalGroup(
+            btnGuiasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 367, Short.MAX_VALUE)
+            .addGroup(btnGuiasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(btnGuiasLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel7)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        btnGuiasLayout.setVerticalGroup(
+            btnGuiasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(btnGuiasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(btnGuiasLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel7)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -212,20 +254,19 @@ public class Administrador extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2)
-                            .addComponent(btnAnimales, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnVigilancia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCuidadores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnVeterinarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(9, 9, 9)
-                                .addComponent(jLabel4)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel2)
+                        .addComponent(btnAnimales, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnVigilancia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCuidadores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnVeterinarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(9, 9, 9)
+                            .addComponent(jLabel4)))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addComponent(btnGuias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44))
         );
@@ -240,14 +281,16 @@ public class Administrador extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addComponent(btnAnimales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnGuias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAnimales, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(36, 36, 36)
                 .addComponent(btnVigilancia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(btnCuidadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnVeterinarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -276,7 +319,7 @@ public class Administrador extends javax.swing.JFrame {
 
     private void btnVigilanciaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVigilanciaMouseEntered
         // TODO add your handling code here:
-        btnVigilancia.setBackground(Color.LIGHT_GRAY);
+        btnVigilancia.setBackground(Color.BLUE);
     }//GEN-LAST:event_btnVigilanciaMouseEntered
 
     private void btnVigilanciaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVigilanciaMouseExited
@@ -294,7 +337,7 @@ public class Administrador extends javax.swing.JFrame {
 
     private void btnCuidadoresMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCuidadoresMouseEntered
         // TODO add your handling code here:
-        btnCuidadores.setBackground(Color.LIGHT_GRAY);
+        btnCuidadores.setBackground(Color.BLUE);
     }//GEN-LAST:event_btnCuidadoresMouseEntered
 
     private void btnCuidadoresMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCuidadoresMouseExited
@@ -311,7 +354,7 @@ public class Administrador extends javax.swing.JFrame {
 
     private void btnAnimalesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnimalesMouseEntered
         // TODO add your handling code here:
-        btnAnimales.setBackground(Color.LIGHT_GRAY);
+        btnAnimales.setBackground(Color.BLUE);
     }//GEN-LAST:event_btnAnimalesMouseEntered
 
     private void btnAnimalesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnimalesMouseExited
@@ -321,7 +364,7 @@ public class Administrador extends javax.swing.JFrame {
 
     private void btnVeterinariosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVeterinariosMouseEntered
         // TODO add your handling code here:
-        btnVeterinarios.setBackground(Color.LIGHT_GRAY);
+        btnVeterinarios.setBackground(Color.BLUE);
     }//GEN-LAST:event_btnVeterinariosMouseEntered
 
     private void btnVeterinariosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVeterinariosMouseExited
@@ -334,6 +377,22 @@ public class Administrador extends javax.swing.JFrame {
         new GestionVeterinaria().setVisible(true);
         dispose();
     }//GEN-LAST:event_btnVeterinariosMouseClicked
+
+    private void btnGuiasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuiasMouseEntered
+        // TODO add your handling code here:
+        btnGuias.setBackground(Color.BLUE);
+    }//GEN-LAST:event_btnGuiasMouseEntered
+
+    private void btnGuiasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuiasMouseExited
+        // TODO add your handling code here:
+        btnGuias.setBackground(new java.awt.Color(0, 51, 153));
+    }//GEN-LAST:event_btnGuiasMouseExited
+
+    private void btnGuiasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuiasMouseClicked
+        // TODO add your handling code here:
+        new GestionGuias().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnGuiasMouseClicked
 
     /**
      * @param args the command line arguments
@@ -374,6 +433,7 @@ public class Administrador extends javax.swing.JFrame {
     private javax.swing.JLabel Vigia;
     private javax.swing.JPanel btnAnimales;
     private javax.swing.JPanel btnCuidadores;
+    private javax.swing.JPanel btnGuias;
     private javax.swing.JPanel btnVeterinarios;
     private javax.swing.JPanel btnVigilancia;
     private javax.swing.JLabel jLabel1;
@@ -382,6 +442,7 @@ public class Administrador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

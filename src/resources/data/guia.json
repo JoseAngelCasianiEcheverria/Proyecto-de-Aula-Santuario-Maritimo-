@@ -7,10 +7,38 @@
     "horario": "Diurno",
     "correo": "juan@gmail.com",
     "numTelefono": "3102644140",
-    "nombre": "Mauricio",
-    "apellido": "Reyes",
+    "nombre": "Tomas",
+    "apellido": "Alcazar",
     "genero": "Masculino",
     "edad": "33",
     "id": 1098654602
+  },
+  {
+    "especialidad": "Guia de actividades acuaticas",
+    "cargo": "Guia de actividades acuaticas",
+    "fechaContratacion": "Dec 28, 2008, 12:00:00 AM",
+    "salario": "400000",
+    "horario": "Diurno",
+    "correo": "victor@gmail.com",
+    "numTelefono": "3102677840",
+    "nombre": "Victor Manuel",
+    "apellido": "Hernandez",
+    "genero": "Masculino",
+    "edad": "44",
+    "id": 1044657802
+  },
+  {
+    "especialidad": "Interpretacion ambiental marina",
+    "cargo": "Guia Ecoturista",
+    "fechaContratacion": "Jan 1, 2017, 12:00:00 AM",
+    "salario": "300000",
+    "horario": "Diurno",
+    "correo": "erick@gmail.com",
+    "numTelefono": "310278890",
+    "nombre": "Erick",
+    "apellido": "Echeverria",
+    "genero": "Masculino",
+    "edad": "34",
+    "id": 1093651709
   }
 ]

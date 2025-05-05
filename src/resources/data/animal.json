@@ -13,7 +13,7 @@
   {
     "nombre": "Medusa",
     "idAnimal": 1055678902,
-    "peso": "319",
+    "peso": "200",
     "especie": "Cnidario",
     "sexo": "Hembra",
     "estadoSalud": "Sano",
@@ -24,7 +24,7 @@
   {
     "nombre": "Orca",
     "idAnimal": 1098651703,
-    "peso": "3600",
+    "peso": "3000",
     "especie": "Mamifero",
     "sexo": "Macho",
     "estadoSalud": "Sano",
