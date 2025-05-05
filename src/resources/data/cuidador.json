@@ -1,30 +1,16 @@
 [
   {
-    "area": "Habitat acuatico",
-    "cargo": "Auxiliar",
-    "fechaContratacion": "May 19, 2024, 12:00:00 AM",
-    "salario": "300000",
-    "horario": "Nocturno",
-    "correo": "carlos@gmail.com",
-    "numTelefono": "31059058",
-    "nombre": "Juanito",
-    "apellido": "Marrugo Perez",
-    "genero": "Masculino",
-    "edad": "20",
-    "id": 1093651604
-  },
-  {
     "area": "Habitat terrestre",
     "cargo": "Veterinario",
     "fechaContratacion": "Apr 28, 2020, 12:00:00 AM",
-    "salario": "100000",
+    "salario": "300000",
     "horario": "Diurno",
     "correo": "haider@gmail.com",
     "numTelefono": "31025789",
     "nombre": "Haider",
     "apellido": "Mejia",
     "genero": "Masculino",
-    "edad": "23",
+    "edad": "26",
     "id": 1044651703
   },
   {

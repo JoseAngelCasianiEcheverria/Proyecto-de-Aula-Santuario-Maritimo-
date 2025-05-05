@@ -54,6 +54,13 @@ public class GestionVeterinaria extends javax.swing.JFrame {
         String contratacionText = txtContratacion.getText().trim();
         String area = comboArea.getSelectedItem().toString();
         
+     
+        
+        if (nombre.isEmpty()||apellido.isEmpty()||edad.isEmpty()||iDText.isEmpty()||genero.equals("Seleccionar")||correo.isEmpty()||salario.isEmpty()||cargo.equals("Seleccionar")||horario.equals("Seleccionar")||numtelefonoText.isEmpty()||contratacionText.isEmpty()||area.equals("Seleccionar")) {
+            JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios","Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
         if (!validacionLetras(nombre)) {
             JOptionPane.showMessageDialog(this, "El nombre solo se permiten letras", "Error", JOptionPane.ERROR_MESSAGE);
             return;
@@ -79,10 +86,7 @@ public class GestionVeterinaria extends javax.swing.JFrame {
         
         
         
-        if (nombre.isEmpty()||apellido.isEmpty()||edad.isEmpty()||iDText.isEmpty()||genero.equals("Seleccionar")||correo.isEmpty()||salario.isEmpty()||cargo.equals("Seleccionar")||horario.equals("Seleccionar")||numtelefonoText.isEmpty()||contratacionText.isEmpty()||area.equals("Seleccionar")) {
-            JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios","Warning", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
+        
         
         int iD = Integer.parseInt(iDText);
         String numTelefono = numtelefonoText;
@@ -405,7 +409,7 @@ public class GestionVeterinaria extends javax.swing.JFrame {
 
         btnActualizar.setBackground(new java.awt.Color(0, 255, 255));
         btnActualizar.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ACTUALIZAR.png"))); // NOI18N
+        btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ACTUALIZAR (2).png"))); // NOI18N
         btnActualizar.setText("ACTUALIZAR");
         btnActualizar.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         btnActualizar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -461,7 +465,7 @@ public class GestionVeterinaria extends javax.swing.JFrame {
                 .addComponent(btnBuscar)
                 .addGap(31, 31, 31)
                 .addComponent(btnEliminar)
-                .addContainerGap(421, Short.MAX_VALUE))
+                .addContainerGap(441, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(0, 51, 153));

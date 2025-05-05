@@ -10,11 +10,11 @@ import java.util.Date;
  *
  * @author juanp
  */
-public class Guia extends Trabajadores{
+public class Guias extends Trabajadores{
     
     private String especialidad;
 
-    public Guia(String cargo, Date fechaContratacion, String salario, String horario, String correo, String numTelefono, String nombre, String apellido, String genero, String edad, int id) {
+    public Guias(String cargo, Date fechaContratacion, String salario, String horario, String correo, String numTelefono, String nombre, String apellido, String genero, String edad, int id) {
         super(cargo, fechaContratacion, salario, horario, correo, numTelefono, nombre, apellido, genero, edad, id);
     }
 

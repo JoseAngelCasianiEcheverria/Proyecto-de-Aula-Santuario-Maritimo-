@@ -82,9 +82,5 @@ public class cuidadoresDAO {
         }
         return null;
     }
-    
-    
-    
-    
-    
+   
 }

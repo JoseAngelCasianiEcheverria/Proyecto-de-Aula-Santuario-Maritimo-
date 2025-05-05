@@ -54,7 +54,7 @@ public class VeterinarioDAO {
             gson.toJson(veterinarios, writer);
             
         } catch (IOException e) {
-            System.err.println("Error al guardar animales: " + e.getMessage());
+            System.err.println("Error al guardar veterinarios: " + e.getMessage());
         }
     }
     

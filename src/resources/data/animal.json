@@ -2,7 +2,7 @@
   {
     "nombre": "Mantarraya",
     "idAnimal": 1098657203,
-    "peso": "1900kg",
+    "peso": "1700",
     "especie": "Pez",
     "sexo": "Macho",
     "estadoSalud": "Sano",
@@ -13,7 +13,7 @@
   {
     "nombre": "Medusa",
     "idAnimal": 1055678902,
-    "peso": "319kg",
+    "peso": "319",
     "especie": "Cnidario",
     "sexo": "Hembra",
     "estadoSalud": "Sano",
@@ -24,7 +24,7 @@
   {
     "nombre": "Orca",
     "idAnimal": 1098651703,
-    "peso": "3000kg",
+    "peso": "3600",
     "especie": "Mamifero",
     "sexo": "Macho",
     "estadoSalud": "Sano",
@@ -33,20 +33,9 @@
     "cuidadorAsignado": "Pablo Chacon"
   },
   {
-    "nombre": "Pez Mojarra",
-    "idAnimal": 1043658903,
-    "peso": "210kg",
-    "especie": "Pez",
-    "sexo": "Macho",
-    "estadoSalud": "Sano",
-    "ubicacion": "Habitat natural",
-    "habitat": "Tanque",
-    "cuidadorAsignado": "Jhon Arrieta Arrieta"
-  },
-  {
     "nombre": "Tiburon Blanco",
     "idAnimal": 1044657803,
-    "peso": "3500kg",
+    "peso": "3500",
     "especie": "Mamifero",
     "sexo": "Macho",
     "estadoSalud": "Sano",
@@ -57,7 +46,7 @@
   {
     "nombre": "Delfin",
     "idAnimal": 1098651204,
-    "peso": "3100kg",
+    "peso": "3100",
     "especie": "Mamifero",
     "sexo": "Macho",
     "estadoSalud": "En recuperacion",
@@ -68,7 +57,7 @@
   {
     "nombre": "Pez Espada",
     "idAnimal": 1044651895,
-    "peso": "3200kg",
+    "peso": "3200",
     "especie": "Pez",
     "sexo": "Macho",
     "estadoSalud": "Sano",
@@ -79,22 +68,22 @@
   {
     "nombre": "Pulpo",
     "idAnimal": 1044651702,
-    "peso": "500kg",
+    "peso": "500",
     "especie": "Cefalopodo",
     "sexo": "Macho",
     "estadoSalud": "Sano",
     "ubicacion": "Nutricion animal",
     "habitat": "Laguna",
-    "cuidadorAsignado": "Jhonny Bravo"
+    "cuidadorAsignado": "Jhon Arrieta"
   },
   {
     "nombre": "Ballena Jorobada",
     "idAnimal": 1093674602,
-    "peso": "60000kg",
+    "peso": "6000",
     "especie": "Mamifero",
     "sexo": "Hembra",
     "estadoSalud": "Sano",
-    "ubicacion": "Habitat natural",
+    "ubicacion": "Zona de reproduccion",
     "habitat": "Tanque",
     "cuidadorAsignado": "Norman Reyes"
   }

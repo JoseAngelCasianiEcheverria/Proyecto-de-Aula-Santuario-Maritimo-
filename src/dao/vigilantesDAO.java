@@ -72,7 +72,7 @@ public class vigilantesDAO {
         return eliminacion;
     }
     
-      public Vigilantes buscarConID(int id){
+    public Vigilantes buscarConID(int id){
         List<Vigilantes> vigilantes = cargarRegistros();
         
         for(Vigilantes vigilante : vigilantes){
