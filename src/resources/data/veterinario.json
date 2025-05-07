@@ -9,7 +9,6 @@
     "numTelefono": "32044650",
     "nombre": "Manuel",
     "apellido": "Lopez",
-    "genero": "Masculino",
     "edad": "33",
     "id": 1093651709
   },
@@ -23,7 +22,6 @@
     "numTelefono": "32044140",
     "nombre": "Yair Andrei",
     "apellido": "Marquez Cueto",
-    "genero": "Masculino",
     "edad": "43",
     "id": 1044657802
   },
@@ -37,7 +35,6 @@
     "numTelefono": "3108677140",
     "nombre": "Juan Pablo",
     "apellido": "Lopez",
-    "genero": "Masculino",
     "edad": "33",
     "id": 1056751602
   },
@@ -51,7 +48,6 @@
     "numTelefono": "3222644280",
     "nombre": "Carlos",
     "apellido": "Castro Aguirre",
-    "genero": "Masculino",
     "edad": "45",
     "id": 1044657202
   },
@@ -65,7 +61,6 @@
     "numTelefono": "325671890",
     "nombre": "Andres",
     "apellido": "Reyes",
-    "genero": "Masculino",
     "edad": "32",
     "id": 1093651202
   },
@@ -79,7 +74,6 @@
     "numTelefono": "3102749150",
     "nombre": "Juan Daniel",
     "apellido": "Espinosa",
-    "genero": "Masculino",
     "edad": "33",
     "id": 1044657902
   },
@@ -93,7 +87,6 @@
     "numTelefono": "325678902",
     "nombre": "Fernanda Andrea",
     "apellido": "Perez",
-    "genero": "Femenino",
     "edad": "33",
     "id": 1098657803
   },
@@ -107,7 +100,6 @@
     "numTelefono": "350766194",
     "nombre": "Jose",
     "apellido": "Valladares",
-    "genero": "Femenino",
     "edad": "33",
     "id": 1043300458
   },
@@ -121,8 +113,35 @@
     "numTelefono": "3246517140",
     "nombre": "Mauricio",
     "apellido": "Novoa",
-    "genero": "Masculino",
-    "edad": "35",
+    "edad": "34",
     "id": 1044651603
+  },
+  {
+    "area": "Investigacion cientifica",
+    "cargo": "Veterinario",
+    "fechaContratacion": "Dec 27, 2009, 12:00:00 AM",
+    "salario": "3400000",
+    "horario": "Diurno",
+    "correo": "roman@gmail.com",
+    "numTelefono": "3102644140",
+    "nombre": "Roman",
+    "apellido": "Villalba",
+    "genero": "MASCULINO",
+    "edad": "33",
+    "id": 1094651702
+  },
+  {
+    "area": "Área clínica y rehabilitación",
+    "cargo": "Veterinario",
+    "fechaContratacion": "May 21, 2018, 10:02:45 PM",
+    "salario": "250000",
+    "horario": "Diurno",
+    "correo": "Adrian@gmail.com",
+    "numTelefono": "3246644140",
+    "nombre": "Adrian Felipe",
+    "apellido": "Pacheco",
+    "genero": "MASCULINO",
+    "edad": "22",
+    "id": 1043657604
   }
 ]

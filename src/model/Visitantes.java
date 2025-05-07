@@ -1,13 +1,15 @@
 
 package model;
 
+import model.oConstantes.GeneroEnum;
+
 public class Visitantes extends Persona{
     private String correo;
     private String telefono;
     private int evaluacionesRealizadas;
     private String guiaSeleccionado;
 
-    public Visitantes(String correo, String telefono, int evaluacionesRealizadas, String guiaSeleccionado, String nombre, String apellido, String genero, String edad, int id) {
+    public Visitantes(String correo, String telefono, int evaluacionesRealizadas, String guiaSeleccionado, String nombre, String apellido, GeneroEnum genero, String edad, int id) {
         super(nombre, apellido, genero, edad, id);
         this.correo = correo;
         this.telefono = telefono;

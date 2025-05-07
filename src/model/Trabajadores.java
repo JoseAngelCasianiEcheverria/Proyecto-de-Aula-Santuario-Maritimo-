@@ -2,6 +2,7 @@
 package model;
 
 import java.util.Date;
+import model.oConstantes.GeneroEnum;
 
 public class Trabajadores extends Persona{
     private String cargo;
@@ -11,7 +12,7 @@ public class Trabajadores extends Persona{
     private String correo;
     private String numTelefono;
 
-    public Trabajadores(String cargo, Date fechaContratacion, String salario, String horario, String correo, String numTelefono, String nombre, String apellido, String genero, String edad, int id) {
+    public Trabajadores(String cargo, Date fechaContratacion, String salario, String horario, String correo, String numTelefono, String nombre, String apellido, GeneroEnum genero, String edad, int id) {
         super(nombre, apellido, genero, edad, id);
         this.cargo = cargo;
         this.fechaContratacion = fechaContratacion;

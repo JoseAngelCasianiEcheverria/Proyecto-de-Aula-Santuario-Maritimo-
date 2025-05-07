@@ -21,6 +21,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import java.awt.Color;
+import model.oConstantes.GeneroEnum;
 
 
 /**
@@ -47,49 +48,52 @@ public class GestionGuias extends javax.swing.JFrame {
             String apellido = txtApellido.getText().trim();
             String edad = txtEdad.getText().trim();
             String iDText = txtID.getText().trim();
-            String genero = comboGenero.getSelectedItem().toString();
+            var generoSeleccionado = comboGenero.getSelectedItem().toString();
+            var genero = GeneroEnum.MASCULINO;
+            if (generoSeleccionado.toLowerCase().contains("seleccionar")) {
+                JOptionPane.showMessageDialog(this,"Seleccione un genero");
+                return;
+            }
+            if (generoSeleccionado.equalsIgnoreCase(GeneroEnum.MASCULINO.toString())) {
+               genero = GeneroEnum.MASCULINO;
+            }
+            else if (generoSeleccionado.equalsIgnoreCase(GeneroEnum.FEMENINO.toString())) {
+               genero = GeneroEnum.FEMENINO; 
+            }
+            else{
+                genero = GeneroEnum.OTROS;
+            }
             String correo = txtCorreo.getText().trim();
             String salario = txtSalario.getText().trim();
             String cargo = comboCargo.getSelectedItem().toString();
             String horario = comboHorario.getSelectedItem().toString();
             String numTelefonoText = txtTelefono.getText().trim();
-            String contratacionText = txtContratacion.getText().trim();
+            Date fechaContratacion = dateContratacion.getDate();
             String especialidad = comboEspecialidad.getSelectedItem().toString();
            
             
 
-            if (nombre.isEmpty() || apellido.isEmpty() || edad.isEmpty() || genero.equals("Seleccionar") || correo.isEmpty() || salario.isEmpty() || cargo.equals("Seleccionar") || horario.equals("Seleccionar") || numTelefonoText.isEmpty() || contratacionText.isEmpty() || especialidad.equals("Seleccionar")) {
+            if (nombre.isEmpty() || apellido.isEmpty() || edad.isEmpty() || genero.equals("Seleccionar") || correo.isEmpty() || salario.isEmpty() || cargo.equals("Seleccionar") || horario.equals("Seleccionar") || numTelefonoText.isEmpty() || fechaContratacion == null || especialidad.equals("Seleccionar")) {
               JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios", "Warning", JOptionPane.WARNING_MESSAGE);
               return;
             }
             
-            if (!validacionLetras(nombre)) {
-                JOptionPane.showMessageDialog(this, "El nombre solo permite letras","Error",JOptionPane.ERROR_MESSAGE);
-                return;
-                
-            }
-            if (!validacionLetras(apellido)) {
-                JOptionPane.showMessageDialog(this, "El apellido solo permite letras","Error",JOptionPane.ERROR_MESSAGE);
-                return;
-                
-            }
-            if (!salario.matches("\\d+")) {
-                JOptionPane.showMessageDialog(this, "El salario debe ser en numeros","Error",JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-            if (!edad.matches("\\d+")) {
-                JOptionPane.showMessageDialog(this, "La edad debe ser en numeros","Error",JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-            if (!numTelefonoText.matches("\\d+")) {
-                JOptionPane.showMessageDialog(this, "El numero de telefono debe ser en numeros","Error",JOptionPane.ERROR_MESSAGE);
+            if (!validacionLetras(nombre)|| !validacionLetras(apellido)) {
+                JOptionPane.showMessageDialog(this,"El nombre/apellido debe contener solo LETRAS","Error",JOptionPane.ERROR_MESSAGE);
                 return;
             }
             
+            if (!salario.matches("\\d+") || !edad.matches("\\d+") || !numTelefonoText.matches("\\d+")) {
+                JOptionPane.showMessageDialog(this,"La edad/salario/numero telefonico deben ser solamente NUMEROS","Error",JOptionPane.ERROR_MESSAGE);
+                return;
+            }
             
             int iD = Integer.parseInt(iDText);
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY");
-            Date fechaContratacion = sdf.parse(contratacionText);
+            
+            if (fechaContratacion == null) {
+              JOptionPane.showMessageDialog(this, "Seleccione una fecha de contratación", "Error", JOptionPane.ERROR_MESSAGE);
+              return;
+            }
             
             Guias registroExistente = dao.buscarConID(iD);
             if (registroExistente != null) {
@@ -157,7 +161,7 @@ public class GestionGuias extends javax.swing.JFrame {
         comboCargo.setSelectedIndex(0);
         comboHorario.setSelectedIndex(0);
         txtTelefono.setText("");
-        txtContratacion.setText("");
+        dateContratacion.setDate(null);
         comboEspecialidad.setSelectedIndex(0);      
     }
     
@@ -229,7 +233,7 @@ public class GestionGuias extends javax.swing.JFrame {
         comboCargo.setEnabled(true);
         comboHorario.setEnabled(true);
         txtTelefono.setEnabled(true);
-        txtContratacion.setEnabled(false);
+        dateContratacion.setEnabled(false);
         comboEspecialidad.setEnabled(false);
     }
     
@@ -240,23 +244,9 @@ public class GestionGuias extends javax.swing.JFrame {
             String salarioText = txtSalario.getText().trim();
             String edadText = txtEdad.getText().trim();
             
-            if (!idText.matches("\\d+")) {
-               JOptionPane.showMessageDialog(this, "El ID debe ser un numero","Error",JOptionPane.ERROR_MESSAGE);
+            if (!numTelefonoText.matches("\\d+") || !salarioText.matches("\\d+") || !edadText.matches("\\d+")) {
+               JOptionPane.showMessageDialog(this, "Todos los campos numéricos deben contener solamente  números", "Error", JOptionPane.ERROR_MESSAGE);
                return;
-            }
- 
-            if (!numTelefonoText.matches("\\d+")) {
-               JOptionPane.showMessageDialog(this, "El número de teléfono debe ser en numeros", "Error", JOptionPane.ERROR_MESSAGE);
-               return;
-            }
-            if (!salarioText.matches("\\d+")) {
-               JOptionPane.showMessageDialog(this,"El salario debe ser en numeros","Error",JOptionPane.ERROR_MESSAGE);
-               return;
-            }
-            
-            if (!edadText.matches("\\d+")) {
-               JOptionPane.showMessageDialog(this, "La edad debe ser en numeros","Error",JOptionPane.ERROR_MESSAGE);
-               return;   
             }
             
             int iD = Integer.parseInt(idText);
@@ -267,13 +257,9 @@ public class GestionGuias extends javax.swing.JFrame {
                     String nombre = txtNombre.getText().trim();
                     String apellido = txtApellido.getText().trim();
                     
-                    if (!validacionLetras(nombre)) {
-                        JOptionPane.showMessageDialog(this, "El nombre solo permite letras","Error",JOptionPane.ERROR_MESSAGE);
-                        return;
-                    }
-                    if (!validacionLetras(apellido)) {
-                        JOptionPane.showMessageDialog(this, "El apellido solo permite letras","Error",JOptionPane.ERROR_MESSAGE);
-                        return;
+                    if (!validacionLetras(nombre)|| !validacionLetras(apellido)) {
+                       JOptionPane.showMessageDialog(this,"El nombre/apellido debe contener solo LETRAS","Error",JOptionPane.ERROR_MESSAGE);
+                       return;
                     }
                     
                     guia.setNombre(nombre);
@@ -292,8 +278,9 @@ public class GestionGuias extends javax.swing.JFrame {
                     
                     txtID.setEnabled(true);
                     comboGenero.setEnabled(true);
-                    txtContratacion.setEnabled(true);
-                    comboEspecialidad.setEnabled(true);   
+                    dateContratacion.setEnabled(true);
+                    comboEspecialidad.setEnabled(true);
+                    return;
                 }
             }    
         } catch (Exception e) {
@@ -363,11 +350,11 @@ public class GestionGuias extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         txtTelefono = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        txtContratacion = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         btnActualizacion = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         comboEspecialidad = new javax.swing.JComboBox<>();
+        dateContratacion = new com.toedter.calendar.JDateChooser();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableGuias = new javax.swing.JTable();
@@ -379,6 +366,7 @@ public class GestionGuias extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         btnBuscar = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
 
@@ -418,34 +406,34 @@ public class GestionGuias extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 621, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel19)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel20)
-                        .addGap(47, 47, 47))))
+                        .addGap(47, 47, 47))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 621, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 12, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel20))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
                     .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel20))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 18, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -506,8 +494,6 @@ public class GestionGuias extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel13.setText("Fecha de contratacion");
-
-        txtContratacion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel14.setText("Especialidad");
@@ -574,16 +560,16 @@ public class GestionGuias extends javax.swing.JFrame {
                                             .addComponent(comboHorario, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(comboCargo, javax.swing.GroupLayout.Alignment.LEADING, 0, 193, Short.MAX_VALUE))
                                         .addComponent(btnLimpiar))))
+                            .addComponent(btnActualizacion)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                    .addComponent(jLabel14)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(comboEspecialidad, 0, 1, Short.MAX_VALUE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                                     .addComponent(jLabel13)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtContratacion, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(btnActualizacion))
+                                    .addComponent(dateContratacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                    .addComponent(jLabel14)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(comboEspecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 39, Short.MAX_VALUE))))
         );
         jPanel3Layout.setVerticalGroup(
@@ -629,9 +615,9 @@ public class GestionGuias extends javax.swing.JFrame {
                     .addComponent(jLabel12)
                     .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel13)
-                    .addComponent(txtContratacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dateContratacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
@@ -684,7 +670,9 @@ public class GestionGuias extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1031, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1064, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -823,9 +811,11 @@ public class GestionGuias extends javax.swing.JFrame {
                     .addGap(0, 5, Short.MAX_VALUE)))
         );
 
-        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/GUIA_TURISTICO (1).png"))); // NOI18N
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/GUIA_TURISTICA_SANTUARIO (1).png"))); // NOI18N
 
-        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/GUIA_OCEANICO (1) (1).png"))); // NOI18N
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/GUIA_OCEANICO (1) (1) (1)_1.png"))); // NOI18N
+
+        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/GUIA_TURISTICO (1) (1).png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -833,29 +823,30 @@ public class GestionGuias extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
+                .addGap(40, 40, 40)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addGap(36, 36, 36)
+                                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(24, 24, 24)
+                                .addGap(45, 45, 45)
                                 .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addGap(36, 36, 36)
                                 .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel21)
-                                .addGap(32, 32, 32)
-                                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(166, 166, 166)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33)
+                                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 10, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -863,17 +854,18 @@ public class GestionGuias extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
+                        .addGap(46, 46, 46)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -923,6 +915,9 @@ public class GestionGuias extends javax.swing.JFrame {
         if (txtBusqueda.getText().trim().isEmpty()) {
             cargarTablaGuias();
         }
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            buscarGuias();
+        }
     }//GEN-LAST:event_txtBusquedaKeyReleased
 
     private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
@@ -954,8 +949,17 @@ public class GestionGuias extends javax.swing.JFrame {
             comboCargo.setSelectedItem(modelo.getValueAt(filaSeleccionada,7));
             comboHorario.setSelectedItem(modelo.getValueAt(filaSeleccionada, 8));
             txtTelefono.setText(modelo.getValueAt(filaSeleccionada, 9).toString());
-            txtContratacion.setText(modelo.getValueAt(filaSeleccionada,10).toString());
-            comboEspecialidad.setSelectedItem(modelo.getValueAt(filaSeleccionada,11));
+             try {
+                String fechaDate = String.valueOf(modelo.getValueAt(filaSeleccionada, 10));
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                Date fecha = sdf.parse(fechaDate);
+                dateContratacion.setDate(fecha);
+                
+            } catch (Exception e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Error al establecer la fecha de contratación", "Error", JOptionPane.ERROR_MESSAGE);  
+            }
+            comboEspecialidad.setSelectedItem(modelo.getValueAt(filaSeleccionada, 11));
         }
         
     }//GEN-LAST:event_tableGuiasMouseClicked
@@ -1006,6 +1010,7 @@ public class GestionGuias extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboEspecialidad;
     private javax.swing.JComboBox<String> comboGenero;
     private javax.swing.JComboBox<String> comboHorario;
+    private com.toedter.calendar.JDateChooser dateContratacion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1020,6 +1025,7 @@ public class GestionGuias extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1036,7 +1042,6 @@ public class GestionGuias extends javax.swing.JFrame {
     private javax.swing.JTable tableGuias;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtBusqueda;
-    private javax.swing.JTextField txtContratacion;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtEdad;
     private javax.swing.JTextField txtID;

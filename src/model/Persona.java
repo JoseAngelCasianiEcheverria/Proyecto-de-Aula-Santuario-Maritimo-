@@ -1,14 +1,16 @@
 
 package model;
 
+import model.oConstantes.GeneroEnum;
+
 public class Persona {
     private String nombre;
     private String apellido;
-    private String genero;
+    private GeneroEnum genero;
     private String edad;
     private int id;
 
-    public Persona(String nombre, String apellido, String genero, String edad, int id) {
+    public Persona(String nombre, String apellido, GeneroEnum genero, String edad, int id) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.genero = genero;
@@ -32,13 +34,15 @@ public class Persona {
         this.apellido = apellido;
     }
 
-    public String getGenero() {
+    public void setGenero(GeneroEnum genero) {
+        this.genero = genero;
+    }
+
+    public GeneroEnum getGenero() {
         return genero;
     }
 
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
+   
 
     public String getEdad() {
         return edad;

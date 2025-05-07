@@ -20,6 +20,7 @@ import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import model.oConstantes.GeneroEnum;
 
 /**
  *
@@ -45,48 +46,52 @@ public class GestionVigilantes extends javax.swing.JFrame {
             String apellido = txtApellido.getText().trim();
             String edad = txtEdad.getText().trim();
             String iDText = txtID.getText().trim();
-            String genero = comboGenero.getSelectedItem().toString();
+            var generoSeleccionado = comboGenero.getSelectedItem().toString();
+            var genero = GeneroEnum.MASCULINO;
+            if (generoSeleccionado.toLowerCase().contains("seleccionar")) {
+               JOptionPane.showMessageDialog(this,"Seleccione un genero");
+               return;
+            }
+            if (generoSeleccionado.equalsIgnoreCase(GeneroEnum.MASCULINO.toString())) {
+              genero = GeneroEnum.MASCULINO;
+            }
+            else if (generoSeleccionado.equalsIgnoreCase(GeneroEnum.FEMENINO.toString())) {
+              genero = GeneroEnum.FEMENINO; 
+            }
+            else{
+              genero = GeneroEnum.OTROS;
+            }
+            
             String correo = txtCorreo.getText().trim();
             String salario = txtSalario.getText().trim();
             String cargo = comboCargo.getSelectedItem().toString();
             String horario = comboHorario.getSelectedItem().toString();
             String numTelefonoText = txtTelefono.getText().trim();
-            String contratacionText = txtFechaContratacion.getText().trim();
+            Date fechaContratacion = dateContratacion.getDate();
             String area = comboArea.getSelectedItem().toString();
             
-            if (nombre.isEmpty() || apellido.isEmpty() || edad.isEmpty() || genero.equals("Seleccionar") || correo.isEmpty() || salario.isEmpty() || cargo.equals("Seleccionar") || horario.equals("Seleccionar") || numTelefonoText.isEmpty() || contratacionText.isEmpty() || area.equals("Seleccionar")) {
+            if (nombre.isEmpty() || apellido.isEmpty() || edad.isEmpty() || genero.equals("Seleccionar") || correo.isEmpty() || salario.isEmpty() || cargo.equals("Seleccionar") || horario.equals("Seleccionar") || numTelefonoText.isEmpty() || fechaContratacion == null || area.equals("Seleccionar")) {
                JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios", "Warning", JOptionPane.WARNING_MESSAGE);
                return;
             }
-            
-            if (!validacionLetras(nombre)) {
-               JOptionPane.showMessageDialog(this, "El nombre solo se permite letras", "Error", JOptionPane.ERROR_MESSAGE);
+            if (!validacionLetras(nombre) || !validacionLetras(apellido)) {
+               JOptionPane.showMessageDialog(this,"El nombre/apellido debe tener LETRAS","Error",JOptionPane.ERROR_MESSAGE);
                return;
-      
-            }
-        
-            if (!validacionLetras(apellido)) {
-               JOptionPane.showMessageDialog(this, "El apellido solo se permite letras", "Error",JOptionPane.ERROR_MESSAGE);
-               return;    
             }
             
-            if (!salario.matches("\\d+")) {
-                JOptionPane.showMessageDialog(this, "El salario debe ser en numeros","Error",JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-            if (!edad.matches("\\d+")) {
-                JOptionPane.showMessageDialog(this, "La edad debe ser en numeros","Error",JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-            if (!numTelefonoText.matches("\\d+")) {
-                JOptionPane.showMessageDialog(this, "El numero de telefono debe ser en numeros","Error",JOptionPane.ERROR_MESSAGE);
+            if (!salario.matches("\\d+")||!edad.matches("\\d+")||!numTelefonoText.matches("\\d+")) {
+                JOptionPane.showMessageDialog(this, "El salario/edad/numero telefonico deben ser NUMEROS","Error",JOptionPane.ERROR_MESSAGE);
                 return;
             }
             
             String numTelefono = numTelefonoText;
             int iD = Integer.parseInt(iDText);
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-            Date fechaContratacion = sdf.parse(contratacionText);
+            
+            if (fechaContratacion == null) {
+              JOptionPane.showMessageDialog(this, "Seleccione una fecha de contratación", "Error", JOptionPane.ERROR_MESSAGE);
+              return;
+            }
+            
             
             Vigilantes registroExistente = dao.buscarConID(iD);
             if (registroExistente != null ) {
@@ -153,7 +158,7 @@ public class GestionVigilantes extends javax.swing.JFrame {
         comboCargo.setSelectedIndex(0);
         comboHorario.setSelectedIndex(0);
         txtTelefono.setText("");
-        txtFechaContratacion.setText("");
+        dateContratacion.setDate(null);
         comboArea.setSelectedIndex(0);
     }
     
@@ -226,7 +231,7 @@ public class GestionVigilantes extends javax.swing.JFrame {
         comboHorario.setEnabled(true);
         comboArea.setEnabled(true);
         txtTelefono.setEnabled(true);
-        txtFechaContratacion.setEnabled(false);
+        dateContratacion.setEnabled(false);
         
     }
     
@@ -236,28 +241,11 @@ public class GestionVigilantes extends javax.swing.JFrame {
             String telefonoText = txtTelefono.getText().trim();
             String salarioText = txtSalario.getText().trim();
             String edadText = txtEdad.getText().trim();
-            
-            if (!idText.matches("\\d+")) {
-                JOptionPane.showMessageDialog(this,"El ID debe ser en numeros","Error",JOptionPane.ERROR_MESSAGE);
-                return;
-                
+               
+            if (!telefonoText.matches("\\d+") || !salarioText.matches("\\d+") || !edadText.matches("\\d+")) {
+               JOptionPane.showMessageDialog(this, "Todos los campos numéricos deben contener solamente  números", "Error", JOptionPane.ERROR_MESSAGE);
+               return;
             }
-            
-            if (!telefonoText.matches("\\d+")) {
-                JOptionPane.showMessageDialog(this, "El numero de telefono debe ser en numeros","Error",JOptionPane.ERROR_MESSAGE);
-                return;
-                
-            }
-            if (!salarioText.matches("\\d+")) {
-                JOptionPane.showMessageDialog(this,"El salario debe ser un numero","Error",JOptionPane.ERROR_MESSAGE);
-                return;    
-            }
-            if (!edadText.matches("\\d+")) {
-                JOptionPane.showMessageDialog(this, "La edad debe ser un numero","Error",JOptionPane.ERROR_MESSAGE);
-                return;
-
-            }
-            
             
             int iD = Integer.parseInt(txtID.getText().trim());
             List<Vigilantes> listaVigilantes = dao.cargarRegistros();
@@ -268,32 +256,29 @@ public class GestionVigilantes extends javax.swing.JFrame {
                     String nombre = txtNombre.getText().trim();
                     String apellido = txtApellido.getText().trim();
                     
-                    if (!validacionLetras(nombre)) {
-                        JOptionPane.showMessageDialog(this, "El nombre no puede tener numeros","Error",JOptionPane.ERROR_MESSAGE);
-                        return;
-                    }
-                    if (!validacionLetras(apellido)) {
-                        JOptionPane.showMessageDialog(this, "El apellido no puede tener numeros","Error",JOptionPane.ERROR_MESSAGE);
-                        return;
+                    if (!validacionLetras(nombre)|| !validacionLetras(apellido)) {
+                       JOptionPane.showMessageDialog(this,"El nombre/apellido debe contener solo LETRAS","Error",JOptionPane.ERROR_MESSAGE);
+                       return;
                     }
                     
                     vigilante.setNombre(nombre);
                     vigilante.setApellido(apellido);
-                    vigilante.setEdad(txtEdad.getText().trim());
+                    vigilante.setEdad(edadText);
                     vigilante.setCorreo(txtCorreo.getText().trim());
                     vigilante.setCargo(comboCargo.getSelectedItem().toString());
-                    vigilante.setSalario(txtSalario.getText().trim());
+                    vigilante.setSalario(salarioText);
                     vigilante.setHorario(comboHorario.getSelectedItem().toString());
                     vigilante.setArea(comboArea.getSelectedItem().toString());
-                    vigilante.setNumTelefono(txtTelefono.getText().trim());
+                    vigilante.setNumTelefono(telefonoText);
                     
                     dao.guardarTodos(listaVigilantes);
                     JOptionPane.showMessageDialog(this, "Actualizaciones completas", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                     cargarTablaVigilantes();
+                    limpiarCampos();
                     
                     txtID.setEnabled(true);
                     comboGenero.setEnabled(true);
-                    txtFechaContratacion.setEnabled(true);
+                    dateContratacion.setEnabled(true);
                     return;
                 }
             }
@@ -360,9 +345,9 @@ public class GestionVigilantes extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         txtTelefono = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        txtFechaContratacion = new javax.swing.JTextField();
         btnActualizacion = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
+        dateContratacion = new com.toedter.calendar.JDateChooser();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableVigilantes = new javax.swing.JTable();
@@ -478,7 +463,7 @@ public class GestionVigilantes extends javax.swing.JFrame {
         jLabel7.setText("Genero");
 
         comboGenero.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        comboGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", " ", "Masculino", "Femenino" }));
+        comboGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Masculino", "Femenino" }));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel8.setText("Correo");
@@ -515,8 +500,6 @@ public class GestionVigilantes extends javax.swing.JFrame {
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel14.setText("Fecha de contratacion  ");
-
-        txtFechaContratacion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         btnActualizacion.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         btnActualizacion.setText("ACTUALIZAR");
@@ -580,23 +563,20 @@ public class GestionVigilantes extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtTelefono))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                        .addComponent(txtFechaContratacion, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dateContratacion, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -615,41 +595,42 @@ public class GestionVigilantes extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(comboGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(comboCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(comboHorario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(comboArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(txtFechaContratacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(22, 22, 22)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(comboGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(comboCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(22, 22, 22)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11)
+                            .addComponent(comboHorario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12)
+                            .addComponent(comboArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel13)
+                            .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel14))
+                    .addComponent(dateContratacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnActualizacion)
@@ -928,7 +909,17 @@ public class GestionVigilantes extends javax.swing.JFrame {
             comboHorario.setSelectedItem(modelo.getValueAt(filaSeleccionada, 8));
             comboArea.setSelectedItem(modelo.getValueAt(filaSeleccionada, 9));
             txtTelefono.setText(modelo.getValueAt(filaSeleccionada, 10).toString());
-            txtFechaContratacion.setText(modelo.getValueAt(filaSeleccionada, 11).toString());
+            try {
+                String fechaDate = String.valueOf(modelo.getValueAt(filaSeleccionada, 11));
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                Date fecha = sdf.parse(fechaDate);
+                dateContratacion.setDate(fecha);
+                
+            } catch (Exception e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Error al establecer la fecha de contratación", "Error", JOptionPane.ERROR_MESSAGE);  
+            
+        }
             
         }
     }//GEN-LAST:event_tableVigilantesMouseClicked
@@ -971,6 +962,10 @@ public class GestionVigilantes extends javax.swing.JFrame {
         if (txtBusqueda.getText().trim().isEmpty()) {
             cargarTablaVigilantes();
         }
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            buscarVigilantes();
+        }
+        
     }//GEN-LAST:event_txtBusquedaKeyReleased
 
     /**
@@ -1019,6 +1014,7 @@ public class GestionVigilantes extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboCargo;
     private javax.swing.JComboBox<String> comboGenero;
     private javax.swing.JComboBox<String> comboHorario;
+    private com.toedter.calendar.JDateChooser dateContratacion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1053,7 +1049,6 @@ public class GestionVigilantes extends javax.swing.JFrame {
     private javax.swing.JTextField txtBusqueda;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtEdad;
-    private javax.swing.JTextField txtFechaContratacion;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtSalario;

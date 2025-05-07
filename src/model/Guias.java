@@ -5,6 +5,7 @@
 package model;
 
 import java.util.Date;
+import model.oConstantes.GeneroEnum;
 
 /**
  *
@@ -14,7 +15,7 @@ public class Guias extends Trabajadores{
     
     private String especialidad;
 
-    public Guias(String cargo, Date fechaContratacion, String salario, String horario, String correo, String numTelefono, String nombre, String apellido, String genero, String edad, int id) {
+    public Guias(String cargo, Date fechaContratacion, String salario, String horario, String correo, String numTelefono, String nombre, String apellido, GeneroEnum genero, String edad, int id) {
         super(cargo, fechaContratacion, salario, horario, correo, numTelefono, nombre, apellido, genero, edad, id);
     }
 

@@ -9,13 +9,12 @@
     "numTelefono": "3102644140",
     "nombre": "Tomas",
     "apellido": "Alcazar",
-    "genero": "Masculino",
     "edad": "33",
     "id": 1098654602
   },
   {
     "especialidad": "Guia de actividades acuaticas",
-    "cargo": "Guia de actividades acuaticas",
+    "cargo": "Guia Ecoturista",
     "fechaContratacion": "Dec 28, 2008, 12:00:00 AM",
     "salario": "400000",
     "horario": "Diurno",
@@ -23,13 +22,12 @@
     "numTelefono": "3102677840",
     "nombre": "Victor Manuel",
     "apellido": "Hernandez",
-    "genero": "Masculino",
     "edad": "44",
     "id": 1044657802
   },
   {
     "especialidad": "Interpretacion ambiental marina",
-    "cargo": "Guia Ecoturista",
+    "cargo": "Guia de actividades acuaticas",
     "fechaContratacion": "Jan 1, 2017, 12:00:00 AM",
     "salario": "300000",
     "horario": "Diurno",
@@ -37,8 +35,34 @@
     "numTelefono": "310278890",
     "nombre": "Erick",
     "apellido": "Echeverria",
-    "genero": "Masculino",
     "edad": "34",
     "id": 1093651709
+  },
+  {
+    "especialidad": "Interpretacion ambiental marina",
+    "cargo": "Guia Ecoturista",
+    "fechaContratacion": "Dec 27, 2009, 12:00:00 AM",
+    "salario": "200000",
+    "horario": "Nocturno",
+    "correo": "romeo@gmail.com",
+    "numTelefono": "3246644140",
+    "nombre": "Romeo",
+    "apellido": "Santos",
+    "edad": "45",
+    "id": 1043652709
+  },
+  {
+    "especialidad": "Buceo guiado",
+    "cargo": "Guia de actividades acuaticas",
+    "fechaContratacion": "May 12, 2025, 8:11:51 AM",
+    "salario": "2000000",
+    "horario": "Diurno",
+    "correo": "dani@gmail.com",
+    "numTelefono": "326579902",
+    "nombre": "Daniel",
+    "apellido": "Carrillo",
+    "genero": "MASCULINO",
+    "edad": "22",
+    "id": 1094651704
   }
 ]

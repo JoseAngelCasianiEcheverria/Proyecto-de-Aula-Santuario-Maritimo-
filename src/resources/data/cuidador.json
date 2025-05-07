@@ -1,20 +1,6 @@
 [
   {
     "area": "Habitat terrestre",
-    "cargo": "Veterinario",
-    "fechaContratacion": "Apr 28, 2020, 12:00:00 AM",
-    "salario": "300000",
-    "horario": "Diurno",
-    "correo": "haider@gmail.com",
-    "numTelefono": "31025789",
-    "nombre": "Haider",
-    "apellido": "Mejia",
-    "genero": "Masculino",
-    "edad": "26",
-    "id": 1044651703
-  },
-  {
-    "area": "Habitat terrestre",
     "cargo": "Jefe de area",
     "fechaContratacion": "Jul 19, 2009, 12:00:00 AM",
     "salario": "400000",
@@ -23,7 +9,6 @@
     "numTelefono": "39076589",
     "nombre": "Luz Darina",
     "apellido": "Gomez",
-    "genero": "Femenino",
     "edad": "23",
     "id": 1098651703
   },
@@ -37,7 +22,6 @@
     "numTelefono": "123456789",
     "nombre": "Sebastian",
     "apellido": "Jimenez",
-    "genero": "Masculino",
     "edad": "22",
     "id": 1093654702
   },
@@ -51,7 +35,6 @@
     "numTelefono": "3289675",
     "nombre": "Karen",
     "apellido": "Marrugo",
-    "genero": "Femenino",
     "edad": "32",
     "id": 1098651704
   },
@@ -65,7 +48,6 @@
     "numTelefono": "310267754",
     "nombre": "Tobey Andrei",
     "apellido": "Maguire",
-    "genero": "Masculino",
     "edad": "33",
     "id": 1044657893
   },
@@ -79,7 +61,6 @@
     "numTelefono": "3102644140",
     "nombre": "Manuel",
     "apellido": "Pereira",
-    "genero": "Masculino",
     "edad": "25",
     "id": 1043657603
   },
@@ -91,10 +72,9 @@
     "horario": "Diurno",
     "correo": "harold@gmail.com",
     "numTelefono": "310874416",
-    "nombre": "Harry",
+    "nombre": "Harold",
     "apellido": "Osborn",
-    "genero": "Masculino",
-    "edad": "23",
+    "edad": "22",
     "id": 1098654203
   },
   {
@@ -104,10 +84,9 @@
     "salario": "400000",
     "horario": "Nocturno",
     "correo": "jhonarrie@gmail.com",
-    "numTelefono": "31956205",
+    "numTelefono": "3102644140",
     "nombre": "Jhon Carlos",
     "apellido": "Arrieta Arrieta",
-    "genero": "Masculino",
     "edad": "46",
     "id": 1044651602
   },
@@ -118,10 +97,9 @@
     "salario": "3423431",
     "horario": "Diurno",
     "correo": "frank@gmail.com",
-    "numTelefono": "67182931",
+    "numTelefono": "6718293167",
     "nombre": "Francis Andrei",
     "apellido": "Valladares",
-    "genero": "Masculino",
     "edad": "22",
     "id": 1044678903
   },
@@ -132,10 +110,9 @@
     "salario": "300000",
     "horario": "Diurno",
     "correo": "fernanda@gmail.com",
-    "numTelefono": "32670954",
+    "numTelefono": "3267095422",
     "nombre": "Maria Alejandra",
     "apellido": "Pascuales",
-    "genero": "Femenino",
     "edad": "33",
     "id": 1045634892
   },
@@ -149,8 +126,89 @@
     "numTelefono": "3102644140",
     "nombre": "Thomas David",
     "apellido": "Lopez Paredes",
-    "genero": "Masculino",
     "edad": "22",
     "id": 1044657702
+  },
+  {
+    "area": "Habitat terrestre",
+    "cargo": "Auxiliar",
+    "fechaContratacion": "May 11, 2010, 12:00:00 AM",
+    "salario": "1200",
+    "horario": "Diurno",
+    "correo": "wdss",
+    "numTelefono": "3242076388",
+    "nombre": "Carlos David",
+    "apellido": "Marrugo Vargas",
+    "edad": "20",
+    "id": 1234567890
+  },
+  {
+    "area": "Habitat acuatico",
+    "cargo": "Jefe de area",
+    "fechaContratacion": "Aug 6, 2025, 12:00:00 AM",
+    "salario": "200000",
+    "horario": "Diurno",
+    "correo": "juan@gmail.com",
+    "numTelefono": "3102644140",
+    "nombre": "Juan Pablo",
+    "apellido": "Lopez paredes",
+    "edad": "22",
+    "id": 1093651602
+  },
+  {
+    "area": "Habitat terrestre",
+    "cargo": "Auxiliar",
+    "fechaContratacion": "May 7, 2025, 8:06:21 AM",
+    "salario": "2500000",
+    "horario": "Diurno",
+    "correo": "matews@gmail.com",
+    "numTelefono": "324657902",
+    "nombre": "Matias",
+    "apellido": "Novoa",
+    "genero": "MASCULINO",
+    "edad": "22",
+    "id": 1045678602
+  },
+  {
+    "area": "Habitat terrestre",
+    "cargo": "Veterinario",
+    "fechaContratacion": "May 19, 2024, 12:00:00 AM",
+    "salario": "300000",
+    "horario": "Diurno",
+    "correo": "norita@gmail.com",
+    "numTelefono": "3102544140",
+    "nombre": "Nora",
+    "apellido": "Reyes",
+    "genero": "MASCULINO",
+    "edad": "33",
+    "id": 1093651402
+  },
+  {
+    "area": "Habitat terrestre",
+    "cargo": "Jefe de area",
+    "fechaContratacion": "Jul 27, 2005, 12:42:28 PM",
+    "salario": "350000",
+    "horario": "Diurno",
+    "correo": "rgg@gmail.com",
+    "numTelefono": "3133376078",
+    "nombre": "Ronny Alejandro",
+    "apellido": "Guerrero Gelvez",
+    "genero": "OTROS",
+    "edad": "19",
+    "id": 1043967071
+  },
+  {
+    "area": "Habitat terrestre",
+    "cargo": "Jefe de area",
+    "fechaContratacion": "May 13, 2025, 12:53:32 PM",
+    "salario": "300000",
+    "horario": "Diurno",
+    "correo": "mahews@gmail.com",
+    "numTelefono": "32865170267",
+    "nombre": "Mathews Andres",
+    "apellido": "Charlotte",
+    "genero": "MASCULINO",
+    "edad": "22",
+    "id": 1046561702
   }
 ]

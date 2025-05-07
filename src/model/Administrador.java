@@ -2,13 +2,14 @@
 package model;
 
 import java.util.Date;
+import model.oConstantes.GeneroEnum;
 
 public class Administrador extends Persona{
    private String nombreusuario;
    private String contraseña; 
    private Date horarioDeTrabajo;
 
-    public Administrador(String nombreusuario, String contraseña, Date horarioDeTrabajo, String nombre, String apellido, String genero, String edad, int id) {
+    public Administrador(String nombreusuario, String contraseña, Date horarioDeTrabajo, String nombre, String apellido, GeneroEnum genero, String edad, int id) {
         super(nombre, apellido, genero, edad, id);
         this.nombreusuario = nombreusuario;
         this.contraseña = contraseña;
