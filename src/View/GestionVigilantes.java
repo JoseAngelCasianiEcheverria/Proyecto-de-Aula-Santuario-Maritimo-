@@ -193,6 +193,7 @@ public class GestionVigilantes extends javax.swing.JFrame {
         
         Vigilantes vigilante = dao.buscarConID(iDIngresada);
         if (vigilante == null) {
+            modelo.setRowCount(0);
             JOptionPane.showMessageDialog(null, "No hay resultados");
             
         } else {

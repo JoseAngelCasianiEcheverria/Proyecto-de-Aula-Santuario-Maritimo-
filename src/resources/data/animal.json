@@ -24,13 +24,13 @@
   {
     "nombre": "Orca",
     "idAnimal": 1098651703,
-    "peso": "3000",
+    "peso": "3400",
     "especie": "Mamifero",
     "sexo": "Macho",
-    "estadoSalud": "Sano",
-    "ubicacion": "Habitat natural",
+    "estadoSalud": "En tratamiento",
+    "ubicacion": "Area de rehabilitacion",
     "habitat": "Tanque",
-    "cuidadorAsignado": "Pablo Chacon"
+    "cuidadorAsignado": "Pablo Mendez"
   },
   {
     "nombre": "Tiburon Blanco",
@@ -86,5 +86,27 @@
     "ubicacion": "Zona de reproduccion",
     "habitat": "Tanque",
     "cuidadorAsignado": "Norman Reyes"
+  },
+  {
+    "nombre": "Tortuga",
+    "idAnimal": 1093561602,
+    "peso": "400",
+    "especie": "Reptil",
+    "sexo": "Macho",
+    "estadoSalud": "Sano",
+    "ubicacion": "Habitat natural",
+    "habitat": "Tanque",
+    "cuidadorAsignado": "Jose Eduardo Reyes"
+  },
+  {
+    "nombre": "Delfin",
+    "idAnimal": 1044651605,
+    "peso": "3100",
+    "especie": "Mamifero",
+    "sexo": "Macho",
+    "estadoSalud": "Sano",
+    "ubicacion": "Habitat natural",
+    "habitat": "Laguna",
+    "cuidadorAsignado": "Amanda Giraldo"
   }
 ]

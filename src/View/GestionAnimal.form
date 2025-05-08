@@ -58,9 +58,9 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="jLabel14" min="-2" pref="218" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                                   <Component id="jLabel15" min="-2" pref="201" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                                   <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
@@ -95,14 +95,14 @@
                               <Component id="btnBuscar" alignment="0" max="32767" attributes="0"/>
                               <Component id="btnEliminar" alignment="0" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel14" min="-2" pref="178" max="-2" attributes="0"/>
                               <Component id="jLabel16" min="-2" pref="185" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                          <Component id="jPanel5" min="-2" pref="589" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jPanel5" min="-2" pref="624" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -428,22 +428,21 @@
                   <Font name="Segoe UI" size="14" style="1"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="15">
+                  <StringArray count="14">
                     <StringItem index="0" value="Seleccionar"/>
-                    <StringItem index="1" value=" "/>
-                    <StringItem index="2" value="Mamifero"/>
-                    <StringItem index="3" value="Ave"/>
-                    <StringItem index="4" value="Pez"/>
-                    <StringItem index="5" value="Reptil"/>
-                    <StringItem index="6" value="Crustaceo"/>
-                    <StringItem index="7" value="Cefalopodo"/>
-                    <StringItem index="8" value="Molusco"/>
-                    <StringItem index="9" value="Equinodermo"/>
-                    <StringItem index="10" value="Cnidario"/>
+                    <StringItem index="1" value="Mamifero"/>
+                    <StringItem index="2" value="Ave"/>
+                    <StringItem index="3" value="Pez"/>
+                    <StringItem index="4" value="Reptil"/>
+                    <StringItem index="5" value="Crustaceo"/>
+                    <StringItem index="6" value="Cefalopodo"/>
+                    <StringItem index="7" value="Molusco"/>
+                    <StringItem index="8" value="Equinodermo"/>
+                    <StringItem index="9" value="Cnidario"/>
+                    <StringItem index="10" value=" "/>
                     <StringItem index="11" value=" "/>
                     <StringItem index="12" value=" "/>
                     <StringItem index="13" value=" "/>
-                    <StringItem index="14" value=" "/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -465,12 +464,11 @@
                   <Font name="Segoe UI" size="14" style="1"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="5">
+                  <StringArray count="4">
                     <StringItem index="0" value="Seleccionar"/>
-                    <StringItem index="1" value=" "/>
-                    <StringItem index="2" value="Macho"/>
-                    <StringItem index="3" value="Hembra"/>
-                    <StringItem index="4" value=" "/>
+                    <StringItem index="1" value="Macho"/>
+                    <StringItem index="2" value="Hembra"/>
+                    <StringItem index="3" value=" "/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -492,13 +490,12 @@
                   <Font name="Segoe UI" size="14" style="1"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="6">
+                  <StringArray count="5">
                     <StringItem index="0" value="Seleccionar"/>
-                    <StringItem index="1" value=" "/>
-                    <StringItem index="2" value="Sano"/>
-                    <StringItem index="3" value="En tratamiento"/>
-                    <StringItem index="4" value="En recuperacion"/>
-                    <StringItem index="5" value=" "/>
+                    <StringItem index="1" value="Sano"/>
+                    <StringItem index="2" value="En tratamiento"/>
+                    <StringItem index="3" value="En recuperacion"/>
+                    <StringItem index="4" value=" "/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -520,18 +517,17 @@
                   <Font name="Segoe UI" size="14" style="1"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="11">
+                  <StringArray count="10">
                     <StringItem index="0" value="Seleccionar"/>
-                    <StringItem index="1" value=" "/>
-                    <StringItem index="2" value="Habitat natural"/>
-                    <StringItem index="3" value="Zona de crianza"/>
-                    <StringItem index="4" value="Zona de reproduccion"/>
-                    <StringItem index="5" value="Area de rehabilitacion"/>
-                    <StringItem index="6" value="Educacion ambiental"/>
-                    <StringItem index="7" value="Nutricion animal"/>
-                    <StringItem index="8" value="Zona de investigacion"/>
+                    <StringItem index="1" value="Habitat natural"/>
+                    <StringItem index="2" value="Zona de crianza"/>
+                    <StringItem index="3" value="Zona de reproduccion"/>
+                    <StringItem index="4" value="Area de rehabilitacion"/>
+                    <StringItem index="5" value="Educacion ambiental"/>
+                    <StringItem index="6" value="Nutricion animal"/>
+                    <StringItem index="7" value="Zona de investigacion"/>
+                    <StringItem index="8" value=" "/>
                     <StringItem index="9" value=" "/>
-                    <StringItem index="10" value=" "/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -590,15 +586,14 @@
                   <Font name="Segoe UI" size="14" style="1"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="8">
+                  <StringArray count="7">
                     <StringItem index="0" value="Seleccionar"/>
-                    <StringItem index="1" value=" "/>
-                    <StringItem index="2" value="Tanque"/>
-                    <StringItem index="3" value="Laguna"/>
-                    <StringItem index="4" value="Arrecife"/>
-                    <StringItem index="5" value="Manglar"/>
-                    <StringItem index="6" value="Area de rehabilitacion"/>
-                    <StringItem index="7" value=" "/>
+                    <StringItem index="1" value="Tanque"/>
+                    <StringItem index="2" value="Laguna"/>
+                    <StringItem index="3" value="Arrecife"/>
+                    <StringItem index="4" value="Manglar"/>
+                    <StringItem index="5" value="Area de rehabilitacion"/>
+                    <StringItem index="6" value=" "/>
                   </StringArray>
                 </Property>
               </Properties>

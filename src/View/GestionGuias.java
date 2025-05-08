@@ -196,6 +196,7 @@ public class GestionGuias extends javax.swing.JFrame {
         
         Guias guia = dao.buscarConID(iDIngresada);
         if (guia == null) {
+            modelo.setRowCount(0);
             JOptionPane.showMessageDialog(null, "No hay resultados");
             
         } else {

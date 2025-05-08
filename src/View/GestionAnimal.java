@@ -64,6 +64,11 @@ public class GestionAnimal extends javax.swing.JFrame {
                 return;    
             }
             
+            if (!validacionLetras(cuidador)) {
+                JOptionPane.showMessageDialog(this, "El nombre del cuidador debe ser en LETRAS","Error",JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
             int iD = Integer.parseInt(iDText);
             
             Animales registroExistente = dao.buscarConId(iD);
@@ -160,6 +165,7 @@ public class GestionAnimal extends javax.swing.JFrame {
         
         Animales animal = dao.buscarConId(idIngresado);
         if (animal == null) {
+            modelo.setRowCount(0);
             JOptionPane.showMessageDialog(this, "No hay resultados");
         } else {
             mostrarBusquedEnTabla(animal);
@@ -206,9 +212,15 @@ public class GestionAnimal extends javax.swing.JFrame {
             for(Animales animal : listaAnimal){
                 if (animal.getIdAnimal() == iD) {
                     String peso = txtPeso.getText().trim();
+                    String cuidador = txtCuidador.getText().trim();
                     
                     if (!peso.matches("\\d+")) {
                         JOptionPane.showMessageDialog(this,"El peso debe ser en numeros","Error",JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                    
+                    if (!validacionLetras(cuidador)) {
+                        JOptionPane.showMessageDialog(this, "El nombre del cuidador debe ser en LETRAS","Error",JOptionPane.ERROR_MESSAGE);
                         return;
                     }
                
@@ -216,7 +228,7 @@ public class GestionAnimal extends javax.swing.JFrame {
                 animal.setEstadoSalud(comboEstado.getSelectedItem().toString());
                 animal.setUbicacion(comboUbicacion.getSelectedItem().toString());
                 animal.setHabitat(comboHabitat.getSelectedItem().toString());
-                animal.setCuidadorAsignado(txtCuidador.getText().trim());
+                animal.setCuidadorAsignado(cuidador);
                 
                 dao.guardarTodos(listaAnimal);
                 JOptionPane.showMessageDialog(this, "Datos actualizados exitosamente", "Exitos", JOptionPane.INFORMATION_MESSAGE);
@@ -404,25 +416,25 @@ public class GestionAnimal extends javax.swing.JFrame {
         jLabel6.setText("Especie  ");
 
         comboEspecie.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        comboEspecie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", " ", "Mamifero", "Ave", "Pez", "Reptil", "Crustaceo", "Cefalopodo", "Molusco", "Equinodermo", "Cnidario", " ", " ", " ", " " }));
+        comboEspecie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Mamifero", "Ave", "Pez", "Reptil", "Crustaceo", "Cefalopodo", "Molusco", "Equinodermo", "Cnidario", " ", " ", " ", " " }));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setText("Sexo ");
 
         comboSexo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        comboSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", " ", "Macho", "Hembra", " " }));
+        comboSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Macho", "Hembra", " " }));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setText("Estado ");
 
         comboEstado.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        comboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", " ", "Sano", "En tratamiento", "En recuperacion", " " }));
+        comboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Sano", "En tratamiento", "En recuperacion", " " }));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setText("Ubicacion ");
 
         comboUbicacion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        comboUbicacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", " ", "Habitat natural", "Zona de crianza", "Zona de reproduccion", "Area de rehabilitacion", "Educacion ambiental", "Nutricion animal", "Zona de investigacion", " ", " " }));
+        comboUbicacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Habitat natural", "Zona de crianza", "Zona de reproduccion", "Area de rehabilitacion", "Educacion ambiental", "Nutricion animal", "Zona de investigacion", " ", " " }));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel10.setText("Cuidador");
@@ -449,7 +461,7 @@ public class GestionAnimal extends javax.swing.JFrame {
         jLabel13.setText("Habitat");
 
         comboHabitat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        comboHabitat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", " ", "Tanque", "Laguna", "Arrecife", "Manglar", "Area de rehabilitacion", " " }));
+        comboHabitat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Tanque", "Laguna", "Arrecife", "Manglar", "Area de rehabilitacion", " " }));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -738,9 +750,9 @@ public class GestionAnimal extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(31, 31, 31)
+                                .addGap(29, 29, 29)
                                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(58, 58, 58)
+                                .addGap(54, 54, 54)
                                 .addComponent(jLabel16))
                             .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -767,13 +779,13 @@ public class GestionAnimal extends javax.swing.JFrame {
                             .addComponent(btnGuardar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(78, 78, 78)
+                        .addGap(71, 71, 71)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel15)
-                            .addComponent(jLabel14)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(26, 26, 26)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 589, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 624, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))

@@ -197,6 +197,7 @@ public class GestionVeterinaria extends javax.swing.JFrame {
         
         Veterinarios veterinario = dao.buscarConID(iDIngresada);
         if (veterinario == null) {
+            modelo.setRowCount(0);
             JOptionPane.showMessageDialog(null, "No hay resultados");
             
         } else {
