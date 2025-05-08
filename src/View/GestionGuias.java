@@ -101,8 +101,7 @@ public class GestionGuias extends javax.swing.JFrame {
                 return;
             }
             
-            Guias nuevoGuia = new Guias(cargo, fechaContratacion, salario, horario, correo, numTelefonoText, nombre, apellido, genero, edad, iD);
-            nuevoGuia.setEspecialidad(especialidad);
+            Guias nuevoGuia = new Guias(cargo, fechaContratacion, salario, horario, correo, numTelefonoText, nombre, apellido, genero, edad, iD, especialidad);
             dao.guardarGuias(nuevoGuia);
             
             JOptionPane.showMessageDialog(this,"Registro exitoso","Exitos",JOptionPane.INFORMATION_MESSAGE);

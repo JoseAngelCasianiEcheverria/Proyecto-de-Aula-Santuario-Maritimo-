@@ -99,9 +99,7 @@ public class GestionVigilantes extends javax.swing.JFrame {
                 return;   
             }
             
-            
-            Vigilantes nuevoVigilante = new Vigilantes(cargo, fechaContratacion, salario, horario, correo, numTelefono, nombre, apellido, genero, edad, iD);
-            nuevoVigilante.setArea(area);
+            Vigilantes nuevoVigilante = new Vigilantes(cargo, fechaContratacion, salario, horario, correo, numTelefono, nombre, apellido, genero, edad, iD, area);
             dao.guardarVigilantes(nuevoVigilante);
             
             JOptionPane.showMessageDialog(this,"Registro exitoso", "Exitos", JOptionPane.INFORMATION_MESSAGE);

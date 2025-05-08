@@ -102,9 +102,7 @@ public class GestionCuidadores extends javax.swing.JFrame {
                 return;   
             }
             
-            Cuidadores nuevoCuidador = new Cuidadores(cargo, fechaContratacion, salario, horario, correo, numTelefono, nombre, apellido, genero, edad, iD);
-            nuevoCuidador.setArea(area);
-            
+            Cuidadores nuevoCuidador = new Cuidadores(cargo, fechaContratacion, salario, horario, correo, numTelefono, nombre, apellido, genero, edad, iD, area);
             dao.guardarCuidador(nuevoCuidador);
             
             JOptionPane.showMessageDialog(this,"Registro exitoso", "Exitos", JOptionPane.INFORMATION_MESSAGE);
@@ -167,17 +165,31 @@ public class GestionCuidadores extends javax.swing.JFrame {
     }
     
     private void eliminarCuidadores(){
-        String iDEliminada = JOptionPane.showInputDialog(this, "Ingrese un ID para eliminar: ");
+        String iDIngresado = JOptionPane.showInputDialog(this, "Ingrese el ID a eliminar");
         
-        if (iDEliminada != null && !iDEliminada.trim().isEmpty()) {
-            dao.eliminarConID(iDEliminada.trim());
-            cargarTablaCuidadores();
-            
-            JOptionPane.showMessageDialog(this, "Eliminacion exitosa", "Exitos", JOptionPane.INFORMATION_MESSAGE);   
+        if (iDIngresado != null && !iDIngresado.trim().isEmpty()) {
+            try {
+                int id = Integer.parseInt(iDIngresado.trim());
+                boolean eliminacion = dao.eliminarConID(id);
+                
+                if (eliminacion) {
+                    cargarTablaCuidadores();
+                    JOptionPane.showMessageDialog(this,"Eliminacion exitosa","Exitos",JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(this,"ID no encontrado");
+                    return;
+                }
+                
+                
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Id invalido","Error",JOptionPane.ERROR_MESSAGE);
+                return;
+            }
         } else {
-            JOptionPane.showMessageDialog(this, "Cancelando eliminacion","Error", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Cancelando eliminacion","Warning",JOptionPane.WARNING_MESSAGE);
         }
     }
+    
     
     private void buscarCuidadores(){
         String iDBuscada = txtBusqueda.getText().trim();
@@ -294,6 +306,7 @@ public class GestionCuidadores extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Error inesperado al actualizar", "Error", JOptionPane.ERROR_MESSAGE);
     }
 }
+ 
     
     
     

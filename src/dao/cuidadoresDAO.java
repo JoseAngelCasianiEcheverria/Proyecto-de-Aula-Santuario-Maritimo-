@@ -54,18 +54,10 @@ public class cuidadoresDAO {
         }  
     }
     
-    public boolean eliminarConID(String id){
+    public boolean eliminarConID(int id){
         List<Cuidadores> cuidadores = cargarRegistros();
-        int iDBuscado;
+        boolean eliminacion = cuidadores.removeIf(cuidador -> cuidador.getId() == id);
         
-        try {
-            iDBuscado = Integer.parseInt(id);
-            
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "ID no encontrado en el sistema","Error", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
-        boolean eliminacion = cuidadores.removeIf(cuidador -> cuidador.getId() == iDBuscado);
         if (eliminacion) {
             guardarTodos(cuidadores);
         }

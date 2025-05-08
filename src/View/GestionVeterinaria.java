@@ -100,8 +100,7 @@ public class GestionVeterinaria extends javax.swing.JFrame {
             return;
         }
         
-        Veterinarios nuevoVeterinario = new Veterinarios(cargo, fechaContratacion, salario, horario, correo, numTelefono, nombre, apellido, genero, edad, iD);
-        nuevoVeterinario.setArea(area);
+        Veterinarios nuevoVeterinario = new Veterinarios(cargo, fechaContratacion, salario, horario, correo, numTelefono, nombre, apellido, genero, edad, iD, area);
         dao.guardarVeterinario(nuevoVeterinario);
         
         JOptionPane.showMessageDialog(this, "Registro exitoso", "Exitos",JOptionPane.INFORMATION_MESSAGE);

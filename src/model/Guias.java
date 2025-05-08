@@ -15,8 +15,9 @@ public class Guias extends Trabajadores{
     
     private String especialidad;
 
-    public Guias(String cargo, Date fechaContratacion, String salario, String horario, String correo, String numTelefono, String nombre, String apellido, GeneroEnum genero, String edad, int id) {
+    public Guias(String cargo, Date fechaContratacion, String salario, String horario, String correo, String numTelefono, String nombre, String apellido, GeneroEnum genero, String edad, int id, String especialidad) {
         super(cargo, fechaContratacion, salario, horario, correo, numTelefono, nombre, apellido, genero, edad, id);
+        this.especialidad = especialidad;
     }
 
     public String getEspecialidad() {
