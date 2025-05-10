@@ -20,11 +20,11 @@
     "salario": "350000",
     "horario": "Nocturno",
     "correo": "rgg@gmail.com",
-    "numTelefono": "3133376078",
+    "numTelefono": "3102644140",
     "nombre": "Ronny Alejandro",
     "apellido": "Guerrero Gelvez",
     "genero": "OTROS",
-    "edad": "19",
+    "edad": "22",
     "id": 1043967071
   },
   {
@@ -54,5 +54,19 @@
     "genero": "FEMENINO",
     "edad": "36",
     "id": 1096551602
+  },
+  {
+    "area": "Habitat terrestre",
+    "cargo": "Auxiliar",
+    "fechaContratacion": "May 22, 2021, 12:00:00 AM",
+    "salario": "500000",
+    "horario": "Diurno",
+    "correo": "lolito@gmail.com",
+    "numTelefono": "3015375730",
+    "nombre": "Manuel",
+    "apellido": "Hernandez",
+    "genero": "MASCULINO",
+    "edad": "20",
+    "id": 1062684
   }
 ]

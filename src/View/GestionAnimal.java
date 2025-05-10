@@ -34,6 +34,40 @@ public class GestionAnimal extends javax.swing.JFrame {
         initComponents();
         cargarTablaAnimal();
         setLocationRelativeTo(null);
+        
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter(){
+            public void keyTyped(java.awt.event.KeyEvent evt){
+                soloLetras(evt);
+            }
+        });
+        txtID.addKeyListener(new java.awt.event.KeyAdapter(){
+            public void keyTyped(java.awt.event.KeyEvent evt){
+                char c = evt.getKeyChar();
+                
+                if (!Character.isDigit(c) || txtID.getText().length() >= 10) {
+                    evt.consume();
+                }  
+            }
+        });
+        txtPeso.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt){
+                soloNumeros(evt);
+            }
+        });
+        txtCuidador.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt){
+                soloLetras(evt);
+            }
+        });
+        
+        
+        
+        
+        
+        
+        
+        
+        
     }
     
     private final animalesDAO dao = new animalesDAO();
@@ -96,6 +130,24 @@ public class GestionAnimal extends javax.swing.JFrame {
         }
         return true;
     }
+    
+    private void soloLetras(java.awt.event.KeyEvent evt){
+        char c = evt.getKeyChar();
+        if (!Character.isLetter(c) && c != ' ' && c != '\b') {
+            evt.consume();
+            JOptionPane.showMessageDialog(this, "Solo se permiten LETRAS","Error",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    private void soloNumeros(java.awt.event.KeyEvent evt){
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c) && c != '\b') {
+            evt.consume();
+            JOptionPane.showMessageDialog(this,"Solo se permiten NUMEROS","Error",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    
     
     private void cargarTablaAnimal(){
         modelo.setColumnIdentifiers(new Object[]{ "Nombre","ID","Peso","Especie","Sexo","Estado","Ubicacion","Habitat","Cuidador"});

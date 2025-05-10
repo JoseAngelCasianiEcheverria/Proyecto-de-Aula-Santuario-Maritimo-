@@ -36,6 +36,45 @@ public class GestionVigilantes extends javax.swing.JFrame {
         initComponents();
         cargarTablaVigilantes();
         setLocationRelativeTo(null);
+        
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter(){
+            public void  keyTyped(java.awt.event.KeyEvent evt){
+                soloLetras(evt);
+            }
+        });
+        txtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt){
+                soloLetras(evt);
+            }
+        });
+        txtEdad.addKeyListener(new java.awt.event.KeyAdapter(){
+            public void keyTyped(java.awt.event.KeyEvent evt){
+                soloNumeros(evt);
+            }
+        });
+        txtID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt){
+                char c = evt.getKeyChar();
+                
+                if (!Character.isDigit(c) || txtID.getText().length() >= 10) {
+                    evt.consume();
+                }
+            }
+        });
+        txtSalario.addKeyListener(new java.awt.event.KeyAdapter(){
+            public void keyTyped(java.awt.event.KeyEvent evt){
+                soloNumeros(evt);
+            }
+        });
+        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() { 
+            public void keyTyped(java.awt.event.KeyEvent evt){
+                char c = evt.getKeyChar();
+                if (!Character.isDigit(c) || txtTelefono.getText().length() >= 10) {
+                    evt.consume();
+                }
+            }
+        });  
+        
     }
     
     private final vigilantesDAO dao = new vigilantesDAO();
@@ -119,6 +158,24 @@ public class GestionVigilantes extends javax.swing.JFrame {
         return true;
     }
     
+    private void soloLetras(java.awt.event.KeyEvent evt){
+        char c = evt.getKeyChar();
+        if (!Character.isLetter(c) && c != ' ' && c != '\b') {
+            evt.consume();
+            JOptionPane.showMessageDialog(this,"Solo se permiten LETRAS","Error",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    private void soloNumeros(java.awt.event.KeyEvent evt){
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c) && c != '\b') {
+            evt.consume();
+            JOptionPane.showMessageDialog(this,"Solo se permiten NUMEROS","Error",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+            
+    
+    
+    
     private void cargarTablaVigilantes(){
         modelo.setColumnIdentifiers(new Object[]{"Nombre","Apellido","Edad","ID","Genero","Correo","Cargo","Salario","Horario","Area","Telefono","Contratacion"});
         modelo.setRowCount(0);
@@ -161,17 +218,30 @@ public class GestionVigilantes extends javax.swing.JFrame {
     }
     
     private void eliminarVigilantes(){
-        String iDEliminada = JOptionPane.showInputDialog(this, "Ingrese un ID para eliminar: ");
+        String iDIngresado = JOptionPane.showInputDialog(this, "Ingrese el ID a eliminar");
         
-        if (iDEliminada != null && !iDEliminada.trim().isEmpty()) {
-            dao.eliminarConID(iDEliminada.trim());
-            cargarTablaVigilantes();
-            
-            JOptionPane.showMessageDialog(this, "Eliminacion exitosa", "Exitos", JOptionPane.INFORMATION_MESSAGE);   
+        if (iDIngresado != null && !iDIngresado.trim().isEmpty()) {
+            try {
+                int id = Integer.parseInt(iDIngresado.trim());
+                boolean eliminacion = dao.eliminarConID(id);
+                
+                if (eliminacion) {
+                    cargarTablaVigilantes();
+                    JOptionPane.showMessageDialog(this,"Eliminacion exitosa","Exitos",JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(this,"ID no encontrado");
+                    return;
+                }
+                
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Id invalido","Error",JOptionPane.ERROR_MESSAGE);
+                return;
+            }
         } else {
-            JOptionPane.showMessageDialog(this, "Cancelando eliminacion","Error", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Cancelando eliminacion","Warning",JOptionPane.WARNING_MESSAGE);
         }
     }
+    
     
     private void buscarVigilantes(){
         String iDBuscada = txtBusqueda.getText().trim();
@@ -473,7 +543,7 @@ public class GestionVigilantes extends javax.swing.JFrame {
         jLabel9.setText("Cargo");
 
         comboCargo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        comboCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", " ", "Guardia de entrada", "Patrullero", "Guardia por exterior" }));
+        comboCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Guardia de entrada", "Patrullero", "Guardia por exterior" }));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel10.setText("Salario ");
@@ -484,13 +554,13 @@ public class GestionVigilantes extends javax.swing.JFrame {
         jLabel11.setText("Horario");
 
         comboHorario.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        comboHorario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", " ", "Diurno", "Nocturno", " " }));
+        comboHorario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Diurno", "Nocturno", " " }));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel12.setText("Area");
 
         comboArea.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        comboArea.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", " ", "Zona de corales", "Entrada principal", "Torre de control", "Manejo ambiental", " ", " " }));
+        comboArea.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Zona de corales", "Entrada principal", "Torre de control", "Manejo ambiental", " ", " " }));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel13.setText("Telefono ");

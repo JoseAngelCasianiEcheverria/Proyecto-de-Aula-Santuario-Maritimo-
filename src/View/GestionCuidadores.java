@@ -39,6 +39,44 @@ public class GestionCuidadores extends javax.swing.JFrame {
         initComponents();
         cargarTablaCuidadores();
         setLocationRelativeTo(null);
+        
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter(){
+            public void  keyTyped(java.awt.event.KeyEvent evt){
+                soloLetras(evt);
+            }
+        });
+        txtApellido.addKeyListener(new java.awt.event.KeyAdapter(){
+            public void keyTyped(java.awt.event.KeyEvent evt){
+                soloLetras(evt);
+            }
+        });
+        txtEdad.addKeyListener(new java.awt.event.KeyAdapter(){
+            public void keyTyped(java.awt.event.KeyEvent evt){
+                soloNumeros(evt);
+            }
+        });
+        txtID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt){
+                char c = evt.getKeyChar();
+                
+                if (!Character.isDigit(c) || txtID.getText().length() >= 10) {
+                    evt.consume();
+                }
+            }
+        });
+        txtSalario.addKeyListener(new java.awt.event.KeyAdapter(){
+            public void keyTyped(java.awt.event.KeyEvent evt){
+                soloNumeros(evt);
+            }
+        });
+        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() { 
+            public void keyTyped(java.awt.event.KeyEvent evt){
+                char c = evt.getKeyChar();
+                if (!Character.isDigit(c) || txtTelefono.getText().length() >= 10) {
+                    evt.consume();
+                }
+            }
+        });
     }
     
     private final cuidadoresDAO dao = new cuidadoresDAO();
@@ -120,6 +158,22 @@ public class GestionCuidadores extends javax.swing.JFrame {
             }
         }
         return true;
+    }
+    
+    private void soloLetras(java.awt.event.KeyEvent evt){
+        char c = evt.getKeyChar();
+        if (!Character.isLetter(c) && c != ' ' && c != '\b') {
+            evt.consume();
+            JOptionPane.showMessageDialog(this, "Solo se permiten LETRAS","Error",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    private void soloNumeros(java.awt.event.KeyEvent evt){
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c) && c != '\b') {
+            evt.consume();
+            JOptionPane.showMessageDialog(this,"Solo se permiten NUMEROS","Error",JOptionPane.ERROR_MESSAGE);
+        }
     }
     
     

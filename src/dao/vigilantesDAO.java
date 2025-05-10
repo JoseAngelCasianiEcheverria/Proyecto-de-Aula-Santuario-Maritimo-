@@ -54,24 +54,16 @@ public class vigilantesDAO {
         }  
     }
     
-    public boolean eliminarConID(String id){
+   public boolean eliminarConID(int id){
         List<Vigilantes> vigilantes = cargarRegistros();
-        int iDBuscado;
+        boolean eliminacion = vigilantes.removeIf(vigilante -> vigilante.getId() == id);
         
-        try {
-            iDBuscado = Integer.parseInt(id);
-            
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "ID no encontrado en el sistema","Error", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
-        boolean eliminacion = vigilantes.removeIf(vigilante -> vigilante.getId() == iDBuscado);
         if (eliminacion) {
             guardarTodos(vigilantes);
         }
         return eliminacion;
+        
     }
-    
     public Vigilantes buscarConID(int id){
         List<Vigilantes> vigilantes = cargarRegistros();
         

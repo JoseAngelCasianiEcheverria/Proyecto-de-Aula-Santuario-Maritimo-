@@ -55,17 +55,10 @@ public class GuiasDAO {
         }     
     }
     
-    public boolean eliminarConID(String id){
+    public boolean eliminarConID(int id){
         List<Guias> guias = cargarRegistros();
-        int iDBuscado;
+        boolean eliminacion = guias.removeIf(guia -> guia.getId() == id);
         
-        try {
-            iDBuscado = Integer.parseInt(id);    
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null,"ID no encontrado","Error",JOptionPane.ERROR_MESSAGE);
-            return false;
-        } 
-        boolean eliminacion = guias.removeIf(guia -> guia.getId() == iDBuscado);
         if (eliminacion) {
             guardarTodos(guias);
         }

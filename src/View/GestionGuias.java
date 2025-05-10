@@ -38,6 +38,46 @@ public class GestionGuias extends javax.swing.JFrame {
         initComponents();
         cargarTablaGuias();
         setLocationRelativeTo(null);
+        
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt){
+                soloLetras(evt);
+            }
+        });
+        txtApellido.addKeyListener(new java.awt.event.KeyAdapter(){
+            public void keyTyped(java.awt.event.KeyEvent evt){
+                soloLetras(evt);
+            }
+        });
+        txtEdad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt){
+                soloNumeros(evt);
+            }
+        });
+        txtID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt){
+                char c = evt.getKeyChar();
+                if (!Character.isDigit(c) || txtID.getText().length() >= 10) {
+                    evt.consume();    
+                }
+            }
+        });
+        txtSalario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt){
+                soloNumeros(evt);
+            }
+        });
+        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt){
+                char c = evt.getKeyChar();
+                if (!Character.isDigit(c) || txtTelefono.getText().length() >= 10) {
+                    evt.consume();
+                    
+                }
+            }
+        });
+        
+        
     }
     
     private final GuiasDAO dao = new GuiasDAO();
@@ -123,6 +163,22 @@ public class GestionGuias extends javax.swing.JFrame {
         return true;
     }
     
+    private void soloLetras(java.awt.event.KeyEvent evt){
+        char c = evt.getKeyChar();
+        if (!Character.isLetter(c) && c != ' ' && c != '\b') {
+            evt.consume();
+            JOptionPane.showMessageDialog(this, "Solo se permiten LETRAS","Error",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    private void soloNumeros(java.awt.event.KeyEvent evt){
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c) && c != '\b') {
+            evt.consume();
+            JOptionPane.showMessageDialog(this,"Solo se permiten NUMEROS","Error",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
     private void cargarTablaGuias(){
         modelo.setColumnIdentifiers(new Object[]{"Nombre","Apellido","Edad","ID","Genero","Correo","Salario","Cargo","Horario","Telefono","Contratacion","Especialidad"});
         modelo.setRowCount(0);
@@ -165,17 +221,30 @@ public class GestionGuias extends javax.swing.JFrame {
     }
     
     private void eliminarGuias(){
-        String iDEliminada = JOptionPane.showInputDialog(this, "Ingrese un ID para eliminar: ");
+        String iDIngresado = JOptionPane.showInputDialog(this, "Ingrese el ID a eliminar");
         
-        if (iDEliminada != null && !iDEliminada.trim().isEmpty()) {
-            dao.eliminarConID(iDEliminada.trim());
-            cargarTablaGuias();
-            
-            JOptionPane.showMessageDialog(this, "Elimiancion exitosa","Exitos",JOptionPane.INFORMATION_MESSAGE);
+        if (iDIngresado != null && !iDIngresado.trim().isEmpty()) {
+            try {
+                int id = Integer.parseInt(iDIngresado.trim());
+                boolean eliminacion = dao.eliminarConID(id);
+                
+                if (eliminacion) {
+                    cargarTablaGuias();
+                    JOptionPane.showMessageDialog(this,"Eliminacion exitosa","Exitos",JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(this,"ID no encontrado");
+                    return;
+                }
+                  
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Id invalido","Error",JOptionPane.ERROR_MESSAGE);
+                return;
+            }
         } else {
             JOptionPane.showMessageDialog(this,"Cancelando eliminacion","Warning",JOptionPane.WARNING_MESSAGE);
         }
     }
+    
     
     private void buscarGuias(){
         String iDBuscada = txtBusqueda.getText().trim();
