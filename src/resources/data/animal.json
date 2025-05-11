@@ -1,112 +1,50 @@
 [
   {
     "nombre": "Mantarraya",
-    "idAnimal": 1098657203,
+    "idAnimal": 1098651782,
     "peso": "1700",
     "especie": "Pez",
-    "sexo": "Macho",
+    "sexo": "MACHO",
     "estadoSalud": "Sano",
-    "ubicacion": "Habitat natural",
+    "ubicacion": "Educacion ambiental",
     "habitat": "Tanque",
-    "cuidadorAsignado": "Juan Manuel Paredes"
+    "cuidadorAsignado": "Manuel Herrera",
+    "fechaIngreso": "May 8, 2025, 7:06:28 PM"
   },
   {
-    "nombre": "Medusa",
-    "idAnimal": 1055678902,
-    "peso": "200",
-    "especie": "Cnidario",
-    "sexo": "Hembra",
-    "estadoSalud": "Sano",
-    "ubicacion": "Zona de reproduccion",
-    "habitat": "Arrecife",
-    "cuidadorAsignado": "Norman Marrugo"
-  },
-  {
-    "nombre": "Orca",
-    "idAnimal": 1098651703,
-    "peso": "3400",
+    "nombre": "Tiburon",
+    "idAnimal": 1044657822,
+    "peso": "2500",
     "especie": "Mamifero",
-    "sexo": "Macho",
-    "estadoSalud": "En tratamiento",
+    "sexo": "MACHO",
+    "estadoSalud": "En recuperacion",
     "ubicacion": "Area de rehabilitacion",
-    "habitat": "Tanque",
-    "cuidadorAsignado": "Pablo Mendez"
-  },
-  {
-    "nombre": "Tiburon Blanco",
-    "idAnimal": 1044657803,
-    "peso": "3500",
-    "especie": "Mamifero",
-    "sexo": "Macho",
-    "estadoSalud": "Sano",
-    "ubicacion": "Habitat natural",
-    "habitat": "Tanque",
-    "cuidadorAsignado": "Juan Pablo Lopez"
+    "habitat": "Area de rehabilitacion",
+    "cuidadorAsignado": "Juan Pablo Lopez",
+    "fechaIngreso": "May 27, 2025, 7:07:18 PM"
   },
   {
     "nombre": "Delfin",
-    "idAnimal": 1098651204,
-    "peso": "3100",
+    "idAnimal": 123651672,
+    "peso": "2100",
     "especie": "Mamifero",
-    "sexo": "Macho",
-    "estadoSalud": "En recuperacion",
-    "ubicacion": "Area de rehabilitacion",
-    "habitat": "Laguna",
-    "cuidadorAsignado": "Adrian Moreno"
-  },
-  {
-    "nombre": "Pez Espada",
-    "idAnimal": 1044651895,
-    "peso": "3200",
-    "especie": "Pez",
-    "sexo": "Macho",
+    "sexo": "HEMBRA",
     "estadoSalud": "Sano",
     "ubicacion": "Habitat natural",
-    "habitat": "Tanque",
-    "cuidadorAsignado": "Mathews Reyes"
+    "habitat": "Laguna",
+    "cuidadorAsignado": "Mariana Jimenez",
+    "fechaIngreso": "May 17, 2025, 7:08:27 PM"
   },
   {
     "nombre": "Pulpo",
-    "idAnimal": 1044651702,
-    "peso": "500",
+    "idAnimal": 1044651672,
+    "peso": "2700",
     "especie": "Cefalopodo",
-    "sexo": "Macho",
+    "sexo": "MACHO",
     "estadoSalud": "Sano",
-    "ubicacion": "Nutricion animal",
-    "habitat": "Laguna",
-    "cuidadorAsignado": "Jhon Arrieta"
-  },
-  {
-    "nombre": "Ballena Jorobada",
-    "idAnimal": 1093674602,
-    "peso": "6000",
-    "especie": "Mamifero",
-    "sexo": "Hembra",
-    "estadoSalud": "Sano",
-    "ubicacion": "Zona de reproduccion",
-    "habitat": "Tanque",
-    "cuidadorAsignado": "Norman Reyes"
-  },
-  {
-    "nombre": "Tortuga",
-    "idAnimal": 1093561602,
-    "peso": "400",
-    "especie": "Reptil",
-    "sexo": "Macho",
-    "estadoSalud": "Sano",
-    "ubicacion": "Habitat natural",
-    "habitat": "Tanque",
-    "cuidadorAsignado": "Jose Eduardo Reyes"
-  },
-  {
-    "nombre": "Delfin",
-    "idAnimal": 1044651605,
-    "peso": "3100",
-    "especie": "Mamifero",
-    "sexo": "Macho",
-    "estadoSalud": "Sano",
-    "ubicacion": "Habitat natural",
-    "habitat": "Laguna",
-    "cuidadorAsignado": "Amanda Giraldo"
+    "ubicacion": "Zona de investigacion",
+    "habitat": "Arrecife",
+    "cuidadorAsignado": "Jose Casseres Peralta",
+    "fechaIngreso": "May 19, 2023, 7:09:48 PM"
   }
 ]

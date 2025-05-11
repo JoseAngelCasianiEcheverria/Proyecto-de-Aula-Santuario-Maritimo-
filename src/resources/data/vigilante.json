@@ -54,5 +54,19 @@
     "genero": "MASCULINO",
     "edad": "44",
     "id": 1043651606
+  },
+  {
+    "area": "Manejo ambiental",
+    "cargo": "Patrullero",
+    "fechaContratacion": "May 20, 2025, 2:40:06 PM",
+    "salario": "2500000",
+    "horario": "Diurno",
+    "correo": "noelia@gmail.com",
+    "numTelefono": "3102655390",
+    "nombre": "Noelia",
+    "apellido": "Alvarez",
+    "genero": "FEMENINO",
+    "edad": "33",
+    "id": 1044651678
   }
 ]

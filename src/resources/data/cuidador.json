@@ -1,20 +1,6 @@
 [
   {
     "area": "Habitat terrestre",
-    "cargo": "Veterinario",
-    "fechaContratacion": "May 19, 2024, 12:00:00 AM",
-    "salario": "300000",
-    "horario": "Diurno",
-    "correo": "norita@gmail.com",
-    "numTelefono": "3102544140",
-    "nombre": "Nora",
-    "apellido": "Reyes",
-    "genero": "MASCULINO",
-    "edad": "33",
-    "id": 1093651402
-  },
-  {
-    "area": "Habitat terrestre",
     "cargo": "Jefe de area",
     "fechaContratacion": "Jul 27, 2005, 12:42:28 PM",
     "salario": "350000",
@@ -50,7 +36,7 @@
     "correo": "maria@gmail.com",
     "numTelefono": "3102655240",
     "nombre": "Mariana Andrea",
-    "apellido": "Peralta",
+    "apellido": "Peralta Rodriguez",
     "genero": "FEMENINO",
     "edad": "36",
     "id": 1096551602

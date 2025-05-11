@@ -58,6 +58,7 @@ public class GestionVigilantes extends javax.swing.JFrame {
                 
                 if (!Character.isDigit(c) || txtID.getText().length() >= 10) {
                     evt.consume();
+                    soloNumeros(evt);
                 }
             }
         });
@@ -71,6 +72,7 @@ public class GestionVigilantes extends javax.swing.JFrame {
                 char c = evt.getKeyChar();
                 if (!Character.isDigit(c) || txtTelefono.getText().length() >= 10) {
                     evt.consume();
+                    soloNumeros(evt);
                 }
             }
         });  
@@ -390,6 +392,7 @@ public class GestionVigilantes extends javax.swing.JFrame {
         txtBusqueda = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        btnRgreso = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
@@ -461,18 +464,28 @@ public class GestionVigilantes extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/MARINUS 2.0 (1).png"))); // NOI18N
 
+        btnRgreso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/BOTON_REGRESAR (1) (1).png"))); // NOI18N
+        btnRgreso.setText("jLabel22");
+        btnRgreso.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRgresoMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(1, 1, 1)
+                .addComponent(btnRgreso, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addContainerGap(913, Short.MAX_VALUE))
+                        .addContainerGap(851, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -490,14 +503,16 @@ public class GestionVigilantes extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel17))
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel16)))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel16))
                 .addContainerGap())
+            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnRgreso)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -532,7 +547,7 @@ public class GestionVigilantes extends javax.swing.JFrame {
         jLabel7.setText("Genero");
 
         comboGenero.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        comboGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Masculino", "Femenino" }));
+        comboGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "MASCULINO", "FEMENINO", "OTROS", " " }));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel8.setText("Correo");
@@ -971,7 +986,7 @@ public class GestionVigilantes extends javax.swing.JFrame {
             txtApellido.setText(modelo.getValueAt(filaSeleccionada, 1).toString());
             txtEdad.setText(modelo.getValueAt(filaSeleccionada, 2).toString());
             txtID.setText(modelo.getValueAt(filaSeleccionada, 3).toString());
-            comboGenero.setSelectedItem(modelo.getValueAt(filaSeleccionada, 4));
+            comboGenero.setSelectedItem(tableVigilantes.getValueAt(filaSeleccionada, 4).toString());
             txtCorreo.setText(modelo.getValueAt(filaSeleccionada, 5).toString());
             comboCargo.setSelectedItem(modelo.getValueAt(filaSeleccionada, 6));
             txtSalario.setText(modelo.getValueAt(filaSeleccionada, 7).toString());
@@ -1037,6 +1052,12 @@ public class GestionVigilantes extends javax.swing.JFrame {
         
     }//GEN-LAST:event_txtBusquedaKeyReleased
 
+    private void btnRgresoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRgresoMouseClicked
+        // TODO add your handling code here:
+        new Administrador().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnRgresoMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1079,6 +1100,7 @@ public class GestionVigilantes extends javax.swing.JFrame {
     private javax.swing.JPanel btnEliminar;
     private javax.swing.JPanel btnGuardar;
     private javax.swing.JButton btnLimpiar;
+    private javax.swing.JLabel btnRgreso;
     private javax.swing.JComboBox<String> comboArea;
     private javax.swing.JComboBox<String> comboCargo;
     private javax.swing.JComboBox<String> comboGenero;

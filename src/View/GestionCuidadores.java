@@ -61,6 +61,7 @@ public class GestionCuidadores extends javax.swing.JFrame {
                 
                 if (!Character.isDigit(c) || txtID.getText().length() >= 10) {
                     evt.consume();
+                    soloNumeros(evt);
                 }
             }
         });
@@ -74,6 +75,7 @@ public class GestionCuidadores extends javax.swing.JFrame {
                 char c = evt.getKeyChar();
                 if (!Character.isDigit(c) || txtTelefono.getText().length() >= 10) {
                     evt.consume();
+                    soloNumeros(evt);
                 }
             }
         });
@@ -395,6 +397,7 @@ public class GestionCuidadores extends javax.swing.JFrame {
         txtBusqueda = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        botonRegresar = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
@@ -469,12 +472,22 @@ public class GestionCuidadores extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(0, 0, 204));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/MARINUS 2.0 (1).png"))); // NOI18N
 
+        botonRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/BOTON_REGRESAR (1) (1).png"))); // NOI18N
+        botonRegresar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonRegresarMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(botonRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -492,19 +505,22 @@ public class GestionCuidadores extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel18))))
-                .addGap(11, 11, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel20))
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(jLabel2)
+                        .addGap(38, 38, 38)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel18)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(botonRegresar)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -534,7 +550,7 @@ public class GestionCuidadores extends javax.swing.JFrame {
         jLabel7.setText("Genero   ");
 
         comboGenero.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        comboGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar...", "Masculino", "Femenino", "Otros", "" }));
+        comboGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar...", "MASCULINO", "FEMENINO", "OTROS", " " }));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel8.setText("Correo  ");
@@ -992,12 +1008,7 @@ public class GestionCuidadores extends javax.swing.JFrame {
             txtApellido.setText(modelo.getValueAt(filaSeleccionada, 1).toString());
             txtEdad.setText(modelo.getValueAt(filaSeleccionada, 2).toString());
             txtID.setText(modelo.getValueAt(filaSeleccionada, 3).toString());
-            Object valorGenero = modelo.getValueAt(filaSeleccionada, 4);
-            if (valorGenero instanceof GeneroEnum) {
-              comboGenero.setSelectedItem(((GeneroEnum) valorGenero).toString());
-            } else {
-              comboGenero.setSelectedItem(valorGenero.toString());
-            }
+            comboGenero.setSelectedItem(tableCuidador.getValueAt(filaSeleccionada, 4).toString());
             txtCorreo.setText(modelo.getValueAt(filaSeleccionada, 5).toString());
             txtSalario.setText(modelo.getValueAt(filaSeleccionada, 6).toString());
             comboCargo.setSelectedItem(modelo.getValueAt(filaSeleccionada,7));
@@ -1042,6 +1053,12 @@ public class GestionCuidadores extends javax.swing.JFrame {
         eliminarCuidadores();
     }//GEN-LAST:event_btnEliminarMouseClicked
 
+    private void botonRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonRegresarMouseClicked
+        // TODO add your handling code here:
+        new Administrador().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_botonRegresarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1078,6 +1095,7 @@ public class GestionCuidadores extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel botonRegresar;
     private javax.swing.JButton btnActualizacion;
     private javax.swing.JPanel btnActualizar;
     private javax.swing.JPanel btnBuscar;

@@ -1,18 +1,22 @@
 
 package model;
 
+import java.util.Date;
+import Model.oConstantes.SexoEnum;
+
 public class Animales {
     private String nombre;
     private int idAnimal;
     private String peso;
     private String especie;
-    private String sexo;
+    private SexoEnum  sexo;
     private String estadoSalud;
     private String ubicacion;
     private String habitat;
     private String cuidadorAsignado;
+    private Date fechaIngreso;
 
-    public Animales(String nombre, int idAnimal, String peso, String especie, String sexo, String estadoSalud, String ubicacion, String habitat, String cuidadorAsignado) {
+    public Animales(String nombre, int idAnimal, String peso, String especie, SexoEnum sexo, String estadoSalud, String ubicacion, String habitat, String cuidadorAsignado, Date fechaIngreso) {
         this.nombre = nombre;
         this.idAnimal = idAnimal;
         this.especie = especie;
@@ -22,6 +26,7 @@ public class Animales {
         this.peso = peso;
         this.habitat = habitat;
         this.cuidadorAsignado = cuidadorAsignado;
+        this.fechaIngreso = fechaIngreso;
     }
 
     public String getNombre() {
@@ -56,13 +61,14 @@ public class Animales {
         this.especie = especie;
     }
 
-    public String getSexo() {
+    public SexoEnum getSexo() {
         return sexo;
     }
 
-    public void setSexo(String sexo) {
+    public void setSexo(SexoEnum sexo) {
         this.sexo = sexo;
     }
+    
 
     public String getEstadoSalud() {
         return estadoSalud;
@@ -95,6 +101,16 @@ public class Animales {
     public void setHabitat(String habitat) {
         this.habitat = habitat;
     }
+
+    public Date getFechaIngreso() {
+        return fechaIngreso;
+    }
+
+    public void setFechaIngreso(Date fechaIngreso) {
+        this.fechaIngreso = fechaIngreso;
+    }
+    
+    
     
     
     
