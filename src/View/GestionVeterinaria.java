@@ -143,8 +143,17 @@ public class GestionVeterinaria extends javax.swing.JFrame {
         
         int iD = Integer.parseInt(iDText);
         String numTelefono = numtelefonoText;
+        
         if (fechaContratacion == null) {
             JOptionPane.showMessageDialog(this, "Seleccione una fecha de contratación", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        int añoSeleccionado = fechaContratacion.getYear() + 1900;
+            int añoActual = LocalDate.now().getYear();
+            
+        if (añoSeleccionado > añoActual) {
+            JOptionPane.showMessageDialog(this,"No se puede seleccionar un año mayor al actual","Warning",JOptionPane.WARNING_MESSAGE);
             return;
         }
         

@@ -143,6 +143,15 @@ public class GestionCuidadores extends javax.swing.JFrame {
               return;
             }
             
+            int añoSeleccionado = fechaContratacion.getYear() + 1900;
+            int añoActual = LocalDate.now().getYear();
+            
+            if (añoSeleccionado > añoActual) {
+               JOptionPane.showMessageDialog(this,"No se puede seleccionar un año mayor al actual","Warning",JOptionPane.WARNING_MESSAGE);
+               return;
+            }
+            
+            
             Cuidadores registroExistente = dao.buscarConID(iD);
             if (registroExistente != null ) {
                 JOptionPane.showMessageDialog(this, "Registro existente", "Warning", JOptionPane.WARNING_MESSAGE);

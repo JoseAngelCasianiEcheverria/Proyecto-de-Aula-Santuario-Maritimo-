@@ -68,5 +68,19 @@
     "genero": "FEMENINO",
     "edad": "33",
     "id": 1044651678
+  },
+  {
+    "area": "Entrada principal",
+    "cargo": "Patrullero",
+    "fechaContratacion": "May 5, 2025, 11:16:02 AM",
+    "salario": "34000000",
+    "horario": "Diurno",
+    "correo": "haider@gmail.com",
+    "numTelefono": "324651703",
+    "nombre": "Haider",
+    "apellido": "mejia",
+    "genero": "MASCULINO",
+    "edad": "29",
+    "id": 1055674202
   }
 ]
