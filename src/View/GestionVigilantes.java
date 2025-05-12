@@ -102,7 +102,6 @@ public class GestionVigilantes extends javax.swing.JFrame {
             else{
               genero = GeneroEnum.OTROS;
             }
-            
             String correo = txtCorreo.getText().trim();
             String salario = txtSalario.getText().trim();
             String cargo = comboCargo.getSelectedItem().toString();
@@ -115,6 +114,15 @@ public class GestionVigilantes extends javax.swing.JFrame {
                JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios", "Warning", JOptionPane.WARNING_MESSAGE);
                return;
             }
+            
+            int edadIngresada = Integer.parseInt(edad);
+            if (edadIngresada < 22) {
+                JOptionPane.showMessageDialog(this,"Solo se permite una edad de 22 años o mas","Error",JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
+            
+            
             if (!validacionLetras(nombre) || !validacionLetras(apellido)) {
                JOptionPane.showMessageDialog(this,"El nombre/apellido debe tener LETRAS","Error",JOptionPane.ERROR_MESSAGE);
                return;
@@ -315,6 +323,12 @@ public class GestionVigilantes extends javax.swing.JFrame {
                
             if (!telefonoText.matches("\\d+") || !salarioText.matches("\\d+") || !edadText.matches("\\d+")) {
                JOptionPane.showMessageDialog(this, "Todos los campos numéricos deben contener solamente  números", "Error", JOptionPane.ERROR_MESSAGE);
+               return;
+            }
+            
+            int edad = Integer.parseInt(edadText);
+            if (edad < 22) {
+               JOptionPane.showMessageDialog(this, "Solo se permite una edad de 22 años o mas","Error",JOptionPane.ERROR_MESSAGE);
                return;
             }
             

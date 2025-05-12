@@ -54,5 +54,19 @@
     "genero": "MASCULINO",
     "edad": "20",
     "id": 1062684
+  },
+  {
+    "area": "Habitat acuatico",
+    "cargo": "Auxiliar",
+    "fechaContratacion": "May 27, 2025, 10:31:11 AM",
+    "salario": "3500000",
+    "horario": "Diurno",
+    "correo": "juan@gmail.com",
+    "numTelefono": "3102655167",
+    "nombre": "Juan Pablo",
+    "apellido": "Lopez",
+    "genero": "MASCULINO",
+    "edad": "24",
+    "id": 1044651702
   }
 ]

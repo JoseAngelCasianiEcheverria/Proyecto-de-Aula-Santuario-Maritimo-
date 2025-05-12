@@ -6,7 +6,7 @@
     "salario": "2000000",
     "horario": "Diurno",
     "correo": "dani@gmail.com",
-    "numTelefono": "326579902",
+    "numTelefono": "3265799020",
     "nombre": "Daniel",
     "apellido": "Carrillo",
     "genero": "MASCULINO",
@@ -40,5 +40,19 @@
     "genero": "FEMENINO",
     "edad": "32",
     "id": 1093561402
+  },
+  {
+    "especialidad": "Buceo guiado",
+    "cargo": "Guia de actividades acuaticas",
+    "fechaContratacion": "May 22, 2020, 7:54:50 AM",
+    "salario": "3500000",
+    "horario": "Diurno",
+    "correo": "franciscoVela@gmail.com",
+    "numTelefono": "3242644140",
+    "nombre": "Fransua",
+    "apellido": "Velasquez",
+    "genero": "MASCULINO",
+    "edad": "33",
+    "id": 1044651603
   }
 ]

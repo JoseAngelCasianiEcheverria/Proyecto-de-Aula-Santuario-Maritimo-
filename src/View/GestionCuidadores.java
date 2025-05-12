@@ -118,6 +118,13 @@ public class GestionCuidadores extends javax.swing.JFrame {
               return;
             }
             
+            int edadIngresada = Integer.parseInt(edad);
+            if (edadIngresada < 22) {
+                JOptionPane.showMessageDialog(this,"Solo se permite una edad de 22 años o mas","Error",JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
+            
             if (!validacionLetras(nombre)|| !validacionLetras(apellido)) {
                 JOptionPane.showMessageDialog(this,"El nombre/apellido debe contener solo LETRAS","Error",JOptionPane.ERROR_MESSAGE);
                 return;
@@ -319,7 +326,13 @@ public class GestionCuidadores extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Todos los campos numéricos deben contener solamente  números", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-
+        
+        int edad = Integer.parseInt(edadText);
+        if (edad < 22) {
+            JOptionPane.showMessageDialog(this, "Solo se permite una edad de 22 años o mas","Error",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
         int iD = Integer.parseInt(idText);
 
         List<Cuidadores> listaCuidadores = dao.cargarRegistros();
@@ -727,7 +740,7 @@ public class GestionCuidadores extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CUIDADORES REGISTRADOS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Black", 1, 14), new java.awt.Color(153, 0, 0))); // NOI18N
 
-        tableCuidador.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        tableCuidador.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         tableCuidador.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null, null},

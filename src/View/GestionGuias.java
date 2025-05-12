@@ -125,6 +125,13 @@ public class GestionGuias extends javax.swing.JFrame {
                 return;
             }
             
+            int edadIngresada = Integer.parseInt(edad);
+            if (edadIngresada < 22) {
+                JOptionPane.showMessageDialog(this,"Solo se permite una edad de 22 años o mas","Error",JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
+            
             if (!salario.matches("\\d+") || !edad.matches("\\d+") || !numTelefonoText.matches("\\d+")) {
                 JOptionPane.showMessageDialog(this,"La edad/salario/numero telefonico deben ser solamente NUMEROS","Error",JOptionPane.ERROR_MESSAGE);
                 return;
@@ -319,6 +326,14 @@ public class GestionGuias extends javax.swing.JFrame {
                JOptionPane.showMessageDialog(this, "Todos los campos numéricos deben contener solamente  números", "Error", JOptionPane.ERROR_MESSAGE);
                return;
             }
+            
+            int edad = Integer.parseInt(edadText);
+            if (edad < 22) {
+               JOptionPane.showMessageDialog(this, "Solo se permite una edad de 22 años o mas","Error",JOptionPane.ERROR_MESSAGE);
+               return;
+            }
+            
+            
             
             int iD = Integer.parseInt(idText);
             List<Guias> listaGuias = dao.cargarRegistros();
@@ -718,7 +733,7 @@ public class GestionGuias extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "GUIAS REGISTRADOS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Black", 1, 14), new java.awt.Color(0, 153, 153))); // NOI18N
 
-        tableGuias.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        tableGuias.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         tableGuias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null, null},

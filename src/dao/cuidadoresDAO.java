@@ -50,7 +50,7 @@ public class cuidadoresDAO {
             gson.toJson(cuidadores, writer);
             
         } catch (IOException e) {
-          System.err.println("Error al guardar animales: " + e.getMessage());
+          System.err.println("Error al guardar cuidadores: " + e.getMessage());
         }  
     }
     

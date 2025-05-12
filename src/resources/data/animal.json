@@ -46,5 +46,17 @@
     "habitat": "Arrecife",
     "cuidadorAsignado": "Jose Casseres Peralta",
     "fechaIngreso": "May 19, 2023, 7:09:48 PM"
+  },
+  {
+    "nombre": "Tortuga Marina",
+    "idAnimal": 1044651678,
+    "peso": "700",
+    "especie": "Mamifero",
+    "sexo": "HEMBRA",
+    "estadoSalud": "Sano",
+    "ubicacion": "Habitat natural",
+    "habitat": "Tanque",
+    "cuidadorAsignado": "Felipe Aragon",
+    "fechaIngreso": "May 25, 2025, 10:06:00 AM"
   }
 ]
