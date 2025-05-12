@@ -9,13 +9,15 @@ public class Visitantes extends Persona{
     private int evaluacionesRealizadas;
     private String guiaSeleccionado;
 
-    public Visitantes(String correo, String telefono, int evaluacionesRealizadas, String guiaSeleccionado, String nombre, String apellido, GeneroEnum genero, String edad, int id) {
-        super(nombre, apellido, genero, edad, id);
+    public Visitantes(String correo, String telefono, int evaluacionesRealizadas, String guiaSeleccionado, String nombre, String apellido, GeneroEnum genero, int edad, int iD) {
+        super(nombre, apellido, genero, edad, iD);
         this.correo = correo;
         this.telefono = telefono;
         this.evaluacionesRealizadas = evaluacionesRealizadas;
         this.guiaSeleccionado = guiaSeleccionado;
     }
+
+   
     
     public String getCorreo() {
         return correo;

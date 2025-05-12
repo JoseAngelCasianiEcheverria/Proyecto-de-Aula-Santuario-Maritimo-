@@ -9,12 +9,14 @@ public class Administrador extends Persona{
    private String contraseña; 
    private Date horarioDeTrabajo;
 
-    public Administrador(String nombreusuario, String contraseña, Date horarioDeTrabajo, String nombre, String apellido, GeneroEnum genero, String edad, int id) {
-        super(nombre, apellido, genero, edad, id);
+    public Administrador(String nombreusuario, String contraseña, Date horarioDeTrabajo, String nombre, String apellido, GeneroEnum genero, int edad, int iD) {
+        super(nombre, apellido, genero, edad, iD);
         this.nombreusuario = nombreusuario;
         this.contraseña = contraseña;
         this.horarioDeTrabajo = horarioDeTrabajo;
     }
+   
+   
 
     public String getNombreusuario() {
         return nombreusuario;

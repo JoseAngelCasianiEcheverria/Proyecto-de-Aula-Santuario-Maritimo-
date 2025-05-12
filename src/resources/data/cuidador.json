@@ -2,63 +2,20 @@
   {
     "area": "Habitat terrestre",
     "cargo": "Jefe de area",
-    "fechaContratacion": "Jul 27, 2005, 12:42:28 PM",
-    "salario": "350000",
-    "horario": "Nocturno",
-    "correo": "rgg@gmail.com",
-    "numTelefono": "3102644140",
-    "nombre": "Ronny Alejandro",
-    "apellido": "Guerrero Gelvez",
-    "genero": "OTROS",
-    "edad": "22",
-    "id": 1043967071
-  },
-  {
-    "area": "Habitat terrestre",
-    "cargo": "Veterinario",
-    "fechaContratacion": "May 13, 2025, 12:53:32 PM",
-    "salario": "300000",
-    "horario": "Diurno",
-    "correo": "mahews@gmail.com",
-    "numTelefono": "32865170267",
-    "nombre": "Mathews Andres",
-    "apellido": "Charlotte",
-    "genero": "MASCULINO",
-    "edad": "22",
-    "id": 1046561702
-  },
-  {
-    "area": "Habitat acuatico",
-    "cargo": "Veterinario",
-    "fechaContratacion": "May 13, 2025, 4:14:21 PM",
+    "fechaContratacion": "May 15, 2025, 12:00:00 AM",
     "salario": "250000",
     "horario": "Diurno",
-    "correo": "maria@gmail.com",
-    "numTelefono": "3102655240",
-    "nombre": "Mariana Andrea",
-    "apellido": "Peralta Rodriguez",
-    "genero": "FEMENINO",
-    "edad": "36",
-    "id": 1096551602
-  },
-  {
-    "area": "Habitat terrestre",
-    "cargo": "Auxiliar",
-    "fechaContratacion": "May 22, 2021, 12:00:00 AM",
-    "salario": "500000",
-    "horario": "Diurno",
-    "correo": "lolito@gmail.com",
-    "numTelefono": "3015375730",
+    "correo": "manu@gmail.com",
+    "numTelefono": "3102644140",
     "nombre": "Manuel",
-    "apellido": "Hernandez",
+    "apellido": "Fernandez",
     "genero": "MASCULINO",
-    "edad": "20",
-    "id": 1062684
+    "edad": 22,
+    "iD": 1904652022
   },
   {
-    "area": "Habitat acuatico",
     "cargo": "Auxiliar",
-    "fechaContratacion": "May 27, 2025, 10:31:11 AM",
+    "fechaContratacion": "May 27, 2025, 12:00:00 AM",
     "salario": "3500000",
     "horario": "Diurno",
     "correo": "juan@gmail.com",
@@ -66,7 +23,7 @@
     "nombre": "Juan Pablo",
     "apellido": "Lopez",
     "genero": "MASCULINO",
-    "edad": "24",
-    "id": 1044651702
+    "edad": 24,
+    "iD": 1043657802
   }
 ]

@@ -56,7 +56,7 @@ public class vigilantesDAO {
     
    public boolean eliminarConID(int id){
         List<Vigilantes> vigilantes = cargarRegistros();
-        boolean eliminacion = vigilantes.removeIf(vigilante -> vigilante.getId() == id);
+        boolean eliminacion = vigilantes.removeIf(vigilante -> vigilante.getiD()== id);
         
         if (eliminacion) {
             guardarTodos(vigilantes);
@@ -68,7 +68,7 @@ public class vigilantesDAO {
         List<Vigilantes> vigilantes = cargarRegistros();
         
         for(Vigilantes vigilante : vigilantes){
-            if (vigilante.getId() == id) {
+            if (vigilante.getiD()== id) {
                 return vigilante;
             }
         }

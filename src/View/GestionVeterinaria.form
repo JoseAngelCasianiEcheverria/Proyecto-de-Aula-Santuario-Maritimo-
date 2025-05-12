@@ -702,7 +702,7 @@
                       <Table columnCount="12" rowCount="4">
                         <Column editable="false" title="Nombre" type="java.lang.String"/>
                         <Column editable="false" title="Apellido" type="java.lang.String"/>
-                        <Column editable="false" title="Edad" type="java.lang.String"/>
+                        <Column editable="false" title="Edad" type="java.lang.Integer"/>
                         <Column editable="false" title="ID" type="java.lang.Integer"/>
                         <Column editable="false" title="Genero" type="java.lang.String"/>
                         <Column editable="true" title="Correo" type="java.lang.String"/>

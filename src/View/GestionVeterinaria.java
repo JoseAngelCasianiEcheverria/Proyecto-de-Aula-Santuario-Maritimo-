@@ -164,7 +164,7 @@ public class GestionVeterinaria extends javax.swing.JFrame {
             return;
         }
         
-        Veterinarios nuevoVeterinario = new Veterinarios(cargo, fechaContratacion, salario, horario, correo, numTelefono, nombre, apellido, genero, edad, iD, area);
+        Veterinarios nuevoVeterinario = new Veterinarios(area, cargo, fechaContratacion, salario, horario, correo, numTelefono, nombre, apellido, genero, edadIngresada, iD);
         dao.guardarVeterinario(nuevoVeterinario);
         
         JOptionPane.showMessageDialog(this, "Registro exitoso", "Exitos",JOptionPane.INFORMATION_MESSAGE);
@@ -216,7 +216,7 @@ public class GestionVeterinaria extends javax.swing.JFrame {
                 veterinario.getNombre(),
                 veterinario.getApellido(),
                 veterinario.getEdad(),
-                veterinario.getId(),
+                veterinario.getiD(),
                 veterinario.getGenero(),
                 veterinario.getCorreo(),
                 veterinario.getSalario(),
@@ -292,7 +292,7 @@ public class GestionVeterinaria extends javax.swing.JFrame {
             veterinario.getNombre(),
             veterinario.getApellido(),
             veterinario.getEdad(),
-            veterinario.getId(),
+            veterinario.getiD(),
             veterinario.getGenero(),
             veterinario.getCorreo(),
             veterinario.getSalario(),
@@ -346,7 +346,7 @@ public class GestionVeterinaria extends javax.swing.JFrame {
         List<Veterinarios> listaVeterinarios = dao.cargarRegistros();
 
         for (Veterinarios veterinario : listaVeterinarios) {
-            if (veterinario.getId() == iD) {
+            if (veterinario.getiD()== iD) {
                 
                 String nombre = txtNombre.getText().trim();
                 String apellido = txtApellido.getText().trim();
@@ -358,7 +358,7 @@ public class GestionVeterinaria extends javax.swing.JFrame {
                 
                 veterinario.setNombre(nombre);
                 veterinario.setApellido(apellido);
-                veterinario.setEdad(txtEdad.getText().trim());
+                veterinario.setEdad(edad);
                 veterinario.setCorreo(txtCorreo.getText().trim());
                 veterinario.setSalario(txtSalario.getText().trim());
                 veterinario.setCargo(comboCargo.getSelectedItem().toString());
@@ -755,7 +755,7 @@ public class GestionVeterinaria extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, true, false, false, false, false, false, false

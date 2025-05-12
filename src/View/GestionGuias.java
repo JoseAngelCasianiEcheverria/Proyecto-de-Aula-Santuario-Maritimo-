@@ -160,7 +160,7 @@ public class GestionGuias extends javax.swing.JFrame {
                 return;
             }
             
-            Guias nuevoGuia = new Guias(cargo, fechaContratacion, salario, horario, correo, numTelefonoText, nombre, apellido, genero, edad, iD, especialidad);
+            Guias nuevoGuia = new Guias(especialidad, cargo, fechaContratacion, salario, horario, correo, numTelefonoText, nombre, apellido, genero, edadIngresada, iD);
             dao.guardarGuias(nuevoGuia);
             
             JOptionPane.showMessageDialog(this,"Registro exitoso","Exitos",JOptionPane.INFORMATION_MESSAGE);
@@ -210,7 +210,7 @@ public class GestionGuias extends javax.swing.JFrame {
                 guia.getNombre(),
                 guia.getApellido(),
                 guia.getEdad(),
-                guia.getId(),
+                guia.getiD(),
                 guia.getGenero(),
                 guia.getCorreo(),
                 guia.getSalario(),
@@ -297,7 +297,7 @@ public class GestionGuias extends javax.swing.JFrame {
             guia.getNombre(),
             guia.getApellido(),
             guia.getEdad(),
-            guia.getId(),
+            guia.getiD(),
             guia.getGenero(),
             guia.getCorreo(),
             guia.getSalario(),
@@ -349,7 +349,7 @@ public class GestionGuias extends javax.swing.JFrame {
             List<Guias> listaGuias = dao.cargarRegistros();
             
             for(Guias guia : listaGuias){
-                if (guia.getId() == iD) {
+                if (guia.getiD()== iD) {
                     String nombre = txtNombre.getText().trim();
                     String apellido = txtApellido.getText().trim();
                     
@@ -360,7 +360,7 @@ public class GestionGuias extends javax.swing.JFrame {
                     
                     guia.setNombre(nombre);
                     guia.setApellido(apellido);
-                    guia.setEdad(txtEdad.getText().trim());
+                    guia.setEdad(edad);
                     guia.setSalario(txtSalario.getText().trim());
                     guia.setCorreo(txtCorreo.getText().trim());
                     guia.setCargo(comboCargo.getSelectedItem().toString());
@@ -756,7 +756,7 @@ public class GestionGuias extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false, false, false, false, false, false

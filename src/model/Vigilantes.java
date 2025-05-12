@@ -12,14 +12,14 @@ import model.oConstantes.GeneroEnum;
  * @author juanp
  */
 public class Vigilantes extends Trabajadores{
-    
     private String area;
-    
-    public Vigilantes(String cargo, Date fechaContratacion, String salario, String horario, String correo, String numTelefono, String nombre, String apellido, GeneroEnum genero, String edad, int id, String area) {
-    super(cargo, fechaContratacion, salario, horario, correo, numTelefono, nombre, apellido, genero, edad, id);
-    this.area = area;
-}
 
+    public Vigilantes(String cargo, Date fechaContratacion, String salario, String horario, String correo, String numTelefono, String nombre, String apellido, GeneroEnum genero, int edad, int iD) {
+        super(cargo, fechaContratacion, salario, horario, correo, numTelefono, nombre, apellido, genero, edad, iD);
+    }
+
+    
+    
     public String getArea() {
         return area;
     }
@@ -27,10 +27,5 @@ public class Vigilantes extends Trabajadores{
     public void setArea(String area) {
         this.area = area;
     }
-
-   
-    
-    
-    
     
 }

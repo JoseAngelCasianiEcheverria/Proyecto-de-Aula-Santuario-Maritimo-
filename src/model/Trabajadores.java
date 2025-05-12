@@ -12,8 +12,8 @@ public class Trabajadores extends Persona{
     private String correo;
     private String numTelefono;
 
-    public Trabajadores(String cargo, Date fechaContratacion, String salario, String horario, String correo, String numTelefono, String nombre, String apellido, GeneroEnum genero, String edad, int id) {
-        super(nombre, apellido, genero, edad, id);
+    public Trabajadores(String cargo, Date fechaContratacion, String salario, String horario, String correo, String numTelefono, String nombre, String apellido, GeneroEnum genero, int edad, int iD) {
+        super(nombre, apellido, genero, edad, iD);
         this.cargo = cargo;
         this.fechaContratacion = fechaContratacion;
         this.salario = salario;
@@ -22,6 +22,9 @@ public class Trabajadores extends Persona{
         this.numTelefono = numTelefono;
     }
 
+    
+    
+    
     public String getCargo() {
         return cargo;
     }
@@ -69,6 +72,8 @@ public class Trabajadores extends Persona{
     public void setNumTelefono(String numTelefono) {
         this.numTelefono = numTelefono;
     }
+
+    
     
     
     

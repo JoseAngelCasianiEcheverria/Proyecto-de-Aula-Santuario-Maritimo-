@@ -56,7 +56,7 @@ public class cuidadoresDAO {
     
     public boolean eliminarConID(int id){
         List<Cuidadores> cuidadores = cargarRegistros();
-        boolean eliminacion = cuidadores.removeIf(cuidador -> cuidador.getId() == id);
+        boolean eliminacion = cuidadores.removeIf(cuidador -> cuidador.getiD()== id);
         
         if (eliminacion) {
             guardarTodos(cuidadores);
@@ -68,7 +68,7 @@ public class cuidadoresDAO {
         List<Cuidadores> cuidadores = cargarRegistros();
         
         for(Cuidadores cuidador : cuidadores){
-            if (cuidador.getId() == id) {
+            if (cuidador.getiD()== id) {
                 return cuidador;
             }
         }

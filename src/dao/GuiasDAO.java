@@ -57,7 +57,7 @@ public class GuiasDAO {
     
     public boolean eliminarConID(int id){
         List<Guias> guias = cargarRegistros();
-        boolean eliminacion = guias.removeIf(guia -> guia.getId() == id);
+        boolean eliminacion = guias.removeIf(guia -> guia.getiD()== id);
         
         if (eliminacion) {
             guardarTodos(guias);
@@ -69,7 +69,7 @@ public class GuiasDAO {
         List<Guias> guias = cargarRegistros();
         
         for(Guias guia : guias){
-            if (guia.getId() == id) {
+            if (guia.getiD()== id) {
                 return guia;
             }
         }

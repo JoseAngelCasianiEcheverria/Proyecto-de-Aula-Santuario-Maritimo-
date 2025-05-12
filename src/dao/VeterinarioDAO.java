@@ -70,7 +70,7 @@ public class VeterinarioDAO {
            return false;
         }
         
-        boolean eliminacion = veterinarios.removeIf(veterinario -> veterinario.getId() == iDBuscado);
+        boolean eliminacion = veterinarios.removeIf(veterinario -> veterinario.getiD()== iDBuscado);
         if (eliminacion) {
             guardarTodos(veterinarios);    
         }
@@ -81,7 +81,7 @@ public class VeterinarioDAO {
         List<Veterinarios> veterinarios = cargarRegistros();
         
         for(Veterinarios veterinario : veterinarios){
-            if (veterinario.getId() == id) {
+            if (veterinario.getiD()== id) {
                 return veterinario;
             }
         }

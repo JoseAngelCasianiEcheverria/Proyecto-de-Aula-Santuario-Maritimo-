@@ -158,7 +158,7 @@ public class GestionVigilantes extends javax.swing.JFrame {
                 return;   
             }
             
-            Vigilantes nuevoVigilante = new Vigilantes(cargo, fechaContratacion, salario, horario, correo, numTelefono, nombre, apellido, genero, edad, iD, area);
+            Vigilantes nuevoVigilante = new Vigilantes(cargo, fechaContratacion, salario, horario, correo, numTelefono, nombre, apellido, genero, edadIngresada, iD);
             dao.guardarVigilantes(nuevoVigilante);
             
             JOptionPane.showMessageDialog(this,"Registro exitoso", "Exitos", JOptionPane.INFORMATION_MESSAGE);
@@ -208,7 +208,7 @@ public class GestionVigilantes extends javax.swing.JFrame {
                 vigilante.getNombre(),
                 vigilante.getApellido(),
                 vigilante.getEdad(),
-                vigilante.getId(),
+                vigilante.getiD(),
                 vigilante.getGenero(),
                 vigilante.getCorreo(),
                 vigilante.getCargo(),
@@ -295,7 +295,7 @@ public class GestionVigilantes extends javax.swing.JFrame {
             vigilante.getNombre(),
             vigilante.getApellido(),
             vigilante.getEdad(),
-            vigilante.getId(),
+            vigilante.getiD(),
             vigilante.getGenero(),
             vigilante.getCorreo(),
             vigilante.getCargo(),
@@ -346,7 +346,7 @@ public class GestionVigilantes extends javax.swing.JFrame {
             List<Vigilantes> listaVigilantes = dao.cargarRegistros();
             
             for(Vigilantes vigilante : listaVigilantes){
-                if (vigilante.getId() == iD) {
+                if (vigilante.getiD()== iD) {
                     
                     String nombre = txtNombre.getText().trim();
                     String apellido = txtApellido.getText().trim();
@@ -358,7 +358,7 @@ public class GestionVigilantes extends javax.swing.JFrame {
                     
                     vigilante.setNombre(nombre);
                     vigilante.setApellido(apellido);
-                    vigilante.setEdad(edadText);
+                    vigilante.setEdad(edad);
                     vigilante.setCorreo(txtCorreo.getText().trim());
                     vigilante.setCargo(comboCargo.getSelectedItem().toString());
                     vigilante.setSalario(salarioText);

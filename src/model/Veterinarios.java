@@ -15,11 +15,13 @@ public class Veterinarios extends Trabajadores{
     
     private String area;
 
-    public Veterinarios(String cargo, Date fechaContratacion, String salario, String horario, String correo, String numTelefono, String nombre, String apellido, GeneroEnum genero, String edad, int id, String area) {
-        super(cargo, fechaContratacion, salario, horario, correo, numTelefono, nombre, apellido, genero, edad, id);
+    public Veterinarios(String area, String cargo, Date fechaContratacion, String salario, String horario, String correo, String numTelefono, String nombre, String apellido, GeneroEnum genero, int edad, int iD) {
+        super(cargo, fechaContratacion, salario, horario, correo, numTelefono, nombre, apellido, genero, edad, iD);
         this.area = area;
     }
-
+    
+    
+    
     public String getArea() {
         return area;
     }

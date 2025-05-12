@@ -7,15 +7,15 @@ public class Persona {
     private String nombre;
     private String apellido;
     private GeneroEnum genero;
-    private String edad;
-    private int id;
+    private int edad;
+    private int iD;
 
-    public Persona(String nombre, String apellido, GeneroEnum genero, String edad, int id) {
+    public Persona(String nombre, String apellido, GeneroEnum genero, int edad, int iD) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.genero = genero;
         this.edad = edad;
-        this.id = id;
+        this.iD = iD;
     }
 
     public String getNombre() {
@@ -42,27 +42,21 @@ public class Persona {
         return genero;
     }
 
-   
-
-    public String getEdad() {
+    public int getEdad() {
         return edad;
     }
 
-    public void setEdad(String edad) {
+    public void setEdad(int edad) {
         this.edad = edad;
     }
 
-    public int getId() {
-        return id;
+    public int getiD() {
+        return iD;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setiD(int iD) {
+        this.iD = iD;
     }
-    
-    
-
-   
     
     
 }

@@ -1,44 +1,16 @@
 [
   {
-    "area": "Investigacion cientifica",
-    "cargo": "Veterinario",
-    "fechaContratacion": "Dec 27, 2009, 12:00:00 AM",
-    "salario": "3400000",
-    "horario": "Diurno",
-    "correo": "roman@gmail.com",
-    "numTelefono": "3102644140",
-    "nombre": "Roman",
-    "apellido": "Villalba",
-    "genero": "MASCULINO",
-    "edad": "29",
-    "id": 1094651702
-  },
-  {
-    "area": "Área clínica y rehabilitación",
-    "cargo": "Veterinario",
-    "fechaContratacion": "May 21, 2018, 10:02:45 PM",
-    "salario": "250000",
-    "horario": "Diurno",
-    "correo": "Adrian@gmail.com",
-    "numTelefono": "3246644140",
-    "nombre": "Adrian Felipe",
-    "apellido": "Pacheco",
-    "genero": "MASCULINO",
-    "edad": "22",
-    "id": 1043657604
-  },
-  {
     "area": "Bienestar animal",
-    "cargo": "Jefe del area",
-    "fechaContratacion": "May 21, 2025, 2:48:29 PM",
-    "salario": "300000",
+    "cargo": "Veterinario",
+    "fechaContratacion": "May 15, 2025, 1:36:02 PM",
+    "salario": "2300000",
     "horario": "Diurno",
-    "correo": "soff@gmail.com",
-    "numTelefono": "3102655190",
-    "nombre": "Sofia",
-    "apellido": "Reyes",
-    "genero": "FEMENINO",
-    "edad": "27",
-    "id": 1044651678
+    "correo": "matias@gmail.com",
+    "numTelefono": "3102744390",
+    "nombre": "Matias",
+    "apellido": "Perez",
+    "genero": "MASCULINO",
+    "edad": 22,
+    "iD": 1044651703
   }
 ]

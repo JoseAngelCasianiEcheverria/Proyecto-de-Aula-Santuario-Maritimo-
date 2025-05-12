@@ -158,7 +158,7 @@ public class GestionCuidadores extends javax.swing.JFrame {
                 return;   
             }
             
-            Cuidadores nuevoCuidador = new Cuidadores(cargo, fechaContratacion, salario, horario, correo, numTelefono, nombre, apellido, genero, edad, iD, area);
+            Cuidadores nuevoCuidador = new Cuidadores(cargo, fechaContratacion, salario, horario, correo, numTelefono, nombre, apellido, genero, edadIngresada, iD);
             dao.guardarCuidador(nuevoCuidador);
             
             JOptionPane.showMessageDialog(this,"Registro exitoso", "Exitos", JOptionPane.INFORMATION_MESSAGE);
@@ -207,7 +207,7 @@ public class GestionCuidadores extends javax.swing.JFrame {
                 cuidador.getNombre(),
                 cuidador.getApellido(),
                 cuidador.getEdad(),
-                cuidador.getId(),
+                cuidador.getiD(),
                 cuidador.getGenero(),
                 cuidador.getCorreo(),
                 cuidador.getSalario(),
@@ -295,7 +295,7 @@ public class GestionCuidadores extends javax.swing.JFrame {
             cuidador.getNombre(),
             cuidador.getApellido(),
             cuidador.getEdad(),
-            cuidador.getId(),
+            cuidador.getiD(),
             cuidador.getGenero(),
             cuidador.getCorreo(),
             cuidador.getSalario(),
@@ -346,7 +346,7 @@ public class GestionCuidadores extends javax.swing.JFrame {
 
         List<Cuidadores> listaCuidadores = dao.cargarRegistros();
         for (Cuidadores cuidador : listaCuidadores) {
-            if (cuidador.getId() == iD) {
+            if (cuidador.getiD()== iD) {
                 
                 String nombre = txtNombre.getText().trim();
                 String apellido = txtApellido.getText().trim();
@@ -358,7 +358,7 @@ public class GestionCuidadores extends javax.swing.JFrame {
                 
                 cuidador.setNombre(nombre);
                 cuidador.setApellido(apellido);
-                cuidador.setEdad(edadText);
+                cuidador.setEdad(edad);
                 cuidador.setSalario(salarioText);
                 cuidador.setCorreo(txtCorreo.getText().trim());
                 cuidador.setCargo(comboCargo.getSelectedItem().toString());
@@ -762,7 +762,7 @@ public class GestionCuidadores extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false, false, false, false, false, false

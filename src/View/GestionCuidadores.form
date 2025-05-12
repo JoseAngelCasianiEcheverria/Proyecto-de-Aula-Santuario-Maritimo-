@@ -726,7 +726,7 @@
                         <Column editable="false" title="ID" type="java.lang.Integer"/>
                         <Column editable="false" title="Genero" type="java.lang.String"/>
                         <Column editable="false" title="Correo" type="java.lang.String"/>
-                        <Column editable="false" title="Salario" type="java.lang.String"/>
+                        <Column editable="false" title="Salario" type="java.lang.Integer"/>
                         <Column editable="false" title="Cargo" type="java.lang.String"/>
                         <Column editable="false" title="Horario" type="java.lang.String"/>
                         <Column editable="false" title="Telefono" type="java.lang.Integer"/>

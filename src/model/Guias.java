@@ -15,11 +15,13 @@ public class Guias extends Trabajadores{
     
     private String especialidad;
 
-    public Guias(String cargo, Date fechaContratacion, String salario, String horario, String correo, String numTelefono, String nombre, String apellido, GeneroEnum genero, String edad, int id, String especialidad) {
-        super(cargo, fechaContratacion, salario, horario, correo, numTelefono, nombre, apellido, genero, edad, id);
+    public Guias(String especialidad, String cargo, Date fechaContratacion, String salario, String horario, String correo, String numTelefono, String nombre, String apellido, GeneroEnum genero, int edad, int iD) {
+        super(cargo, fechaContratacion, salario, horario, correo, numTelefono, nombre, apellido, genero, edad, iD);
         this.especialidad = especialidad;
     }
 
+    
+    
     public String getEspecialidad() {
         return especialidad;
     }
