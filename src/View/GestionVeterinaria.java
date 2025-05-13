@@ -76,14 +76,7 @@ public class GestionVeterinaria extends javax.swing.JFrame {
                 }
             }
         });
-        
-        
-        
-        
-        
-        
-        
-        
+            
     }
     
     private static final VeterinarioDAO dao = new VeterinarioDAO();
@@ -136,10 +129,18 @@ public class GestionVeterinaria extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"El nombre/apellido debe contener solo LETRAS","Error",JOptionPane.ERROR_MESSAGE);
             return;
         }
+        
         if (!salario.matches("\\d+") || !edad.matches("\\d+") || !numtelefonoText.matches("\\d+")) {
             JOptionPane.showMessageDialog(this,"La edad/salario/numero telefonico deben ser solamente NUMEROS","Error",JOptionPane.ERROR_MESSAGE);
             return;
         }
+        
+        if (!validacionCorreo(correo)) {
+           JOptionPane.showMessageDialog(this,"Correo invalido, ingrese otro","Error",JOptionPane.ERROR_MESSAGE);
+           return;
+        }
+
+
         
         int iD = Integer.parseInt(iDText);
         String numTelefono = numtelefonoText;
@@ -199,6 +200,10 @@ public class GestionVeterinaria extends javax.swing.JFrame {
            evt.consume();
            JOptionPane.showMessageDialog(this,"Solo se permiten NUMEROS","Error",JOptionPane.ERROR_MESSAGE);
         }
+    }
+    
+    private boolean validacionCorreo(String gmail){
+        return gmail.contains("@")&& gmail.contains(".") && gmail.indexOf('@') < gmail.lastIndexOf('.') && !gmail.startsWith("@") && !gmail.endsWith(".");
     }
     
     
@@ -323,25 +328,31 @@ public class GestionVeterinaria extends javax.swing.JFrame {
     
    private void actualizarVeterinario() {
     try {
-        String idText = txtID.getText().trim();
-        String telefonoText = txtTelefono.getText().trim();
-        String salarioText = txtSalario.getText().trim();
+        String id = txtID.getText().trim();
+        String telefono = txtTelefono.getText().trim();
+        String salario = txtSalario.getText().trim();
         String edadText = txtEdad.getText().trim();
+        String correo = txtCorreo.getText().trim();
         
-        if (!telefonoText.matches("\\d+") || !salarioText.matches("\\d+") || !edadText.matches("\\d+")) {
+        if (!telefono.matches("\\d+") || !salario.matches("\\d+") || !edadText.matches("\\d+")) {
             JOptionPane.showMessageDialog(this, "Todos los campos numéricos deben contener solamente  números", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
+        
         int edad = Integer.parseInt(edadText);
         if (edad < 22) {
             JOptionPane.showMessageDialog(this, "Solo se permite una edad de 22 años o mas","Error",JOptionPane.ERROR_MESSAGE);
             return;
         }
         
+        if (!validacionCorreo(correo)) {
+            JOptionPane.showMessageDialog(this,"Correo invalido, ingrese otro","Error",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
         
 
-        int iD = Integer.parseInt(idText);
-        String numTelefono = telefonoText;
+        int iD = Integer.parseInt(id);
 
         List<Veterinarios> listaVeterinarios = dao.cargarRegistros();
 
@@ -359,11 +370,11 @@ public class GestionVeterinaria extends javax.swing.JFrame {
                 veterinario.setNombre(nombre);
                 veterinario.setApellido(apellido);
                 veterinario.setEdad(edad);
-                veterinario.setCorreo(txtCorreo.getText().trim());
-                veterinario.setSalario(txtSalario.getText().trim());
+                veterinario.setCorreo(correo);
+                veterinario.setSalario(salario);
                 veterinario.setCargo(comboCargo.getSelectedItem().toString());
                 veterinario.setHorario(comboHorario.getSelectedItem().toString());
-                veterinario.setNumTelefono(numTelefono);
+                veterinario.setNumTelefono(telefono);
                 veterinario.setArea(comboArea.getSelectedItem().toString());
 
                 dao.guardarTodos(listaVeterinarios);

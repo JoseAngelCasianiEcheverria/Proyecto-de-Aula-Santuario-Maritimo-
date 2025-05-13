@@ -134,6 +134,10 @@ public class GestionCuidadores extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this,"La edad/salario/numero telefonico deben ser solamente NUMEROS","Error",JOptionPane.ERROR_MESSAGE);
                 return;
             }
+            if (!validacionCorreo(correo)) {
+                JOptionPane.showMessageDialog(this,"Correo invalido, ingrese otro","Error",JOptionPane.ERROR_MESSAGE);
+                return;
+            }
             
             int iD = Integer.parseInt(iDText);
             String numTelefono = numTelefonoText;
@@ -192,6 +196,10 @@ public class GestionCuidadores extends javax.swing.JFrame {
             evt.consume();
             JOptionPane.showMessageDialog(this,"Solo se permiten NUMEROS","Error",JOptionPane.ERROR_MESSAGE);
         }
+    }
+    
+    private boolean validacionCorreo(String gmail){
+        return gmail.contains("@")&& gmail.contains(".") && gmail.indexOf('@') < gmail.lastIndexOf('.') && !gmail.startsWith("@") && !gmail.endsWith(".");
     }
     
     
@@ -330,10 +338,15 @@ public class GestionCuidadores extends javax.swing.JFrame {
         String telefonoText = txtTelefono.getText().trim();
         String salarioText = txtSalario.getText().trim();
         String edadText = txtEdad.getText().trim();
+        String correo = txtCorreo.getText().trim();
         
         if (!telefonoText.matches("\\d+") || !salarioText.matches("\\d+") || !edadText.matches("\\d+")) {
             JOptionPane.showMessageDialog(this, "Todos los campos numéricos deben contener solamente  números", "Error", JOptionPane.ERROR_MESSAGE);
             return;
+        }
+        if (!validacionCorreo(correo)) {
+           JOptionPane.showMessageDialog(this,"Correo invalido, ingrese otro","Error",JOptionPane.ERROR_MESSAGE);
+           return;
         }
         
         int edad = Integer.parseInt(edadText);
@@ -360,7 +373,7 @@ public class GestionCuidadores extends javax.swing.JFrame {
                 cuidador.setApellido(apellido);
                 cuidador.setEdad(edad);
                 cuidador.setSalario(salarioText);
-                cuidador.setCorreo(txtCorreo.getText().trim());
+                cuidador.setCorreo(correo);
                 cuidador.setCargo(comboCargo.getSelectedItem().toString());
                 cuidador.setHorario(comboHorario.getSelectedItem().toString());
                 cuidador.setArea(comboArea.getSelectedItem().toString());

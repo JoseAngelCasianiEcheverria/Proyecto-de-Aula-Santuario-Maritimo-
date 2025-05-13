@@ -26,5 +26,19 @@
     "genero": "MASCULINO",
     "edad": 29,
     "iD": 1044651602
+  },
+  {
+    "area": "Investigacion cientifica",
+    "cargo": "Auxiliar",
+    "fechaContratacion": "May 22, 2025, 6:07:12 PM",
+    "salario": "3000000",
+    "horario": "Diurno",
+    "correo": "andy@gmail.com",
+    "numTelefono": "3246578022",
+    "nombre": "Andres",
+    "apellido": "Espinosa",
+    "genero": "MASCULINO",
+    "edad": 33,
+    "iD": 1986517033
   }
 ]

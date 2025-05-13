@@ -137,6 +137,13 @@ public class GestionGuias extends javax.swing.JFrame {
                 return;
             }
             
+            if (!validacionCorreo(correo)) {
+                JOptionPane.showMessageDialog(this,"Correo invalido, ingrese otro","Error",JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
+            
+            
             int iD = Integer.parseInt(iDText);
             
             if (fechaContratacion == null) {
@@ -197,6 +204,13 @@ public class GestionGuias extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Solo se permiten NUMEROS","Error",JOptionPane.ERROR_MESSAGE);
         }
     }
+    
+    private boolean validacionCorreo(String gmail){
+        return gmail.contains("@")&& gmail.contains(".") && gmail.indexOf('@') < gmail.lastIndexOf('.') && !gmail.startsWith("@") && !gmail.endsWith(".");
+    }
+    
+    
+    
     
     private void cargarTablaGuias(){
         modelo.setColumnIdentifiers(new Object[]{"Nombre","Apellido","Edad","ID","Genero","Correo","Salario","Cargo","Horario","Telefono","Contratacion","Especialidad"});
@@ -331,11 +345,17 @@ public class GestionGuias extends javax.swing.JFrame {
             String numTelefonoText = txtTelefono.getText().trim();
             String salarioText = txtSalario.getText().trim();
             String edadText = txtEdad.getText().trim();
+            String correo = txtCorreo.getText().trim();
             
             if (!numTelefonoText.matches("\\d+") || !salarioText.matches("\\d+") || !edadText.matches("\\d+")) {
                JOptionPane.showMessageDialog(this, "Todos los campos numéricos deben contener solamente  números", "Error", JOptionPane.ERROR_MESSAGE);
                return;
             }
+            if (!validacionCorreo(correo)) {
+               JOptionPane.showMessageDialog(this,"Correo invalido, ingrese otro","Error",JOptionPane.ERROR_MESSAGE);
+               return;
+            }
+            
             
             int edad = Integer.parseInt(edadText);
             if (edad < 22) {
@@ -361,11 +381,11 @@ public class GestionGuias extends javax.swing.JFrame {
                     guia.setNombre(nombre);
                     guia.setApellido(apellido);
                     guia.setEdad(edad);
-                    guia.setSalario(txtSalario.getText().trim());
-                    guia.setCorreo(txtCorreo.getText().trim());
+                    guia.setSalario(salarioText);
+                    guia.setCorreo(correo);
                     guia.setCargo(comboCargo.getSelectedItem().toString());
                     guia.setHorario(comboHorario.getSelectedItem().toString());
-                    guia.setNumTelefono(txtTelefono.getText().trim());
+                    guia.setNumTelefono(numTelefonoText);
                     
                     dao.guardarTodos(listaGuias);
                     JOptionPane.showMessageDialog(this, "Actualizaciones completas", "Éxito", JOptionPane.INFORMATION_MESSAGE);

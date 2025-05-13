@@ -133,6 +133,11 @@ public class GestionVigilantes extends javax.swing.JFrame {
                 return;
             }
             
+            if (!validacionCorreo(correo)) {
+                JOptionPane.showMessageDialog(this,"Correo invalido, ingrese otro","Error",JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
             String numTelefono = numTelefonoText;
             int iD = Integer.parseInt(iDText);
             
@@ -185,6 +190,7 @@ public class GestionVigilantes extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Solo se permiten LETRAS","Error",JOptionPane.ERROR_MESSAGE);
         }
     }
+    
     private void soloNumeros(java.awt.event.KeyEvent evt){
         char c = evt.getKeyChar();
         if (!Character.isDigit(c) && c != '\b') {
@@ -192,9 +198,12 @@ public class GestionVigilantes extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Solo se permiten NUMEROS","Error",JOptionPane.ERROR_MESSAGE);
         }
     }
-            
     
+    private boolean validacionCorreo(String gmail){
+        return gmail.contains("@")&& gmail.contains(".") && gmail.indexOf('@') < gmail.lastIndexOf('.') && !gmail.startsWith("@") && !gmail.endsWith(".");
+    }
     
+     
     
     private void cargarTablaVigilantes(){
         modelo.setColumnIdentifiers(new Object[]{"Nombre","Apellido","Edad","ID","Genero","Correo","Cargo","Salario","Horario","Area","Telefono","Contratacion"});
@@ -330,10 +339,16 @@ public class GestionVigilantes extends javax.swing.JFrame {
             String telefonoText = txtTelefono.getText().trim();
             String salarioText = txtSalario.getText().trim();
             String edadText = txtEdad.getText().trim();
+            String correo = txtCorreo.getText().trim();
                
             if (!telefonoText.matches("\\d+") || !salarioText.matches("\\d+") || !edadText.matches("\\d+")) {
                JOptionPane.showMessageDialog(this, "Todos los campos numéricos deben contener solamente  números", "Error", JOptionPane.ERROR_MESSAGE);
                return;
+            }
+            
+            if (!validacionCorreo(correo)) {
+                JOptionPane.showMessageDialog(this,"Correo invalido, ingrese otro","Error",JOptionPane.ERROR_MESSAGE);
+                return;
             }
             
             int edad = Integer.parseInt(edadText);
@@ -359,7 +374,7 @@ public class GestionVigilantes extends javax.swing.JFrame {
                     vigilante.setNombre(nombre);
                     vigilante.setApellido(apellido);
                     vigilante.setEdad(edad);
-                    vigilante.setCorreo(txtCorreo.getText().trim());
+                    vigilante.setCorreo(correo);
                     vigilante.setCargo(comboCargo.getSelectedItem().toString());
                     vigilante.setSalario(salarioText);
                     vigilante.setHorario(comboHorario.getSelectedItem().toString());
