@@ -14,6 +14,7 @@
     "iD": 1904652022
   },
   {
+    "area": "Habitat terrestre",
     "cargo": "Auxiliar",
     "fechaContratacion": "May 27, 2025, 12:00:00 AM",
     "salario": "3500000",
@@ -25,5 +26,33 @@
     "genero": "MASCULINO",
     "edad": 24,
     "iD": 1043657802
+  },
+  {
+    "area": "Habitat acuatico",
+    "cargo": "Auxiliar",
+    "fechaContratacion": "May 15, 2025, 12:44:14 PM",
+    "salario": "350000",
+    "horario": "Diurno",
+    "correo": "anibal@gmail.com",
+    "numTelefono": "3265418022",
+    "nombre": "Anibal",
+    "apellido": "Torres",
+    "genero": "MASCULINO",
+    "edad": 22,
+    "iD": 1044657803
+  },
+  {
+    "area": "Habitat acuatico",
+    "cargo": "Jefe de area",
+    "fechaContratacion": "Mar 22, 2009, 12:00:00 AM",
+    "salario": "4000000000",
+    "horario": "Nocturno",
+    "correo": "manuel@gmail.com",
+    "numTelefono": "3102844801",
+    "nombre": "Manuel",
+    "apellido": "Payares",
+    "genero": "MASCULINO",
+    "edad": 43,
+    "iD": 1046517029
   }
 ]

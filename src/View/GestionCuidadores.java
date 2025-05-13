@@ -158,7 +158,7 @@ public class GestionCuidadores extends javax.swing.JFrame {
                 return;   
             }
             
-            Cuidadores nuevoCuidador = new Cuidadores(cargo, fechaContratacion, salario, horario, correo, numTelefono, nombre, apellido, genero, edadIngresada, iD);
+            Cuidadores nuevoCuidador = new Cuidadores(cargo, fechaContratacion, salario, horario, correo, numTelefono, nombre, apellido, genero, edadIngresada, iD, area);
             dao.guardarCuidador(nuevoCuidador);
             
             JOptionPane.showMessageDialog(this,"Registro exitoso", "Exitos", JOptionPane.INFORMATION_MESSAGE);

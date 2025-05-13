@@ -14,8 +14,9 @@ import model.oConstantes.GeneroEnum;
 public class Vigilantes extends Trabajadores{
     private String area;
 
-    public Vigilantes(String cargo, Date fechaContratacion, String salario, String horario, String correo, String numTelefono, String nombre, String apellido, GeneroEnum genero, int edad, int iD) {
+    public Vigilantes(String cargo, Date fechaContratacion, String salario, String horario, String correo, String numTelefono, String nombre, String apellido, GeneroEnum genero, int edad, int iD, String area) {
         super(cargo, fechaContratacion, salario, horario, correo, numTelefono, nombre, apellido, genero, edad, iD);
+        this.area = area;
     }
 
     

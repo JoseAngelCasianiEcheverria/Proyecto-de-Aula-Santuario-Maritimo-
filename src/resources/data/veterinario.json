@@ -12,5 +12,19 @@
     "genero": "MASCULINO",
     "edad": 22,
     "iD": 1044651703
+  },
+  {
+    "area": "Rescate y respuesta a emergencia",
+    "cargo": "Jefe del area",
+    "fechaContratacion": "Mar 22, 2021, 12:00:00 AM",
+    "salario": "29000000",
+    "horario": "Diurno",
+    "correo": "marlon@gmail.com",
+    "numTelefono": "3109238838",
+    "nombre": "Marlon",
+    "apellido": "Rodriguez",
+    "genero": "MASCULINO",
+    "edad": 29,
+    "iD": 1044651602
   }
 ]
