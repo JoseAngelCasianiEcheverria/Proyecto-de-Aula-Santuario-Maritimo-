@@ -1,0 +1,72 @@
+[
+  {
+    "especialidad": "Buceo guiado",
+    "cargo": "Guia de actividades acuaticas",
+    "fechaContratacion": "May 22, 2020, 12:00:00 AM",
+    "salario": "3500000",
+    "horario": "Diurno",
+    "correo": "franciscoVela@gmail.com",
+    "numTelefono": "3242644140",
+    "nombre": "Fransua",
+    "apellido": "Velasquez",
+    "genero": "MASCULINO",
+    "edad": 33,
+    "iD": 143651602
+  },
+  {
+    "especialidad": "Buceo guiado",
+    "cargo": "Guia de actividades acuaticas",
+    "fechaContratacion": "May 21, 2025, 1:38:01 PM",
+    "salario": "340000",
+    "horario": "Diurno",
+    "correo": "marlonsito@gmail.com",
+    "numTelefono": "3102566170",
+    "nombre": "Marlon",
+    "apellido": "Cardenas",
+    "genero": "MASCULINO",
+    "edad": 28,
+    "iD": 144651702
+  },
+  {
+    "especialidad": "Turismo cultural",
+    "cargo": "Guia Ecoturista",
+    "fechaContratacion": "May 21, 2025, 1:38:57 PM",
+    "salario": "3000000",
+    "horario": "Diurno",
+    "correo": "fernanda@gmail.com",
+    "numTelefono": "3102644140",
+    "nombre": "Fernanda",
+    "apellido": "Rivas",
+    "genero": "FEMENINO",
+    "edad": 34,
+    "iD": 1056551602
+  },
+  {
+    "especialidad": "Interpretacion ambiental marina",
+    "cargo": "Guia Ecoturista",
+    "fechaContratacion": "May 14, 2025, 12:47:21 PM",
+    "salario": "23000000",
+    "horario": "Diurno",
+    "correo": "juan@gmail.com",
+    "numTelefono": "3102788140",
+    "nombre": "Juan Pablo",
+    "apellido": "Lopez",
+    "genero": "MASCULINO",
+    "edad": 22,
+    "iD": 1044657803
+  },
+  {
+    "especialidad": "Turismo cultural",
+    "cargo": "Guia de actividades acuaticas",
+    "fechaContratacion": "May 8, 2025, 1:42:48 PM",
+    "salario": "20000000",
+    "horario": "Diurno",
+    "correo": "erick@gmail.com",
+    "numTelefono": "3102655170",
+    "nombre": "Erick",
+    "apellido": "Flores",
+    "genero": "MASCULINO",
+    "edad": 23,
+    "iD": 1044326022
+  }
+]
