@@ -54,5 +54,19 @@
     "genero": "MASCULINO",
     "edad": 22,
     "iD": 1044657803
+  },
+  {
+    "especialidad": "Turismo cultural",
+    "cargo": "Guia de actividades acuaticas",
+    "fechaContratacion": "May 8, 2025, 1:42:48 PM",
+    "salario": "20000000",
+    "horario": "Diurno",
+    "correo": "erick@gmail.com",
+    "numTelefono": "3102655170",
+    "nombre": "Erick",
+    "apellido": "Flores",
+    "genero": "MASCULINO",
+    "edad": 23,
+    "iD": 1044326022
   }
 ]

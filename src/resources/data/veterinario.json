@@ -40,5 +40,19 @@
     "genero": "MASCULINO",
     "edad": 33,
     "iD": 1986517033
+  },
+  {
+    "area": "Area de conservacion",
+    "cargo": "Veterinario",
+    "fechaContratacion": "Feb 22, 2009, 12:00:00 AM",
+    "salario": "3400000",
+    "horario": "Nocturno",
+    "correo": "mike@gmail.com",
+    "numTelefono": "3245644140",
+    "nombre": "Michael",
+    "apellido": "Santos",
+    "genero": "MASCULINO",
+    "edad": 33,
+    "iD": 1044467220
   }
 ]

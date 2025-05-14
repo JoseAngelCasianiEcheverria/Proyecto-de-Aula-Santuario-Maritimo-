@@ -110,14 +110,20 @@ public class GestionVigilantes extends javax.swing.JFrame {
             Date fechaContratacion = dateContratacion.getDate();
             String area = comboArea.getSelectedItem().toString();
             
-            if (nombre.isEmpty() || apellido.isEmpty() || edad.isEmpty() || genero.equals("Seleccionar") || correo.isEmpty() || salario.isEmpty() || cargo.equals("Seleccionar") || horario.equals("Seleccionar") || numTelefonoText.isEmpty() || fechaContratacion == null || area.equals("Seleccionar")) {
+            if (nombre.isEmpty() || apellido.isEmpty() || edad.isEmpty() || iDText.isEmpty() || genero.equals("Seleccionar") || correo.isEmpty() || salario.isEmpty() || cargo.equals("Seleccionar") || horario.equals("Seleccionar") || numTelefonoText.isEmpty() || fechaContratacion == null || area.equals("Seleccionar")) {
                JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios", "Warning", JOptionPane.WARNING_MESSAGE);
                return;
             }
             
+            if (iDText.length() !=10 || !iDText.matches("\\d+")) {
+                JOptionPane.showMessageDialog(this,"El ID debe tener 10 digitos","Warning",JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            
+            
             int edadIngresada = Integer.parseInt(edad);
-            if (edadIngresada < 22) {
-                JOptionPane.showMessageDialog(this,"Solo se permite una edad de 22 años o mas","Error",JOptionPane.ERROR_MESSAGE);
+            if (edadIngresada < 22 || edadIngresada > 70) {
+                JOptionPane.showMessageDialog(this,"Edad invalida.Solo se permite una edad apartir de 22 a 70 años","Error",JOptionPane.ERROR_MESSAGE);
                 return;
             }
             
@@ -352,8 +358,8 @@ public class GestionVigilantes extends javax.swing.JFrame {
             }
             
             int edad = Integer.parseInt(edadText);
-            if (edad < 22) {
-               JOptionPane.showMessageDialog(this, "Solo se permite una edad de 22 años o mas","Error",JOptionPane.ERROR_MESSAGE);
+            if (edad < 22 || edad > 70) {
+               JOptionPane.showMessageDialog(this, "Edad invalida.Solo se permite una edad apartir de 22 a 70 años","Error",JOptionPane.ERROR_MESSAGE);
                return;
             }
             

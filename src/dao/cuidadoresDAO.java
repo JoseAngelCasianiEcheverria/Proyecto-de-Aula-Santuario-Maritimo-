@@ -30,8 +30,8 @@ public class cuidadoresDAO {
     public List<Cuidadores> cargarRegistros() {
         try (Reader read = new FileReader(ARCHIVO)) {
             Type Lista = new TypeToken<ArrayList<Cuidadores>>(){}.getType();
-            List<Cuidadores> animales = gson.fromJson(read, Lista);
-            return animales != null ? animales : new ArrayList<>();
+            List<Cuidadores> cuidadores = gson.fromJson(read, Lista);
+            return cuidadores != null ? cuidadores : new ArrayList<>();
         } catch (IOException e) {
             System.err.println("ERROR. No se puede cargar: " + e.getMessage());
             return new ArrayList<>();
