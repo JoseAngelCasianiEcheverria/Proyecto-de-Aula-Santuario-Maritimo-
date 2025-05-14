@@ -97,6 +97,15 @@ public class GestionAnimal extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios", "Warning",JOptionPane.WARNING_MESSAGE);
                 return;
             }
+            
+            if (iDText.length() !=10 || !iDText.matches("\\d+")) {
+                JOptionPane.showMessageDialog(this,"El ID debe tener 10 digitos","Warning",JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            
+            
+            
+            
             if (!validacionLetras(nombre)) {
                JOptionPane.showMessageDialog(this,"El nombre solo permite letras","Error",JOptionPane.ERROR_MESSAGE);
                return;

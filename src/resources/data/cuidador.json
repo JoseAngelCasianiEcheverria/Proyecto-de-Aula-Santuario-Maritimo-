@@ -110,5 +110,33 @@
     "genero": "MASCULINO",
     "edad": 22,
     "iD": 1239999999
+  },
+  {
+    "area": "Habitat acuatico",
+    "cargo": "Auxiliar",
+    "fechaContratacion": "May 2, 2025, 12:00:00 AM",
+    "salario": "2000000",
+    "horario": "Diurno",
+    "correo": "fermin@gmail.com",
+    "numTelefono": "315679999",
+    "nombre": "Fermin",
+    "apellido": "Cisneros",
+    "genero": "MASCULINO",
+    "edad": 58,
+    "iD": 1093657902
+  },
+  {
+    "area": "Habitat terrestre",
+    "cargo": "Jefe de area",
+    "fechaContratacion": "May 9, 2025, 1:53:37 PM",
+    "salario": "2000000",
+    "horario": "Diurno",
+    "correo": "darius@gmail.com",
+    "numTelefono": "3102666170",
+    "nombre": "Dario",
+    "apellido": "Perez",
+    "genero": "MASCULINO",
+    "edad": 22,
+    "iD": 1098651802
   }
 ]

@@ -139,6 +139,13 @@ public class GestionCuidadores extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this,"La edad/salario/numero telefonico deben ser solamente NUMEROS","Error",JOptionPane.ERROR_MESSAGE);
                 return;
             }
+            
+            if (numTelefonoText.length() !=10) {
+                JOptionPane.showMessageDialog(this,"El numero de telefono debe contener 10 digitos","Warning",JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            
+            
             if (!validacionCorreo(correo)) {
                 JOptionPane.showMessageDialog(this,"Correo invalido, ingrese otro","Error",JOptionPane.ERROR_MESSAGE);
                 return;

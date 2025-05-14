@@ -140,13 +140,16 @@ public class GestionVeterinaria extends javax.swing.JFrame {
             return;
         }
         
+        if (numtelefonoText.length() !=10) {
+            JOptionPane.showMessageDialog(this,"El numero de telefono debe contener 10 digitos","Warning",JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+            
         if (!validacionCorreo(correo)) {
            JOptionPane.showMessageDialog(this,"Correo invalido, ingrese otro","Error",JOptionPane.ERROR_MESSAGE);
            return;
         }
-
-
-        
+       
         int iD = Integer.parseInt(iDText);
         String numTelefono = numtelefonoText;
         

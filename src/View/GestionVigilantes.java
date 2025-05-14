@@ -127,8 +127,6 @@ public class GestionVigilantes extends javax.swing.JFrame {
                 return;
             }
             
-            
-            
             if (!validacionLetras(nombre) || !validacionLetras(apellido)) {
                JOptionPane.showMessageDialog(this,"El nombre/apellido debe tener LETRAS","Error",JOptionPane.ERROR_MESSAGE);
                return;
@@ -138,6 +136,12 @@ public class GestionVigilantes extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "El salario/edad/numero telefonico deben ser NUMEROS","Error",JOptionPane.ERROR_MESSAGE);
                 return;
             }
+            
+            if (numTelefonoText.length() !=10) {
+               JOptionPane.showMessageDialog(this,"El numero de telefono debe contener 10 digitos","Warning",JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            
             
             if (!validacionCorreo(correo)) {
                 JOptionPane.showMessageDialog(this,"Correo invalido, ingrese otro","Error",JOptionPane.ERROR_MESSAGE);

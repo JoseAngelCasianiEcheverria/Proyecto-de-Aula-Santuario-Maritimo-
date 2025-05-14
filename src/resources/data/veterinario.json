@@ -54,5 +54,19 @@
     "genero": "MASCULINO",
     "edad": 33,
     "iD": 1044467220
+  },
+  {
+    "area": "Investigacion cientifica",
+    "cargo": "Auxiliar",
+    "fechaContratacion": "May 9, 2025, 1:56:05 PM",
+    "salario": "30000000",
+    "horario": "Diurno",
+    "correo": "sul@gmail.com",
+    "numTelefono": "3109844416",
+    "nombre": "Saul",
+    "apellido": "Herrera",
+    "genero": "MASCULINO",
+    "edad": 29,
+    "iD": 1055654202
   }
 ]
