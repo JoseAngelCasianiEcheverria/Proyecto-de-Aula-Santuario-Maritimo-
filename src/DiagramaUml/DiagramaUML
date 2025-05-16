@@ -1,0 +1,123 @@
+@startuml
+
+
+enum GeneroEnum
+enum SexoEnum
+
+  class Persona {
+    - String nombre
+    - String apellido
+    - GeneroEnum genero
+    - int edad
+    - int id
+  }
+
+  class Visitantes {
+    - String correo
+    - String contraseña
+    - String telefono
+    - Guias guiaSeleccionado
+    - ArrayList<String> agendas
+    + ConsultarAnimales()
+    + AgendarVisita()
+    + SeleccionarGuia()
+    + EvaluarGuia()
+    + EvaluarSantuario()
+    + ConsultarZonas()
+    + CancelarVisita()
+    + ModificarDatosPersonales()
+  }
+
+  class Trabajadores {
+    - String cargo
+    - Date fechaContratacion
+    - String salario
+    - String horario
+    - String correo
+    - String numTelefono
+  }
+
+  class Administrador {
+    - String nombreUsuario
+    - String contraseña
+    - Date horarioDeTrabajo
+    + AgregarAnimales()
+    + AgregarCuidadores()
+    + AgregarVeterinarios()
+    + AgregarVigilantes()
+    + AgregarGuias()
+    + ReporteEstadoAnimales()
+    + ReporteEstadoSantuario()
+    + ReporteEstadoPersonal()
+    + AsignarAnimalesAZonas()
+    + GestionarAnimales()
+    + AsignarZonas()
+  }
+
+  class Cuidadores {
+    - String area
+  }
+
+  class Guias {
+    - String especialidad
+  }
+
+  class Veterinarios {
+    - String area
+  }
+
+  class Vigilantes {
+    - String area
+  }
+
+  class Animales {
+    - String nombre
+    - int idAnimal
+    - String peso
+    - String especie
+    - SexoEnum sexo
+    - String estadoSalud
+    - String ubicacion
+    - String habitat
+    - String cuidadorAsignado
+    - Date fechaIngreso
+  }
+
+  class Zona {
+    - int idZona
+    - String ubicacion
+    - String fauna
+    - String flora
+    - ArrayList<String> listarAnimales
+    - String habitat
+    - String nombre
+    - String nivelProteccion
+    - double superficie
+    + permitirVisitas()
+    + controlarCapacidad()
+    + reglas()
+    + acceso()
+    + actualizarEstado()
+    + historialVisitas()
+    + reporteZona()
+  }
+
+
+Persona <|-- Visitantes
+Persona <|-- Trabajadores
+Persona <|-- Administrador
+
+Trabajadores <|-- Cuidadores
+Trabajadores <|-- Guias
+Trabajadores <|-- Veterinarios
+Trabajadores <|-- Vigilantes
+
+
+Zona --> "0..*" Animales : contiene
+Cuidadores "0..*" -- "1..*" Animales : cuida
+Veterinarios "0..*" -- "0..*" Animales : atiende
+Administrador --> "0..*" Animales : administra
+Administrador --> "0..*" Trabajadores : supervisa
+Visitantes --> "0..*" Zona : visita
+Guias --> "0..*" Zona : guía en
+@enduml
