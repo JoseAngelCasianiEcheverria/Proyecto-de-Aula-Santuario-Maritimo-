@@ -138,5 +138,19 @@
     "genero": "MASCULINO",
     "edad": 22,
     "iD": 1098651802
+  },
+  {
+    "area": "Habitat acuatico",
+    "cargo": "Jefe de area",
+    "fechaContratacion": "May 23, 2025, 7:27:51 AM",
+    "salario": "3000000",
+    "horario": "Diurno",
+    "correo": "marlon@gmail.com",
+    "numTelefono": "3102744540",
+    "nombre": "Marlon",
+    "apellido": "Peralta",
+    "genero": "MASCULINO",
+    "edad": 57,
+    "iD": 1234567899
   }
 ]

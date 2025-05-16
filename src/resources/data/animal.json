@@ -26,13 +26,13 @@
   {
     "nombre": "Delfin",
     "idAnimal": 123651672,
-    "peso": "2100",
+    "peso": "2000",
     "especie": "Mamifero",
     "sexo": "HEMBRA",
     "estadoSalud": "Sano",
     "ubicacion": "Habitat natural",
     "habitat": "Laguna",
-    "cuidadorAsignado": "Mariana Jimenez",
+    "cuidadorAsignado": "Mariana Perez",
     "fechaIngreso": "May 17, 2025, 7:08:27 PM"
   },
   {
@@ -70,5 +70,17 @@
     "habitat": "Tanque",
     "cuidadorAsignado": "Jose Peralta",
     "fechaIngreso": "May 15, 2025, 10:59:36 AM"
+  },
+  {
+    "nombre": "Foca",
+    "idAnimal": 1044657602,
+    "peso": "2700",
+    "especie": "Mamifero",
+    "sexo": "HEMBRA",
+    "estadoSalud": "Sano",
+    "ubicacion": "Educacion ambiental",
+    "habitat": "Arrecife",
+    "cuidadorAsignado": "Marco Fernandez",
+    "fechaIngreso": "May 16, 2020, 10:21:16 AM"
   }
 ]
