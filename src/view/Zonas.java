@@ -92,7 +92,8 @@ private String textozona3I = "Los visitantes podrán interactuar directamente co
         labelR4 = new javax.swing.JLabel();
         labelR6 = new javax.swing.JLabel();
         labelR7 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel2 = new javax.swing.JPanel();
+        INFORMACION = new javax.swing.JLabel();
         labelAZona3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -547,38 +548,61 @@ private String textozona3I = "Los visitantes podrán interactuar directamente co
                 .addContainerGap(56, Short.MAX_VALUE))
         );
 
-        labelAZona3.setText("textArea.setText(\"La tecnología ha avanzado a pasos agigantados en las últimas décadas, transformando profundamente la manera en que vivimos, trabajamos y nos comunicamos. Desde la invención de internet hasta la proliferación de los teléfonos inteligentes, el mundo se ha vuelto más conectado que nunca. Esta interconexión global ha traído consigo innumerables beneficios, como el acceso instantáneo a la información, la posibilidad de trabajar de forma remota y la capacidad de mantenernos en contacto con personas en cualquier parte del planeta. Sin embargo, también ha planteado nuevos desafíos, incluyendo la dependencia excesiva de los dispositivos electrónicos, la pérdida de privacidad y la difusión de información falsa. A medida que seguimos avanzando hacia un futuro cada vez más digital, es crucial encontrar un equilibrio que nos permita aprovechar al máximo las ventajas de la tecnología sin perder de vista los aspectos humanos y éticos que deben guiar su desarrollo y uso responsable.");
-        jScrollPane1.setViewportView(labelAZona3);
+        jPanel2.setBackground(new java.awt.Color(136, 204, 238));
+
+        INFORMACION.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        INFORMACION.setText("Información");
+
+        labelAZona3.setBackground(new java.awt.Color(136, 204, 238));
+        labelAZona3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(INFORMACION, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelAZona3, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(8, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(4, 4, 4)
+                .addComponent(INFORMACION, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelAZona3, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout Zona3Layout = new javax.swing.GroupLayout(Zona3);
         Zona3.setLayout(Zona3Layout);
         Zona3Layout.setHorizontalGroup(
             Zona3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Zona3Layout.createSequentialGroup()
-                .addGroup(Zona3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Zona3Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(60, 60, 60)
-                        .addComponent(PanelRZona3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(Zona3Layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addComponent(imgZona3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(116, 116, 116))
-                    .addGroup(Zona3Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(comboZona3, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(FielNombreTZona3, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(94, 94, 94)
-                        .addComponent(FielHorarioZona3, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(54, 54, 54)))
-                .addGap(12, 12, 12))
+                .addGap(87, 87, 87)
+                .addComponent(imgZona3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(128, 128, 128))
+            .addGroup(Zona3Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(comboZona3, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(FielNombreTZona3, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(94, 94, 94)
+                .addComponent(FielHorarioZona3, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(66, 66, 66))
             .addGroup(Zona3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(PanelTituloZona3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(Zona3Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61)
+                .addComponent(PanelRZona3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         Zona3Layout.setVerticalGroup(
             Zona3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -591,18 +615,16 @@ private String textozona3I = "Los visitantes podrán interactuar directamente co
                     .addComponent(FielNombreTZona3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(FielHorarioZona3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboZona3, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(Zona3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Zona3Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(PanelRZona3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1))
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addGroup(Zona3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(PanelRZona3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(21, 21, 21))
         );
 
         jTabbedPane1.addTab("tab3", Zona3);
 
-        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 840, 780));
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, 840, 780));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Imagen Titulo.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 0, 80, 110));
@@ -672,6 +694,7 @@ private String textozona3I = "Los visitantes podrán interactuar directamente co
     private javax.swing.JTextField FielNombreTZona1;
     private javax.swing.JTextField FielNombreTZona3;
     private javax.swing.JTextField FielNombreTZona4;
+    private javax.swing.JLabel INFORMACION;
     private javax.swing.JLabel LabelReglaZona1;
     private javax.swing.JLabel LabelReglaZona3;
     private javax.swing.JPanel PanelActividadZona1;
@@ -705,9 +728,9 @@ private String textozona3I = "Los visitantes podrán interactuar directamente co
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel labelAZona1;
     private javax.swing.JLabel labelAZona2;
