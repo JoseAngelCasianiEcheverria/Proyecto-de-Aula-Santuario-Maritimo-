@@ -10,7 +10,7 @@
     "nombre": "Matias",
     "apellido": "Perez",
     "genero": "MASCULINO",
-    "edad": 22,
+    "edad": 29,
     "iD": 1044651703
   },
   {
@@ -47,7 +47,7 @@
     "fechaContratacion": "Feb 22, 2009, 12:00:00 AM",
     "salario": "3400000",
     "horario": "Nocturno",
-    "correo": "mike@gmail.com",
+    "correo": "michael@gmail.com",
     "numTelefono": "3245644140",
     "nombre": "Michael",
     "apellido": "Santos",
@@ -62,7 +62,7 @@
     "salario": "30000000",
     "horario": "Diurno",
     "correo": "sul@gmail.com",
-    "numTelefono": "3109844416",
+    "numTelefono": "3109844420",
     "nombre": "Saul",
     "apellido": "Herrera",
     "genero": "MASCULINO",

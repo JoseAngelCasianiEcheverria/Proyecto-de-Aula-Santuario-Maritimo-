@@ -68,5 +68,19 @@
     "genero": "MASCULINO",
     "edad": 23,
     "iD": 1044326022
+  },
+  {
+    "especialidad": "Buceo guiado",
+    "cargo": "Guia Ecoturista",
+    "fechaContratacion": "May 22, 2025, 5:29:43 PM",
+    "salario": "900000",
+    "horario": "Diurno",
+    "correo": "yahir@gmail.com",
+    "numTelefono": "3102655189",
+    "nombre": "Yahir",
+    "apellido": "Stephen",
+    "genero": "MASCULINO",
+    "edad": 26,
+    "iD": 1044651704
   }
 ]

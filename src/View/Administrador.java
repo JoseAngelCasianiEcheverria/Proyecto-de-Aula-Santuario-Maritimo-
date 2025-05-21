@@ -9,6 +9,11 @@ import java.awt.ActiveEvent;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.Timer;
+import java.awt.event.ActionEvent;
+
 
 /**
  *
@@ -16,14 +21,30 @@ import javax.swing.JButton;
  */
 public class Administrador extends javax.swing.JFrame {
 
+
     /**
      * Creates new form Administrador
      */
     public Administrador() {
         initComponents();
         setLocationRelativeTo(null);
+        reloj();
         
     }
+    
+    private void reloj() {
+        SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm:ss");
+        String horaActual = formatoHora.format(new Date());
+        labelReloj.setText(horaActual);
+        
+        Timer timer = new Timer(1000, (ActionEvent e) -> {
+        String hora = formatoHora.format(new Date());
+        labelReloj.setText(hora);
+        
+    });
+    timer.start();
+    
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,6 +70,8 @@ public class Administrador extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         btnGuias = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        labelReloj = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,7 +106,7 @@ public class Administrador extends javax.swing.JFrame {
 
         Vigia.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Vigia.setForeground(new java.awt.Color(255, 255, 255));
-        Vigia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/VIGILANTE (1).png"))); // NOI18N
+        Vigia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/VIGILANTE (1).png"))); // NOI18N
         Vigia.setText("GESTION DE VIGILANCIA");
 
         javax.swing.GroupLayout btnVigilanciaLayout = new javax.swing.GroupLayout(btnVigilancia);
@@ -91,8 +114,9 @@ public class Administrador extends javax.swing.JFrame {
         btnVigilanciaLayout.setHorizontalGroup(
             btnVigilanciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnVigilanciaLayout.createSequentialGroup()
-                .addGap(0, 8, Short.MAX_VALUE)
-                .addComponent(Vigia))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Vigia, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         btnVigilanciaLayout.setVerticalGroup(
             btnVigilanciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,12 +148,12 @@ public class Administrador extends javax.swing.JFrame {
         btnCuidadores.setLayout(btnCuidadoresLayout);
         btnCuidadoresLayout.setHorizontalGroup(
             btnCuidadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 350, Short.MAX_VALUE)
             .addGroup(btnCuidadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(btnCuidadoresLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jLabel5)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(26, Short.MAX_VALUE)))
         );
         btnCuidadoresLayout.setVerticalGroup(
             btnCuidadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,7 +180,7 @@ public class Administrador extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ANIMAL (1) (1) (1).png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/ANIMAL (1) (1) (1).png"))); // NOI18N
         jLabel6.setText("GESTION DE ANIMALES  ");
 
         javax.swing.GroupLayout btnAnimalesLayout = new javax.swing.GroupLayout(btnAnimales);
@@ -164,7 +188,7 @@ public class Administrador extends javax.swing.JFrame {
         btnAnimalesLayout.setHorizontalGroup(
             btnAnimalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnAnimalesLayout.createSequentialGroup()
-                .addComponent(jLabel6)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         btnAnimalesLayout.setVerticalGroup(
@@ -203,8 +227,9 @@ public class Administrador extends javax.swing.JFrame {
         btnVeterinariosLayout.setVerticalGroup(
             btnVeterinariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnVeterinariosLayout.createSequentialGroup()
-                .addGap(0, 37, Short.MAX_VALUE)
-                .addComponent(jLabel8))
+                .addContainerGap(37, Short.MAX_VALUE)
+                .addComponent(jLabel8)
+                .addContainerGap())
         );
 
         btnGuias.setBackground(new java.awt.Color(0, 51, 153));
@@ -232,14 +257,37 @@ public class Administrador extends javax.swing.JFrame {
             btnGuiasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnGuiasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel7)
-                .addContainerGap(340, Short.MAX_VALUE))
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         btnGuiasLayout.setVerticalGroup(
             btnGuiasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnGuiasLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel7))
+        );
+
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+
+        labelReloj.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
+        labelReloj.setForeground(new java.awt.Color(255, 255, 255));
+        labelReloj.setText("jLabel9");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelReloj, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelReloj)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -249,43 +297,46 @@ public class Administrador extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel2)
-                        .addComponent(btnAnimales, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnVigilancia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnCuidadores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnVeterinarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(9, 9, 9)
-                            .addComponent(jLabel4)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel2)
+                            .addComponent(btnAnimales, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnVigilancia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCuidadores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnVeterinarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(9, 9, 9)
+                                .addComponent(jLabel4)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnGuias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                .addComponent(btnGuias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44))
+                .addGap(377, 377, 377)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 744, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnGuias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAnimales, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(36, 36, 36)
-                .addComponent(btnVigilancia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(btnCuidadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnVeterinarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 708, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnGuias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAnimales, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(36, 36, 36)
+                        .addComponent(btnVigilancia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(btnCuidadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnVeterinarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -312,7 +363,7 @@ public class Administrador extends javax.swing.JFrame {
 
     private void btnVigilanciaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVigilanciaMouseEntered
         // TODO add your handling code here:
-        btnVigilancia.setBackground(Color.BLUE);
+        btnVigilancia.setBackground(Color.CYAN);
     }//GEN-LAST:event_btnVigilanciaMouseEntered
 
     private void btnVigilanciaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVigilanciaMouseExited
@@ -330,7 +381,7 @@ public class Administrador extends javax.swing.JFrame {
 
     private void btnCuidadoresMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCuidadoresMouseEntered
         // TODO add your handling code here:
-        btnCuidadores.setBackground(Color.BLUE);
+        btnCuidadores.setBackground(Color.CYAN);
     }//GEN-LAST:event_btnCuidadoresMouseEntered
 
     private void btnCuidadoresMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCuidadoresMouseExited
@@ -347,7 +398,7 @@ public class Administrador extends javax.swing.JFrame {
 
     private void btnAnimalesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnimalesMouseEntered
         // TODO add your handling code here:
-        btnAnimales.setBackground(Color.BLUE);
+        btnAnimales.setBackground(Color.CYAN);
     }//GEN-LAST:event_btnAnimalesMouseEntered
 
     private void btnAnimalesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnimalesMouseExited
@@ -357,7 +408,7 @@ public class Administrador extends javax.swing.JFrame {
 
     private void btnVeterinariosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVeterinariosMouseEntered
         // TODO add your handling code here:
-        btnVeterinarios.setBackground(Color.BLUE);
+        btnVeterinarios.setBackground(Color.CYAN);
     }//GEN-LAST:event_btnVeterinariosMouseEntered
 
     private void btnVeterinariosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVeterinariosMouseExited
@@ -373,7 +424,7 @@ public class Administrador extends javax.swing.JFrame {
 
     private void btnGuiasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuiasMouseEntered
         // TODO add your handling code here:
-        btnGuias.setBackground(Color.BLUE);
+        btnGuias.setBackground(Color.CYAN);
     }//GEN-LAST:event_btnGuiasMouseEntered
 
     private void btnGuiasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuiasMouseExited
@@ -438,5 +489,7 @@ public class Administrador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel labelReloj;
     // End of variables declaration//GEN-END:variables
 }

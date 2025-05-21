@@ -26,5 +26,47 @@
     "genero": "MASCULINO",
     "edad": 32,
     "iD": 1044651702
+  },
+  {
+    "area": "Zona de corales",
+    "cargo": "Guardia de entrada",
+    "fechaContratacion": "May 14, 2025, 10:27:02 PM",
+    "salario": "3000000",
+    "horario": "Diurno",
+    "correo": "juanpa@gmail.com",
+    "numTelefono": "3102655140",
+    "nombre": "Juan Pablo",
+    "apellido": "Lopez",
+    "genero": "MASCULINO",
+    "edad": 23,
+    "iD": 1044761802
+  },
+  {
+    "area": "Torre de control",
+    "cargo": "Guardia por exterior",
+    "fechaContratacion": "May 13, 2025, 2:11:38 PM",
+    "salario": "2000000",
+    "horario": "Nocturno",
+    "correo": "jose@gmail.com",
+    "numTelefono": "3286517022",
+    "nombre": "Jose",
+    "apellido": "Blanco",
+    "genero": "MASCULINO",
+    "edad": 29,
+    "iD": 1046551602
+  },
+  {
+    "area": "Zona de corales",
+    "cargo": "Guardia por exterior",
+    "fechaContratacion": "May 22, 2020, 2:14:38 PM",
+    "salario": "30000000",
+    "horario": "Diurno",
+    "correo": "adrian@gmail.com",
+    "numTelefono": "3204414020",
+    "nombre": "Adrian",
+    "apellido": "Orozco",
+    "genero": "MASCULINO",
+    "edad": 29,
+    "iD": 1043651602
   }
 ]

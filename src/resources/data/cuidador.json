@@ -1,20 +1,6 @@
 [
   {
     "area": "Habitat terrestre",
-    "cargo": "Jefe de area",
-    "fechaContratacion": "May 15, 2025, 12:00:00 AM",
-    "salario": "250000",
-    "horario": "Diurno",
-    "correo": "manu@gmail.com",
-    "numTelefono": "3102644140",
-    "nombre": "Manuel",
-    "apellido": "Fernandez",
-    "genero": "MASCULINO",
-    "edad": 22,
-    "iD": 1904652022
-  },
-  {
-    "area": "Habitat terrestre",
     "cargo": "Auxiliar",
     "fechaContratacion": "May 27, 2025, 12:00:00 AM",
     "salario": "3500000",
@@ -40,34 +26,6 @@
     "genero": "MASCULINO",
     "edad": 22,
     "iD": 1044657803
-  },
-  {
-    "area": "Habitat acuatico",
-    "cargo": "Jefe de area",
-    "fechaContratacion": "Mar 22, 2009, 12:00:00 AM",
-    "salario": "4000000000",
-    "horario": "Nocturno",
-    "correo": "manuel@gmail.com",
-    "numTelefono": "3102844801",
-    "nombre": "Manuel",
-    "apellido": "Payares",
-    "genero": "MASCULINO",
-    "edad": 43,
-    "iD": 1046517029
-  },
-  {
-    "area": "Habitat acuatico",
-    "cargo": "Jefe de area",
-    "fechaContratacion": "Sep 22, 2001, 12:00:00 AM",
-    "salario": "3000000",
-    "horario": "Diurno",
-    "correo": "juanes@gmail.com",
-    "numTelefono": "3102655390",
-    "nombre": "Jose",
-    "apellido": "Peralta",
-    "genero": "MASCULINO",
-    "edad": 33,
-    "iD": 1044616023
   },
   {
     "area": "Habitat terrestre",

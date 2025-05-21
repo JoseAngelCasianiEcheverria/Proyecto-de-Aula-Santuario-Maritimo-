@@ -1,17 +1,5 @@
 [
   {
-    "nombre": "Mantarraya",
-    "idAnimal": 1098651782,
-    "peso": "1700",
-    "especie": "Pez",
-    "sexo": "MACHO",
-    "estadoSalud": "Sano",
-    "ubicacion": "Educacion ambiental",
-    "habitat": "Tanque",
-    "cuidadorAsignado": "Manuel Herrera",
-    "fechaIngreso": "May 8, 2025, 7:06:28 PM"
-  },
-  {
     "nombre": "Tiburon",
     "idAnimal": 1044657822,
     "peso": "2500",
@@ -82,5 +70,29 @@
     "habitat": "Arrecife",
     "cuidadorAsignado": "Marco Fernandez",
     "fechaIngreso": "May 16, 2020, 10:21:16 AM"
+  },
+  {
+    "nombre": "Mantarraya",
+    "idAnimal": 1098651792,
+    "peso": "1700",
+    "especie": "Pez",
+    "sexo": "MACHO",
+    "estadoSalud": "Sano",
+    "ubicacion": "Habitat natural",
+    "habitat": "Tanque",
+    "cuidadorAsignado": "Jose Perez",
+    "fechaIngreso": "May 6, 2025, 9:58:04 PM"
+  },
+  {
+    "nombre": "Leon Marino",
+    "idAnimal": 1088651702,
+    "peso": "900",
+    "especie": "Mamifero",
+    "sexo": "MACHO",
+    "estadoSalud": "Sano",
+    "ubicacion": "Zona de crianza",
+    "habitat": "Arrecife",
+    "cuidadorAsignado": "Jose Paez Reyes",
+    "fechaIngreso": "May 22, 2025, 9:13:39 PM"
   }
 ]
