@@ -1,20 +1,25 @@
 
 package model;
+import java.util.ArrayList;
+
+import model.oConstantes.GeneroEnum;
 
 public class Visitantes extends Persona{
     private String correo;
     private String telefono;
-    private int evaluacionesRealizadas;
-    private String guiaSeleccionado;
+    private Guias guiaSeleccionado;
+    private String contraseña;
+    private ArrayList <String> agendas;
 
-    public Visitantes(String correo, String telefono, int evaluacionesRealizadas, String guiaSeleccionado, String nombre, String apellido, String genero, String edad, String id) {
-        super(nombre, apellido, genero, edad, id);
+    public Visitantes(String correo, String telefono, Guias guiaSeleccionado, String contraseña, ArrayList<String> agendas, String nombre, String apellido, GeneroEnum genero, int edad, int iD) {
+        super(nombre, apellido, genero, edad, iD);
         this.correo = correo;
         this.telefono = telefono;
-        this.evaluacionesRealizadas = evaluacionesRealizadas;
         this.guiaSeleccionado = guiaSeleccionado;
+        this.contraseña = contraseña;
+        this.agendas = agendas;
     }
-    
+
     public String getCorreo() {
         return correo;
     }
@@ -31,21 +36,34 @@ public class Visitantes extends Persona{
         this.telefono = telefono;
     }
 
-    public int getEvaluacionesRealizadas() {
-        return evaluacionesRealizadas;
-    }
-
-    public void setEvaluacionesRealizadas(int evaluacionesRealizadas) {
-        this.evaluacionesRealizadas = evaluacionesRealizadas;
-    }
-
-    public String getGuiaSeleccionado() {
+    public Guias getGuiaSeleccionado() {
         return guiaSeleccionado;
     }
 
-    public void setGuiaSeleccionado(String guiaSeleccionado) {
+    public void setGuiaSeleccionado(Guias guiaSeleccionado) {
         this.guiaSeleccionado = guiaSeleccionado;
     }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+
+    public ArrayList<String> getAgendas() {
+        return agendas;
+    }
+
+    public void setAgendas(ArrayList<String> agendas) {
+        this.agendas = agendas;
+    }
+
+    
+
+   
+   
     
     public void ConsultarAnimales(){
         

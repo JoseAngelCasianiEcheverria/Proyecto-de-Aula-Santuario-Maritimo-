@@ -2,44 +2,29 @@
 package model;
 
 import java.util.Date;
+import model.oConstantes.GeneroEnum;
 
-public class Trabajadores {
-    private int idTrabajador;
-    private String nombre;
+public class Trabajadores extends Persona{
     private String cargo;
     private Date fechaContratacion;
-    private double salario;
-    private int horasTrabajo;
+    private String salario;
+    private String horario;
     private String correo;
-    private int numTelefono;
+    private String numTelefono;
 
-    public Trabajadores(int idTrabajador, String nombre, String cargo, Date fechaContratacion, double salario, int horasTrabajo, String correo, int numTelefono) {
-        this.idTrabajador = idTrabajador;
-        this.nombre = nombre;
+    public Trabajadores(String cargo, Date fechaContratacion, String salario, String horario, String correo, String numTelefono, String nombre, String apellido, GeneroEnum genero, int edad, int iD) {
+        super(nombre, apellido, genero, edad, iD);
         this.cargo = cargo;
         this.fechaContratacion = fechaContratacion;
         this.salario = salario;
-        this.horasTrabajo = horasTrabajo;
+        this.horario = horario;
         this.correo = correo;
         this.numTelefono = numTelefono;
     }
 
-    public int getIdTrabajador() {
-        return idTrabajador;
-    }
-
-    public void setIdTrabajador(int idTrabajador) {
-        this.idTrabajador = idTrabajador;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
+    
+    
+    
     public String getCargo() {
         return cargo;
     }
@@ -56,20 +41,20 @@ public class Trabajadores {
         this.fechaContratacion = fechaContratacion;
     }
 
-    public double getSalario() {
+    public String getSalario() {
         return salario;
     }
 
-    public void setSalario(double salario) {
+    public void setSalario(String salario) {
         this.salario = salario;
     }
 
-    public int getHorasTrabajo() {
-        return horasTrabajo;
+    public String getHorario() {
+        return horario;
     }
 
-    public void setHorasTrabajo(int horasTrabajo) {
-        this.horasTrabajo = horasTrabajo;
+    public void setHorario(String horario) {
+        this.horario = horario;
     }
 
     public String getCorreo() {
@@ -80,13 +65,24 @@ public class Trabajadores {
         this.correo = correo;
     }
 
-    public int getNumTelefono() {
+    public String getNumTelefono() {
         return numTelefono;
     }
 
-    public void setNumTelefono(int numTelefono) {
+    public void setNumTelefono(String numTelefono) {
         this.numTelefono = numTelefono;
     }
+
+    
+    
+    
+    
+
+   
+    
+    
+    
+
     
     public void mostrarInformacion(){
         

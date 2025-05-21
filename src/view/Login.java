@@ -4,17 +4,42 @@
  */
 package view;
 
-import model.Usuario;
-import model.Visitantes;
+import Model.Usuario;
 import javax.swing.JOptionPane;
+import dao.LoginDAO;
 
 public class Login extends javax.swing.JFrame {
-
-    private Usuario crud = new Usuario();
-    
+        
     public Login() {
         initComponents();
     }
+    
+    private final LoginDAO dao = new LoginDAO();
+    
+    private void guardarRegistros(){
+    try {
+        String usuario = txtusuario.getText().trim();
+        String contraseña = txtcontra.getText().trim();
+
+         //Validaciones
+        if (txtusuario.getText().trim().isEmpty() || txtcontra.getText().trim().isEmpty()) {
+              JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios", "Advertencia", JOptionPane.WARNING_MESSAGE);
+              return;
+            
+        }
+        
+        Usuario nuevoUsuario = new Usuario(usuario, contraseña);
+        dao.guardarUsuarios(nuevoUsuario);
+
+
+        JOptionPane.showMessageDialog(this,"Registro exitoso","Éxito",JOptionPane.INFORMATION_MESSAGE);
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(this,"Error al registrar al usuario","Error",JOptionPane.ERROR_MESSAGE);
+    }
+}      
+    
     
     public void limpiar(){
         txtusuario.setText("");
@@ -99,6 +124,11 @@ public class Login extends javax.swing.JFrame {
         btnRegistrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnRegistrar.setForeground(new java.awt.Color(255, 255, 255));
         btnRegistrar.setText("REGISTRAR");
+        btnRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRegistrarMouseClicked(evt);
+            }
+        });
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarActionPerformed(evt);
@@ -213,6 +243,10 @@ public class Login extends javax.swing.JFrame {
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
        
     }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void btnRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarMouseClicked
+        guardarRegistros();
+    }//GEN-LAST:event_btnRegistrarMouseClicked
 
     /**
      * @param args the command line arguments
