@@ -1,0 +1,30 @@
+[
+  {
+    "area": "Torre de control",
+    "cargo": "Patrullero",
+    "fechaContratacion": "Mar 22, 2009, 12:00:00 AM",
+    "salario": "300000",
+    "horario": "Diurno",
+    "correo": "mathews@gmail.com",
+    "numTelefono": "32465170333",
+    "nombre": "Matias",
+    "apellido": "Gomez",
+    "genero": "MASCULINO",
+    "edad": 45,
+    "iD": 194671502
+  },
+  {
+    "area": "Torre de control",
+    "cargo": "Patrullero",
+    "fechaContratacion": "May 4, 2025, 1:41:21 PM",
+    "salario": "39000000",
+    "horario": "Diurno",
+    "correo": "omarsito@gmail.com",
+    "numTelefono": "324651780",
+    "nombre": "Omar Andres",
+    "apellido": "Flerez",
+    "genero": "MASCULINO",
+    "edad": 32,
+    "iD": 1044651702
+  }
+]
