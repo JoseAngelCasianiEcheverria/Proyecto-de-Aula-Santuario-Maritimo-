@@ -1,0 +1,72 @@
+[
+  {
+    "area": "Bienestar animal",
+    "cargo": "Veterinario",
+    "fechaContratacion": "May 15, 2025, 1:36:02 PM",
+    "salario": "2300000",
+    "horario": "Diurno",
+    "correo": "matias@gmail.com",
+    "numTelefono": "3102744390",
+    "nombre": "Matias",
+    "apellido": "Perez",
+    "genero": "MASCULINO",
+    "edad": 22,
+    "iD": 1044651703
+  },
+  {
+    "area": "Rescate y respuesta a emergencia",
+    "cargo": "Jefe del area",
+    "fechaContratacion": "Mar 22, 2021, 12:00:00 AM",
+    "salario": "29000000",
+    "horario": "Diurno",
+    "correo": "marlon@gmail.com",
+    "numTelefono": "3109238838",
+    "nombre": "Marlon",
+    "apellido": "Rodriguez",
+    "genero": "MASCULINO",
+    "edad": 29,
+    "iD": 1044651602
+  },
+  {
+    "area": "Investigacion cientifica",
+    "cargo": "Auxiliar",
+    "fechaContratacion": "May 22, 2025, 6:07:12 PM",
+    "salario": "3000000",
+    "horario": "Diurno",
+    "correo": "andy@gmail.com",
+    "numTelefono": "3246578022",
+    "nombre": "Andres",
+    "apellido": "Espinosa",
+    "genero": "MASCULINO",
+    "edad": 33,
+    "iD": 1986517033
+  },
+  {
+    "area": "Area de conservacion",
+    "cargo": "Veterinario",
+    "fechaContratacion": "Feb 22, 2009, 12:00:00 AM",
+    "salario": "3400000",
+    "horario": "Nocturno",
+    "correo": "mike@gmail.com",
+    "numTelefono": "3245644140",
+    "nombre": "Michael",
+    "apellido": "Santos",
+    "genero": "MASCULINO",
+    "edad": 33,
+    "iD": 1044467220
+  },
+  {
+    "area": "Investigacion cientifica",
+    "cargo": "Auxiliar",
+    "fechaContratacion": "May 9, 2025, 1:56:05 PM",
+    "salario": "30000000",
+    "horario": "Diurno",
+    "correo": "sul@gmail.com",
+    "numTelefono": "3109844416",
+    "nombre": "Saul",
+    "apellido": "Herrera",
+    "genero": "MASCULINO",
+    "edad": 29,
+    "iD": 1055654202
+  }
+]
