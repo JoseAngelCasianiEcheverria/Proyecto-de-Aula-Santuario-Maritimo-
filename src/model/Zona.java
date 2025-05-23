@@ -97,33 +97,4 @@ public class Zona {
     public void setSuperficie(double superficie) {
         this.superficie = superficie;
     }
-   
-   public void permitirVisitas(){
-       
-   }
-   
-   public void controlarCapacidad(){
-       
-   }
-   
-   public void reglas(){
-       
-   }
-   
-   public void acceso(){
-       
-   }
-   
-   public void actualizarEstado(){
-       
-   }
-   
-   public void historialVisitas(){
-       
-   }
-   
-   public void reporteZona(){
-       
-   }
-   
 }

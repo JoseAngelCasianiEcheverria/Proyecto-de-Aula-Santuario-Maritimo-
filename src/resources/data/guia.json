@@ -82,5 +82,19 @@
     "genero": "MASCULINO",
     "edad": 26,
     "iD": 1044651704
+  },
+  {
+    "especialidad": "Turismo cultural",
+    "cargo": "Guia de actividades acuaticas",
+    "fechaContratacion": "May 19, 2025, 9:53:09 PM",
+    "salario": "400000",
+    "horario": "Diurno",
+    "correo": "francis@gmaill.com",
+    "numTelefono": "3102744140",
+    "nombre": "Francis",
+    "apellido": "Mcreary",
+    "genero": "MASCULINO",
+    "edad": 40,
+    "iD": 1044657802
   }
 ]

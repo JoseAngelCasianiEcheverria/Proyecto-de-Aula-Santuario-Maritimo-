@@ -1,0 +1,200 @@
+[
+  {
+    "correo": "dfghj",
+    "telefono": "1234567890",
+    "contraseña": "sdfghjk",
+    "nombre": "ddfghj",
+    "apellido": "dfghj",
+    "edad": 56,
+    "iD": 1234567890
+  },
+  {
+    "correo": "asdfghjkl",
+    "telefono": "12345678",
+    "contraseña": "XDDDDDDD",
+    "nombre": "sdfghj",
+    "apellido": "asdfghjk",
+    "edad": 44,
+    "iD": 1098765392
+  },
+  {
+    "correo": "manu@gmail.com",
+    "telefono": "3102544149",
+    "contraseña": "o11ce",
+    "nombre": "Manuel",
+    "apellido": "Andrade",
+    "edad": 23,
+    "iD": 1044651602
+  },
+  {
+    "correo": "asdfghjnbnbg",
+    "telefono": "5435664222",
+    "contraseña": "OJO",
+    "nombre": "asdfgcvb",
+    "apellido": "zxcvbnm",
+    "edad": 34,
+    "iD": 2134567890
+  },
+  {
+    "correo": "sdfghbjnnj",
+    "telefono": "23456789",
+    "contraseña": "owo",
+    "nombre": "asdfvbnlkgd",
+    "apellido": "sfdgvhjbn",
+    "edad": 23,
+    "iD": 1234567880
+  },
+  {
+    "correo": "juanpa@gmail.com",
+    "telefono": "320651702",
+    "contraseña": "059058",
+    "nombre": "Juan",
+    "apellido": "Peralta",
+    "edad": 30,
+    "iD": 1044657802
+  },
+  {
+    "correo": "jose@gmail.com",
+    "telefono": "345674444",
+    "contraseña": "39288373737juan",
+    "nombre": "Jose",
+    "apellido": "Valladares",
+    "edad": 28,
+    "iD": 1093651602
+  },
+  {
+    "correo": "sdfgcvhbh",
+    "telefono": "345658767867",
+    "contraseña": "JOa",
+    "nombre": "sadfhjkh",
+    "apellido": "fgfvhgv",
+    "edad": 23,
+    "iD": 1056786666
+  },
+  {
+    "correo": "Danielteran@Brazzers.com",
+    "telefono": "372182361",
+    "contraseña": "Suanfunsun1234",
+    "nombre": "Walbert",
+    "apellido": "Einstein",
+    "edad": 19,
+    "iD": 1234567891
+  },
+  {
+    "correo": "Jose@gmailcom",
+    "telefono": "31456789",
+    "contraseña": "3737",
+    "nombre": "Jose",
+    "apellido": "Blanco",
+    "edad": 19,
+    "iD": 1048438398
+  },
+  {
+    "correo": "josegmail.com",
+    "telefono": "3102644190",
+    "contraseña": "juanse",
+    "nombre": "Jose",
+    "apellido": "Peralta",
+    "edad": 22,
+    "iD": 1043671893
+  },
+  {
+    "correo": "mario@gmail.com",
+    "telefono": "3102644180",
+    "contraseña": "069058",
+    "nombre": "Mario",
+    "apellido": "Radames",
+    "edad": 29,
+    "iD": 1023651602
+  },
+  {
+    "correo": "matias@gmail.com",
+    "telefono": "3102655790",
+    "contraseña": "069058",
+    "nombre": "Matias",
+    "apellido": "Perez",
+    "edad": 34,
+    "iD": 1098651602
+  },
+  {
+    "correo": "ramses@gmail.com",
+    "telefono": "326665220",
+    "contraseña": "069058",
+    "nombre": "Ramiro",
+    "apellido": "Valladares",
+    "edad": 35,
+    "iD": 1046651602
+  },
+  {
+    "correo": "tommy@gmail.com",
+    "telefono": "3296514410",
+    "contraseña": "10448958",
+    "nombre": "Tobey",
+    "apellido": "Maguire",
+    "edad": 34,
+    "iD": 1044651782
+  },
+  {
+    "correo": "josepa@gmail.com",
+    "telefono": "3102644140",
+    "contraseña": "paez2233",
+    "nombre": "Jose",
+    "apellido": "Paez",
+    "edad": 34,
+    "iD": 1033654803
+  },
+  {
+    "correo": "jose@gmail.com",
+    "telefono": "3102655340",
+    "contraseña": "joseprou983",
+    "nombre": "Jose",
+    "apellido": "Perez",
+    "edad": 32,
+    "iD": 1056517023
+  },
+  {
+    "correo": "jhonnyarrieta@gmail.com",
+    "telefono": "3102644140",
+    "contraseña": "05905786",
+    "nombre": "Jhon Carlos",
+    "apellido": "Arrieta",
+    "edad": 54,
+    "iD": 1044651703
+  },
+  {
+    "correo": "thomas@gmail.com",
+    "telefono": "3202644140",
+    "contraseña": "1234",
+    "nombre": "Thomas",
+    "apellido": "Alcazar",
+    "edad": 23,
+    "iD": 1043551781
+  },
+  {
+    "correo": "manu@gmail.com",
+    "telefono": "3206517022",
+    "contraseña": "098858",
+    "nombre": "Manuel",
+    "apellido": "Osorio",
+    "edad": 22,
+    "iD": 1096651602
+  },
+  {
+    "correo": "juan@gmail.com",
+    "telefono": "3102644190",
+    "contraseña": "0590587",
+    "nombre": "Juan",
+    "apellido": "Valladares",
+    "edad": 33,
+    "iD": 1044790322
+  },
+  {
+    "correo": "Jose@gmail.com",
+    "telefono": "3146200202",
+    "contraseña": "123",
+    "nombre": "Jose Angel",
+    "apellido": "Casianis",
+    "edad": 19,
+    "iD": 1043300481
+  }
+]

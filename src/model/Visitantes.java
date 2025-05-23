@@ -1,4 +1,3 @@
-
 package model;
 import java.util.ArrayList;
 
@@ -9,15 +8,12 @@ public class Visitantes extends Persona{
     private String telefono;
     private Guias guiaSeleccionado;
     private String contraseña;
-    private ArrayList <String> agendas;
 
-    public Visitantes(String correo, String telefono, Guias guiaSeleccionado, String contraseña, ArrayList<String> agendas, String nombre, String apellido, GeneroEnum genero, int edad, int iD) {
+    public Visitantes(String correo, String telefono,  String contraseña,  String nombre, String apellido, GeneroEnum genero, int edad, int iD) {
         super(nombre, apellido, genero, edad, iD);
         this.correo = correo;
         this.telefono = telefono;
-        this.guiaSeleccionado = guiaSeleccionado;
         this.contraseña = contraseña;
-        this.agendas = agendas;
     }
 
     public String getCorreo() {
@@ -50,51 +46,6 @@ public class Visitantes extends Persona{
 
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
-    }
-
-    public ArrayList<String> getAgendas() {
-        return agendas;
-    }
-
-    public void setAgendas(ArrayList<String> agendas) {
-        this.agendas = agendas;
-    }
-
-    
-
-   
-   
-    
-    public void ConsultarAnimales(){
-        
-    }
-    
-    public void AgendarVisita(){
-        
-    }
-    
-    public void SeleccionarGuia(){
-        
-    }
-    
-    public void EvaluarGuia(){
-        
-    }
-    
-    public void EvaluarSantuario(){
-        
-    }
-    
-    public void ConsultarZonas(){
-        
-    }
-    
-    public void CancelarVisita(){
-        
-    }
-    
-    public void ModificarDatosPersonales(){
-        
     }
     
 }
