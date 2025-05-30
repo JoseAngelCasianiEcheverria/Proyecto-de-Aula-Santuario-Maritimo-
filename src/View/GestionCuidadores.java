@@ -22,6 +22,15 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import com.toedter.calendar.JDateChooser;
 import model.oConstantes.GeneroEnum;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.awt.Color;
+
+
 
 
 
@@ -409,7 +418,61 @@ public class GestionCuidadores extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Error inesperado al actualizar", "Error", JOptionPane.ERROR_MESSAGE);
     }
 }
- 
+
+private void informePDF(){
+     try {
+        List<Cuidadores> listaCuidadores = dao.cargarRegistros(); 
+        if (listaCuidadores.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No hay cuidadores registrados para generar el informe.", "Información", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
+        Document document = new Document(PageSize.A4.rotate()); // Horizontal
+        String nombreArchivo = "Informe_Cuidadores.pdf";
+        PdfWriter.getInstance(document, new java.io.FileOutputStream(nombreArchivo));
+
+        document.open();
+        document.add(new Paragraph("Informe de Cuidadores"));
+        document.add(new Paragraph("Fecha: " + new SimpleDateFormat("dd/MM/yyyy").format(new Date())));
+        document.add(new Paragraph(" "));
+
+        
+        PdfPTable tabla = new PdfPTable(12);
+        tabla.setWidthPercentage(100);
+        String[] columnas = {"Nombre", "Apellido", "Edad", "ID", "Genero", "Correo", "Salario", "Cargo", "Horario", "Teléfono", "Contratación", "Área"};
+        for (String col : columnas) {
+            tabla.addCell(new PdfPCell(new Paragraph(col)));
+        }
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        for (Cuidadores cuidador : listaCuidadores) {
+            tabla.addCell(cuidador.getNombre());
+            tabla.addCell(cuidador.getApellido());
+            tabla.addCell(String.valueOf(cuidador.getEdad()));
+            tabla.addCell(String.valueOf(cuidador.getiD()));
+            tabla.addCell(cuidador.getGenero().toString());
+            tabla.addCell(cuidador.getCorreo());
+            tabla.addCell(cuidador.getSalario());
+            tabla.addCell(cuidador.getCargo());
+            tabla.addCell(cuidador.getHorario());
+            tabla.addCell(cuidador.getNumTelefono());
+            tabla.addCell(sdf.format(cuidador.getFechaContratacion()));
+            tabla.addCell(cuidador.getArea());
+        }
+
+        document.add(tabla);
+        document.close();
+
+        JOptionPane.showMessageDialog(this, "PDF generado exitosamente: " + nombreArchivo, "Éxito", JOptionPane.INFORMATION_MESSAGE);
+    } catch (Exception e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Error al generar el PDF", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    
+
+ }
+    
+
     
     
     
@@ -488,6 +551,8 @@ public class GestionCuidadores extends javax.swing.JFrame {
         btnEliminar = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        btnInformePDF = new javax.swing.JPanel();
+        btnInfomePDF = new javax.swing.JLabel();
 
         jLabel20.setText("jLabel20");
 
@@ -835,6 +900,7 @@ public class GestionCuidadores extends javax.swing.JFrame {
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/RESCATISTA (1) (1).png"))); // NOI18N
         jLabel19.setText("jLabel19");
 
+        btnGuardar.setBackground(new java.awt.Color(255, 255, 255));
         btnGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnGuardarMouseClicked(evt);
@@ -858,7 +924,7 @@ public class GestionCuidadores extends javax.swing.JFrame {
         );
         btnGuardarLayout.setVerticalGroup(
             btnGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 43, Short.MAX_VALUE)
+            .addGap(0, 53, Short.MAX_VALUE)
             .addGroup(btnGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(btnGuardarLayout.createSequentialGroup()
                     .addGap(0, 1, Short.MAX_VALUE)
@@ -866,6 +932,7 @@ public class GestionCuidadores extends javax.swing.JFrame {
                     .addGap(0, 2, Short.MAX_VALUE)))
         );
 
+        btnActualizar.setBackground(new java.awt.Color(255, 255, 255));
         btnActualizar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnActualizarMouseClicked(evt);
@@ -889,7 +956,7 @@ public class GestionCuidadores extends javax.swing.JFrame {
         );
         btnActualizarLayout.setVerticalGroup(
             btnActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 43, Short.MAX_VALUE)
+            .addGap(0, 53, Short.MAX_VALUE)
             .addGroup(btnActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(btnActualizarLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -897,6 +964,7 @@ public class GestionCuidadores extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
+        btnBuscar.setBackground(new java.awt.Color(255, 255, 255));
         btnBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnBuscarMouseClicked(evt);
@@ -920,7 +988,7 @@ public class GestionCuidadores extends javax.swing.JFrame {
         );
         btnBuscarLayout.setVerticalGroup(
             btnBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 43, Short.MAX_VALUE)
+            .addGap(0, 53, Short.MAX_VALUE)
             .addGroup(btnBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(btnBuscarLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -928,6 +996,7 @@ public class GestionCuidadores extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
+        btnEliminar.setBackground(new java.awt.Color(255, 255, 255));
         btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnEliminarMouseClicked(evt);
@@ -951,7 +1020,7 @@ public class GestionCuidadores extends javax.swing.JFrame {
         );
         btnEliminarLayout.setVerticalGroup(
             btnEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 43, Short.MAX_VALUE)
+            .addGap(0, 53, Short.MAX_VALUE)
             .addGroup(btnEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(btnEliminarLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -960,6 +1029,42 @@ public class GestionCuidadores extends javax.swing.JFrame {
         );
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/CUIDADORES_MARINOS (1).png"))); // NOI18N
+
+        btnInformePDF.setBackground(new java.awt.Color(255, 255, 255));
+        btnInformePDF.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnInformePDFMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnInformePDFMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnInformePDFMousePressed(evt);
+            }
+        });
+
+        btnInfomePDF.setBackground(new java.awt.Color(255, 255, 255));
+        btnInfomePDF.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        btnInfomePDF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/PDF (2) (1) (1).png"))); // NOI18N
+        btnInfomePDF.setText("GENERAR INFORME");
+        btnInfomePDF.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnInfomePDFMousePressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout btnInformePDFLayout = new javax.swing.GroupLayout(btnInformePDF);
+        btnInformePDF.setLayout(btnInformePDFLayout);
+        btnInformePDFLayout.setHorizontalGroup(
+            btnInformePDFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnInfomePDF, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+        );
+        btnInformePDFLayout.setVerticalGroup(
+            btnInformePDFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnInformePDFLayout.createSequentialGroup()
+                .addComponent(btnInfomePDF, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -989,7 +1094,10 @@ public class GestionCuidadores extends javax.swing.JFrame {
                                 .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(52, 52, 52)
                                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(65, 65, 65)
+                                .addComponent(btnInformePDF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(735, Short.MAX_VALUE))
             .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1001,19 +1109,20 @@ public class GestionCuidadores extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(53, 53, 53)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnInformePDF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel15)
-                                    .addComponent(jLabel19))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addGap(5, 5, 5)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1113,6 +1222,25 @@ public class GestionCuidadores extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_botonRegresarMouseClicked
 
+    private void btnInformePDFMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInformePDFMouseClicked
+        // TODO add your handling code here:
+        informePDF();
+    }//GEN-LAST:event_btnInformePDFMouseClicked
+
+    private void btnInfomePDFMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInfomePDFMousePressed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_btnInfomePDFMousePressed
+
+    private void btnInformePDFMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInformePDFMousePressed
+        // TODO add your handling code here:
+ 
+    }//GEN-LAST:event_btnInformePDFMousePressed
+
+    private void btnInformePDFMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInformePDFMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnInformePDFMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -1155,6 +1283,8 @@ public class GestionCuidadores extends javax.swing.JFrame {
     private javax.swing.JPanel btnBuscar;
     private javax.swing.JPanel btnEliminar;
     private javax.swing.JPanel btnGuardar;
+    private javax.swing.JLabel btnInfomePDF;
+    private javax.swing.JPanel btnInformePDF;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JComboBox<String> comboArea;
     private javax.swing.JComboBox<String> comboCargo;

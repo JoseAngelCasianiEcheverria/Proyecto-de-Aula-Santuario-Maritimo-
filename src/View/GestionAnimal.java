@@ -21,6 +21,12 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import Model.oConstantes.SexoEnum;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 
 /**
  *
@@ -102,9 +108,7 @@ public class GestionAnimal extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this,"El ID debe tener 10 digitos","Warning",JOptionPane.WARNING_MESSAGE);
                 return;
             }
-            
-            
-            
+             
             
             if (!validacionLetras(nombre)) {
                JOptionPane.showMessageDialog(this,"El nombre solo permite letras","Error",JOptionPane.ERROR_MESSAGE);
@@ -341,6 +345,56 @@ public class GestionAnimal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "ID inválido", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+    private void informePDF(){
+        try {
+            List<Animales> listaAnimal = dao.cargarRegistros();
+            if (listaAnimal.isEmpty()) {
+               JOptionPane.showMessageDialog(this,"No se encuentran animales registrados","Warning",JOptionPane.WARNING_MESSAGE);
+               return;
+            }
+            
+            Document documento = new Document (PageSize.A4.rotate());
+            String nombreArchivo = "Reporte_Animales.PDF";
+            PdfWriter.getInstance(documento, new java.io.FileOutputStream(nombreArchivo));
+            
+            documento.open();
+            documento.add(new Paragraph("Informe de Animales"));
+            documento.add(new Paragraph("Fecha: " + new SimpleDateFormat("dd/MM/yyyy").format(new Date())));
+            documento.add(new Paragraph(" "));
+            
+            PdfPTable tabla = new PdfPTable(12);
+            tabla.setWidthPercentage(100);
+            String[]columnas = {"Nombre","ID","Peso","Especie","Sexo","Estado","Ubicacion","Habitat","Cuidador","Ingreso"};
+            
+            for(String col : columnas){
+                tabla.addCell(new PdfPCell(new Paragraph(col)));
+                
+            }
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            for(Animales animal : listaAnimal){
+                tabla.addCell(animal.getNombre());
+                tabla.addCell(String.valueOf(animal.getIdAnimal()));
+                tabla.addCell(animal.getPeso());
+                tabla.addCell(animal.getEspecie());
+                tabla.addCell(String.valueOf(animal.getSexo()));
+                tabla.addCell(animal.getEstadoSalud());
+                tabla.addCell(animal.getUbicacion());
+                tabla.addCell(animal.getHabitat());
+                tabla.addCell(animal.getCuidadorAsignado());
+                tabla.addCell(sdf.format(animal.getFechaIngreso()));
+            }
+            
+            documento.add(tabla);
+            documento.close();
+            
+            JOptionPane.showMessageDialog(this,"PDF generado exitosamente","Exitos",JOptionPane.INFORMATION_MESSAGE);
+                   
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al generar el PDF", "Error", JOptionPane.ERROR_MESSAGE);
+            
+        }
+    }
     
     
     
@@ -421,6 +475,8 @@ public class GestionAnimal extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
+        btnInforme = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -856,6 +912,31 @@ public class GestionAnimal extends javax.swing.JFrame {
 
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/ORCA_MARINA (1).png"))); // NOI18N
 
+        btnInforme.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnInformeMouseClicked(evt);
+            }
+        });
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/PDF (2) (1) (1).png"))); // NOI18N
+        jLabel12.setText("GENERAR INFORME");
+
+        javax.swing.GroupLayout btnInformeLayout = new javax.swing.GroupLayout(btnInforme);
+        btnInforme.setLayout(btnInformeLayout);
+        btnInformeLayout.setHorizontalGroup(
+            btnInformeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnInformeLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel12))
+        );
+        btnInformeLayout.setVerticalGroup(
+            btnInformeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnInformeLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel12))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -882,7 +963,9 @@ public class GestionAnimal extends javax.swing.JFrame {
                         .addGap(32, 32, 32)
                         .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(108, 108, 108)
+                        .addComponent(btnInforme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(1931, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -893,6 +976,7 @@ public class GestionAnimal extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnInforme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnGuardar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1005,6 +1089,11 @@ public class GestionAnimal extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnRegresoMouseClicked
 
+    private void btnInformeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInformeMouseClicked
+        // TODO add your handling code here:
+        informePDF();
+    }//GEN-LAST:event_btnInformeMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1047,6 +1136,7 @@ public class GestionAnimal extends javax.swing.JFrame {
     private javax.swing.JPanel btnBuscar;
     private javax.swing.JPanel btnEliminar;
     private javax.swing.JPanel btnGuardar1;
+    private javax.swing.JPanel btnInforme;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JLabel btnRegreso;
     private javax.swing.JComboBox<String> comboEspecie;
@@ -1057,6 +1147,7 @@ public class GestionAnimal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;

@@ -343,5 +343,28 @@
       "iD": 1044657803
     },
     "costo": 166600.0
+  },
+  {
+    "tipoEntrada": "VIP",
+    "nVisitantes": "5",
+    "fecha": "May 29, 2025, 8:00:58 AM",
+    "id": 1043967071,
+    "correo": "rguerrero206xd@gmail.com",
+    "hora": "08:00 AM – 09:30 AM",
+    "guia": {
+      "especialidad": "Buceo guiado",
+      "cargo": "Guia de actividades acuaticas",
+      "fechaContratacion": "May 22, 2020, 12:00:00 AM",
+      "salario": "3500000",
+      "horario": "Diurno",
+      "correo": "franciscoVela@gmail.com",
+      "numTelefono": "3242644140",
+      "nombre": "Fransua",
+      "apellido": "Velasquez",
+      "genero": "MASCULINO",
+      "edad": 33,
+      "iD": 143651602
+    },
+    "costo": 127500.0
   }
 ]

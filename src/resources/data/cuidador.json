@@ -1,19 +1,5 @@
 [
   {
-    "area": "Habitat terrestre",
-    "cargo": "Auxiliar",
-    "fechaContratacion": "May 27, 2025, 12:00:00 AM",
-    "salario": "3500000",
-    "horario": "Diurno",
-    "correo": "juan@gmail.com",
-    "numTelefono": "3102655167",
-    "nombre": "Juan Pablo",
-    "apellido": "Lopez",
-    "genero": "MASCULINO",
-    "edad": 45,
-    "iD": 1043657802
-  },
-  {
     "area": "Habitat acuatico",
     "cargo": "Auxiliar",
     "fechaContratacion": "May 15, 2025, 12:44:14 PM",
@@ -24,7 +10,7 @@
     "nombre": "Anibal",
     "apellido": "Torres",
     "genero": "MASCULINO",
-    "edad": 25,
+    "edad": 27,
     "iD": 1044657803
   },
   {
@@ -100,15 +86,43 @@
   {
     "area": "Habitat acuatico",
     "cargo": "Jefe de area",
-    "fechaContratacion": "May 18, 2025, 3:25:07 PM",
-    "salario": "30000000",
+    "fechaContratacion": "May 10, 2022, 1:33:21 PM",
+    "salario": "300000000",
     "horario": "Diurno",
-    "correo": "jhonny@gmail.com",
-    "numTelefono": "3246514414",
-    "nombre": "Jhon",
+    "correo": "jhonPeralta@gmail.com",
+    "numTelefono": "3102644590",
+    "nombre": "Jhon Carlos",
     "apellido": "Peralta",
     "genero": "MASCULINO",
-    "edad": 44,
-    "iD": 1044657202
+    "edad": 37,
+    "iD": 1044651202
+  },
+  {
+    "area": "Habitat terrestre",
+    "cargo": "Jefe de area",
+    "fechaContratacion": "May 10, 2022, 1:50:44 PM",
+    "salario": "3000000",
+    "horario": "Diurno",
+    "correo": "marlon@gmail.com",
+    "numTelefono": "3102644390",
+    "nombre": "Marlon",
+    "apellido": "Valladares",
+    "genero": "MASCULINO",
+    "edad": 37,
+    "iD": 1033651709
+  },
+  {
+    "area": "Habitat acuatico",
+    "cargo": "Jefe de area",
+    "fechaContratacion": "May 13, 2025, 6:08:45 PM",
+    "salario": "9000000",
+    "horario": "Diurno",
+    "correo": "norman@gmail.com",
+    "numTelefono": "3100264414",
+    "nombre": "Norman",
+    "apellido": "Osborn",
+    "genero": "MASCULINO",
+    "edad": 39,
+    "iD": 1044651702
   }
 ]

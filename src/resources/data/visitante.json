@@ -196,5 +196,23 @@
     "apellido": "Casianis",
     "edad": 19,
     "iD": 1043300481
+  },
+  {
+    "correo": "ronny@gmail.com",
+    "telefono": "324264414",
+    "contraseña": "123456789",
+    "nombre": "Ronny",
+    "apellido": "Guerrero",
+    "edad": 33,
+    "iD": 1044657602
+  },
+  {
+    "correo": "rguerrero206xd@gmail.com",
+    "telefono": "3133376078",
+    "contraseña": "rrr5000",
+    "nombre": "ronny",
+    "apellido": "guerrero",
+    "edad": 19,
+    "iD": 1043967071
   }
 ]
