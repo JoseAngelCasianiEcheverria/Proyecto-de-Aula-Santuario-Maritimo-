@@ -183,6 +183,7 @@ public class GestionGuias extends javax.swing.JFrame {
             
             JOptionPane.showMessageDialog(this,"Registro exitoso","Exitos",JOptionPane.INFORMATION_MESSAGE);
             cargarTablaGuias();
+            
                
         } catch (Exception e) {
             e.printStackTrace();

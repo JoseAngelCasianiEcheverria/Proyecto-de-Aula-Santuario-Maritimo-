@@ -24,7 +24,7 @@
     "nombre": "Anibal",
     "apellido": "Torres",
     "genero": "MASCULINO",
-    "edad": 22,
+    "edad": 25,
     "iD": 1044657803
   },
   {
@@ -42,20 +42,6 @@
     "iD": 1043751832
   },
   {
-    "area": "Habitat terrestre",
-    "cargo": "Jefe de area",
-    "fechaContratacion": "May 8, 2025, 1:36:21 PM",
-    "salario": "399929922",
-    "horario": "Diurno",
-    "correo": "jauna@gmail.com",
-    "numTelefono": "2873722892",
-    "nombre": "Juan",
-    "apellido": "Martinez",
-    "genero": "MASCULINO",
-    "edad": 22,
-    "iD": 1044651702
-  },
-  {
     "area": "Habitat acuatico",
     "cargo": "Jefe de area",
     "fechaContratacion": "May 15, 2025, 1:41:12 PM",
@@ -71,34 +57,6 @@
   },
   {
     "area": "Habitat acuatico",
-    "cargo": "Auxiliar",
-    "fechaContratacion": "May 2, 2025, 12:00:00 AM",
-    "salario": "2000000",
-    "horario": "Diurno",
-    "correo": "fermin@gmail.com",
-    "numTelefono": "315679999",
-    "nombre": "Fermin",
-    "apellido": "Cisneros",
-    "genero": "MASCULINO",
-    "edad": 58,
-    "iD": 1093657902
-  },
-  {
-    "area": "Habitat terrestre",
-    "cargo": "Jefe de area",
-    "fechaContratacion": "May 9, 2025, 1:53:37 PM",
-    "salario": "2000000",
-    "horario": "Diurno",
-    "correo": "darius@gmail.com",
-    "numTelefono": "3102666170",
-    "nombre": "Dario",
-    "apellido": "Perez",
-    "genero": "MASCULINO",
-    "edad": 22,
-    "iD": 1098651802
-  },
-  {
-    "area": "Habitat acuatico",
     "cargo": "Jefe de area",
     "fechaContratacion": "May 23, 2025, 7:27:51 AM",
     "salario": "3000000",
@@ -110,5 +68,47 @@
     "genero": "MASCULINO",
     "edad": 57,
     "iD": 1234567899
+  },
+  {
+    "area": "Habitat terrestre",
+    "cargo": "Veterinario",
+    "fechaContratacion": "May 30, 2025, 9:35:45 PM",
+    "salario": "3200000",
+    "horario": "Diurno",
+    "correo": "ulises@gmail.com",
+    "numTelefono": "3262644140",
+    "nombre": "Ulises",
+    "apellido": "Guevara",
+    "genero": "MASCULINO",
+    "edad": 29,
+    "iD": 1098551602
+  },
+  {
+    "area": "Habitat acuatico",
+    "cargo": "Auxiliar",
+    "fechaContratacion": "May 18, 2025, 10:39:30 AM",
+    "salario": "2500000",
+    "horario": "Diurno",
+    "correo": "marti@gmail.com",
+    "numTelefono": "3120994414",
+    "nombre": "Martin",
+    "apellido": "Mejia",
+    "genero": "MASCULINO",
+    "edad": 34,
+    "iD": 1098561602
+  },
+  {
+    "area": "Habitat acuatico",
+    "cargo": "Jefe de area",
+    "fechaContratacion": "May 18, 2025, 3:25:07 PM",
+    "salario": "30000000",
+    "horario": "Diurno",
+    "correo": "jhonny@gmail.com",
+    "numTelefono": "3246514414",
+    "nombre": "Jhon",
+    "apellido": "Peralta",
+    "genero": "MASCULINO",
+    "edad": 44,
+    "iD": 1044657202
   }
 ]
