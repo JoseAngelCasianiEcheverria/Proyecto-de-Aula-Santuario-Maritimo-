@@ -68,5 +68,33 @@
     "genero": "MASCULINO",
     "edad": 29,
     "iD": 1043651602
+  },
+  {
+    "area": "Torre de control",
+    "cargo": "Guardia de entrada",
+    "fechaContratacion": "Oct 21, 2017, 7:33:52 PM",
+    "salario": "2000000",
+    "horario": "Nocturno",
+    "correo": "carlos@gmail.com",
+    "numTelefono": "3246517882",
+    "nombre": "Carlos",
+    "apellido": "Vargas",
+    "genero": "MASCULINO",
+    "edad": 44,
+    "iD": 1234848833
+  },
+  {
+    "area": "Zona de corales",
+    "cargo": "Patrullero",
+    "fechaContratacion": "Oct 3, 2020, 8:22:42 PM",
+    "salario": "350000",
+    "horario": "Diurno",
+    "correo": "aaron@gmail.com",
+    "numTelefono": "3922001010",
+    "nombre": "Aaron",
+    "apellido": "Pereira",
+    "genero": "MASCULINO",
+    "edad": 39,
+    "iD": 1637829292
   }
 ]

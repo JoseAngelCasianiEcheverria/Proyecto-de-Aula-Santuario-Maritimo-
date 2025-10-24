@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
 import model.Visitantes;
 
 public class VisitantesDAO {
-   private static final String ARCHIVO_JSON = "C:\\Users\\USER\\Documents\\NetBeansProjects\\Proyecto-de-Aula-Santuario-Maritimo COMPLETO\\Proyecto-de-Aula-Santuario-Maritimo-\\src\\Resources\\data\\visitante.json";
+   private static final String ARCHIVO_JSON = "C:\\Users\\juanp\\OneDrive\\Documentos\\NetBeansProjects\\Proyecto-de-Aula-Santuario-Maritimo-\\src\\Resources\\data\\visitante.json";
     private Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     public List<Visitantes> cargarRegistros() {

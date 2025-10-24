@@ -110,5 +110,19 @@
     "genero": "MASCULINO",
     "edad": 44,
     "iD": 1044657202
+  },
+  {
+    "area": "Habitat acuatico",
+    "cargo": "Auxiliar",
+    "fechaContratacion": "Oct 23, 2021, 2:14:00 PM",
+    "salario": "3500000",
+    "horario": "Diurno",
+    "correo": "haider@gmail.com",
+    "numTelefono": "3102644140",
+    "nombre": "Haider",
+    "apellido": "De Valencia",
+    "genero": "MASCULINO",
+    "edad": 45,
+    "iD": 1234567890
   }
 ]

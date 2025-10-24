@@ -21,6 +21,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import java.awt.Color;
+import java.util.ArrayList;
 import model.oConstantes.GeneroEnum;
 
 
@@ -498,6 +499,8 @@ public class GestionGuias extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
+        btnOrdenamiento = new javax.swing.JPanel();
+        jLabel24 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -965,6 +968,36 @@ public class GestionGuias extends javax.swing.JFrame {
 
         jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/GUIA_TURISTICO (1) (1).png"))); // NOI18N
 
+        btnOrdenamiento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnOrdenamientoMouseClicked(evt);
+            }
+        });
+
+        jLabel24.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel24.setText("ORDENAR LISTA");
+
+        javax.swing.GroupLayout btnOrdenamientoLayout = new javax.swing.GroupLayout(btnOrdenamiento);
+        btnOrdenamiento.setLayout(btnOrdenamientoLayout);
+        btnOrdenamientoLayout.setHorizontalGroup(
+            btnOrdenamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 147, Short.MAX_VALUE)
+            .addGroup(btnOrdenamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(btnOrdenamientoLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel24)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        btnOrdenamientoLayout.setVerticalGroup(
+            btnOrdenamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(btnOrdenamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(btnOrdenamientoLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel24)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -983,6 +1016,8 @@ public class GestionGuias extends javax.swing.JFrame {
                         .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(34, 34, 34)
                         .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(54, 54, 54)
+                        .addComponent(btnOrdenamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
@@ -1007,11 +1042,12 @@ public class GestionGuias extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnOrdenamiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -1123,6 +1159,42 @@ public class GestionGuias extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_comboGeneroActionPerformed
 
+    private void btnOrdenamientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOrdenamientoMouseClicked
+        // TODO add your handling code here:
+        if (modelo.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(this,"Lista vacia. No es posible ordenar","Warning",JOptionPane.WARNING_MESSAGE);
+            return; 
+        }
+        
+        List<Object[]> filas = new ArrayList<>();
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            Object[] fila = new Object[modelo.getColumnCount()];
+            for (int j = 0; j < modelo.getColumnCount(); j++) {
+                fila[j] = modelo.getValueAt(i,j);
+                
+            }
+            filas.add(fila);
+            
+        }
+        filas.sort((a,b) -> {
+            try {
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                Date fecha1 = sdf.parse(a[10].toString());
+                Date fecha2 = sdf.parse(b[10].toString());
+                return fecha1.compareTo(fecha2);
+                
+            } catch (Exception e) {
+                return 0;
+            }
+        });
+        modelo.setRowCount(0);
+        for(Object[] fila : filas){
+            modelo.addRow(fila);
+        }
+        JOptionPane.showMessageDialog(this,"Registros ordenados por fecha","Exitos",JOptionPane.INFORMATION_MESSAGE);
+        
+    }//GEN-LAST:event_btnOrdenamientoMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1165,6 +1237,7 @@ public class GestionGuias extends javax.swing.JFrame {
     private javax.swing.JPanel btnEliminar;
     private javax.swing.JPanel btnGuardar;
     private javax.swing.JButton btnLimpiar;
+    private javax.swing.JPanel btnOrdenamiento;
     private javax.swing.JLabel btnRegresar;
     private javax.swing.JComboBox<String> comboCargo;
     private javax.swing.JComboBox<String> comboEspecialidad;
@@ -1187,6 +1260,7 @@ public class GestionGuias extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

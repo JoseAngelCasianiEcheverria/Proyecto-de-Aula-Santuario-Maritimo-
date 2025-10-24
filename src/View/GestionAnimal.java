@@ -21,6 +21,9 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import Model.oConstantes.SexoEnum;
+import dao.historialDAO;
+import Model.HistorialAnimal;
+import java.util.ArrayList;
 
 /**
  *
@@ -421,6 +424,12 @@ public class GestionAnimal extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
+        btnVerHistorial = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        btnAgregarHistorial = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        btnOrdenamiento = new javax.swing.JPanel();
+        jLabel25 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -856,6 +865,100 @@ public class GestionAnimal extends javax.swing.JFrame {
 
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/ORCA_MARINA (1).png"))); // NOI18N
 
+        btnVerHistorial.setBackground(new java.awt.Color(0, 51, 255));
+        btnVerHistorial.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnVerHistorialMouseClicked(evt);
+            }
+        });
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("VER HISTORIAL");
+
+        javax.swing.GroupLayout btnVerHistorialLayout = new javax.swing.GroupLayout(btnVerHistorial);
+        btnVerHistorial.setLayout(btnVerHistorialLayout);
+        btnVerHistorialLayout.setHorizontalGroup(
+            btnVerHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(btnVerHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(btnVerHistorialLayout.createSequentialGroup()
+                    .addGap(0, 28, Short.MAX_VALUE)
+                    .addComponent(jLabel12)
+                    .addGap(0, 29, Short.MAX_VALUE)))
+        );
+        btnVerHistorialLayout.setVerticalGroup(
+            btnVerHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(btnVerHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(btnVerHistorialLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel12)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        btnAgregarHistorial.setBackground(new java.awt.Color(0, 51, 255));
+        btnAgregarHistorial.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgregarHistorialMouseClicked(evt);
+            }
+        });
+
+        jLabel21.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel21.setText("AGREGAR HISTORIAL");
+
+        javax.swing.GroupLayout btnAgregarHistorialLayout = new javax.swing.GroupLayout(btnAgregarHistorial);
+        btnAgregarHistorial.setLayout(btnAgregarHistorialLayout);
+        btnAgregarHistorialLayout.setHorizontalGroup(
+            btnAgregarHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 172, Short.MAX_VALUE)
+            .addGroup(btnAgregarHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(btnAgregarHistorialLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel21)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        btnAgregarHistorialLayout.setVerticalGroup(
+            btnAgregarHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 44, Short.MAX_VALUE)
+            .addGroup(btnAgregarHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(btnAgregarHistorialLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel21)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        btnOrdenamiento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnOrdenamientoMouseClicked(evt);
+            }
+        });
+
+        jLabel25.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel25.setText("ORDENAR LISTA");
+
+        javax.swing.GroupLayout btnOrdenamientoLayout = new javax.swing.GroupLayout(btnOrdenamiento);
+        btnOrdenamiento.setLayout(btnOrdenamientoLayout);
+        btnOrdenamientoLayout.setHorizontalGroup(
+            btnOrdenamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 143, Short.MAX_VALUE)
+            .addGroup(btnOrdenamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(btnOrdenamientoLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel25)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        btnOrdenamientoLayout.setVerticalGroup(
+            btnOrdenamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 44, Short.MAX_VALUE)
+            .addGroup(btnOrdenamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(btnOrdenamientoLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel25)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -870,20 +973,28 @@ public class GestionAnimal extends javax.swing.JFrame {
                         .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel16)
-                        .addGap(47, 47, 47)
+                        .addGap(43, 43, 43)
                         .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
+                        .addGap(33, 33, 33)
                         .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnGuardar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(1931, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnGuardar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(51, 51, 51)
+                                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(58, 58, 58)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnAgregarHistorial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnVerHistorial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(42, 42, 42)
+                        .addComponent(btnOrdenamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -892,19 +1003,23 @@ public class GestionAnimal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnOrdenamiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnGuardar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnVerHistorial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(26, 26, 26)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnGuardar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(75, 75, 75)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAgregarHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel18)
-                                .addComponent(jLabel15)))
-                        .addGap(30, 30, 30)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel18))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 624, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1005,6 +1120,129 @@ public class GestionAnimal extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnRegresoMouseClicked
 
+    private void btnVerHistorialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerHistorialMouseClicked
+        // TODO add your handling code here:
+        int filaSeleccionada = tableAnimal.getSelectedRow();
+        if (filaSeleccionada == -1) {
+            JOptionPane.showMessageDialog(this, "Por favor seleccione un animal primero.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            return;   
+        }
+        
+        int idAnimal = Integer.parseInt(modelo.getValueAt(filaSeleccionada, 1).toString());
+        VerHistorialAnimal ventana = new VerHistorialAnimal(idAnimal);
+        ventana.setVisible(true);
+        
+        
+        
+        
+    }//GEN-LAST:event_btnVerHistorialMouseClicked
+
+    private void btnAgregarHistorialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarHistorialMouseClicked
+        // TODO add your handling code here:
+        int filaSeleccionada = tableAnimal.getSelectedRow();
+        if (filaSeleccionada == -1) {
+            JOptionPane.showMessageDialog(this,"Porfavor.Seleccionar un animal","Warning",JOptionPane.WARNING_MESSAGE);
+            return;
+            
+        }
+        
+        int idAnimal = Integer.parseInt(modelo.getValueAt(filaSeleccionada,1).toString());
+        historialDAO dao = new historialDAO();
+        
+        List<HistorialAnimal> historialExistente = dao.buscarPorIdAnimal(idAnimal);
+        
+        if (!historialExistente.isEmpty()) {
+            StringBuilder builder = new StringBuilder(idAnimal);
+            builder.append("Historial anterior del animal:\n\n");
+            for(HistorialAnimal historial : historialExistente){
+                builder.append("FECHA: ").append(new java.text.SimpleDateFormat("dd/MM/yyyy").format(historial.getFechaAntecedente())).append("\n");
+                builder.append("TIPO: ").append(historial.getTipoAntecedente()).append("\n");
+                builder.append("DESCRIPCION: ").append(historial.getDescripcion()).append("\n");
+                builder.append("ENCARGADO RESPONSABLE: ").append(historial.getResponsable()).append("\n");
+                 
+            }
+            JOptionPane.showMessageDialog(this,builder.toString(),"Historial existente",JOptionPane.INFORMATION_MESSAGE);
+           
+        } else {
+            JOptionPane.showMessageDialog(this, "Este animal no tiene historiales previos. Se creará uno nuevo.", "Warning", JOptionPane.WARNING_MESSAGE);
+            
+        }
+        
+         
+        String tipoAntecedente = JOptionPane.showInputDialog(this, "Ingrese el tipo de antecedente (ejemplo: Enfermedad, Tratamiento, Traspaso):");
+        if (tipoAntecedente == null || tipoAntecedente.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un antecedente.", "Error", JOptionPane.ERROR_MESSAGE);
+           return;
+        }
+        
+        String descripcion = JOptionPane.showInputDialog(this, "Ingrese la descripción del antecedente:");
+        if (descripcion == null || descripcion.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "La descripción no puede estar vacía.", "Error", JOptionPane.ERROR_MESSAGE);
+           return;
+            
+        }
+        
+        String responsable = JOptionPane.showInputDialog(this, "Ingrese el nombre del encargado responsable:");
+        if (responsable == null || responsable.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar el responsable del antecedente.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;  
+        }
+        
+        HistorialAnimal nuevo = new HistorialAnimal();
+        nuevo.setIdAnimal(idAnimal);
+        nuevo.setTipoAntecedente(tipoAntecedente);
+        nuevo.setDescripcion(descripcion);
+        nuevo.setResponsable(responsable);
+        nuevo.setFechaAntecedente(new java.util.Date());
+        
+        
+        dao.guardarAntecedente(nuevo);
+        
+        JOptionPane.showMessageDialog(this,"Historial guardado exitosamente","Exitos",JOptionPane.INFORMATION_MESSAGE);
+        
+        
+    }//GEN-LAST:event_btnAgregarHistorialMouseClicked
+
+    private void btnOrdenamientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOrdenamientoMouseClicked
+        // TODO add your handling code here:
+        if (modelo.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(this,"Lista vacia. No hay registros para ordenar","Warning",JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        List<Object[]> filas = new ArrayList<>();
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            Object[] fila = new Object[modelo.getColumnCount()];
+            
+            for(int j = 0; j < modelo.getColumnCount(); j++){
+                fila[j] = modelo.getValueAt(i,j);
+                
+            }
+            filas.add(fila);
+        }
+        
+        filas.sort((a, b) -> {
+            try {
+               SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+               Date primeraFecha = sdf.parse(a[9].toString());
+               Date segundaFecha = sdf.parse(b[9].toString());
+               return primeraFecha.compareTo(segundaFecha);
+                
+            } catch (Exception e) {
+                return 0;
+            }
+        });
+        modelo.setRowCount(0);
+        for (Object[] fila : filas) {
+            modelo.addRow(fila);
+        }
+        
+        JOptionPane.showMessageDialog(this,"Registros ordenados por fecha","Exitos",JOptionPane.INFORMATION_MESSAGE);
+                
+        
+        
+    }//GEN-LAST:event_btnOrdenamientoMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1044,11 +1282,14 @@ public class GestionAnimal extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser DateIngreso;
     private javax.swing.JButton btnActualizacion;
     private javax.swing.JPanel btnActualizar;
+    private javax.swing.JPanel btnAgregarHistorial;
     private javax.swing.JPanel btnBuscar;
     private javax.swing.JPanel btnEliminar;
     private javax.swing.JPanel btnGuardar1;
     private javax.swing.JButton btnLimpiar;
+    private javax.swing.JPanel btnOrdenamiento;
     private javax.swing.JLabel btnRegreso;
+    private javax.swing.JPanel btnVerHistorial;
     private javax.swing.JComboBox<String> comboEspecie;
     private javax.swing.JComboBox<String> comboEstado;
     private javax.swing.JComboBox<String> comboHabitat;
@@ -1057,6 +1298,7 @@ public class GestionAnimal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -1066,9 +1308,11 @@ public class GestionAnimal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

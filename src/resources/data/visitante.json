@@ -241,5 +241,14 @@
     "apellido": "znffgfdvffaff",
     "edad": 18,
     "iD": 1000000000
+  },
+  {
+    "correo": "monica@gmail.com",
+    "telefono": "324651702",
+    "contraseña": "12345",
+    "nombre": "Monica",
+    "apellido": "Paredes",
+    "edad": 42,
+    "iD": 1055651502
   }
 ]

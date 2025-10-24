@@ -251,5 +251,28 @@
       "iD": 1056551602
     },
     "costo": 180000.0
+  },
+  {
+    "tipoEntrada": "Estandar",
+    "nVisitantes": "5",
+    "fecha": "Oct 15, 2025, 11:24:12 AM",
+    "id": 1055651502,
+    "correo": "monica@gmail.com",
+    "hora": "12:00 PM – 01:30 PM",
+    "guia": {
+      "especialidad": "Turismo cultural",
+      "cargo": "Guia Ecoturista",
+      "fechaContratacion": "May 21, 2025, 1:38:57 PM",
+      "salario": "3000000",
+      "horario": "Diurno",
+      "correo": "fernanda@gmail.com",
+      "numTelefono": "3102644140",
+      "nombre": "Fernanda",
+      "apellido": "Rivas",
+      "genero": "FEMENINO",
+      "edad": 34,
+      "iD": 1056551602
+    },
+    "costo": 210000.0
   }
 ]

@@ -21,6 +21,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import com.toedter.calendar.JDateChooser;
+import java.util.ArrayList;
 import model.oConstantes.GeneroEnum;
 
 
@@ -488,6 +489,8 @@ public class GestionCuidadores extends javax.swing.JFrame {
         btnEliminar = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        btnOrdenar = new javax.swing.JPanel();
+        jLabel25 = new javax.swing.JLabel();
 
         jLabel20.setText("jLabel20");
 
@@ -961,6 +964,36 @@ public class GestionCuidadores extends javax.swing.JFrame {
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/CUIDADORES_MARINOS (1).png"))); // NOI18N
 
+        btnOrdenar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnOrdenarMouseClicked(evt);
+            }
+        });
+
+        jLabel25.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel25.setText("ORDENAR LISTA");
+
+        javax.swing.GroupLayout btnOrdenarLayout = new javax.swing.GroupLayout(btnOrdenar);
+        btnOrdenar.setLayout(btnOrdenarLayout);
+        btnOrdenarLayout.setHorizontalGroup(
+            btnOrdenarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 154, Short.MAX_VALUE)
+            .addGroup(btnOrdenarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(btnOrdenarLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel25)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        btnOrdenarLayout.setVerticalGroup(
+            btnOrdenarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 43, Short.MAX_VALUE)
+            .addGroup(btnOrdenarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(btnOrdenarLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel25)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -989,7 +1022,10 @@ public class GestionCuidadores extends javax.swing.JFrame {
                                 .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(52, 52, 52)
                                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(52, 52, 52)
+                                .addComponent(btnOrdenar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(735, Short.MAX_VALUE))
             .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1002,19 +1038,22 @@ public class GestionCuidadores extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(53, 53, 53)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel15)
-                                    .addComponent(jLabel19))
-                                .addGap(5, 5, 5)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnOrdenar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.TRAILING))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(1042, 1042, 1042))
@@ -1113,6 +1152,46 @@ public class GestionCuidadores extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_botonRegresarMouseClicked
 
+    private void btnOrdenarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOrdenarMouseClicked
+        // TODO add your handling code here:
+        if (modelo.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(this,"Lista vacia. No es posible ordenar","Warning",JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        List<Object[]> filas = new ArrayList<>();
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            Object[] fila = new Object[modelo.getColumnCount()];
+            for (int j = 0; j < modelo.getColumnCount(); j++) {
+                fila[j] = modelo.getValueAt(i,j);
+                
+            }
+            filas.add(fila);
+            
+        }
+        filas.sort((a,b) -> {
+            try {
+                SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+                Date fechaa1 = format.parse(a[10].toString());
+                Date fecha2 = format.parse(b[10].toString());
+                return fechaa1.compareTo(fecha2);
+                
+            } catch (Exception e) {
+                return 0;
+            }
+        
+        });
+        modelo.setRowCount(0);
+        for (Object[] fila : filas) {
+            modelo.addRow(fila);
+            
+        }
+        JOptionPane.showMessageDialog(this, "Registros ordenados por fecha", "Éxitos", JOptionPane.INFORMATION_MESSAGE);
+        
+        
+        
+    }//GEN-LAST:event_btnOrdenarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1156,6 +1235,7 @@ public class GestionCuidadores extends javax.swing.JFrame {
     private javax.swing.JPanel btnEliminar;
     private javax.swing.JPanel btnGuardar;
     private javax.swing.JButton btnLimpiar;
+    private javax.swing.JPanel btnOrdenar;
     private javax.swing.JComboBox<String> comboArea;
     private javax.swing.JComboBox<String> comboCargo;
     private javax.swing.JComboBox<String> comboGenero;
@@ -1178,6 +1258,7 @@ public class GestionCuidadores extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

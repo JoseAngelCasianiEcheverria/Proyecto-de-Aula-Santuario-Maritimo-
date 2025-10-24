@@ -1,7 +1,7 @@
 [
   {
     "area": "Bienestar animal",
-    "cargo": "Veterinario",
+    "cargo": "Jefe del area",
     "fechaContratacion": "May 15, 2025, 1:36:02 PM",
     "salario": "2300000",
     "horario": "Diurno",
@@ -68,5 +68,19 @@
     "genero": "MASCULINO",
     "edad": 29,
     "iD": 1055654202
+  },
+  {
+    "area": "Área clínica y rehabilitación",
+    "cargo": "Jefe del area",
+    "fechaContratacion": "Oct 17, 2025, 9:06:03 AM",
+    "salario": "3000000",
+    "horario": "Diurno",
+    "correo": "manu@gmail.com",
+    "numTelefono": "3102644140",
+    "nombre": "Manuel",
+    "apellido": "Valladares",
+    "genero": "MASCULINO",
+    "edad": 29,
+    "iD": 1055651672
   }
 ]

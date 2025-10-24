@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -480,6 +481,8 @@ public class GestionVeterinaria extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
         btnEliminar = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
+        btnOrdenar = new javax.swing.JPanel();
+        jLabel25 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -943,6 +946,36 @@ public class GestionVeterinaria extends javax.swing.JFrame {
                     .addGap(0, 6, Short.MAX_VALUE)))
         );
 
+        btnOrdenar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnOrdenarMouseClicked(evt);
+            }
+        });
+
+        jLabel25.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel25.setText("ORDENAR LISTA");
+
+        javax.swing.GroupLayout btnOrdenarLayout = new javax.swing.GroupLayout(btnOrdenar);
+        btnOrdenar.setLayout(btnOrdenarLayout);
+        btnOrdenarLayout.setHorizontalGroup(
+            btnOrdenarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 164, Short.MAX_VALUE)
+            .addGroup(btnOrdenarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(btnOrdenarLayout.createSequentialGroup()
+                    .addGap(0, 20, Short.MAX_VALUE)
+                    .addComponent(jLabel25)
+                    .addGap(0, 21, Short.MAX_VALUE)))
+        );
+        btnOrdenarLayout.setVerticalGroup(
+            btnOrdenarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(btnOrdenarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(btnOrdenarLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel25)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -968,7 +1001,10 @@ public class GestionVeterinaria extends javax.swing.JFrame {
                                 .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(24, 24, 24)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(38, 38, 38)
+                                .addComponent(btnOrdenar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -983,12 +1019,12 @@ public class GestionVeterinaria extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnOrdenar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -1097,6 +1133,44 @@ public class GestionVeterinaria extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_botonRegresarMouseClicked
 
+    private void btnOrdenarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOrdenarMouseClicked
+        // TODO add your handling code here:
+         if (modelo.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(this,"Lista vacia. No hay registros para ordenar","Warning",JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        List<Object[]> filas = new ArrayList<>();
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            Object[] fila = new Object[modelo.getColumnCount()];
+            
+            for(int j = 0; j < modelo.getColumnCount(); j++){
+                fila[j] = modelo.getValueAt(i,j);
+                
+            }
+            filas.add(fila);
+        }
+        
+        filas.sort((a, b) -> {
+            try {
+               SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+               Date primeraFecha = sdf.parse(a[10].toString());
+               Date segundaFecha = sdf.parse(b[10].toString());
+               return primeraFecha.compareTo(segundaFecha);
+                
+            } catch (Exception e) {
+                return 0;
+            }
+        });
+        modelo.setRowCount(0);
+        for (Object[] fila : filas) {
+            modelo.addRow(fila);
+        }
+        
+        JOptionPane.showMessageDialog(this,"Registros ordenados por fecha","Exitos",JOptionPane.INFORMATION_MESSAGE);
+        
+    }//GEN-LAST:event_btnOrdenarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1140,6 +1214,7 @@ public class GestionVeterinaria extends javax.swing.JFrame {
     private javax.swing.JPanel btnEliminar;
     private javax.swing.JPanel btnGuardar;
     private javax.swing.JButton btnLimpiar;
+    private javax.swing.JPanel btnOrdenar;
     private javax.swing.JComboBox<String> comboArea;
     private javax.swing.JComboBox<String> comboCargo;
     private javax.swing.JComboBox<String> comboGenero;
@@ -1162,6 +1237,7 @@ public class GestionVeterinaria extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
