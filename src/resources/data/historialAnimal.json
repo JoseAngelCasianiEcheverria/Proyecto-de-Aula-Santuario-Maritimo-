@@ -45,5 +45,12 @@
     "fechaAntecedente": "Oct 20, 2025, 9:08:55 AM",
     "descripcion": "El animal sera trasladado al zoologico municipal de la ciudad de Cartagena De Indias",
     "responsable": "Jose Perez"
+  },
+  {
+    "idAnimal": 1088651702,
+    "tipoAntecedente": "Enfermedad",
+    "fechaAntecedente": "Nov 7, 2025, 1:14:41 PM",
+    "descripcion": "El animal ha presentado en los ultimos 2 meses problemas de digestion",
+    "responsable": "Jose Reyes"
   }
 ]

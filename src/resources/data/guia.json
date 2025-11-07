@@ -2,20 +2,6 @@
   {
     "especialidad": "Buceo guiado",
     "cargo": "Guia de actividades acuaticas",
-    "fechaContratacion": "May 22, 2020, 12:00:00 AM",
-    "salario": "3500000",
-    "horario": "Diurno",
-    "correo": "franciscoVela@gmail.com",
-    "numTelefono": "3242644140",
-    "nombre": "Fransua",
-    "apellido": "Velasquez",
-    "genero": "MASCULINO",
-    "edad": 33,
-    "iD": 143651602
-  },
-  {
-    "especialidad": "Buceo guiado",
-    "cargo": "Guia de actividades acuaticas",
     "fechaContratacion": "May 21, 2025, 1:38:01 PM",
     "salario": "340000",
     "horario": "Diurno",
@@ -96,5 +82,19 @@
     "genero": "MASCULINO",
     "edad": 40,
     "iD": 1044657802
+  },
+  {
+    "especialidad": "Buceo guiado",
+    "cargo": "Guia de actividades acuaticas",
+    "fechaContratacion": "Nov 2, 2025, 9:22:27 AM",
+    "salario": "3500000",
+    "horario": "Diurno",
+    "correo": "mateo@gmail.com",
+    "numTelefono": "3102644140",
+    "nombre": "Mateo",
+    "apellido": "Caballero",
+    "genero": "MASCULINO",
+    "edad": 35,
+    "iD": 1044657202
   }
 ]

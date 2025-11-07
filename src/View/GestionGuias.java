@@ -855,7 +855,7 @@ public class GestionGuias extends javax.swing.JFrame {
         );
         btnEliminarLayout.setVerticalGroup(
             btnEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
+            .addGap(0, 50, Short.MAX_VALUE)
             .addGroup(btnEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(btnEliminarLayout.createSequentialGroup()
                     .addGap(0, 6, Short.MAX_VALUE)
@@ -892,7 +892,7 @@ public class GestionGuias extends javax.swing.JFrame {
         );
         btnGuardarLayout.setVerticalGroup(
             btnGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
+            .addGap(0, 50, Short.MAX_VALUE)
             .addGroup(btnGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(btnGuardarLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -923,7 +923,7 @@ public class GestionGuias extends javax.swing.JFrame {
         );
         btnActualizarLayout.setVerticalGroup(
             btnActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
+            .addGap(0, 50, Short.MAX_VALUE)
             .addGroup(btnActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(btnActualizarLayout.createSequentialGroup()
                     .addGap(0, 5, Short.MAX_VALUE)
@@ -954,7 +954,7 @@ public class GestionGuias extends javax.swing.JFrame {
         );
         btnBuscarLayout.setVerticalGroup(
             btnBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
+            .addGap(0, 50, Short.MAX_VALUE)
             .addGroup(btnBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(btnBuscarLayout.createSequentialGroup()
                     .addGap(0, 5, Short.MAX_VALUE)
@@ -975,13 +975,14 @@ public class GestionGuias extends javax.swing.JFrame {
         });
 
         jLabel24.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/ORDENAR (1).png"))); // NOI18N
         jLabel24.setText("ORDENAR LISTA");
 
         javax.swing.GroupLayout btnOrdenamientoLayout = new javax.swing.GroupLayout(btnOrdenamiento);
         btnOrdenamiento.setLayout(btnOrdenamientoLayout);
         btnOrdenamientoLayout.setHorizontalGroup(
             btnOrdenamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 147, Short.MAX_VALUE)
+            .addGap(0, 177, Short.MAX_VALUE)
             .addGroup(btnOrdenamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(btnOrdenamientoLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)

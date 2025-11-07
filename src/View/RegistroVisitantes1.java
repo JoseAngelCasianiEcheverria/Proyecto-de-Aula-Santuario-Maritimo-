@@ -518,13 +518,11 @@ private void guardarAgendaVisitantes() {
         String idText = txtIDUser.getText().trim(); // ID del visitante
         String correoA = null;
 
-        // Validaciones básicas
         if (fecha == null || tipoEntrada.equals("Seleccionar") || horaSeleccionada.equals("Seleccionar") || idText.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Todos los campos deben estar completos", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        // Verificar que el ID sea numérico
         if (!idText.matches("\\d+")) {
             JOptionPane.showMessageDialog(this, "ID inválido", "Error", JOptionPane.ERROR_MESSAGE);
             return;
@@ -2168,7 +2166,7 @@ panelInicio.setVisible(true);
 
     private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
         // TODO add your handling code here:
-        System.exit(0);
+        new Zonas().setVisible(true);
     }//GEN-LAST:event_btnSalirMouseClicked
 
     private void etiLunesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_etiLunesActionPerformed

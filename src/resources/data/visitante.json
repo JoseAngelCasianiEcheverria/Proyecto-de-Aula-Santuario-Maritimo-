@@ -250,5 +250,41 @@
     "apellido": "Paredes",
     "edad": 42,
     "iD": 1055651502
+  },
+  {
+    "correo": "alfonso@gmail.com",
+    "telefono": "3246014440",
+    "contraseña": "alfonsito",
+    "nombre": "Alfonso",
+    "apellido": "Munera",
+    "edad": 44,
+    "iD": 1044651702
+  },
+  {
+    "correo": "jose@gmail.com",
+    "telefono": "2222111111111",
+    "contraseña": "123",
+    "nombre": "jose",
+    "apellido": "cassiani",
+    "edad": 33,
+    "iD": 1044657202
+  },
+  {
+    "correo": "mauricio@gmail.com",
+    "telefono": "32910029393",
+    "contraseña": "mauricky2023",
+    "nombre": "Mauricio",
+    "apellido": "De Alessios",
+    "edad": 33,
+    "iD": 1033645202
+  },
+  {
+    "correo": "camilo@uni.edu.com",
+    "telefono": "3102788440",
+    "contraseña": "camilitio123",
+    "nombre": "Camilo",
+    "apellido": "Montero",
+    "edad": 32,
+    "iD": 1099281881
   }
 ]
