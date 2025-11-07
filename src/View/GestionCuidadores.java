@@ -23,6 +23,15 @@ import javax.swing.table.TableModel;
 import com.toedter.calendar.JDateChooser;
 import java.util.ArrayList;
 import model.oConstantes.GeneroEnum;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.awt.Color;
+
+
 
 
 
@@ -410,7 +419,61 @@ public class GestionCuidadores extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Error inesperado al actualizar", "Error", JOptionPane.ERROR_MESSAGE);
     }
 }
- 
+
+private void informePDF(){
+     try {
+        List<Cuidadores> listaCuidadores = dao.cargarRegistros(); 
+        if (listaCuidadores.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No hay cuidadores registrados para generar el informe.", "Información", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
+        Document document = new Document(PageSize.A4.rotate()); // Horizontal
+        String nombreArchivo = "Informe_Cuidadores.pdf";
+        PdfWriter.getInstance(document, new java.io.FileOutputStream(nombreArchivo));
+
+        document.open();
+        document.add(new Paragraph("Informe de Cuidadores"));
+        document.add(new Paragraph("Fecha: " + new SimpleDateFormat("dd/MM/yyyy").format(new Date())));
+        document.add(new Paragraph(" "));
+
+        
+        PdfPTable tabla = new PdfPTable(12);
+        tabla.setWidthPercentage(100);
+        String[] columnas = {"Nombre", "Apellido", "Edad", "ID", "Genero", "Correo", "Salario", "Cargo", "Horario", "Teléfono", "Contratación", "Área"};
+        for (String col : columnas) {
+            tabla.addCell(new PdfPCell(new Paragraph(col)));
+        }
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        for (Cuidadores cuidador : listaCuidadores) {
+            tabla.addCell(cuidador.getNombre());
+            tabla.addCell(cuidador.getApellido());
+            tabla.addCell(String.valueOf(cuidador.getEdad()));
+            tabla.addCell(String.valueOf(cuidador.getiD()));
+            tabla.addCell(cuidador.getGenero().toString());
+            tabla.addCell(cuidador.getCorreo());
+            tabla.addCell(cuidador.getSalario());
+            tabla.addCell(cuidador.getCargo());
+            tabla.addCell(cuidador.getHorario());
+            tabla.addCell(cuidador.getNumTelefono());
+            tabla.addCell(sdf.format(cuidador.getFechaContratacion()));
+            tabla.addCell(cuidador.getArea());
+        }
+
+        document.add(tabla);
+        document.close();
+
+        JOptionPane.showMessageDialog(this, "PDF generado exitosamente: " + nombreArchivo, "Éxito", JOptionPane.INFORMATION_MESSAGE);
+    } catch (Exception e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Error al generar el PDF", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    
+
+ }
+    
+
     
     
     
@@ -860,6 +923,7 @@ public class GestionCuidadores extends javax.swing.JFrame {
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/RESCATISTA (1) (1).png"))); // NOI18N
         jLabel19.setText("jLabel19");
 
+        btnGuardar.setBackground(new java.awt.Color(255, 255, 255));
         btnGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnGuardarMouseClicked(evt);
@@ -883,7 +947,7 @@ public class GestionCuidadores extends javax.swing.JFrame {
         );
         btnGuardarLayout.setVerticalGroup(
             btnGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 43, Short.MAX_VALUE)
+            .addGap(0, 53, Short.MAX_VALUE)
             .addGroup(btnGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(btnGuardarLayout.createSequentialGroup()
                     .addGap(0, 1, Short.MAX_VALUE)
@@ -891,6 +955,7 @@ public class GestionCuidadores extends javax.swing.JFrame {
                     .addGap(0, 2, Short.MAX_VALUE)))
         );
 
+        btnActualizar.setBackground(new java.awt.Color(255, 255, 255));
         btnActualizar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnActualizarMouseClicked(evt);
@@ -914,7 +979,7 @@ public class GestionCuidadores extends javax.swing.JFrame {
         );
         btnActualizarLayout.setVerticalGroup(
             btnActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 43, Short.MAX_VALUE)
+            .addGap(0, 53, Short.MAX_VALUE)
             .addGroup(btnActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(btnActualizarLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -922,6 +987,7 @@ public class GestionCuidadores extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
+        btnBuscar.setBackground(new java.awt.Color(255, 255, 255));
         btnBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnBuscarMouseClicked(evt);
@@ -945,7 +1011,7 @@ public class GestionCuidadores extends javax.swing.JFrame {
         );
         btnBuscarLayout.setVerticalGroup(
             btnBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 43, Short.MAX_VALUE)
+            .addGap(0, 53, Short.MAX_VALUE)
             .addGroup(btnBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(btnBuscarLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -953,6 +1019,7 @@ public class GestionCuidadores extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
+        btnEliminar.setBackground(new java.awt.Color(255, 255, 255));
         btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnEliminarMouseClicked(evt);
@@ -1256,6 +1323,8 @@ public class GestionCuidadores extends javax.swing.JFrame {
     private javax.swing.JPanel btnBuscar;
     private javax.swing.JPanel btnEliminar;
     private javax.swing.JPanel btnGuardar;
+    private javax.swing.JLabel btnInfomePDF;
+    private javax.swing.JPanel btnInformePDF;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JPanel btnOrdenar;
     private javax.swing.JComboBox<String> comboArea;

@@ -105,9 +105,7 @@ public class GestionAnimal extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this,"El ID debe tener 10 digitos","Warning",JOptionPane.WARNING_MESSAGE);
                 return;
             }
-            
-            
-            
+             
             
             if (!validacionLetras(nombre)) {
                JOptionPane.showMessageDialog(this,"El nombre solo permite letras","Error",JOptionPane.ERROR_MESSAGE);
@@ -342,6 +340,56 @@ public class GestionAnimal extends javax.swing.JFrame {
 
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "ID inválido", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    private void informePDF(){
+        try {
+            List<Animales> listaAnimal = dao.cargarRegistros();
+            if (listaAnimal.isEmpty()) {
+               JOptionPane.showMessageDialog(this,"No se encuentran animales registrados","Warning",JOptionPane.WARNING_MESSAGE);
+               return;
+            }
+            
+            Document documento = new Document (PageSize.A4.rotate());
+            String nombreArchivo = "Reporte_Animales.PDF";
+            PdfWriter.getInstance(documento, new java.io.FileOutputStream(nombreArchivo));
+            
+            documento.open();
+            documento.add(new Paragraph("Informe de Animales"));
+            documento.add(new Paragraph("Fecha: " + new SimpleDateFormat("dd/MM/yyyy").format(new Date())));
+            documento.add(new Paragraph(" "));
+            
+            PdfPTable tabla = new PdfPTable(12);
+            tabla.setWidthPercentage(100);
+            String[]columnas = {"Nombre","ID","Peso","Especie","Sexo","Estado","Ubicacion","Habitat","Cuidador","Ingreso"};
+            
+            for(String col : columnas){
+                tabla.addCell(new PdfPCell(new Paragraph(col)));
+                
+            }
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            for(Animales animal : listaAnimal){
+                tabla.addCell(animal.getNombre());
+                tabla.addCell(String.valueOf(animal.getIdAnimal()));
+                tabla.addCell(animal.getPeso());
+                tabla.addCell(animal.getEspecie());
+                tabla.addCell(String.valueOf(animal.getSexo()));
+                tabla.addCell(animal.getEstadoSalud());
+                tabla.addCell(animal.getUbicacion());
+                tabla.addCell(animal.getHabitat());
+                tabla.addCell(animal.getCuidadorAsignado());
+                tabla.addCell(sdf.format(animal.getFechaIngreso()));
+            }
+            
+            documento.add(tabla);
+            documento.close();
+            
+            JOptionPane.showMessageDialog(this,"PDF generado exitosamente","Exitos",JOptionPane.INFORMATION_MESSAGE);
+                   
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al generar el PDF", "Error", JOptionPane.ERROR_MESSAGE);
+            
         }
     }
     
@@ -1323,6 +1371,7 @@ public class GestionAnimal extends javax.swing.JFrame {
     private javax.swing.JPanel btnBuscar;
     private javax.swing.JPanel btnEliminar;
     private javax.swing.JPanel btnGuardar1;
+    private javax.swing.JPanel btnInforme;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JPanel btnOrdenamiento;
     private javax.swing.JLabel btnRegreso;

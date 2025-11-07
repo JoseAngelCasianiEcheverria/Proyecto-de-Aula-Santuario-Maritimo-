@@ -523,10 +523,6 @@ private void guardarAgendaVisitantes() {
             return;
         }
 
-        if (!idText.matches("\\d+")) {
-            JOptionPane.showMessageDialog(this, "ID inválido", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
 
         int idVisitante = Integer.parseInt(idText);
 
@@ -617,7 +613,6 @@ private void mostrarAgendasEnTabla(List<Agendas> listaAgendas) {
 
     tableAgendas.setModel(modelos);
 }
-
 
 
    

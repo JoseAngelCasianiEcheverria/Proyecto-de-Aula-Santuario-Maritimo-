@@ -1,19 +1,5 @@
 [
   {
-    "area": "Habitat terrestre",
-    "cargo": "Auxiliar",
-    "fechaContratacion": "May 27, 2025, 12:00:00 AM",
-    "salario": "3500000",
-    "horario": "Diurno",
-    "correo": "juan@gmail.com",
-    "numTelefono": "3102655167",
-    "nombre": "Juan Pablo",
-    "apellido": "Lopez",
-    "genero": "MASCULINO",
-    "edad": 45,
-    "iD": 1043657802
-  },
-  {
     "area": "Habitat acuatico",
     "cargo": "Auxiliar",
     "fechaContratacion": "May 15, 2025, 12:44:14 PM",
