@@ -1,34 +1,6 @@
 [
   {
     "area": "Habitat acuatico",
-    "cargo": "Auxiliar",
-    "fechaContratacion": "May 15, 2025, 12:44:14 PM",
-    "salario": "350000",
-    "horario": "Diurno",
-    "correo": "anibal@gmail.com",
-    "numTelefono": "3265418022",
-    "nombre": "Anibal",
-    "apellido": "Torres",
-    "genero": "MASCULINO",
-    "edad": 25,
-    "iD": 1044657803
-  },
-  {
-    "area": "Habitat terrestre",
-    "cargo": "Auxiliar",
-    "fechaContratacion": "May 21, 2025, 9:34:23 AM",
-    "salario": "39000000",
-    "horario": "Diurno",
-    "correo": "marianus@gmail.com",
-    "numTelefono": "3242644140",
-    "nombre": "Mariano",
-    "apellido": "Dominguez",
-    "genero": "MASCULINO",
-    "edad": 26,
-    "iD": 1043751832
-  },
-  {
-    "area": "Habitat acuatico",
     "cargo": "Jefe de area",
     "fechaContratacion": "May 15, 2025, 1:41:12 PM",
     "salario": "230000000",
@@ -110,5 +82,33 @@
     "genero": "MASCULINO",
     "edad": 45,
     "iD": 1234567890
+  },
+  {
+    "area": "Habitat terrestre",
+    "cargo": "Auxiliar",
+    "fechaContratacion": "May 21, 2025, 9:34:23 AM",
+    "salario": "39000000",
+    "horario": "Diurno",
+    "correo": "marianus@gmail.com",
+    "numTelefono": "3242644140",
+    "nombre": "Mariano",
+    "apellido": "Dominguez",
+    "genero": "MASCULINO",
+    "edad": 26,
+    "iD": 1043751832
+  },
+  {
+    "area": "Habitat acuatico",
+    "cargo": "Auxiliar",
+    "fechaContratacion": "May 15, 2025, 12:44:14 PM",
+    "salario": "350000",
+    "horario": "Diurno",
+    "correo": "anibal@gmail.com",
+    "numTelefono": "3265418022",
+    "nombre": "Anibal",
+    "apellido": "Torres",
+    "genero": "MASCULINO",
+    "edad": 25,
+    "iD": 1044657803
   }
 ]

@@ -24,18 +24,6 @@
     "fechaIngreso": "May 17, 2025, 7:08:27 PM"
   },
   {
-    "nombre": "Pulpo",
-    "idAnimal": 1044651672,
-    "peso": "2700",
-    "especie": "Cefalopodo",
-    "sexo": "MACHO",
-    "estadoSalud": "Sano",
-    "ubicacion": "Zona de investigacion",
-    "habitat": "Arrecife",
-    "cuidadorAsignado": "Jose Casseres Peralta",
-    "fechaIngreso": "May 19, 2023, 7:09:48 PM"
-  },
-  {
     "nombre": "Tortuga Marina",
     "idAnimal": 1044651678,
     "peso": "800",
@@ -72,6 +60,18 @@
     "fechaIngreso": "May 16, 2020, 10:21:16 AM"
   },
   {
+    "nombre": "Leon Marino",
+    "idAnimal": 1088651702,
+    "peso": "900",
+    "especie": "Mamifero",
+    "sexo": "MACHO",
+    "estadoSalud": "Sano",
+    "ubicacion": "Zona de crianza",
+    "habitat": "Arrecife",
+    "cuidadorAsignado": "Jose Paez Reyes",
+    "fechaIngreso": "May 22, 2025, 9:13:39 PM"
+  },
+  {
     "nombre": "Mantarraya",
     "idAnimal": 1098651792,
     "peso": "1700",
@@ -84,15 +84,15 @@
     "fechaIngreso": "May 6, 2025, 9:58:04 PM"
   },
   {
-    "nombre": "Leon Marino",
-    "idAnimal": 1088651702,
-    "peso": "900",
-    "especie": "Mamifero",
+    "nombre": "Pulpo",
+    "idAnimal": 1044651672,
+    "peso": "2700",
+    "especie": "Cefalopodo",
     "sexo": "MACHO",
     "estadoSalud": "Sano",
-    "ubicacion": "Zona de crianza",
+    "ubicacion": "Zona de investigacion",
     "habitat": "Arrecife",
-    "cuidadorAsignado": "Jose Paez Reyes",
-    "fechaIngreso": "May 22, 2025, 9:13:39 PM"
+    "cuidadorAsignado": "Jose Casseres Peralta",
+    "fechaIngreso": "May 19, 2023, 7:09:48 PM"
   }
 ]
