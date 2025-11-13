@@ -22,12 +22,15 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import model.oConstantes.GeneroEnum;
+import java.util.Stack;
 
 /**
  *
  * @author juanp
  */
 public class GestionVigilantes extends javax.swing.JFrame {
+    
+    private Stack<Vigilantes> pilaEliminacion = new Stack<>();
     DefaultTableModel modelo = new DefaultTableModel();
 
     /**
@@ -262,21 +265,24 @@ public class GestionVigilantes extends javax.swing.JFrame {
         
         if (iDIngresado != null && !iDIngresado.trim().isEmpty()) {
             try {
-                int id = Integer.parseInt(iDIngresado.trim());
-                boolean eliminacion = dao.eliminarConID(id);
+                int id = Integer.parseInt(iDIngresado);
+                Vigilantes vigilanteEliminado = dao.buscarConID(id);
                 
-                if (eliminacion) {
-                    cargarTablaVigilantes();
-                    JOptionPane.showMessageDialog(this,"Eliminacion exitosa","Exitos",JOptionPane.INFORMATION_MESSAGE);
-                } else {
-                    JOptionPane.showMessageDialog(this,"ID no encontrado");
+                if (vigilanteEliminado == null) {
+                    JOptionPane.showMessageDialog(this,"Vigilante no existente","Error",JOptionPane.ERROR_MESSAGE);
                     return;
+                    
                 }
+                pilaEliminacion.push(vigilanteEliminado);
+                dao.eliminarConID(id);
+                cargarTablaVigilantes();
+                JOptionPane.showMessageDialog(this,"Vigilante eliminado y guardado en una pila en caso de restauracion","Exitos",JOptionPane.INFORMATION_MESSAGE);
+                
                 
             } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(this, "Id invalido","Error",JOptionPane.ERROR_MESSAGE);
-                return;
+                JOptionPane.showMessageDialog(this,"El ID debe ser en numeros","Error",JOptionPane.ERROR_MESSAGE);
             }
+            
         } else {
             JOptionPane.showMessageDialog(this,"Cancelando eliminacion","Warning",JOptionPane.WARNING_MESSAGE);
         }
@@ -539,6 +545,8 @@ public class GestionVigilantes extends javax.swing.JFrame {
         jLabel25 = new javax.swing.JLabel();
         btnOrdenar = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
+        btnRestaurar = new javax.swing.JPanel();
+        jLabel22 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -1009,7 +1017,7 @@ public class GestionVigilantes extends javax.swing.JFrame {
             }
         });
 
-        jLabel26.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel26.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/ORDENAR (1).png"))); // NOI18N
         jLabel26.setText("ORDENAR LISTA");
 
@@ -1034,6 +1042,38 @@ public class GestionVigilantes extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
+        btnRestaurar.setBackground(new java.awt.Color(51, 204, 0));
+        btnRestaurar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRestaurarMouseClicked(evt);
+            }
+        });
+
+        jLabel22.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel22.setText("RESTAURAR");
+
+        javax.swing.GroupLayout btnRestaurarLayout = new javax.swing.GroupLayout(btnRestaurar);
+        btnRestaurar.setLayout(btnRestaurarLayout);
+        btnRestaurarLayout.setHorizontalGroup(
+            btnRestaurarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 174, Short.MAX_VALUE)
+            .addGroup(btnRestaurarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(btnRestaurarLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel22)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        btnRestaurarLayout.setVerticalGroup(
+            btnRestaurarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(btnRestaurarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(btnRestaurarLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel22)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -1044,33 +1084,33 @@ public class GestionVigilantes extends javax.swing.JFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(41, 41, 41)
-                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(89, 89, 89)
-                                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(58, 58, 58)
-                                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(84, 84, 84)
-                                .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(28, 28, 28)
-                                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(34, 34, 34)
-                                .addComponent(btnOrdenar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(41, 41, 41)
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(89, 89, 89)
+                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(58, 58, 58)
+                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(84, 84, 84)
+                        .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(399, 399, 399))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
+                        .addComponent(btnOrdenar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47)
+                        .addComponent(btnRestaurar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -1084,7 +1124,8 @@ public class GestionVigilantes extends javax.swing.JFrame {
                             .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnOrdenar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnOrdenar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnRestaurar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1205,6 +1246,21 @@ public class GestionVigilantes extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnOrdenarMouseClicked
 
+    private void btnRestaurarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRestaurarMouseClicked
+        // TODO add your handling code here:
+        if (pilaEliminacion.isEmpty()) {
+            JOptionPane.showMessageDialog(this,"Pila vacia","Warning",JOptionPane.WARNING_MESSAGE);
+            return;
+   
+        }
+        Vigilantes recuperado = pilaEliminacion.pop();
+        dao.guardarVigilantes(recuperado);
+        cargarTablaVigilantes();
+        
+        JOptionPane.showMessageDialog(this,"Vigilante restaurado: " + recuperado.getNombre(),"Restaurado",JOptionPane.INFORMATION_MESSAGE );
+        
+    }//GEN-LAST:event_btnRestaurarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1248,6 +1304,7 @@ public class GestionVigilantes extends javax.swing.JFrame {
     private javax.swing.JPanel btnGuardar;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JPanel btnOrdenar;
+    private javax.swing.JPanel btnRestaurar;
     private javax.swing.JLabel btnRgreso;
     private javax.swing.JComboBox<String> comboArea;
     private javax.swing.JComboBox<String> comboCargo;
@@ -1268,6 +1325,7 @@ public class GestionVigilantes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;

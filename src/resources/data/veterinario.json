@@ -42,18 +42,18 @@
     "iD": 1986517033
   },
   {
-    "area": "Area de conservacion",
-    "cargo": "Veterinario",
-    "fechaContratacion": "Feb 22, 2009, 12:00:00 AM",
-    "salario": "3400000",
-    "horario": "Nocturno",
-    "correo": "michael@gmail.com",
-    "numTelefono": "3245644140",
-    "nombre": "Michael",
-    "apellido": "Santos",
+    "area": "Área clínica y rehabilitación",
+    "cargo": "Jefe del area",
+    "fechaContratacion": "Oct 17, 2025, 9:06:03 AM",
+    "salario": "3000000",
+    "horario": "Diurno",
+    "correo": "manu@gmail.com",
+    "numTelefono": "3102644140",
+    "nombre": "Manuel",
+    "apellido": "Valladares",
     "genero": "MASCULINO",
-    "edad": 33,
-    "iD": 1044467220
+    "edad": 29,
+    "iD": 1055651672
   },
   {
     "area": "Investigacion cientifica",
@@ -70,17 +70,17 @@
     "iD": 1055654202
   },
   {
-    "area": "Área clínica y rehabilitación",
-    "cargo": "Jefe del area",
-    "fechaContratacion": "Oct 17, 2025, 9:06:03 AM",
-    "salario": "3000000",
-    "horario": "Diurno",
-    "correo": "manu@gmail.com",
-    "numTelefono": "3102644140",
-    "nombre": "Manuel",
-    "apellido": "Valladares",
+    "area": "Area de conservacion",
+    "cargo": "Veterinario",
+    "fechaContratacion": "Feb 22, 2009, 12:00:00 AM",
+    "salario": "3400000",
+    "horario": "Nocturno",
+    "correo": "michael@gmail.com",
+    "numTelefono": "3245644140",
+    "nombre": "Michael",
+    "apellido": "Santos",
     "genero": "MASCULINO",
-    "edad": 29,
-    "iD": 1055651672
+    "edad": 33,
+    "iD": 1044467220
   }
 ]
