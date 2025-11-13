@@ -286,5 +286,14 @@
     "apellido": "Montero",
     "edad": 32,
     "iD": 1099281881
+  },
+  {
+    "correo": "juanma@gmail.com",
+    "telefono": "7271478314787",
+    "contraseña": "123",
+    "nombre": "Juan Manuel",
+    "apellido": "Perez",
+    "edad": 25,
+    "iD": 1044765202
   }
 ]

@@ -34,6 +34,15 @@ import dao.AgendasDAO;
 import model.Agendas;
 import view.Zonas;
 
+
+import java.awt.Color;
+import java.awt.Component;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
+
+
 /**
  *
  * @author USER
@@ -207,13 +216,7 @@ public class RegistroVisitantes1 extends javax.swing.JFrame {
             }
         });
     }
-        
-       
-        
-    
-       
-    
-    
+
     
     
     
@@ -518,11 +521,17 @@ private void guardarAgendaVisitantes() {
         String idText = txtIDUser.getText().trim(); // ID del visitante
         String correoA = null;
 
+        // Validaciones básicas
         if (fecha == null || tipoEntrada.equals("Seleccionar") || horaSeleccionada.equals("Seleccionar") || idText.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Todos los campos deben estar completos", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
+        // Verificar que el ID sea numérico
+        if (!idText.matches("\\d+")) {
+            JOptionPane.showMessageDialog(this, "ID inválido", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
         int idVisitante = Integer.parseInt(idText);
 
@@ -612,7 +621,61 @@ private void mostrarAgendasEnTabla(List<Agendas> listaAgendas) {
     }
 
     tableAgendas.setModel(modelos);
+    
+    tableAgendas.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+    @Override
+    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
+                                                   boolean hasFocus, int row, int column) {
+        Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+
+        try {
+            // Obtener la fecha de la columna 0
+            String fechaStr = table.getValueAt(row, 0).toString();
+            Date fecha = new SimpleDateFormat("yyyy-MM-dd").parse(fechaStr);
+
+            // Comparar con la fecha actual
+            Date hoy = new Date();
+            if (fecha.before(hoy)) {
+                // Si la agenda ya pasó → fondo rojo claro
+                c.setBackground(new Color(255, 180, 180));
+            } else {
+                // Si la agenda es futura → fondo normal
+                if (isSelected) {
+                    c.setBackground(table.getSelectionBackground());
+                } else {
+                    c.setBackground(Color.WHITE);
+                }
+            }
+        } catch (Exception e) {
+            c.setBackground(Color.WHITE);
+        }
+
+        return c;
+    }
+});
+    
+    tableAgendas.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+    @Override
+    public void mouseMoved(java.awt.event.MouseEvent evt) {
+        int row = tableAgendas.rowAtPoint(evt.getPoint());
+        if (row > -1) {
+            String fechaStr = tableAgendas.getValueAt(row, 0).toString();
+            try {
+                Date fecha = new SimpleDateFormat("yyyy-MM-dd").parse(fechaStr);
+                Date hoy = new Date();
+                if (fecha.before(hoy)) {
+                    tableAgendas.setToolTipText("<html><p style='color:red;'>Esta agenda ya ha pasado</p></html>");
+                } else {
+                    tableAgendas.setToolTipText(null);
+                }
+            } catch (Exception e) {
+                tableAgendas.setToolTipText(null);
+            }
+        }
+    }
+});
 }
+
 
 
    
@@ -2161,7 +2224,7 @@ panelInicio.setVisible(true);
 
     private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
         // TODO add your handling code here:
-        new Zonas().setVisible(true);
+        System.exit(0);
     }//GEN-LAST:event_btnSalirMouseClicked
 
     private void etiLunesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_etiLunesActionPerformed
@@ -2266,7 +2329,7 @@ panelInicio.setVisible(false);
     private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseClicked
         // TODO add your handling code here:
         new Zonas().setVisible(true);
-        dispose();
+        
     }//GEN-LAST:event_jButton12MouseClicked
 
     /**
