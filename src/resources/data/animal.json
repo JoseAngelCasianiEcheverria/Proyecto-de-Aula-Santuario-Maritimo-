@@ -94,5 +94,17 @@
     "habitat": "Arrecife",
     "cuidadorAsignado": "Jose Casseres Peralta",
     "fechaIngreso": "May 19, 2023, 7:09:48 PM"
+  },
+  {
+    "nombre": "Pez Espada",
+    "idAnimal": 1044652702,
+    "peso": "100",
+    "especie": "Pez",
+    "sexo": "MACHO",
+    "estadoSalud": "Sano",
+    "ubicacion": "Habitat natural",
+    "habitat": "Tanque",
+    "cuidadorAsignado": "Juan Perez",
+    "fechaIngreso": "Nov 4, 2025, 12:18:03 PM"
   }
 ]
