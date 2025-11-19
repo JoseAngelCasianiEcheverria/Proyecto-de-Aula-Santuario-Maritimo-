@@ -23,7 +23,7 @@ import model.Guias;
  * @author juanp
  */
 public class GuiasDAO {
-    private static final String ARCHIVO = "C:\\Users\\juanp\\OneDrive\\Documentos\\NetBeansProjects\\Proyecto-de-Aula-Santuario-Maritimo-\\src\\Resources\\data\\guia.json";
+    private static final String ARCHIVO = "src/Resources/data/guia.json";
     private Gson gson = new GsonBuilder().setPrettyPrinting().create();
     
     

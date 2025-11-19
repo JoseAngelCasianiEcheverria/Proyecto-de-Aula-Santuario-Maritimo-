@@ -28,6 +28,7 @@ private String textozona3I = "Los visitantes podrán interactuar directamente co
         initComponents();
         this.setResizable(false);
         setLocationRelativeTo(null);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     public String StrtoHtml(String texto){

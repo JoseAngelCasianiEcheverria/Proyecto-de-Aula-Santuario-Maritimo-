@@ -1,0 +1,49 @@
+[
+  {
+    "idAnimal": 1044657822,
+    "fechaAntecedente": "Oct 9, 2025, 10:05:27 PM",
+    "descripcion": "Caso de Omicron tipo B"
+  },
+  {
+    "idAnimal": 123651672,
+    "tipoAntecedente": "Tratamiento",
+    "fechaAntecedente": "Oct 11, 2025, 10:57:43 AM",
+    "descripcion": "Despues del 2014, se le detecto al animal una congestion de cuidados especiales",
+    "responsable": "Juan De La Cruz"
+  },
+  {
+    "idAnimal": 1044657822,
+    "tipoAntecedente": "Enfermedad",
+    "fechaAntecedente": "Oct 11, 2025, 11:16:57 AM",
+    "descripcion": "Omicron Tipo B",
+    "responsable": "Juan Pablo Lopez"
+  },
+  {
+    "idAnimal": 1044651672,
+    "tipoAntecedente": "Tratamiento",
+    "fechaAntecedente": "Oct 11, 2025, 8:47:28 PM",
+    "descripcion": "A finales del año pasado, al animal se le detecto un problema riñonal",
+    "responsable": "Jose Casseres"
+  },
+  {
+    "idAnimal": 1044657602,
+    "tipoAntecedente": "Tratamiento",
+    "fechaAntecedente": "Oct 17, 2025, 9:30:09 AM",
+    "descripcion": "Desde el año pasado, el animal en ciertas ocasiones presento convulsiones debido a asma",
+    "responsable": "Marco Fernandez"
+  },
+  {
+    "idAnimal": 1088651702,
+    "tipoAntecedente": "Tratamiento",
+    "fechaAntecedente": "Oct 17, 2025, 10:18:07 AM",
+    "descripcion": "Tratamiento especializado para prevencion de cancer",
+    "responsable": "Jose Reyes"
+  },
+  {
+    "idAnimal": 1098651792,
+    "tipoAntecedente": "Traspaso",
+    "fechaAntecedente": "Oct 20, 2025, 9:08:55 AM",
+    "descripcion": "El animal sera trasladado al zoologico municipal de la ciudad de Cartagena De Indias",
+    "responsable": "Jose Perez"
+  }
+]

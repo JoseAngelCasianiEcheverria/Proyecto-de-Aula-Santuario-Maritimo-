@@ -1,19 +1,5 @@
 [
   {
-    "area": "Bienestar animal",
-    "cargo": "Veterinario",
-    "fechaContratacion": "May 15, 2025, 1:36:02 PM",
-    "salario": "2300000",
-    "horario": "Diurno",
-    "correo": "matias@gmail.com",
-    "numTelefono": "3102744390",
-    "nombre": "Matias",
-    "apellido": "Perez",
-    "genero": "MASCULINO",
-    "edad": 29,
-    "iD": 1044651703
-  },
-  {
     "area": "Rescate y respuesta a emergencia",
     "cargo": "Jefe del area",
     "fechaContratacion": "Mar 22, 2021, 12:00:00 AM",
@@ -68,5 +54,33 @@
     "genero": "MASCULINO",
     "edad": 29,
     "iD": 1055654202
+  },
+  {
+    "area": "Área clínica y rehabilitación",
+    "cargo": "Jefe del area",
+    "fechaContratacion": "Oct 17, 2025, 9:06:03 AM",
+    "salario": "3000000",
+    "horario": "Diurno",
+    "correo": "manu@gmail.com",
+    "numTelefono": "3102644140",
+    "nombre": "Manuel",
+    "apellido": "Valladares",
+    "genero": "MASCULINO",
+    "edad": 29,
+    "iD": 1055651672
+  },
+  {
+    "area": "Bienestar animal",
+    "cargo": "Jefe del area",
+    "fechaContratacion": "May 15, 2025, 1:36:02 PM",
+    "salario": "2300000",
+    "horario": "Diurno",
+    "correo": "matias@gmail.com",
+    "numTelefono": "3102744390",
+    "nombre": "Matias",
+    "apellido": "Perez",
+    "genero": "MASCULINO",
+    "edad": 29,
+    "iD": 1044651703
   }
 ]

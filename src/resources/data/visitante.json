@@ -30,8 +30,8 @@
     "correo": "asdfghjnbnbg",
     "telefono": "5435664222",
     "contraseña": "OJO",
-    "nombre": "asdfgcvb",
-    "apellido": "zxcvbnm",
+    "nombre": "KARE",
+    "apellido": "Zapato",
     "edad": 34,
     "iD": 2134567890
   },
@@ -241,5 +241,41 @@
     "apellido": "znffgfdvffaff",
     "edad": 18,
     "iD": 1000000000
+  },
+  {
+    "correo": "monica@gmail.com",
+    "telefono": "324651702",
+    "contraseña": "12345",
+    "nombre": "Monica",
+    "apellido": "Paredes",
+    "edad": 42,
+    "iD": 1055651502
+  },
+  {
+    "correo": "juanpo@gmail.com",
+    "telefono": "123",
+    "contraseña": "hola",
+    "nombre": "Juan",
+    "apellido": "Polo",
+    "edad": 34,
+    "iD": 1044651702
+  },
+  {
+    "correo": "mathews@gmail.com",
+    "telefono": "3102644140",
+    "contraseña": "123",
+    "nombre": "Matias",
+    "apellido": "Caballero",
+    "edad": 23,
+    "iD": 1023657202
+  },
+  {
+    "correo": "jose@gmail.com",
+    "telefono": "324651202",
+    "contraseña": "jose1234",
+    "nombre": "Jose",
+    "apellido": "Cassiani",
+    "edad": 35,
+    "iD": 1044652202
   }
 ]

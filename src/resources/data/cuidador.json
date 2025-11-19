@@ -70,20 +70,6 @@
     "iD": 1234567899
   },
   {
-    "area": "Habitat terrestre",
-    "cargo": "Veterinario",
-    "fechaContratacion": "May 30, 2025, 9:35:45 PM",
-    "salario": "3200000",
-    "horario": "Diurno",
-    "correo": "ulises@gmail.com",
-    "numTelefono": "3262644140",
-    "nombre": "Ulises",
-    "apellido": "Guevara",
-    "genero": "MASCULINO",
-    "edad": 29,
-    "iD": 1098551602
-  },
-  {
     "area": "Habitat acuatico",
     "cargo": "Auxiliar",
     "fechaContratacion": "May 18, 2025, 10:39:30 AM",
@@ -99,6 +85,20 @@
   },
   {
     "area": "Habitat acuatico",
+    "cargo": "Auxiliar",
+    "fechaContratacion": "Oct 23, 2021, 2:14:00 PM",
+    "salario": "3500000",
+    "horario": "Diurno",
+    "correo": "haider@gmail.com",
+    "numTelefono": "3102644140",
+    "nombre": "Haider",
+    "apellido": "De Valencia",
+    "genero": "MASCULINO",
+    "edad": 45,
+    "iD": 1234567890
+  },
+  {
+    "area": "Habitat acuatico",
     "cargo": "Jefe de area",
     "fechaContratacion": "May 18, 2025, 3:25:07 PM",
     "salario": "30000000",
@@ -110,5 +110,19 @@
     "genero": "MASCULINO",
     "edad": 44,
     "iD": 1044657202
+  },
+  {
+    "area": "Habitat terrestre",
+    "cargo": "Veterinario",
+    "fechaContratacion": "May 30, 2025, 9:35:45 PM",
+    "salario": "3200000",
+    "horario": "Diurno",
+    "correo": "ulises@gmail.com",
+    "numTelefono": "3262644140",
+    "nombre": "Ulises",
+    "apellido": "Guevara",
+    "genero": "MASCULINO",
+    "edad": 29,
+    "iD": 1098551602
   }
 ]

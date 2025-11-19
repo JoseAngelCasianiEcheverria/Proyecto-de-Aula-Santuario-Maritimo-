@@ -25,7 +25,7 @@ import model.Animales;
  */
 
 public class animalesDAO {
-    private static final String ARCHIVO_JSON = "C:\\Users\\juanp\\OneDrive\\Documentos\\NetBeansProjects\\Proyecto-de-Aula-Santuario-Maritimo-\\src\\resources\\data\\animal.json";
+    private static final String ARCHIVO_JSON = "src/Resources/data/animal.json";
     private Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     

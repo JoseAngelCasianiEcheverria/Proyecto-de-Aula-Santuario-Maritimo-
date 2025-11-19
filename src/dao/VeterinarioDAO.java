@@ -27,7 +27,7 @@ import model.Veterinarios;
  * @author juanp
  */
 public class VeterinarioDAO {
-    private static final String ARCHIVO = "C:\\Users\\juanp\\OneDrive\\Documentos\\NetBeansProjects\\Proyecto-de-Aula-Santuario-Maritimo-\\src\\resources\\data\\veterinario.json";
+    private static final String ARCHIVO = "src/Resources/data/veterinario.json";
     private Gson gson = new GsonBuilder().setPrettyPrinting().create();
     
     public List<Veterinarios> cargarRegistros(){

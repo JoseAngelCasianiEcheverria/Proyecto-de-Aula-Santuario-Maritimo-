@@ -23,7 +23,7 @@ import model.Cuidadores;
  * @author juanp
  */
 public class cuidadoresDAO {
-    private static final String ARCHIVO = "C:\\Users\\juanp\\OneDrive\\Documentos\\NetBeansProjects\\Proyecto-de-Aula-Santuario-Maritimo-\\src\\resources\\data\\cuidador.json";
+    private static final String ARCHIVO = "src/Resources/data/cuidador.json";
     private Gson gson = new GsonBuilder().setPrettyPrinting().create();
     
     

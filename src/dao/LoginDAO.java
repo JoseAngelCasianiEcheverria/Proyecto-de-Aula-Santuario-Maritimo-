@@ -23,7 +23,7 @@ import Model.Usuario;
  * @author Gercray
  */
 public class LoginDAO {
-    private static final String ARCHIVO = ("C:\\Users\\juanp\\OneDrive\\Documentos\\NetBeansProjects\\Proyecto-de-Aula-Santuario-Maritimo-\\src\\Resources\\data\\login.json");
+    private static final String ARCHIVO = ("src/Resources/data/login.json");
     private Gson gson = new GsonBuilder().setPrettyPrinting().create();
     
     public List<Usuario> cargar(){

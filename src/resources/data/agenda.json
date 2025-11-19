@@ -251,5 +251,120 @@
       "iD": 1056551602
     },
     "costo": 180000.0
+  },
+  {
+    "tipoEntrada": "Estandar",
+    "nVisitantes": "5",
+    "fecha": "Oct 15, 2025, 11:24:12 AM",
+    "id": 1055651502,
+    "correo": "monica@gmail.com",
+    "hora": "12:00 PM – 01:30 PM",
+    "guia": {
+      "especialidad": "Turismo cultural",
+      "cargo": "Guia Ecoturista",
+      "fechaContratacion": "May 21, 2025, 1:38:57 PM",
+      "salario": "3000000",
+      "horario": "Diurno",
+      "correo": "fernanda@gmail.com",
+      "numTelefono": "3102644140",
+      "nombre": "Fernanda",
+      "apellido": "Rivas",
+      "genero": "FEMENINO",
+      "edad": 34,
+      "iD": 1056551602
+    },
+    "costo": 210000.0
+  },
+  {
+    "tipoEntrada": "Estandar",
+    "nVisitantes": "3",
+    "fecha": "Nov 14, 2025, 1:00:12 PM",
+    "id": 1048438398,
+    "correo": "Jose@gmailcom",
+    "hora": "10:00 AM – 11:30 AM",
+    "guia": {
+      "especialidad": "Turismo cultural",
+      "cargo": "Guia Ecoturista",
+      "fechaContratacion": "May 21, 2025, 1:38:57 PM",
+      "salario": "3000000",
+      "horario": "Diurno",
+      "correo": "fernanda@gmail.com",
+      "numTelefono": "3102644140",
+      "nombre": "Fernanda",
+      "apellido": "Rivas",
+      "genero": "FEMENINO",
+      "edad": 34,
+      "iD": 1056551602
+    },
+    "costo": 147000.0
+  },
+  {
+    "tipoEntrada": "VIP",
+    "nVisitantes": "6",
+    "fecha": "Nov 22, 2023, 2:28:11 PM",
+    "id": 1044652202,
+    "correo": "jose@gmail.com",
+    "hora": "12:00 PM – 01:30 PM",
+    "guia": {
+      "especialidad": "Interpretacion ambiental marina",
+      "cargo": "Guia Ecoturista",
+      "fechaContratacion": "May 14, 2025, 12:47:21 PM",
+      "salario": "23000000",
+      "horario": "Diurno",
+      "correo": "juan@gmail.com",
+      "numTelefono": "3102788140",
+      "nombre": "Juan Pablo",
+      "apellido": "Lopez",
+      "genero": "MASCULINO",
+      "edad": 22,
+      "iD": 1044657803
+    },
+    "costo": 416500.0
+  },
+  {
+    "tipoEntrada": "Estandar",
+    "nVisitantes": "4",
+    "fecha": "Nov 22, 2023, 2:28:11 PM",
+    "id": 1044652202,
+    "correo": "jose@gmail.com",
+    "hora": "08:00 AM – 09:30 AM",
+    "guia": {
+      "especialidad": "Interpretacion ambiental marina",
+      "cargo": "Guia Ecoturista",
+      "fechaContratacion": "May 14, 2025, 12:47:21 PM",
+      "salario": "23000000",
+      "horario": "Diurno",
+      "correo": "juan@gmail.com",
+      "numTelefono": "3102788140",
+      "nombre": "Juan Pablo",
+      "apellido": "Lopez",
+      "genero": "MASCULINO",
+      "edad": 22,
+      "iD": 1044657803
+    },
+    "costo": 87500.0
+  },
+  {
+    "tipoEntrada": "Estandar",
+    "nVisitantes": "8",
+    "fecha": "Nov 21, 2023, 2:28:11 PM",
+    "id": 1044652202,
+    "correo": "jose@gmail.com",
+    "hora": "02:00 PM – 03:30 PM",
+    "guia": {
+      "especialidad": "Buceo guiado",
+      "cargo": "Guia de actividades acuaticas",
+      "fechaContratacion": "May 21, 2025, 1:38:01 PM",
+      "salario": "340000",
+      "horario": "Diurno",
+      "correo": "marlonsito@gmail.com",
+      "numTelefono": "3102566170",
+      "nombre": "Marlon",
+      "apellido": "Cardenas",
+      "genero": "MASCULINO",
+      "edad": 28,
+      "iD": 144651702
+    },
+    "costo": 277199.99999999994
   }
 ]

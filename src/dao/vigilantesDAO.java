@@ -24,7 +24,7 @@ import model.Vigilantes;
  */
 public class vigilantesDAO {
     
-    private static final String ARCHIVO = "C:\\Users\\juanp\\OneDrive\\Documentos\\NetBeansProjects\\Proyecto-de-Aula-Santuario-Maritimo-\\src\\resources\\data\\vigilante.json";
+    private static final String ARCHIVO = "src/Resources/data/vigilante.json";
     private Gson gson = new GsonBuilder().setPrettyPrinting().create();
     
     public List<Vigilantes> cargarRegistros(){

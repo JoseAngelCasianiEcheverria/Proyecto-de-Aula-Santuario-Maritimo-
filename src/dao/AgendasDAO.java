@@ -22,7 +22,7 @@ import model.Agendas;
  * @author USER
  */
 public class AgendasDAO {
-    private static final String ARCHIVO = "C:\\Users\\USER\\Documents\\NetBeansProjects\\Proyecto-de-Aula-Santuario-Maritimo COMPLETO\\Proyecto-de-Aula-Santuario-Maritimo-\\src\\Resources\\data\\agenda.json";
+    private static final String ARCHIVO = "src/Resources/data/agenda.json";
     private Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     public List<Agendas> cargarRegistros() {
