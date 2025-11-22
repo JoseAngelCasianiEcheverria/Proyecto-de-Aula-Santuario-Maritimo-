@@ -4,6 +4,25 @@
  */
 package View;
 
+import Model.Informes;
+import View.Monitoreo;
+import View.RegistroAnimales;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import dao.InformesDAO;
+import dao.animalesDAO;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -13,76 +32,75 @@ import javax.swing.JTextField;
  */
 public class MonitoreoAnimales extends javax.swing.JFrame {
 
-    
-    
     public MonitoreoAnimales() {
         initComponents();
         setResizable(false);
         ((JTextField) jdcFecha.getDateEditor().getUiComponent()).setEditable(false);
-        txtFielEspecie.addKeyListener(new java.awt.event.KeyAdapter(){
-            public void keyTyped(java.awt.event.KeyEvent evt){
+        ((JTextField) txtFielTiempoRecuperacion.getDateEditor().getUiComponent()).setEditable(false);
+        txtFielEspecie.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
                 soloLetras(evt);
             }
         });
-        
-        txtFielVeterinario.addKeyListener(new java.awt.event.KeyAdapter(){
-            public void keyTyped(java.awt.event.KeyEvent evt){
+
+        txtFielVeterinario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
                 soloLetras(evt);
             }
         });
-        
-        txtFielLesion.addKeyListener(new java.awt.event.KeyAdapter(){
-            public void keyTyped(java.awt.event.KeyEvent evt){
+
+        txtFielLesion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
                 soloLetras(evt);
             }
         });
-        
-        txtFielAdaministracion.addKeyListener(new java.awt.event.KeyAdapter(){
-            public void keyTyped(java.awt.event.KeyEvent evt){
+
+        txtFielAdaministracion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
                 soloLetras(evt);
             }
         });
-        
+
         txtFielIDAnimal.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt){
+            public void keyTyped(java.awt.event.KeyEvent evt) {
                 soloNumeros(evt);
-                
+
             }
         });
-        
+
         txtFielEdad.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt){
+            public void keyTyped(java.awt.event.KeyEvent evt) {
                 soloNumeros(evt);
-                
+
             }
         });
-        
+
         txtFielEstado.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt){
+            public void keyTyped(java.awt.event.KeyEvent evt) {
                 soloNumeros(evt);
-                
+
             }
         });
-        
+
     }
-    
-    private void soloLetras(java.awt.event.KeyEvent evt){
+
+    private void soloLetras(java.awt.event.KeyEvent evt) {
         char c = evt.getKeyChar();
         if (!Character.isLetter(c) && c != ' ' && c != '\b') {
             evt.consume();
-            JOptionPane.showMessageDialog(this, "Solo se permiten LETRAS","Error",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Solo se permiten LETRAS", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
-    private void soloNumeros(java.awt.event.KeyEvent evt){
+
+    private void soloNumeros(java.awt.event.KeyEvent evt) {
         char c = evt.getKeyChar();
         if (!Character.isDigit(c) && c != '\b') {
             evt.consume();
-            JOptionPane.showMessageDialog(this,"Solo se permiten NUMEROS","Error",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Solo se permiten NUMEROS", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
-    private void limpiarCampos(){
+
+    private void limpiarCampos() {
         jdcFecha.setDate(null);
         txtFielEspecie.setText("");
         txtFielIDAnimal.setText("");
@@ -93,7 +111,7 @@ public class MonitoreoAnimales extends javax.swing.JFrame {
         txtFielEdad.setText("");
         txtFielLesion.setText("");
         txtFielEstado.setText("");
-        txtFielTiempoRecuperacion.setText("");
+        txtFielTiempoRecuperacion.setDate(null);
         txtFielDuracionTrata.setText("");
     }
 
@@ -104,6 +122,7 @@ public class MonitoreoAnimales extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        botonRegresar = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -119,8 +138,9 @@ public class MonitoreoAnimales extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         txtFielLesion = new javax.swing.JTextField();
         txtFielEstado = new javax.swing.JTextField();
-        txtFielTiempoRecuperacion = new javax.swing.JTextField();
         jdcFecha = new com.toedter.calendar.JDateChooser();
+        txtFielTiempoRecuperacion = new com.toedter.calendar.JDateChooser();
+        jLabel15 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
@@ -132,6 +152,8 @@ public class MonitoreoAnimales extends javax.swing.JFrame {
         txtFielAdaministracion = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         txtFielDuracionTrata = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        btLimpiar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -142,14 +164,22 @@ public class MonitoreoAnimales extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("INFORMACION GENERAL");
 
+        botonRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/BOTON_REGRESAR (1) (1).png"))); // NOI18N
+        botonRegresar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonRegresarMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(572, 572, 572)
+                .addComponent(botonRegresar)
+                .addGap(502, 502, 502)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(834, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,6 +187,9 @@ public class MonitoreoAnimales extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(botonRegresar)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -203,11 +236,14 @@ public class MonitoreoAnimales extends javax.swing.JFrame {
         txtFielEstado.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         txtFielEstado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        txtFielTiempoRecuperacion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        txtFielTiempoRecuperacion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
         jdcFecha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jdcFecha.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+
+        txtFielTiempoRecuperacion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtFielTiempoRecuperacion.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel15.setText("años");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -232,29 +268,31 @@ public class MonitoreoAnimales extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jdcFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(386, 386, 386)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(388, 388, 388)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtFielEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(386, 386, 386)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtFielLesion, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(383, 383, 383)
+                        .addGap(9, 9, 9)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtFielTiempoRecuperacion, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtFielEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(302, Short.MAX_VALUE))
+                                .addComponent(txtFielEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtFielTiempoRecuperacion, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtFielLesion, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtFielEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(309, 309, 309)))
+                .addContainerGap(451, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,7 +310,8 @@ public class MonitoreoAnimales extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFielEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtFielEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -292,9 +331,9 @@ public class MonitoreoAnimales extends javax.swing.JFrame {
                             .addComponent(txtFielEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFielTiempoRecuperacion, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtFielTiempoRecuperacion, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(21, 21, 21))
         );
 
@@ -310,7 +349,7 @@ public class MonitoreoAnimales extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(571, 571, 571)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(690, Short.MAX_VALUE))
+                .addContainerGap(835, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -351,6 +390,24 @@ public class MonitoreoAnimales extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jButton1.setText("Imprimir");
+        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        btLimpiar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btLimpiar.setText("Limpiar");
+        btLimpiar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLimpiarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -358,15 +415,6 @@ public class MonitoreoAnimales extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtFielMedicamento, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel14)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtFielDuracionTrata, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(294, 294, 294))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
@@ -377,7 +425,22 @@ public class MonitoreoAnimales extends javax.swing.JFrame {
                                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtFielDosis, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtFielMedicamento, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 517, Short.MAX_VALUE)
+                        .addComponent(jLabel14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtFielDuracionTrata, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(294, 294, 294))))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(606, 606, 606)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -396,7 +459,11 @@ public class MonitoreoAnimales extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtFielAdaministracion, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -422,8 +489,8 @@ public class MonitoreoAnimales extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -447,6 +514,115 @@ public class MonitoreoAnimales extends javax.swing.JFrame {
     private void txtFielDuracionTrataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFielDuracionTrataActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFielDuracionTrataActionPerformed
+
+    private void botonRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonRegresarMouseClicked
+        new Monitoreo().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_botonRegresarMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        InformesDAO dao = new InformesDAO();
+        animalesDAO aDao = new animalesDAO();
+        int idNum;
+        String Especie = txtFielEspecie.getText().trim();
+        String IDAnimal = txtFielIDAnimal.getText().trim();
+        String Veterinario = txtFielVeterinario.getText().trim();
+        String Medicamento = txtFielMedicamento.getText().trim();
+        String Edad = txtFielEdad.getText().trim();
+        String Lesion = txtFielLesion.getText().trim();
+        String Estado = txtFielEstado.getText().trim();
+        String TiempoRecuperacion = (txtFielTiempoRecuperacion.getDate() != null) ? new SimpleDateFormat("yyyy-MM-dd").format(txtFielTiempoRecuperacion.getDate()) : "";
+        String Dosis = txtFielDosis.getText().trim();
+        String Administracion = txtFielAdaministracion.getText().trim();
+        String DuracionTratamiento = txtFielDuracionTrata.getText().trim();
+        String fecha = (jdcFecha.getDate() != null) ? new SimpleDateFormat("yyyy-MM-dd").format(jdcFecha.getDate()) : "";
+
+        if (Especie.isEmpty() || IDAnimal.isEmpty() || Veterinario.isEmpty() || Medicamento.isEmpty() || Dosis.isEmpty()
+                || Administracion.isEmpty() || Edad.isEmpty() || Lesion.isEmpty() || Estado.isEmpty() || TiempoRecuperacion.isEmpty()
+                || DuracionTratamiento.isEmpty() || fecha.isEmpty()) {
+
+            JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        if (IDAnimal.length() != 10 || !IDAnimal.matches("\\d+")) {
+            JOptionPane.showMessageDialog(this, "El ID debe tener 10 digitos", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        try {
+            idNum = Integer.parseInt(IDAnimal);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "El ID debe ser numérico", "Warning", JOptionPane.WARNING_MESSAGE);
+            txtFielIDAnimal.requestFocus();
+            return;
+        }
+
+        if (aDao.buscarConId(idNum) == null) {
+            JOptionPane.showMessageDialog(this, "No existe un animal registrado con este ID", "Warning", JOptionPane.WARNING_MESSAGE);
+            txtFielIDAnimal.requestFocus();
+            return;
+        }
+
+        int edadNum = Integer.parseInt(Edad);
+
+        if (Edad.length() > 3 || !Edad.matches("\\d+")) {
+            JOptionPane.showMessageDialog(this, "La edad debe tener maximo 3 digitos", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        if (edadNum > 507) {
+            JOptionPane.showMessageDialog(this, "La edad no puede ser mayor a 507 años", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        int estadoNum = Integer.parseInt(Estado);
+
+        if (Estado.length() > 2 || !Estado.matches("\\d+")) {
+            JOptionPane.showMessageDialog(this, "El estado debe tener maximo 2 digitos", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        if (estadoNum > 10) {
+            JOptionPane.showMessageDialog(this, "El estado de gravedad no puede ser mayor a 10", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(jdcFecha.getDate());
+        int añoSeleccionado = cal.get(Calendar.YEAR);
+        int añoActual = LocalDate.now().getYear();
+
+        if (añoSeleccionado > añoActual) {
+            JOptionPane.showMessageDialog(this,
+                    "No se puede seleccionar un año mayor al actual",
+                    "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        Informes informe = new Informes(
+                fecha,
+                txtFielEspecie.getText(),
+                txtFielIDAnimal.getText(),
+                txtFielVeterinario.getText(),
+                txtFielEdad.getText(),
+                txtFielLesion.getText(),
+                txtFielEstado.getText(),
+                TiempoRecuperacion,
+                txtFielMedicamento.getText(),
+                txtFielDosis.getText(),
+                txtFielAdaministracion.getText(),
+                txtFielDuracionTrata.getText()
+        );
+
+        dao.guardarInforme(informe);
+
+        JOptionPane.showMessageDialog(this, "Informe guardado correctamente");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimpiarActionPerformed
+        limpiarCampos();
+    }//GEN-LAST:event_btLimpiarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -484,12 +660,16 @@ public class MonitoreoAnimales extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel botonRegresar;
+    private javax.swing.JButton btLimpiar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -513,7 +693,7 @@ public class MonitoreoAnimales extends javax.swing.JFrame {
     private javax.swing.JTextField txtFielIDAnimal;
     private javax.swing.JTextField txtFielLesion;
     private javax.swing.JTextField txtFielMedicamento;
-    private javax.swing.JTextField txtFielTiempoRecuperacion;
+    private com.toedter.calendar.JDateChooser txtFielTiempoRecuperacion;
     private javax.swing.JTextField txtFielVeterinario;
     // End of variables declaration//GEN-END:variables
 }

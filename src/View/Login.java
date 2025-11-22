@@ -11,73 +11,94 @@ import View.RegistroVisitantes1;
 import model.Visitantes;
 import Model.Usuario;
 import View.Administrador;
+import javax.swing.JPasswordField;
 
 public class Login extends javax.swing.JFrame {
-        
+
+    private boolean verClave = false; 
+    
     public Login() {
         initComponents();
         setLocationRelativeTo(null);
     }
+
+
     
+
     private final LoginDAO dao = new LoginDAO();
-    
+
     private void iniciarSesion() {
         String usuario = txtusuario.getText().trim();
         String contraseña = txtcontra.getText().trim();
+        Usuario registroExistente = dao.buscarPorNombre(usuario);
 
-    if (usuario.isEmpty() || contraseña.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Ingresa tu usuario y/o contraseña", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
+        if (usuario.isEmpty() || contraseña.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingresa tu usuario y/o contraseña", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (usuario.equals("Admin") && contraseña.equals("123")) {
+            new Administrador().setVisible(true);
+            dispose();
+            return;
+        }
+
+        if (registroExistente == null) {
+            JOptionPane.showMessageDialog(this, "Usuario no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (!registroExistente.getContraseña().equals(contraseña)) {
+            JOptionPane.showMessageDialog(this, "Contraseña incorrecta", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        new RegistroVisitantes1().setVisible(true);
+        dispose();
+
     }
 
-    try {
-        String nombreUsuario = usuario;
-        Usuario usuario2 = dao.buscarPorNombre(nombreUsuario);
+    private void guardarRegistros() {
+        try {
+            String usuario = txtusuario.getText().trim();
+            String contraseña = txtcontra.getText().trim();
 
-        if (usuario2 != null && usuario2.getContraseña().equals(contraseña)) {
-            JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            //Validaciones
+            if (txtusuario.getText().trim().isEmpty() || txtcontra.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                return;
 
-        } else {
-            JOptionPane.showMessageDialog(this, "Nombre o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(this, "Nombre inválido", "Error", JOptionPane.ERROR_MESSAGE);
-    }
-}
-    
-    private void guardarRegistros(){
-    try {
-        String usuario = txtusuario.getText().trim();
-        String contraseña = txtcontra.getText().trim();
-
-         //Validaciones
-        if (txtusuario.getText().trim().isEmpty() || txtcontra.getText().trim().isEmpty()) {
-              JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios", "Advertencia", JOptionPane.WARNING_MESSAGE);
-              return;
-            
-        }
-        String nombreUsuario = usuario;
-        Usuario registroExistente = dao.buscarPorNombre(nombreUsuario);
-            if (registroExistente != null ) {
-                JOptionPane.showMessageDialog(this, "Registro existente", "Warning", JOptionPane.WARNING_MESSAGE);
-                return;   
             }
-        
-        Usuario nuevoUsuario = new Usuario(usuario, contraseña);
-        dao.guardarUsuarios(nuevoUsuario);
-        
-        JOptionPane.showMessageDialog(this,"Registro exitoso","Éxito",JOptionPane.INFORMATION_MESSAGE);
+            String nombreUsuario = usuario;
+            Usuario registroExistente = dao.buscarPorNombre(nombreUsuario);
+            if (registroExistente != null) {
+                JOptionPane.showMessageDialog(this, "Registro existente", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
 
-    } catch (Exception e) {
-        e.printStackTrace();
-        JOptionPane.showMessageDialog(this,"Error al registrar al usuario","Error",JOptionPane.ERROR_MESSAGE);
+            Usuario nuevoUsuario = new Usuario(usuario, contraseña);
+            dao.guardarUsuarios(nuevoUsuario);
+
+            JOptionPane.showMessageDialog(this, "Registro exitoso", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al registrar al usuario", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
-}      
-    
-    
-    public void limpiar(){
+
+    public void limpiar() {
         txtusuario.setText("");
         txtcontra.setText("");
+    }
+    
+    private void togglePassword(JPasswordField campo) {
+        if (verClave) {           
+            campo.setEchoChar('*'); 
+        } else {
+            campo.setEchoChar((char) 0);
+        }
+        verClave = !verClave;
     }
     
     @SuppressWarnings("unchecked")
@@ -87,7 +108,6 @@ public class Login extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        Rol = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         txtusuario = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
@@ -98,6 +118,7 @@ public class Login extends javax.swing.JFrame {
         btnRegistrar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         areaSalida = new javax.swing.JLabel();
+        botonRegresar = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -110,15 +131,6 @@ public class Login extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel3.setText("INICIAR SESION");
-
-        Rol.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Rol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Seleccionar cargo>", "Administrador", "Usuario", " " }));
-        Rol.setBorder(null);
-        Rol.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RolActionPerformed(evt);
-            }
-        });
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setText("Usuario*");
@@ -179,6 +191,13 @@ public class Login extends javax.swing.JFrame {
         areaSalida.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         areaSalida.setForeground(new java.awt.Color(255, 0, 0));
 
+        botonRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Ojo(Jose) (2).jpg"))); // NOI18N
+        botonRegresar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonRegresarMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -186,27 +205,28 @@ public class Login extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(Rol, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtcontra, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(49, 49, 49)
-                                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(botonRegresar))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
             .addComponent(areaSalida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
@@ -216,14 +236,15 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4))
-                .addGap(34, 34, 34)
-                .addComponent(Rol, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(108, 108, 108)
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
-                .addComponent(txtusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonRegresar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
@@ -235,7 +256,7 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(areaSalida, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE))
+                .addComponent(areaSalida, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE))
         );
 
         jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 460, 550));
@@ -262,25 +283,16 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void RolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RolActionPerformed
-       String rolSeleccionado = (String) Rol.getSelectedItem();
-        if ("Usuario".equals(rolSeleccionado)) {
-            btnRegistrar.setEnabled(true);
-        }else{
-            btnRegistrar.setEnabled(false);
-        }
-    }//GEN-LAST:event_RolActionPerformed
-
     private void txtusuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtusuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtusuarioActionPerformed
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-       
+
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-       
+
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarMouseClicked
@@ -288,18 +300,13 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarMouseClicked
 
     private void btnIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresarMouseClicked
-  String seleccion = (String) Rol.getSelectedItem();
-     if ("Administrador".equals(seleccion)) {
-                    new Administrador().setVisible(true);
-                    dispose();
-                } else if ("Usuario".equals(seleccion)) {
-                    new RegistroVisitantes1().setVisible(true);
-                    dispose(); 
-                } else {
-                    JOptionPane.showMessageDialog(null, "Por favor, selecciona un rol válido.");
-                }
-           
+        iniciarSesion();
+
     }//GEN-LAST:event_btnIngresarMouseClicked
+
+    private void botonRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonRegresarMouseClicked
+       togglePassword(txtcontra);
+    }//GEN-LAST:event_botonRegresarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -338,8 +345,8 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> Rol;
     private javax.swing.JLabel areaSalida;
+    private javax.swing.JLabel botonRegresar;
     private javax.swing.JButton btnIngresar;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JLabel jLabel1;

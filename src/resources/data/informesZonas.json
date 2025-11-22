@@ -1,0 +1,32 @@
+[
+  {
+    "numeroZ": "5",
+    "tiempoDet": "21/11/2025 20:40",
+    "tipoIncidente": "Accidentes del personal",
+    "gravedad": "5",
+    "tiempoRecuperacion": "2025-11-19",
+    "tipoAfectacion": "Física / Humana / Operativa",
+    "estado": "Resuelto",
+    "reportado": "Juan"
+  },
+  {
+    "numeroZ": "2",
+    "tiempoDet": "21/11/2025 20:57",
+    "tipoIncidente": "Accidentes ambientales",
+    "gravedad": "6",
+    "tiempoRecuperacion": "2025-11-29",
+    "tipoAfectacion": "Ambiental / Infraestructura / Operativa",
+    "estado": "Reparacion",
+    "reportado": "Yani"
+  },
+  {
+    "numeroZ": "2",
+    "tiempoDet": "21/11/2025 20:23",
+    "tipoIncidente": "Accidentes con fauna marina",
+    "gravedad": "6",
+    "tiempoRecuperacion": "2025/11/20",
+    "tipoAfectacion": "Física / Fauna",
+    "estado": "Proceso",
+    "reportado": "Jose"
+  }
+]

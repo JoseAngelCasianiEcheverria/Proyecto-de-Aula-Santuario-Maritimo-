@@ -1,0 +1,16 @@
+[
+  {
+    "fecha": "2025-11-20",
+    "especie": "Leon",
+    "idAnimal": "1234567890",
+    "veterinario": "Luis",
+    "edad": "144",
+    "lesion": "Leve",
+    "estado": "10",
+    "tiempoRecuperacion": "2025-11-19",
+    "medicamento": "Golpe",
+    "dosis": "Cada 30 minutos",
+    "administracion": "Con las manos",
+    "duracionTratamiento": "no se"
+  }
+]

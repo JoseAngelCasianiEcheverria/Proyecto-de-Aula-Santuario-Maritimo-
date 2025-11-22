@@ -366,5 +366,28 @@
       "iD": 144651702
     },
     "costo": 277199.99999999994
+  },
+  {
+    "tipoEntrada": "Estandar",
+    "nVisitantes": "7",
+    "fecha": "Nov 28, 2025, 9:23:56 AM",
+    "id": 1048438398,
+    "correo": "Jose@gmailcom",
+    "hora": "08:00 AM – 09:30 AM",
+    "guia": {
+      "especialidad": "Buceo guiado",
+      "cargo": "Guia de actividades acuaticas",
+      "fechaContratacion": "May 21, 2025, 1:38:01 PM",
+      "salario": "340000",
+      "horario": "Diurno",
+      "correo": "marlonsito@gmail.com",
+      "numTelefono": "3102566170",
+      "nombre": "Marlon",
+      "apellido": "Cardenas",
+      "genero": "MASCULINO",
+      "edad": 28,
+      "iD": 144651702
+    },
+    "costo": 196000.0
   }
 ]

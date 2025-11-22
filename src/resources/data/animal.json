@@ -48,18 +48,6 @@
     "fechaIngreso": "May 6, 2025, 9:58:04 PM"
   },
   {
-    "nombre": "Leon Marino",
-    "idAnimal": 1088651702,
-    "peso": "900",
-    "especie": "Mamifero",
-    "sexo": "MACHO",
-    "estadoSalud": "Sano",
-    "ubicacion": "Zona de crianza",
-    "habitat": "Arrecife",
-    "cuidadorAsignado": "Jose Paez Reyes",
-    "fechaIngreso": "May 22, 2025, 9:13:39 PM"
-  },
-  {
     "nombre": "Tiburon",
     "idAnimal": 1044657822,
     "peso": "3000",
@@ -94,5 +82,17 @@
     "habitat": "Tanque",
     "cuidadorAsignado": "Jose Peralta",
     "fechaIngreso": "May 15, 2025, 10:59:36 AM"
+  },
+  {
+    "nombre": "Leon Marino",
+    "idAnimal": 1088651702,
+    "peso": "900",
+    "especie": "Mamifero",
+    "sexo": "MACHO",
+    "estadoSalud": "Sano",
+    "ubicacion": "Zona de crianza",
+    "habitat": "Arrecife",
+    "cuidadorAsignado": "Jose Paez Reyes",
+    "fechaIngreso": "May 22, 2025, 9:13:39 PM"
   }
 ]

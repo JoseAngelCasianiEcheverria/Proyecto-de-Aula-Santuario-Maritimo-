@@ -62,10 +62,11 @@ public class Monitoreo extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         labelReloj = new javax.swing.JLabel();
-        btAnimales1 = new javax.swing.JPanel();
+        VerRegistroA = new javax.swing.JPanel();
         btRegistroA = new javax.swing.JLabel();
-        btAnimales2 = new javax.swing.JPanel();
+        VerRegistroZ = new javax.swing.JPanel();
         btRegistroZ = new javax.swing.JLabel();
+        botonRegresar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -177,16 +178,16 @@ public class Monitoreo extends javax.swing.JFrame {
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        btAnimales1.setBackground(new java.awt.Color(0, 0, 0));
-        btAnimales1.addMouseListener(new java.awt.event.MouseAdapter() {
+        VerRegistroA.setBackground(new java.awt.Color(0, 0, 0));
+        VerRegistroA.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btAnimales1MouseClicked(evt);
+                VerRegistroAMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btAnimales1MouseEntered(evt);
+                VerRegistroAMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btAnimales1MouseExited(evt);
+                VerRegistroAMouseExited(evt);
             }
         });
 
@@ -194,49 +195,33 @@ public class Monitoreo extends javax.swing.JFrame {
         btRegistroA.setForeground(new java.awt.Color(255, 255, 255));
         btRegistroA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Registro Animal (2).jpg"))); // NOI18N
         btRegistroA.setText("VER REGISTRO DE ANIMALES");
-        btRegistroA.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                btRegistroAMouseMoved(evt);
-            }
-        });
-        btRegistroA.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btRegistroAMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btRegistroAMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btRegistroAMouseExited(evt);
-            }
-        });
 
-        javax.swing.GroupLayout btAnimales1Layout = new javax.swing.GroupLayout(btAnimales1);
-        btAnimales1.setLayout(btAnimales1Layout);
-        btAnimales1Layout.setHorizontalGroup(
-            btAnimales1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btAnimales1Layout.createSequentialGroup()
+        javax.swing.GroupLayout VerRegistroALayout = new javax.swing.GroupLayout(VerRegistroA);
+        VerRegistroA.setLayout(VerRegistroALayout);
+        VerRegistroALayout.setHorizontalGroup(
+            VerRegistroALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(VerRegistroALayout.createSequentialGroup()
                 .addComponent(btRegistroA, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 24, Short.MAX_VALUE))
         );
-        btAnimales1Layout.setVerticalGroup(
-            btAnimales1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btAnimales1Layout.createSequentialGroup()
+        VerRegistroALayout.setVerticalGroup(
+            VerRegistroALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, VerRegistroALayout.createSequentialGroup()
                 .addContainerGap(18, Short.MAX_VALUE)
                 .addComponent(btRegistroA)
                 .addContainerGap())
         );
 
-        btAnimales2.setBackground(new java.awt.Color(0, 0, 0));
-        btAnimales2.addMouseListener(new java.awt.event.MouseAdapter() {
+        VerRegistroZ.setBackground(new java.awt.Color(0, 0, 0));
+        VerRegistroZ.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btAnimales2MouseClicked(evt);
+                VerRegistroZMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btAnimales2MouseEntered(evt);
+                VerRegistroZMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btAnimales2MouseExited(evt);
+                VerRegistroZMouseExited(evt);
             }
         });
 
@@ -244,33 +229,29 @@ public class Monitoreo extends javax.swing.JFrame {
         btRegistroZ.setForeground(new java.awt.Color(255, 255, 255));
         btRegistroZ.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Registro Zonas (2).png"))); // NOI18N
         btRegistroZ.setText("VER REGISTRO DE ZONAS");
-        btRegistroZ.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btRegistroZMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btRegistroZMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btRegistroZMouseExited(evt);
-            }
-        });
 
-        javax.swing.GroupLayout btAnimales2Layout = new javax.swing.GroupLayout(btAnimales2);
-        btAnimales2.setLayout(btAnimales2Layout);
-        btAnimales2Layout.setHorizontalGroup(
-            btAnimales2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btAnimales2Layout.createSequentialGroup()
+        javax.swing.GroupLayout VerRegistroZLayout = new javax.swing.GroupLayout(VerRegistroZ);
+        VerRegistroZ.setLayout(VerRegistroZLayout);
+        VerRegistroZLayout.setHorizontalGroup(
+            VerRegistroZLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(VerRegistroZLayout.createSequentialGroup()
                 .addComponent(btRegistroZ, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 27, Short.MAX_VALUE))
+                .addGap(0, 21, Short.MAX_VALUE))
         );
-        btAnimales2Layout.setVerticalGroup(
-            btAnimales2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btAnimales2Layout.createSequentialGroup()
+        VerRegistroZLayout.setVerticalGroup(
+            VerRegistroZLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, VerRegistroZLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btRegistroZ)
                 .addContainerGap())
         );
+
+        botonRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/BOTON_REGRESAR (1) (1).png"))); // NOI18N
+        botonRegresar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonRegresarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -279,23 +260,24 @@ public class Monitoreo extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(btAnimales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(9, 9, 9)
-                                    .addComponent(jLabel4))
-                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btAnimales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btZonas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(62, 62, 62)
+                        .addGap(66, 66, 66)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btAnimales2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btAnimales1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 488, Short.MAX_VALUE)
+                            .addComponent(VerRegistroA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(VerRegistroZ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(botonRegresar)
+                        .addGap(35, 35, 35)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(161, 161, 161)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -304,20 +286,23 @@ public class Monitoreo extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 708, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btAnimales2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jLabel3)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(38, 38, 38)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(btAnimales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btAnimales1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(79, 79, 79)
-                            .addComponent(btZonas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(botonRegresar))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btAnimales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(VerRegistroA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(79, 79, 79)
+                                .addComponent(btZonas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(VerRegistroZ, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(6, 6, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -337,93 +322,62 @@ public class Monitoreo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btZonasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btZonasMouseClicked
-        // TODO add your handling code here:
-        //btnVigilancia.setFocusable(false);
-        new GestionVigilantes().setVisible(true);
+        new MonitoreoZonas().setVisible(true);
         dispose();
 
     }//GEN-LAST:event_btZonasMouseClicked
 
     private void btZonasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btZonasMouseEntered
-        // TODO add your handling code here:
         btZonas.setBackground(new java.awt.Color(0, 51, 153));
     }//GEN-LAST:event_btZonasMouseEntered
 
     private void btZonasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btZonasMouseExited
-        // TODO add your handling code here:
         btZonas.setBackground(new java.awt.Color(0,0,0));
     }//GEN-LAST:event_btZonasMouseExited
 
     private void btAnimalesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btAnimalesMouseClicked
-        // TODO add your handling code here:
-        //btnAnimales.setFocusable(false);
-        new GestionAnimal().setVisible(true);
+        new MonitoreoAnimales().setVisible(true);
         dispose();
     }//GEN-LAST:event_btAnimalesMouseClicked
 
     private void btAnimalesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btAnimalesMouseEntered
-        // TODO add your handling code here:
         btAnimales.setBackground(new java.awt.Color(0, 51, 153));
     }//GEN-LAST:event_btAnimalesMouseEntered
 
     private void btAnimalesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btAnimalesMouseExited
-        // TODO add your handling code here:
         btAnimales.setBackground(new java.awt.Color(0,0,0));
     }//GEN-LAST:event_btAnimalesMouseExited
 
-    private void btAnimales1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btAnimales1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btAnimales1MouseClicked
-
-    private void btAnimales1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btAnimales1MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btAnimales1MouseEntered
-
-    private void btAnimales1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btAnimales1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btAnimales1MouseExited
-
-    private void btAnimales2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btAnimales2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btAnimales2MouseClicked
-
-    private void btAnimales2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btAnimales2MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btAnimales2MouseEntered
-
-    private void btAnimales2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btAnimales2MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btAnimales2MouseExited
-
-    private void btRegistroAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btRegistroAMouseClicked
-        new MonitoreoAnimales().setVisible(true);
+    private void VerRegistroAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VerRegistroAMouseClicked
+        new RegistroAnimales().setVisible(true);
         dispose();
-    }//GEN-LAST:event_btRegistroAMouseClicked
+    }//GEN-LAST:event_VerRegistroAMouseClicked
 
-    private void btRegistroAMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btRegistroAMouseEntered
-        btRegistroA.setBackground(new java.awt.Color(0, 51, 153));
-    }//GEN-LAST:event_btRegistroAMouseEntered
+    private void VerRegistroAMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VerRegistroAMouseEntered
+        VerRegistroA.setBackground(new java.awt.Color(0, 51, 153));
+    }//GEN-LAST:event_VerRegistroAMouseEntered
 
-    private void btRegistroAMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btRegistroAMouseExited
-        btRegistroA.setBackground(new java.awt.Color(0,0,0));
-    }//GEN-LAST:event_btRegistroAMouseExited
+    private void VerRegistroAMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VerRegistroAMouseExited
+        VerRegistroA.setBackground(new java.awt.Color(0,0,0));
+    }//GEN-LAST:event_VerRegistroAMouseExited
 
-    private void btRegistroAMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btRegistroAMouseMoved
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btRegistroAMouseMoved
-
-    private void btRegistroZMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btRegistroZMouseClicked
-        new GestionAnimal().setVisible(true);
+    private void VerRegistroZMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VerRegistroZMouseClicked
+        new RegistroZonas().setVisible(true);
         dispose();
-    }//GEN-LAST:event_btRegistroZMouseClicked
+    }//GEN-LAST:event_VerRegistroZMouseClicked
 
-    private void btRegistroZMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btRegistroZMouseEntered
-        btRegistroA.setBackground(new java.awt.Color(0, 51, 153));
-    }//GEN-LAST:event_btRegistroZMouseEntered
+    private void VerRegistroZMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VerRegistroZMouseEntered
+        VerRegistroZ.setBackground(new java.awt.Color(0, 51, 153));
+    }//GEN-LAST:event_VerRegistroZMouseEntered
 
-    private void btRegistroZMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btRegistroZMouseExited
-        btRegistroA.setBackground(new java.awt.Color(0,0,0));
-    }//GEN-LAST:event_btRegistroZMouseExited
+    private void VerRegistroZMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VerRegistroZMouseExited
+        VerRegistroZ.setBackground(new java.awt.Color(0,0,0));
+    }//GEN-LAST:event_VerRegistroZMouseExited
+
+    private void botonRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonRegresarMouseClicked
+        new Administrador().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_botonRegresarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -461,10 +415,11 @@ public class Monitoreo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel VerRegistroA;
+    private javax.swing.JPanel VerRegistroZ;
     private javax.swing.JLabel Zona;
+    private javax.swing.JLabel botonRegresar;
     private javax.swing.JPanel btAnimales;
-    private javax.swing.JPanel btAnimales1;
-    private javax.swing.JPanel btAnimales2;
     private javax.swing.JLabel btRegistroA;
     private javax.swing.JLabel btRegistroZ;
     private javax.swing.JPanel btZonas;
